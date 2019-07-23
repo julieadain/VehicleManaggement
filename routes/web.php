@@ -12,5 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+//
+//Route::get('/view', function () {
+//    return view('vehicle.all');
+//});
+
+Route::Resource("/home", "HomeController");
+Route::Resource("/vehicle", "VehicleController");
+Route::Resource("/driver", "DriverController");
