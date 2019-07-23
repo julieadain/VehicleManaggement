@@ -16,7 +16,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="col-md-12">
-            <!-- Horizontal Form -->s
+            <!-- Horizontal Form -->
             <div class="box box-info">
                 <div class="box-header with-border">
                     <h3 class="box-title">Add drive's information</h3>
