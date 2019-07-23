@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e5ebe09-bfa6-48ec-9464-95668160bb67" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-    </list>
+    <list default="true" id="8e5ebe09-bfa6-48ec-9464-95668160bb67" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +41,41 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="vehiclemanagement: schema" type="ebfa3cd1:MariaImplModel$Schema" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="vehiclemanagement@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="vehiclemanagement: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="clients: table" type="dbc44a63:MariaImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="vehiclemanagement@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="vehiclemanagement: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="drivers: table" type="dbc44a63:MariaImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="vehiclemanagement@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="vehiclemanagement: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="fuels: table" type="dbc44a63:MariaImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="vehiclemanagement@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="vehiclemanagement: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="reservations: table" type="dbc44a63:MariaImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="vehiclemanagement@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="vehiclemanagement: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="vehicles: table" type="dbc44a63:MariaImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
@@ -52,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_22_000554_create_reservations_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="247">
+              <caret line="32" column="73" selection-start-line="32" selection-start-column="73" selection-end-line="32" selection-end-column="73" />
             </state>
           </provider>
         </entry>
@@ -76,11 +108,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/migrations/2015_07_21_211421_create_vehicles_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="39">
-              <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+            <state relative-caret-position="-150">
+              <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -101,79 +133,89 @@
               <ID>DATABASE</ID>
               <OriginalElement>684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.SCHEMA:vehiclemanagement</OriginalElement>
               <nodes>
-                <node x="259.50625" y="0.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.organizations</node>
-                <node x="440.0" y="717.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.clients</node>
-                <node x="207.42812500000002" y="1070.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.reservations</node>
-                <node x="197.0" y="618.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.cars</node>
-                <node x="898.0" y="0.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.migrations</node>
-                <node x="678.0" y="0.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.purposes</node>
-                <node x="0.0" y="684.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.drivers</node>
-                <node x="59.67812500000002" y="1555.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.fuels</node>
-                <node x="372.30937500000005" y="1544.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.payments</node>
-                <node x="656.0" y="166.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.expenses</node>
-                <node x="1096.0" y="0.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.password_resets</node>
-                <node x="88.0" y="254.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.users</node>
+                <node x="283.1382352941177" y="0.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.organizations</node>
+                <node x="506.2637254901961" y="717.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.clients</node>
+                <node x="744.2637254901961" y="0.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.purposes</node>
+                <node x="964.2637254901961" y="0.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.migrations</node>
+                <node x="335.84558823529414" y="1070.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.reservations</node>
+                <node x="242.00000000000006" y="684.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.drivers</node>
+                <node x="0.0" y="618.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.vehicles</node>
+                <node x="475.45833333333337" y="1544.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.payments</node>
+                <node x="181.76372549019612" y="1544.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.fuels</node>
+                <node x="722.2637254901961" y="166.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.expenses</node>
+                <node x="1162.263725490196" y="0.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.password_resets</node>
+                <node x="288.2637254901961" y="254.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.users</node>
               </nodes>
               <notes />
               <edges>
                 <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.drivers" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.organizations">
                   <point x="-44.0" y="-135.0" />
-                  <point x="44.0" y="224.0" />
-                  <point x="279.80625000000003" y="224.0" />
-                  <point x="-81.19999999999999" y="102.0" />
+                  <point x="286.00000000000006" y="588.0" />
+                  <point x="277.7637254901961" y="588.0" />
+                  <point x="277.7637254901961" y="234.0" />
+                  <point x="344.03823529411767" y="234.0" />
+                  <point x="-40.60000000000002" y="102.0" />
                 </edge>
                 <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.payments" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.reservations">
                   <point x="-45.75" y="-102.0" />
-                  <point x="418.05937500000005" y="1519.0" />
-                  <point x="361.928125" y="1519.0" />
-                  <point x="51.5" y="212.0" />
+                  <point x="521.2083333333334" y="1519.0" />
+                  <point x="490.3455882352942" y="1519.0" />
+                  <point x="51.50000000000003" y="212.0" />
                 </edge>
                 <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.reservations" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.drivers">
-                  <point x="-82.39999999999998" y="-212.0" />
-                  <point x="228.02812500000005" y="1050.0" />
-                  <point x="132.0" y="1050.0" />
+                  <point x="-41.19999999999996" y="-212.0" />
+                  <point x="397.6455882352942" y="1045.0" />
+                  <point x="374.00000000000006" y="1045.0" />
                   <point x="44.0" y="135.0" />
                 </edge>
-                <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.cars" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.users">
-                  <point x="-55.5" y="-201.0" />
-                  <point x="65.66666666666669" y="157.0" />
+                <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.vehicles" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.users">
+                  <point x="55.5" y="-201.0" />
+                  <point x="166.5" y="598.0" />
+                  <point x="321.09705882352944" y="598.0" />
+                  <point x="-65.66666666666669" y="157.0" />
+                </edge>
+                <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.reservations" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.vehicles">
+                  <point x="-82.39999999999995" y="-212.0" />
+                  <point x="356.4455882352942" y="1045.0" />
+                  <point x="166.5" y="1045.0" />
+                  <point x="55.5" y="201.0" />
                 </edge>
                 <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.payments" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.clients">
                   <point x="45.75" y="-102.0" />
-                  <point x="509.55937500000005" y="1519.0" />
-                  <point x="568.25" y="1519.0" />
+                  <point x="612.7083333333334" y="1519.0" />
+                  <point x="634.5137254901961" y="1519.0" />
                   <point x="42.75" y="102.0" />
                 </edge>
                 <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.reservations" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.users">
-                  <point x="-41.19999999999999" y="-212.0" />
-                  <point x="269.22812500000003" y="1040.0" />
-                  <point x="186.5" y="1040.0" />
-                  <point x="0.0" y="157.0" />
+                  <point x="2.8421709430404007E-14" y="-212.0" />
+                  <point x="438.8455882352942" y="1045.0" />
+                  <point x="452.4303921568628" y="1045.0" />
+                  <point x="65.66666666666669" y="157.0" />
                 </edge>
-                <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.cars" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.organizations">
-                  <point x="55.5" y="-201.0" />
-                  <point x="363.5" y="234.0" />
-                  <point x="361.00625" y="234.0" />
-                  <point x="0.0" y="102.0" />
+                <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.fuels" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.vehicles">
+                  <point x="-64.0" y="-102.0" />
+                  <point x="213.76372549019612" y="1519.0" />
+                  <point x="55.5" y="1519.0" />
+                  <point x="-55.5" y="201.0" />
                 </edge>
                 <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.reservations" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.clients">
-                  <point x="82.39999999999998" y="-212.0" />
-                  <point x="392.828125" y="1050.0" />
-                  <point x="482.75" y="1050.0" />
+                  <point x="82.4" y="-212.0" />
+                  <point x="521.2455882352942" y="1045.0" />
+                  <point x="549.0137254901961" y="1045.0" />
                   <point x="-42.75" y="102.0" />
                 </edge>
                 <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.users" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.organizations">
                   <point x="0.0" y="-157.0" />
-                  <point x="186.5" y="234.0" />
-                  <point x="320.40625" y="234.0" />
-                  <point x="-40.60000000000002" y="102.0" />
+                  <point x="386.7637254901961" y="234.0" />
+                  <point x="384.6382352941177" y="234.0" />
+                  <point x="0.0" y="102.0" />
                 </edge>
                 <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.reservations" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.organizations">
-                  <point x="41.19999999999999" y="-212.0" />
-                  <point x="351.628125" y="1040.0" />
-                  <point x="429.5" y="1040.0" />
-                  <point x="429.5" y="234.0" />
-                  <point x="401.60625" y="234.0" />
+                  <point x="41.20000000000002" y="-212.0" />
+                  <point x="480.0455882352942" y="1045.0" />
+                  <point x="495.7637254901961" y="1045.0" />
+                  <point x="495.7637254901961" y="234.0" />
+                  <point x="425.23823529411766" y="234.0" />
                   <point x="40.599999999999966" y="102.0" />
                 </edge>
                 <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.expenses" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.purposes">
@@ -181,40 +223,38 @@
                   <point x="0.0" y="58.0" />
                 </edge>
                 <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.fuels" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.drivers">
-                  <point x="-46.5" y="-91.0" />
-                  <point x="106.17812500000002" y="1519.0" />
-                  <point x="44.0" y="1519.0" />
+                  <point x="0.0" y="-102.0" />
+                  <point x="277.7637254901961" y="1519.0" />
+                  <point x="286.00000000000006" y="1519.0" />
                   <point x="-44.0" y="135.0" />
                 </edge>
-                <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.reservations" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.cars">
-                  <point x="0.0" y="-212.0" />
-                  <point x="310.428125" y="1050.0" />
-                  <point x="308.0" y="1050.0" />
-                  <point x="0.0" y="201.0" />
-                </edge>
                 <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.fuels" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.reservations">
-                  <point x="46.5" y="-91.0" />
-                  <point x="199.17812500000002" y="1519.0" />
-                  <point x="258.928125" y="1519.0" />
+                  <point x="64.0" y="-102.0" />
+                  <point x="341.7637254901961" y="1519.0" />
+                  <point x="387.34558823529414" y="1519.0" />
                   <point x="-51.5" y="212.0" />
                 </edge>
                 <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.clients" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.organizations">
                   <point x="0.0" y="-102.0" />
-                  <point x="525.5" y="234.0" />
-                  <point x="442.20625" y="234.0" />
-                  <point x="81.19999999999999" y="102.0" />
+                  <point x="591.7637254901961" y="224.0" />
+                  <point x="465.8382352941176" y="224.0" />
+                  <point x="81.19999999999993" y="102.0" />
                 </edge>
                 <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.drivers" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.users">
                   <point x="44.0" y="-135.0" />
-                  <point x="132.0" y="593.0" />
-                  <point x="120.83333333333331" y="593.0" />
-                  <point x="-65.66666666666669" y="157.0" />
+                  <point x="374.00000000000006" y="598.0" />
+                  <point x="386.7637254901961" y="598.0" />
+                  <point x="0.0" y="157.0" />
+                </edge>
+                <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.vehicles" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.organizations">
+                  <point x="-55.5" y="-201.0" />
+                  <point x="55.5" y="224.0" />
+                  <point x="303.4382352941177" y="224.0" />
+                  <point x="-81.19999999999999" y="102.0" />
                 </edge>
               </edges>
               <settings layout="Hierarchic Group" zoom="1.0" x="235.0" y="1188.0" />
-              <SelectedNodes>
-                <node>684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.cars</node>
-              </SelectedNodes>
+              <SelectedNodes />
               <Categories>
                 <Category>Key columns</Category>
                 <Category>Columns</Category>
@@ -233,26 +273,32 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CarController.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VehicleController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+            <state relative-caret-position="225">
+              <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="das://684620ab-0c75-4ce2-9c1e-7ead0b5db6dc/schema/vehiclemanagement/table/reservations">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state projectRestartId="54f19d5a-23fa-4f4a-b695-60b377d552a9">
+              <filtering>
+                <filter text="" />
+              </filtering>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Car.php">
+        <entry file="file://$PROJECT_DIR$/app/Vehicle.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+              <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -277,9 +323,10 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_07_23_184124_create_purposes_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_07_23_184328_create_expenses_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2015_07_21_211421_create_vehicle_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_07_22_000554_create_reservations_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_07_22_011912_create_fuels_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2015_07_21_211421_create_vehicles_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_07_22_000554_create_reservations_table.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/VehicleController.php" />
       </list>
     </option>
   </component>
@@ -438,6 +485,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -484,12 +532,12 @@
       <workItem from="1563734495464" duration="7200000" />
       <workItem from="1563743339903" duration="16356000" />
       <workItem from="1563773800108" duration="1624000" />
-      <workItem from="1563906958045" duration="2059000" />
+      <workItem from="1563906958045" duration="3362000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34437000" />
+    <option name="totallyTimeSpent" value="35740000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -502,9 +550,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19591528" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19591528" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -523,7 +570,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" weight="0.12254161" />
+      <window_info active="true" anchor="right" id="Database" order="3" visible="true" weight="0.23600605" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19591528" />
@@ -703,79 +750,89 @@
           <ID>DATABASE</ID>
           <OriginalElement>684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.SCHEMA:vehiclemanagement</OriginalElement>
           <nodes>
-            <node x="259.50625" y="0.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.organizations</node>
-            <node x="440.0" y="717.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.clients</node>
-            <node x="207.42812500000002" y="1070.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.reservations</node>
-            <node x="197.0" y="618.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.cars</node>
-            <node x="898.0" y="0.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.migrations</node>
-            <node x="678.0" y="0.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.purposes</node>
-            <node x="0.0" y="684.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.drivers</node>
-            <node x="59.67812500000002" y="1555.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.fuels</node>
-            <node x="372.30937500000005" y="1544.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.payments</node>
-            <node x="656.0" y="166.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.expenses</node>
-            <node x="1096.0" y="0.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.password_resets</node>
-            <node x="88.0" y="254.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.users</node>
+            <node x="283.1382352941177" y="0.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.organizations</node>
+            <node x="506.2637254901961" y="717.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.clients</node>
+            <node x="744.2637254901961" y="0.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.purposes</node>
+            <node x="964.2637254901961" y="0.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.migrations</node>
+            <node x="335.84558823529414" y="1070.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.reservations</node>
+            <node x="242.00000000000006" y="684.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.drivers</node>
+            <node x="0.0" y="618.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.vehicles</node>
+            <node x="475.45833333333337" y="1544.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.payments</node>
+            <node x="181.76372549019612" y="1544.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.fuels</node>
+            <node x="722.2637254901961" y="166.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.expenses</node>
+            <node x="1162.263725490196" y="0.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.password_resets</node>
+            <node x="288.2637254901961" y="254.0">684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.users</node>
           </nodes>
           <notes />
           <edges>
             <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.drivers" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.organizations">
               <point x="-44.0" y="-135.0" />
-              <point x="44.0" y="224.0" />
-              <point x="279.80625000000003" y="224.0" />
-              <point x="-81.19999999999999" y="102.0" />
+              <point x="286.00000000000006" y="588.0" />
+              <point x="277.7637254901961" y="588.0" />
+              <point x="277.7637254901961" y="234.0" />
+              <point x="344.03823529411767" y="234.0" />
+              <point x="-40.60000000000002" y="102.0" />
             </edge>
             <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.payments" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.reservations">
               <point x="-45.75" y="-102.0" />
-              <point x="418.05937500000005" y="1519.0" />
-              <point x="361.928125" y="1519.0" />
-              <point x="51.5" y="212.0" />
+              <point x="521.2083333333334" y="1519.0" />
+              <point x="490.3455882352942" y="1519.0" />
+              <point x="51.50000000000003" y="212.0" />
             </edge>
             <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.reservations" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.drivers">
-              <point x="-82.39999999999998" y="-212.0" />
-              <point x="228.02812500000005" y="1050.0" />
-              <point x="132.0" y="1050.0" />
+              <point x="-41.19999999999996" y="-212.0" />
+              <point x="397.6455882352942" y="1045.0" />
+              <point x="374.00000000000006" y="1045.0" />
               <point x="44.0" y="135.0" />
             </edge>
-            <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.cars" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.users">
-              <point x="-55.5" y="-201.0" />
-              <point x="65.66666666666669" y="157.0" />
+            <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.vehicles" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.users">
+              <point x="55.5" y="-201.0" />
+              <point x="166.5" y="598.0" />
+              <point x="321.09705882352944" y="598.0" />
+              <point x="-65.66666666666669" y="157.0" />
+            </edge>
+            <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.reservations" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.vehicles">
+              <point x="-82.39999999999995" y="-212.0" />
+              <point x="356.4455882352942" y="1045.0" />
+              <point x="166.5" y="1045.0" />
+              <point x="55.5" y="201.0" />
             </edge>
             <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.payments" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.clients">
               <point x="45.75" y="-102.0" />
-              <point x="509.55937500000005" y="1519.0" />
-              <point x="568.25" y="1519.0" />
+              <point x="612.7083333333334" y="1519.0" />
+              <point x="634.5137254901961" y="1519.0" />
               <point x="42.75" y="102.0" />
             </edge>
             <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.reservations" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.users">
-              <point x="-41.19999999999999" y="-212.0" />
-              <point x="269.22812500000003" y="1040.0" />
-              <point x="186.5" y="1040.0" />
-              <point x="0.0" y="157.0" />
+              <point x="2.8421709430404007E-14" y="-212.0" />
+              <point x="438.8455882352942" y="1045.0" />
+              <point x="452.4303921568628" y="1045.0" />
+              <point x="65.66666666666669" y="157.0" />
             </edge>
-            <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.cars" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.organizations">
-              <point x="55.5" y="-201.0" />
-              <point x="363.5" y="234.0" />
-              <point x="361.00625" y="234.0" />
-              <point x="0.0" y="102.0" />
+            <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.fuels" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.vehicles">
+              <point x="-64.0" y="-102.0" />
+              <point x="213.76372549019612" y="1519.0" />
+              <point x="55.5" y="1519.0" />
+              <point x="-55.5" y="201.0" />
             </edge>
             <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.reservations" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.clients">
-              <point x="82.39999999999998" y="-212.0" />
-              <point x="392.828125" y="1050.0" />
-              <point x="482.75" y="1050.0" />
+              <point x="82.4" y="-212.0" />
+              <point x="521.2455882352942" y="1045.0" />
+              <point x="549.0137254901961" y="1045.0" />
               <point x="-42.75" y="102.0" />
             </edge>
             <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.users" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.organizations">
               <point x="0.0" y="-157.0" />
-              <point x="186.5" y="234.0" />
-              <point x="320.40625" y="234.0" />
-              <point x="-40.60000000000002" y="102.0" />
+              <point x="386.7637254901961" y="234.0" />
+              <point x="384.6382352941177" y="234.0" />
+              <point x="0.0" y="102.0" />
             </edge>
             <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.reservations" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.organizations">
-              <point x="41.19999999999999" y="-212.0" />
-              <point x="351.628125" y="1040.0" />
-              <point x="429.5" y="1040.0" />
-              <point x="429.5" y="234.0" />
-              <point x="401.60625" y="234.0" />
+              <point x="41.20000000000002" y="-212.0" />
+              <point x="480.0455882352942" y="1045.0" />
+              <point x="495.7637254901961" y="1045.0" />
+              <point x="495.7637254901961" y="234.0" />
+              <point x="425.23823529411766" y="234.0" />
               <point x="40.599999999999966" y="102.0" />
             </edge>
             <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.expenses" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.purposes">
@@ -783,51 +840,42 @@
               <point x="0.0" y="58.0" />
             </edge>
             <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.fuels" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.drivers">
-              <point x="-46.5" y="-91.0" />
-              <point x="106.17812500000002" y="1519.0" />
-              <point x="44.0" y="1519.0" />
+              <point x="0.0" y="-102.0" />
+              <point x="277.7637254901961" y="1519.0" />
+              <point x="286.00000000000006" y="1519.0" />
               <point x="-44.0" y="135.0" />
             </edge>
-            <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.reservations" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.cars">
-              <point x="0.0" y="-212.0" />
-              <point x="310.428125" y="1050.0" />
-              <point x="308.0" y="1050.0" />
-              <point x="0.0" y="201.0" />
-            </edge>
             <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.fuels" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.reservations">
-              <point x="46.5" y="-91.0" />
-              <point x="199.17812500000002" y="1519.0" />
-              <point x="258.928125" y="1519.0" />
+              <point x="64.0" y="-102.0" />
+              <point x="341.7637254901961" y="1519.0" />
+              <point x="387.34558823529414" y="1519.0" />
               <point x="-51.5" y="212.0" />
             </edge>
             <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.clients" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.organizations">
               <point x="0.0" y="-102.0" />
-              <point x="525.5" y="234.0" />
-              <point x="442.20625" y="234.0" />
-              <point x="81.19999999999999" y="102.0" />
+              <point x="591.7637254901961" y="224.0" />
+              <point x="465.8382352941176" y="224.0" />
+              <point x="81.19999999999993" y="102.0" />
             </edge>
             <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.drivers" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.users">
               <point x="44.0" y="-135.0" />
-              <point x="132.0" y="593.0" />
-              <point x="120.83333333333331" y="593.0" />
-              <point x="-65.66666666666669" y="157.0" />
+              <point x="374.00000000000006" y="598.0" />
+              <point x="386.7637254901961" y="598.0" />
+              <point x="0.0" y="157.0" />
+            </edge>
+            <edge source="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.vehicles" target="684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.organizations">
+              <point x="-55.5" y="-201.0" />
+              <point x="55.5" y="224.0" />
+              <point x="303.4382352941177" y="224.0" />
+              <point x="-81.19999999999999" y="102.0" />
             </edge>
           </edges>
           <settings layout="Hierarchic Group" zoom="1.0" x="235.0" y="1188.0" />
-          <SelectedNodes>
-            <node>684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.TABLE:vehiclemanagement.cars</node>
-          </SelectedNodes>
+          <SelectedNodes />
           <Categories>
             <Category>Key columns</Category>
             <Category>Columns</Category>
           </Categories>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_22_000554_create_reservations_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
         </state>
       </provider>
     </entry>
@@ -845,10 +893,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Car.php">
+    <entry file="file://$PROJECT_DIR$/app/Vehicle.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -856,13 +904,6 @@
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state projectRestartId="54f19d5a-23fa-4f4a-b695-60b377d552a9">
           <filtering />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CarController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -875,8 +916,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2015_07_21_211421_create_vehicles_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="39">
-          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+        <state relative-caret-position="-150">
+          <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_22_000554_create_reservations_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="32" column="73" selection-start-line="32" selection-start-column="73" selection-end-line="32" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VehicleController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://684620ab-0c75-4ce2-9c1e-7ead0b5db6dc/schema/vehiclemanagement/table/reservations">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="54f19d5a-23fa-4f4a-b695-60b377d552a9">
+          <filtering>
+            <filter text="" />
+          </filtering>
         </state>
       </provider>
     </entry>
