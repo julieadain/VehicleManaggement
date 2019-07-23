@@ -1,4 +1,4 @@
-@extends("layout.admin")
+git@extends("layout.admin")
 
     @section('content')
         <section class="content-header">
