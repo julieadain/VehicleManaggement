@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\car;
+use App\vehicle;
 use Illuminate\Http\Request;
+use function Sodium\add;
 
 class VehicleController extends Controller
 {
@@ -14,7 +15,8 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        //
+//        dd("This is display of vehicles");
+        return view("vehicle.all");
     }
 
     /**
@@ -24,7 +26,9 @@ class VehicleController extends Controller
      */
     public function create()
     {
-        //
+//        dd("This is add vehicle form");
+        return view("vehicle.add");
+
     }
 
     /**
@@ -35,16 +39,16 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd("This is store vehicle method");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\car  $car
+     * @param  \App\vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function show(car $car)
+    public function show(vehicle $vehicle)
     {
         //
     }
@@ -52,22 +56,23 @@ class VehicleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\car  $car
+     * @param  \App\vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function edit(car $car)
+    public function edit(vehicle $vehicle)
     {
-        //
+        dd("This is from vehicle edit");
+        view("vehicle.edit");
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\car  $car
+     * @param  \App\vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, car $car)
+    public function update(Request $request, vehicle $vehicle)
     {
         //
     }
@@ -75,11 +80,16 @@ class VehicleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\car  $car
+     * @param  \App\vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function destroy(car $car)
+    public function destroy(vehicle $vehicle)
     {
-        //
+        dd("This is vehicle delete method");
+
+    }
+
+    public function available(){
+        dd("This is display of available vehicle");
     }
 }

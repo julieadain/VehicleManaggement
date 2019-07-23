@@ -5,10 +5,7 @@ namespace App\Http\Controllers;
 use App\Driver;
 use Illuminate\Http\Request;
 
-class
-
-
-DriverController extends Controller
+class DriverController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +24,8 @@ DriverController extends Controller
      */
     public function create()
     {
-        //
+//       dd("This is from creat driver");
+       return view("driver.add");
     }
 
     /**

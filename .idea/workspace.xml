@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="8e5ebe09-bfa6-48ec-9464-95668160bb67" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="8e5ebe09-bfa6-48ec-9464-95668160bb67" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_07_22_093627_create_homes_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_07_22_110416_create_vehicles_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_07_22_153822_create_drivers_table.php" beforeDir="false" />
+    </list>
+>>>>>>> 1fc442f5ef3186a9d6aa396100c72c27191ef9a7
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +35,7 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
+<<<<<<< HEAD
     <expand>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
@@ -77,33 +88,60 @@
         <item name="vehicles: table" type="dbc44a63:MariaImplModel$Table" />
       </path>
     </expand>
+=======
+    <expand />
+>>>>>>> 1fc442f5ef3186a9d6aa396100c72c27191ef9a7
     <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="vehicle-management" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_22_000554_create_reservations_table.php">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="247">
               <caret line="32" column="73" selection-start-line="32" selection-start-column="73" selection-end-line="32" selection-end-column="73" />
+=======
+            <state relative-caret-position="337">
+              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+>>>>>>> 1fc442f5ef3186a9d6aa396100c72c27191ef9a7
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="12" lean-forward="true" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_22_011752_create_payments_table.php">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2013_07_21_192635_create_organizations_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+            <state relative-caret-position="272">
+              <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_22_011912_create_fuels_table.php">
+<<<<<<< HEAD
+        <entry file="file://$PROJECT_DIR$/database/migrations/2015_07_21_211421_create_vehicles_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+            <state relative-caret-position="-150">
+              <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+=======
+        <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_22_010148_create_clients_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="15" column="63" selection-start-line="15" selection-start-column="63" selection-end-line="15" selection-end-column="63" />
+>>>>>>> 1fc442f5ef3186a9d6aa396100c72c27191ef9a7
             </state>
           </provider>
         </entry>
@@ -111,22 +149,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/migrations/2015_07_21_211421_create_vehicles_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-150">
-              <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+            <state relative-caret-position="39">
+              <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="uml://DATABASE/684620ab-0c75-4ce2-9c1e-7ead0b5db6dc.SCHEMA:vehiclemanagement">
           <provider selected="true" editor-type-id="UmlEditorProvider">
             <state>
@@ -259,28 +289,42 @@
                 <Category>Key columns</Category>
                 <Category>Columns</Category>
               </Categories>
+=======
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_21_233704_create_drivers_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
+>>>>>>> 1fc442f5ef3186a9d6aa396100c72c27191ef9a7
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="das://684620ab-0c75-4ce2-9c1e-7ead0b5db6dc/schema/vehiclemanagement/table/migrations">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state projectRestartId="54f19d5a-23fa-4f4a-b695-60b377d552a9">
-              <filtering />
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_22_000554_create_reservations_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="592">
+              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VehicleController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
               <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+=======
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_22_011752_create_payments_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+>>>>>>> 1fc442f5ef3186a9d6aa396100c72c27191ef9a7
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="true">
         <entry file="das://684620ab-0c75-4ce2-9c1e-7ead0b5db6dc/schema/vehiclemanagement/table/reservations">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
@@ -288,10 +332,18 @@
               <filtering>
                 <filter text="" />
               </filtering>
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_22_011912_create_fuels_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+>>>>>>> 1fc442f5ef3186a9d6aa396100c72c27191ef9a7
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Vehicle.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -301,6 +353,8 @@
           </provider>
         </entry>
       </file>
+=======
+>>>>>>> 1fc442f5ef3186a9d6aa396100c72c27191ef9a7
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -312,7 +366,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_07_21_065716_organization_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_07_21_185805_create_organizations_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_07_21_192635_create_organizations_table.php" />
-        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
         <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2015_07_21_211421_create_cars_table.php" />
@@ -325,8 +378,12 @@
         <option value="$PROJECT_DIR$/database/migrations/2015_07_21_211421_create_vehicle_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_07_22_011912_create_fuels_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2015_07_21_211421_create_vehicles_table.php" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/database/migrations/2019_07_22_000554_create_reservations_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/VehicleController.php" />
+=======
+        <option value="$PROJECT_DIR$/.env" />
+>>>>>>> 1fc442f5ef3186a9d6aa396100c72c27191ef9a7
       </list>
     </option>
   </component>
@@ -435,12 +492,14 @@
     <option name="width" value="1346" />
     <option name="height" value="688" />
   </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -469,6 +528,12 @@
             <path>
               <item name="vehicle-management" type="b2602c69:ProjectViewProjectNode" />
               <item name="vehicle-management" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Providers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vehicle-management" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vehicle-management" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -477,10 +542,34 @@
               <item name="database" type="462c0819:PsiDirectoryNode" />
               <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="vehicle-management" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vehicle-management" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vehicle-management" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vehicle-management" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vehicle-management" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vehicle-management" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vehicle-management" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vehicle-management" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -537,7 +626,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="35740000" />
+=======
+    <option name="totallyTimeSpent" value="34554000" />
+>>>>>>> 1fc442f5ef3186a9d6aa396100c72c27191ef9a7
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -549,9 +642,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19591528" />
+=======
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
+>>>>>>> 1fc442f5ef3186a9d6aa396100c72c27191ef9a7
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -608,15 +708,7 @@
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_21_185600_create_orders_table.php" />
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_21_185805_create_organizations_table.php" />
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_21_190546_org_table.php" />
-    <entry file="das://684620ab-0c75-4ce2-9c1e-7ead0b5db6dc/schema/vehiclemanagement/table/users">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="99db0d0f-5445-4684-b392-79755eccc544">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://684620ab-0c75-4ce2-9c1e-7ead0b5db6dc/schema/vehiclemanagement/table/users" />
     <entry file="file://$PROJECT_DIR$/app/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -634,9 +726,7 @@
     <entry file="file://$PROJECT_DIR$/_Theme/documentation/index.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/684620ab-0c75-4ce2-9c1e-7ead0b5db6dc/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/684620ab-0c75-4ce2-9c1e-7ead0b5db6dc/console.sql" />
     <entry file="file://$PROJECT_DIR$/app/Providers/AppServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -647,36 +737,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="17" column="35" lean-forward="true" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://684620ab-0c75-4ce2-9c1e-7ead0b5db6dc/schema/vehiclemanagement/table/cars">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="b61cc387-0d26-428a-a32c-674c8ecef637">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2013_07_21_192635_create_organizations_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://684620ab-0c75-4ce2-9c1e-7ead0b5db6dc/schema/vehiclemanagement/table/cars" />
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DriverController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -706,41 +767,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_22_010148_create_clients_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" column="63" selection-start-line="15" selection-start-column="63" selection-end-line="15" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://684620ab-0c75-4ce2-9c1e-7ead0b5db6dc/schema/vehiclemanagement/table/drivers">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="54f19d5a-23fa-4f4a-b695-60b377d552a9">
-          <filtering />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://684620ab-0c75-4ce2-9c1e-7ead0b5db6dc/schema/vehiclemanagement/table/drivers" />
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_21_233704_create_drivers_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_23_184328_create_expenses_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="121">
           <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_23_184124_create_purposes_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -876,9 +910,72 @@
             <Category>Key columns</Category>
             <Category>Columns</Category>
           </Categories>
+          <SCOPE>All</SCOPE>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Car.php" />
+    <entry file="das://684620ab-0c75-4ce2-9c1e-7ead0b5db6dc/schema/vehiclemanagement/table/migrations" />
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CarController.php" />
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_23_184124_create_purposes_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_22_110416_create_vehicles_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2013_07_21_192635_create_organizations_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_22_010148_create_clients_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="15" column="63" selection-start-line="15" selection-start-column="63" selection-end-line="15" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2015_07_21_211421_create_vehicles_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_21_233704_create_drivers_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_22_000554_create_reservations_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="592">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 1fc442f5ef3186a9d6aa396100c72c27191ef9a7
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_22_011752_create_payments_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -888,11 +985,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_22_011912_create_fuels_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
+        <state relative-caret-position="320">
           <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/Vehicle.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -908,14 +1006,32 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
+=======
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_22_093627_create_homes_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        <state relative-caret-position="68">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2015_07_21_211421_create_vehicles_table.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_22_153822_create_drivers_table.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
+>>>>>>> 1fc442f5ef3186a9d6aa396100c72c27191ef9a7
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="-150">
           <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
         </state>
@@ -941,6 +1057,10 @@
           <filtering>
             <filter text="" />
           </filtering>
+=======
+        <state relative-caret-position="221">
+          <caret line="13" column="12" lean-forward="true" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+>>>>>>> 1fc442f5ef3186a9d6aa396100c72c27191ef9a7
         </state>
       </provider>
     </entry>
