@@ -291,9 +291,13 @@
                                 <div class="pull-left">
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
-                                <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                                </div>
+
+                                    <div class="pull-right">
+                                        <form action="{{"logout"}}" role="presentation" id="logout-form" method="post" >
+                                            @csrf
+                                         <a href="#" class="btn btn-default btn-flat" onclick="document.getElementById('logout-form').submit()">Log out</a>
+                                        </form>
+                                    </div>
                             </li>
                         </ul>
                     </li>
