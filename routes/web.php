@@ -12,9 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('dashboard');
 });
 
 Route::Resource("/home", "HomeController");
 Route::Resource("/vehicle", "VehicleController");
 Route::Resource("/driver", "DriverController");
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
