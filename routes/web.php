@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::Resource("/home", "HomeController");
 Route::Resource("/vehicle", "VehicleController");
 Route::Resource("/driver", "DriverController");
+Route::Resource("/client", "ClientController");
+Route::Resource("/reservation", "ReservationController");

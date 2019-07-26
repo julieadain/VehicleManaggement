@@ -1,4 +1,4 @@
-git@extends("layout.admin")
+@extends("layout.admin")
 
     @section('content')
         <section class="content-header">
@@ -87,7 +87,7 @@ git@extends("layout.admin")
 
                             <h3 class="box-title">Reservation</h3>
                             <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> </button>
+                                <button type="button" class="btn btn-default pull-right"><a href="{{url('reservation/create')}}"><i class="fa fa-plus"></i></a> </button>
                             </div>
 
                         </div>
@@ -149,7 +149,7 @@ git@extends("layout.admin")
                         <div class="box-header">
                             <i class="ion ion-clipboard"></i>
 
-                            <h3 class="box-title">Recent Cliens</h3>
+                            <h3 class="box-title">Recent Clients</h3>
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i>  </button>
                             </div>
