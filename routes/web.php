@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('auth.login');
 });
 
 Route::Resource("/home", "HomeController");
@@ -20,3 +20,6 @@ Route::Resource("/vehicle", "VehicleController");
 Route::Resource("/driver", "DriverController");
 Route::Resource("/client", "ClientController");
 Route::Resource("/reservation", "ReservationController");
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

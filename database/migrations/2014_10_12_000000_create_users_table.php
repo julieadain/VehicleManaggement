@@ -22,9 +22,9 @@ class CreateUsersTable extends Migration
             $table->string('phone',20);
             $table->tinyInteger('role');
             $table->string('photo');
-            $table->bigInteger('org_id')->unsigned();
+            $table->bigInteger('org_id')->unsigned()->nullable();
             $table->foreign('org_id')->references('id')->on('organizations')->onDelete('cascade');
-            $table->boolean('status');
+            $table->boolean('status')->default('0');
             $table->rememberToken();
             $table->timestamps();
         });
