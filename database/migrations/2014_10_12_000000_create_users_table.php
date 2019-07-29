@@ -20,9 +20,9 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('phone',20);
-            $table->tinyInteger('role');
+            $table->tinyInteger('role')->default('4');
             $table->string('photo');
-            $table->bigInteger('org_id')->unsigned()->nullable();
+            $table->bigInteger('org_id')->unsigned();
             $table->foreign('org_id')->references('id')->on('organizations')->onDelete('cascade');
             $table->boolean('status')->default('0');
             $table->rememberToken();

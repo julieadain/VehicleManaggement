@@ -11,7 +11,10 @@
 
     <!-- Main content -->
     <section class="content">
-        <!-- Small boxes (Stat box) -->
+
+    @include('partials/_messages')
+
+    <!-- Small boxes (Stat box) -->
         <div class="row">
             <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
@@ -87,7 +90,7 @@
 
                         <h3 class="box-title">Reservation</h3>
                         <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> </button>
+                            <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i></button>
                         </div>
 
                     </div>
@@ -107,7 +110,7 @@
                             <li>
                                 <span class="text">2nd Booking details</span>
                                 <!-- Emphasis label -->
-                                <small class="label label-danger"><i class="fa fa-clock-o"></i> 1 hour </small>
+                                <small class="label label-danger"><i class="fa fa-clock-o"></i> 1 hour</small>
                                 <!-- General tools such as edit or delete-->
                                 <div class="tools">
                                     <i class="fa fa-trash-o"></i>
@@ -151,7 +154,7 @@
 
                         <h3 class="box-title">Recent Cliens</h3>
                         <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i>  </button>
+                            <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i></button>
                         </div>
 
                     </div>
@@ -161,7 +164,7 @@
                             <li>
                                 <span class="text">A client</span>
                                 <!-- Emphasis label -->
-                                <small class="label label-danger"><i class="fa fa-clock-o"></i> </small>
+                                <small class="label label-danger"><i class="fa fa-clock-o"></i></small>
                                 <!-- General tools such as edit or delete-->
                                 <div class="tools">
                                     <i class="fa fa-trash-o"></i>
@@ -226,7 +229,7 @@
                                 <li>
                                     <span class="text">Available one</span>
                                     <!-- Emphasis label -->
-                                    <small class="label label-danger"><i class="fa fa-clock-o"></i> </small>
+                                    <small class="label label-danger"><i class="fa fa-clock-o"></i></small>
                                     <!-- General tools such as edit or delete-->
                                     <div class="tools">
                                         <i class="fa fa-trash-o"></i>
@@ -244,7 +247,7 @@
                                 <li>
                                     <span class="text">Available one</span>
                                     <!-- Emphasis label -->
-                                    <small class="label label-danger"><i class="fa fa-clock-o"></i> </small>
+                                    <small class="label label-danger"><i class="fa fa-clock-o"></i></small>
                                     <!-- General tools such as edit or delete-->
                                     <div class="tools">
                                         <i class="fa fa-trash-o"></i>
@@ -253,7 +256,7 @@
                                 <li>
                                     <span class="text">Available one</span>
                                     <!-- Emphasis label -->
-                                    <small class="label label-danger"><i class="fa fa-clock-o"></i> </small>
+                                    <small class="label label-danger"><i class="fa fa-clock-o"></i></small>
                                     <!-- General tools such as edit or delete-->
                                     <div class="tools">
                                         <i class="fa fa-trash-o"></i>
@@ -262,7 +265,7 @@
                                 <li>
                                     <span class="text">Available one</span>
                                     <!-- Emphasis label -->
-                                    <small class="label label-danger"><i class="fa fa-clock-o"></i> </small>
+                                    <small class="label label-danger"><i class="fa fa-clock-o"></i></small>
                                     <!-- General tools such as edit or delete-->
                                     <div class="tools">
                                         <i class="fa fa-trash-o"></i>
@@ -290,7 +293,7 @@
                                     <li>
                                         <span class="text">Available one</span>
                                         <!-- Emphasis label -->
-                                        <small class="label label-danger"><i class="fa fa-clock-o"></i> </small>
+                                        <small class="label label-danger"><i class="fa fa-clock-o"></i></small>
                                         <!-- General tools such as edit or delete-->
                                         <div class="tools">
                                             <i class="fa fa-trash-o"></i>
@@ -308,7 +311,7 @@
                                     <li>
                                         <span class="text">Available one</span>
                                         <!-- Emphasis label -->
-                                        <small class="label label-danger"><i class="fa fa-clock-o"></i> </small>
+                                        <small class="label label-danger"><i class="fa fa-clock-o"></i></small>
                                         <!-- General tools such as edit or delete-->
                                         <div class="tools">
                                             <i class="fa fa-trash-o"></i>
@@ -317,7 +320,7 @@
                                     <li>
                                         <span class="text">Available one</span>
                                         <!-- Emphasis label -->
-                                        <small class="label label-danger"><i class="fa fa-clock-o"></i> </small>
+                                        <small class="label label-danger"><i class="fa fa-clock-o"></i></small>
                                         <!-- General tools such as edit or delete-->
                                         <div class="tools">
                                             <i class="fa fa-trash-o"></i>
@@ -326,7 +329,7 @@
                                     <li>
                                         <span class="text">Available one</span>
                                         <!-- Emphasis label -->
-                                        <small class="label label-danger"><i class="fa fa-clock-o"></i> </small>
+                                        <small class="label label-danger"><i class="fa fa-clock-o"></i></small>
                                         <!-- General tools such as edit or delete-->
                                         <div class="tools">
                                             <i class="fa fa-trash-o"></i>
