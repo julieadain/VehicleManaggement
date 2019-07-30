@@ -18,6 +18,6 @@ Route::get('/', function () {
 Route::Resource("/home", "HomeController");
 Route::Resource("/vehicle", "VehicleController");
 Route::Resource("/driver", "DriverController");
+Route::Resource("/organization", "OrganizationController");
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');

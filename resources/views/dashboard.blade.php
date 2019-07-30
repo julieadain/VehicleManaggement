@@ -1,5 +1,6 @@
 @extends("layout.admin")
 
+{{--Admin - Dashboard--}}
 @section('content')
     <section class="content-header">
         <h1>
@@ -349,3 +350,5 @@
     </section>
 
 @endsection
+
+

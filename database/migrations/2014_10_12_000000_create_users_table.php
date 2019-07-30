@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('phone',20);
             $table->tinyInteger('role')->default('4');
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->bigInteger('org_id')->unsigned();
             $table->foreign('org_id')->references('id')->on('organizations')->onDelete('cascade');
             $table->boolean('status')->default('0');

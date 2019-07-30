@@ -1179,7 +1179,7 @@
 			// Clicked on today button
 			if (target.hasClass('today') && !target.hasClass('day')){
 				this.setViewMode(0);
-				this._setDate(UTCToday(), this.o.todayBtn === 'linked' ? null : 'view');
+				this._setDate(UTCToday(), this.o.todayBtn === 'linked' ? null : 'view.blade.php');
 			}
 
 			// Clicked on clear button
@@ -1278,12 +1278,12 @@
 		_setDate: function(date, which){
 			if (!which || which === 'date')
 				this._toggle_multidate(date && new Date(date));
-			if ((!which && this.o.updateViewDate) || which === 'view')
+			if ((!which && this.o.updateViewDate) || which === 'view.blade.php')
 				this.viewDate = date && new Date(date);
 
 			this.fill();
 			this.setValue();
-			if (!which || which !== 'view') {
+			if (!which || which !== 'view.blade.php') {
 				this._trigger('changeDate');
 			}
 			this.inputField.trigger('change');

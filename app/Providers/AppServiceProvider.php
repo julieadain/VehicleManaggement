@@ -24,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-      \Illuminate\Support\Facades\Schema::defaultStringLength(191);
+       /* Blade::directive('hello', function ($expression) {
+            return "<?php echo 'Hello ' . {$expression}; ?>";
+        });*/
+
+        \Illuminate\Support\Facades\Schema::defaultStringLength(191);
     }
 }
