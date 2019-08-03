@@ -4,7 +4,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="col-xs-7">
-            <div class="box box-primary">
+            <div class="container box box-primary">
                 <div class="box-header">
                     <h3 class="box-title">Organizations |
                         <span class="label label-primary pull-right">{{ "125"}}</span>
@@ -24,54 +24,21 @@
                 <!-- /.box-header -->
                 <div class="box-body table-responsive no-padding">
                     <table class="table table-hover">
-                        <tr>
+                        <tr class="lovelyrow">
                             <th>Name</th>
                             <th>Owner</th>
                             <th>Email</th>
                             <th>Status</th>
                         </tr>
-                        <tr>
-                            <td>183</td>
-                            <td>John Doe</td>
-                            <td>abc@xyz.com</td>
-                            <td><span class="label label-success">Approved</span></td>
-                        </tr>
-                        <tr>
-                            <td>219</td>
-                            <td>Alexander Pierce</td>
-                            <td>abc@xyz.com</td>
-                            <td><span class="label label-warning">Pending</span></td>
-                        </tr>
-                        <tr>
-                            <td>657</td>
-                            <td>Bob Doe</td>
-                            <td>abc@xyz.com</td>
-                            <td><span class="label label-success">Approved</span></td>
-                        </tr>
-                        <tr>
-                            <td>175</td>
-                            <td>Mike Doe</td>
-                            <td>abc@xyz.com</td>
-                            <td><span class="label label-danger">Denied</span></td>
-                        </tr>
-                        <tr>
-                            <td>219</td>
-                            <td>Alexander Pierce</td>
-                            <td>abc@xyz.com</td>
-                            <td><span class="label label-warning">Pending</span></td>
-                        </tr>
-                        <tr>
-                            <td>657</td>
-                            <td>Bob Doe</td>
-                            <td>abc@xyz.com</td>
-                            <td><span class="label label-success">Approved</span></td>
-                        </tr>
-                        <tr>
-                            <td>175</td>
-                            <td>Mike Doe</td>
-                            <td>abc@xyz.com</td>
-                            <td><span class="label label-danger">Denied</span></td>
-                        </tr>
+                        @foreach($organizations as $organization)
+                            <tr class="lovelyrow" onclick="location.href='#'">
+                                <td>{{$organization->org_name}}</td>
+
+                                <td>{{ $organization->owner ? $organization->owner->name : null }}</td>
+                                <td>{{ $organization->owner ? $organization->owner->email : null }}</td>
+                                <td><span class="label label-success">Approved</span></td>
+                            </tr>
+                        @endforeach
                     </table>
                 </div>
                 <!-- /.box-body -->
@@ -81,7 +48,7 @@
 
 
         <div class="col-xs-5">
-            <div class="box box-primary">
+            <div class="container box box-primary">
                 <div class="box-header">
                     <h3 class="box-title">Requests |
                         <span class="label label-warning pull-right">{{ "15"}}</span>
@@ -99,32 +66,26 @@
                         </thead>
                         <tbody>
 
-                        <tr>
+                        <tr class="lovelyrow" onclick="location.href='#'">
                             <td>Try</td>
                             <td>Mr. Abc</td>
                             <td>abc@xyz.com</td>
-                           <td><a class="button" href="#"><span> >> </span> </a></td>
                         </tr>
 
-                        <tr>
+                        <tr class="lovelyrow" onclick="location.href='#'">
                             <td>Trident</td>
                             <td>Mr. Abc</td>
                             <td>abc@xyz.com</td>
-                            <td><a class="button" href="#"><span> >> </span> </a></td>
-
                         </tr>
-                        <tr>
+                        <tr class="lovelyrow" onclick="location.href='#'">
                             <td>Trident</td>
                             <td>Mr. Abc</td>
                             <td>abc@xyz.com</td>
-                            <td><a class="button" href="#"><span> >> </span> </a></td>
-
                         </tr>
-                        <tr>
+                        <tr class="lovelyrow" onclick="location.href='#'">
                             <td>Trident</td>
                             <td>Mr. Abc</td>
                             <td>abc@xyz.com</td>
-                            <td><a class="button" href="#"><span> >> </span> </a></td>
 
                         </tr>
 
@@ -135,8 +96,8 @@
             </div>
             <!-- /.box -->
         </div>
-        <div class="col-xs-5">
-            <div class="box box-primary">
+        <div class="col-xs-5 pull-right">
+            <div class="container box box-primary">
                 <div class="box-header">
                     <h3 class="box-title">Denied |
                         <span class="label label-danger pull-right">{{ "3"}}</span>

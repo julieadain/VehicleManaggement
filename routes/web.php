@@ -19,5 +19,6 @@ Route::Resource("/home", "HomeController");
 Route::Resource("/vehicle", "VehicleController");
 Route::Resource("/driver", "DriverController");
 Route::Resource("/organization", "OrganizationController");
+Route::Resource("/manager", "ManagerController");
 Auth::routes();
 

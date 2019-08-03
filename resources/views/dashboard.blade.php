@@ -7,7 +7,7 @@
             Dashboard
             <small>Control panel</small>
         </h1>
-
+{{--        <h1>{{$user->organization['id']}}</h1>--}}
     </section>
 
     <!-- Main content -->

@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('photo')->nullable();
             $table->bigInteger('org_id')->unsigned();
             $table->foreign('org_id')->references('id')->on('organizations')->onDelete('cascade');
-            $table->boolean('status')->default('0');
+            $table->string('status')->default('owner');
             $table->rememberToken();
             $table->timestamps();
         });
