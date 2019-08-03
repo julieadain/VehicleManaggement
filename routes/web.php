@@ -24,3 +24,4 @@ Route::Resource("/client", "ClientController");
 Route::Resource("/reservation", "ReservationController");
 Auth::routes();
 
+//Route::get('/home', 'HomeController@index')->name('home');
