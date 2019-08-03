@@ -44,50 +44,6 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    public function register(Request $request)
-    {
-        $this->validator($request->all())->validate();
-
-        DB::beginTransaction();
-        try {
-
-            $org = new Organization();
-
-            $org->org_name = $request['org_name'];
-            $org->address = $request['address'];
-            $org->trade_license_copy = $request['trade_license_copy'];
-
-            $org->save();
-
-
-            $user = new User();
-
-            $user->name = $request['name'];
-            $user->email = $request['email'];
-            $user->phone = $request['phone'];
-            $user->role = "1";
-            $user->org_id = $org->id;;
-            $user->password = Hash::make($request['password']);
-
-            $user->save();
-
-            DB::commit();
-
-            $this->guard()->login($user);
-
-            session(['success' => 'Registration successful.']);
-            return redirect($this->redirectPath());
-
-        } catch (\Exception $e) {
-            DB::rollBack();
-            session(['error' => $e->getMessage()]);
-            return redirect()->back();
-        }
-
-        /*return $this->registered($request, $user)
-            ?: redirect($this->redirectPath());*/
-    }
-
     /**
      * Get a validator for an incoming registration request.
      *
@@ -116,11 +72,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'phone' => $data['phone'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $organization = Organization::create($data);
+        $data['org_id'] = $organization->id;
+        $data['password'] = Hash::make($data['password']);
+        $user = User::create($data);
+        return $user;
     }
 }
