@@ -39,8 +39,28 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        dd("This is store vehicle method");
-    }
+        $this->validate($request,[
+            'brand'=>'required',
+            'model'=>'required',
+            'color'=>'required',
+            'reg_number'=>'required',
+            'reg_date'=>'required',
+            'seat_capacity'=>'required',
+            'ac'=>'required',
+            'reg_scan_copy'=>'required',
+            'photo'=>'required|mimes:jpg,jpeg,png,gif,bmp',
+            'insurance_scan_copy'=>'required|mimes:jpg,jpeg,png,gif,bmp',
+            'roadPermit_scan_copy'=>'required|mimes:jpg,jpeg,png,gif,bmp',
+            'ownership_status'=>'required',
+            'status'=>'required'
+        ]);
+
+        if ($request->hasFile("photo")){
+            $request->file('photo')->move(public_path('/upload'),'abc.jpg');
+        }
+
+        vehicle::create($request->all());
+      }
 
     /**
      * Display the specified resource.

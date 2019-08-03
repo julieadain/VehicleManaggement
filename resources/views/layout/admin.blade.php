@@ -192,7 +192,7 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Register client</a></li>
+                        <li><a href="{{url('client/create')}}"><i class="fa fa-circle-o"></i> Register client</a></li>
                         <li><a href="{{url('')}}"><i class="fa fa-circle-o"></i> <span>Active client</span>
                                 <span class="pull-right-container">
               <small class="label pull-right bg-blue-active">12</small>

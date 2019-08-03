@@ -32,10 +32,31 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="exampleInputEmail" class="col-sm-2 control-label">Email</label>
+
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="exampleInputEmail" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="exampleInputPhone" class="col-sm-2 control-label">Phone</label>
 
                         <div class="col-sm-10">
                             <input type="number" class="form-control" id="exampleInputPhone" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPass1" class="col-sm-2 control-label">Password</label>
+
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="exampleInputPass1" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPass2" class="col-sm-2 control-label">Confirm password</label>
+
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="exampleInputPass2" placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
@@ -65,8 +86,8 @@
                         <div class="col-md-1">
                             <button type="submit" class="form-control btn btn-primary" id="exampleInputbtn">Save</button>
                         </div>
+                        <br/>
                     </div>
-                    <br/>
                 </form>
             </div>
         </div>

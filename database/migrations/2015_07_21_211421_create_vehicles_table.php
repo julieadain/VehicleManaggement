@@ -18,9 +18,10 @@ class CreateVehiclesTable extends Migration
             $table->string('brand',50);
             $table->string('model',50);
             $table->string('color',50);
-            $table->string('registration',50);
+            $table->string('reg_number',50);
+            $table->date('reg_date');
             $table->string('seat_capacity',20);
-            $table->boolean('ac');
+            $table->string('ac');
             $table->string('reg_scan_copy');
             $table->string('photo');
             $table->string('insurance_scan_copy',100);

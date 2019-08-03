@@ -20,5 +20,7 @@ Route::Resource("/vehicle", "VehicleController");
 Route::Resource("/driver", "DriverController");
 Route::Resource("/organization", "OrganizationController");
 Route::Resource("/manager", "ManagerController");
+Route::Resource("/client", "ClientController");
+Route::Resource("/reservation", "ReservationController");
 Auth::routes();
 
