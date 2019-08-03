@@ -31,7 +31,7 @@
                             <th>Status</th>
                         </tr>
                         @foreach($organizations as $organization)
-                            <tr class="lovelyrow" onclick="location.href='#'">
+                            <tr class="lovelyrow" onclick="location.href='organization/{{$organization->id}}'">
                                 <td>{{$organization->org_name}}</td>
 
                                 <td>{{ $organization->owner ? $organization->owner->name : null }}</td>
@@ -66,30 +66,27 @@
                         </thead>
                         <tbody>
 
-                        <tr class="lovelyrow" onclick="location.href='#'">
+                        <tr class="lovelyrow" onclick="location.href='organization/{{$organization->id}}'">
                             <td>Try</td>
                             <td>Mr. Abc</td>
                             <td>abc@xyz.com</td>
                         </tr>
 
-                        <tr class="lovelyrow" onclick="location.href='#'">
+                        <tr class="lovelyrow" onclick="location.href='organization/{{$organization->id}}'">
                             <td>Trident</td>
                             <td>Mr. Abc</td>
                             <td>abc@xyz.com</td>
                         </tr>
-                        <tr class="lovelyrow" onclick="location.href='#'">
+                        <tr class="lovelyrow" onclick="location.href='organization/{{$organization->id}}'">
                             <td>Trident</td>
                             <td>Mr. Abc</td>
                             <td>abc@xyz.com</td>
                         </tr>
-                        <tr class="lovelyrow" onclick="location.href='#'">
+                        <tr class="lovelyrow" onclick="location.href='organization/{{$organization->id}}'">
                             <td>Trident</td>
                             <td>Mr. Abc</td>
                             <td>abc@xyz.com</td>
-
                         </tr>
-
-                        </tfoot>
                     </table>
                 </div>
                 <!-- /.box-body -->
@@ -114,7 +111,6 @@
                         </tr>
                         </thead>
                         <tbody>
-
                         <tr>
                             <td>Trident</td>
                             <td>Mr. Abc</td>
@@ -126,30 +122,21 @@
                             <td>Mr. Abc</td>
                             <td>abc@xyz.com</td>
                             <th><a class="btn btn-success" href="#">Approve</a></th>
-
                         </tr>
                         <tr>
                             <td>Trident</td>
                             <td>Mr. Abc</td>
                             <td>abc@xyz.com</td>
                             <th><a class="btn btn-success" href="#">Approve</a></th>
-
                         </tr>
-                        </tfoot>
                     </table>
                 </div>
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
         </div>
-
-
-        </div>
-
-
         <!-- /.row -->
     </section>
     <!-- /.content -->
-    </div>
 
 @endsection

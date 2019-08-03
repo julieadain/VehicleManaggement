@@ -106,17 +106,18 @@
     <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
-            @admin
+
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
-
+                @Super_admin
                 <li class="">
                     <a href="{{url('/organization')}}">
                         <i class="fa fa-dashboard"></i> <span>Organizations</span>
                     </a>
                 </li>
+                @endSuper_admin
 
-
+                @admin
                 <li class="">
                     <a href="{{url('/manager')}}">
                         <i class="fa fa-dashboard"></i> <span>Manage manager</span>

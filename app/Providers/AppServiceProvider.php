@@ -27,8 +27,16 @@ class AppServiceProvider extends ServiceProvider
     {
         \Illuminate\Support\Facades\Schema::defaultStringLength(191);
 
-        Blade::directive('admin', function () {
+        Blade::directive('Super_admin', function () {
             return '<?php if(auth()->user()->role == 1) { ?>';
+        });
+
+        Blade::directive('endSuper_admin', function () {
+            return '<?php } ?>';
+        });
+
+        Blade::directive('admin', function () {
+        return '<?php if(auth()->user()->role == 2) { ?>';
         });
 
         Blade::directive('endadmin', function () {
