@@ -30,7 +30,7 @@ class CreateVehiclesTable extends Migration
             $table->boolean('status');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->bigInteger('org_id')->unsigned();
+            $table->bigInteger('org_id')->unsigned()->nullable();
             $table->foreign('org_id')->references('id')->on('organizations')->onDelete('cascade');
 
 

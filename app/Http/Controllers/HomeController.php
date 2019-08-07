@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,7 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-//        dd(" this is home controller ");
-        return view('dashboard');
+        $data= Client::all()->sortByDesc('id')->take('5');
+
+        return view('dashboard')->with('clients',$data);
     }
 }

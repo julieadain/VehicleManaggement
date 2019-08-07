@@ -27,7 +27,7 @@ class CreateReservationsTable extends Migration
             $table->string('total_payable',50);
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->bigInteger('org_id')->unsigned();
+            $table->bigInteger('org_id')->unsigned()->nullable();
             $table->foreign('org_id')->references('id')->on('organizations')->onDelete('cascade');
             $table->bigInteger('vehicle_id')->unsigned();
             $table->foreign('vehicle_id')->references('id')->on('vehicles')->onDelete('cascade');

@@ -4,22 +4,15 @@
     <section class="content-header">
         <h1>
            Add vehicle
-            <small>Preview</small>
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Forms</a></li>
-            <li class="active">Add vehicle</li>
-        </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
         <div class="col-md-12">
             <!-- Horizontal Form -->
-            <div class="box box-info">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Add vehicle information</h3>
+            <div class="container box box-info">
+                <div class="box-header ">
                 </div>
                @if ($errors->any())
                    @foreach ($errors->all() as $error)
@@ -75,11 +68,11 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputAc" class="col-sm-2 control-label">Select</label>
+                        <label for="exampleInputAc" class="col-sm-2 control-label">AC/Non-AC</label>
                         <div class="col-sm-10">
                             <select name="ac" class="form-control">
-                                <option>AC</option>
-                                <option>Non-AC</option>
+                                <option value="1">AC</option>
+                                <option value="2">Non-AC</option>
                             </select>
                         </div>
                     </div>
@@ -87,8 +80,8 @@
                         <label for="exampleInputAc" class="col-sm-2 control-label">Ownership Status</label>
                         <div class="col-sm-10">
                             <select name="ownership_status" class="form-control">
-                                <option>Yes</option>
-                                <option>No</option>
+                                <option value="1">Yes</option>
+                                <option value="2">No</option>
                             </select>
                         </div>
                     </div>
@@ -108,7 +101,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPhoto" class="col-sm-2 control-label">Scanned insurance copy</label>
+                        <label for="exampleInputPhoto" class="col-sm-2 control-label">Scanned Insurance Copy</label>
 
                         <div class="col-sm-10">
                             <input type="file" name="insurance_scan_copy" class="form-control" id="exampleInputPhoto" placeholder="">
@@ -125,8 +118,8 @@
                         <label for="exampleInputAc" class="col-sm-2 control-label">Status</label>
                         <div class="col-sm-10">
                             <select name="status" class="form-control">
-                                <option>Active</option>
-                                <option>Inactive</option>
+                                <option value="1">Active</option>
+                                <option value="2">Inactive</option>
                             </select>
                         </div>
                     </div>

@@ -13,13 +13,14 @@
 
 Route::get('/', function () {
     return view('auth.login');
+    redirect('dashboard');
 });
 
 Route::Resource("/home", "HomeController");
 Route::Resource("/vehicle", "VehicleController");
 Route::Resource("/driver", "DriverController");
-Route::Resource("/client", "ClientController");
 Route::Resource("/reservation", "ReservationController");
 Auth::routes();
 
+Route::resource("client", "ClientController");
 //Route::get('/home', 'HomeController@index')->name('home');

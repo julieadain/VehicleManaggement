@@ -87,7 +87,7 @@
 
                         <h3 class="box-title">Reservation</h3>
                         <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> </button>
+                            <button type="button" class="btn btn-default pull-right"><a href="{{url('reservation/create')}}"> <i class="fa fa-plus"></i></a> </button>
                         </div>
 
                     </div>
@@ -149,60 +149,26 @@
                     <div class="box-header">
                         <i class="ion ion-clipboard"></i>
 
-                        <h3 class="box-title">Recent Cliens</h3>
+                        <h3 class="box-title">Recent Clients</h3>
                         <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i>  </button>
+                            <button type="button" class="btn btn-default pull-right"><a href="{{url('client/create')}}"> <i class="fa fa-plus"> </i> </a> </button>
                         </div>
 
                     </div>
                     <div class="box-body">
                         <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
                         <ul class="todo-list">
+                            @foreach($clients as $client)
                             <li>
-                                <span class="text">A client</span>
+                                    <td><a href="{{url('client')}}"> <span class="text">{{$client->name}} </span> </a></td>
+{{--                                <span class="text">A client</span>--}}
                                 <!-- Emphasis label -->
-                                <small class="label label-danger"><i class="fa fa-clock-o"></i> </small>
-                                <!-- General tools such as edit or delete-->
+{{--                                <small class="label label-danger"><i class="fa fa-clock-o"> </i> </small>--}}
                                 <div class="tools">
                                     <i class="fa fa-trash-o"></i>
                                 </div>
                             </li>
-                            <li>
-                                <span class="text">Anoher Client</span>
-                                <!-- Emphasis label -->
-                                <small class="label label-danger"><i class="fa fa-clock-o"></i></small>
-                                <!-- General tools such as edit or delete-->
-                                <div class="tools">
-                                    <i class="fa fa-trash-o"></i>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="text">Anoher Client</span>
-                                <!-- Emphasis label -->
-                                <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-                                <!-- General tools such as edit or delete-->
-                                <div class="tools">
-                                    <i class="fa fa-trash-o"></i>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="text">Anoher Client</span>
-                                <!-- Emphasis label -->
-                                <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-                                <!-- General tools such as edit or delete-->
-                                <div class="tools">
-                                    <i class="fa fa-trash-o"></i>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="text">Anoher Client</span>
-                                <!-- Emphasis label -->
-                                <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-                                <!-- General tools such as edit or delete-->
-                                <div class="tools">
-                                    <i class="fa fa-trash-o"></i>
-                                </div>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

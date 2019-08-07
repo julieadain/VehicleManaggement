@@ -367,7 +367,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="{{ url('driver/create') }}"><i class="fa fa-circle-o"></i> Add driver</a></li>
-                        <li><a href="{{ url('') }}"><i class="fa fa-circle-o"></i> Driver's details</a></li>
+                        <li><a href="{{ url('driver') }}"><i class="fa fa-circle-o"></i> Driver's details</a></li>
                     </ul>
                 </li>
                 <li class="treeview">

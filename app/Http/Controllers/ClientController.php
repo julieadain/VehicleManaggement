@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\client;
+use App\Rules\ValidMobile;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -14,7 +15,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        $data= Client::paginate(5);
+        return view('client.detail')->with('clients', $data);
     }
 
     /**
@@ -37,12 +39,14 @@ class ClientController extends Controller
     {
         $this->validate($request,[
             'name'=>'required',
-            'email'=>'required',
-            'phone'=>'required',
+            'email'=>'required|email|unique:clients,email',
+            'phone'=>['required', new ValidMobile()],
             'address'=>'required'
+        ], [ "email.unique"=> "Given email address already taken"
         ]);
 
         Client::create($request->all());
+        return redirect('home');
     }
 
     /**
@@ -64,7 +68,8 @@ class ClientController extends Controller
      */
     public function edit(client $client)
     {
-        //
+
+        return view('client.edit')->with('client', $client);
     }
 
     /**
@@ -76,7 +81,20 @@ class ClientController extends Controller
      */
     public function update(Request $request, client $client)
     {
-        //
+        $this->validate($request,[
+            'name'=>'required',
+            'email'=>'required',
+            'phone'=>'required',
+            'address'=>'required'
+        ]);
+
+        $client->name = $request->get('name');
+        $client->email = $request->get('email');
+        $client->phone = $request->get('phone');
+        $client->address = $request->get('address');
+        $client->save();
+
+        return redirect('client');
     }
 
     /**
@@ -85,8 +103,9 @@ class ClientController extends Controller
      * @param  \App\client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(client $client)
+    public function destroy(Client $client)
     {
-        //
+        $client->delete();
+        return redirect('client');
     }
 }

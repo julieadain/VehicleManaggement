@@ -3,91 +3,90 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Add driver
-            <small>Preview</small>
+            Add Driver
+            {{--            <small>Preview</small>--}}
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Forms</a></li>
-            <li class="active">Add driver</li>
-        </ol>
+{{--        <ol class="breadcrumb">--}}
+{{--            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>--}}
+{{--        </ol>--}}
     </section>
 
     <!-- Main content -->
     <section class="content">
         <div class="col-md-12">
             <!-- Horizontal Form -->
-            <div class="box box-info">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Add drive's information</h3>
+            <div class=" container box box-info">
+                <div class="box-header">
                 </div>
-                <!-- /.box-header -->
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <p>{{$error}}</p>
+                @endforeach
+            @endif
+
+            <!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal">
+                <form action="{{url('driver')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    @csrf
+
                     <div class="form-group">
-                        <label for="inputName" class="col-sm-2 control-label">Name</label>
+                        <label for="inputBrand" class="col-sm-2 control-label">Name</label>
 
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputName" placeholder="">
+                            <input type="text" name="name" class="form-control" id="inputBrand" placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail" class="col-sm-2 control-label">Email</label>
+                        <label for="exampleInputModel" class="col-sm-2 control-label">Email</label>
 
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="exampleInputEmail" placeholder="">
+                            <input type="email" name="email" class="form-control" id="exampleInputModel" placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPhone" class="col-sm-2 control-label">Phone</label>
+                        <label for="exampleInputColor" class="col-sm-2 control-label">Phone</label>
 
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="exampleInputPhone" placeholder="">
+                            <input type="text" name="phone" class="form-control" id="exampleInputColor" placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPass1" class="col-sm-2 control-label">Password</label>
+                        <label for="exampleInputRegnum" class="col-sm-2 control-label">Address</label>
 
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="exampleInputPass1" placeholder="">
+                            <input type="text" name="address" class="form-control" id="exampleInputRegNum" placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPass2" class="col-sm-2 control-label">Confirm password</label>
+                        <label for="exampleInputPhoto" class="col-sm-2 control-label">Driver Photo</label>
 
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="exampleInputPass2" placeholder="">
+                            <input type="file"  name="photo" class="form-control" id="exampleInputPhoto" placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPhoto" class="col-sm-2 control-label">Photo</label>
+                        <label for="exampleInputPhoto" class="col-sm-2 control-label">DL Scan Copy</label>
 
                         <div class="col-sm-10">
-                            <input type="file" class="form-control" id="exampleInputPhoto" placeholder="">
+                            <input type="file"  name="dl_scan" class="form-control" id="exampleInputPhoto" placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputDl" class="col-sm-2 control-label">Scanned driving license</label>
+                        <label for="exampleInputPhoto" class="col-sm-2 control-label">NID Scan Copy</label>
 
                         <div class="col-sm-10">
-                            <input type="file" class="form-control" id="exampleInputDl" placeholder="">
+                            <input type="file"  name="nid_scan" class="form-control" id="exampleInputPhoto" placeholder="">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputNID" class="col-sm-2 control-label">Scanned NID copy</label>
 
-                        <div class="col-sm-10">
-                            <input type="file" class="form-control" id="exampleInputNID" placeholder="">
-                        </div>
-                    </div>
                     <div class="form-group">
                         <label for="exampleInputbtn" class="col-sm-2 control-label"></label>
 
                         <div class="col-md-1">
                             <button type="submit" class="form-control btn btn-primary" id="exampleInputbtn">Save</button>
                         </div>
-                        <br/>
                     </div>
+                    <br/>
                 </form>
             </div>
         </div>
