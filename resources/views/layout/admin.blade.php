@@ -109,22 +109,22 @@
 
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
-                @Super_admin
+{{--                @Super_admin--}}
                 <li class="">
                     <a href="{{url('/organization')}}">
                         <i class="fa fa-dashboard"></i> <span>Organizations</span>
                     </a>
                 </li>
-                @endSuper_admin
+{{--                @endSuper_admin--}}
 
-                @admin
+{{--                @admin--}}
                 <li class="">
                     <a href="{{url('/manager')}}">
-                        <i class="fa fa-dashboard"></i> <span>Manage manager</span>
+                        <i class="fa fa-dashboard"></i> <span>Manage user</span>
                     </a>
                 </li>
             </ul>
-            @endadmin
+{{--            @endadmin--}}
             <!-- search form only for Super Admin-->
             <form action="#" method="get" class="sidebar-form">
                 <div class="input-group">

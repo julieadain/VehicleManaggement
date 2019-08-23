@@ -15,6 +15,7 @@ class OrganizationController extends Controller
     public function index()
     {
         $organizations = Organization::all();
+//        $requests = Organization::;
         return view('organization.view', compact('organizations'));
     }
 
@@ -38,6 +39,7 @@ class OrganizationController extends Controller
     {
         //
     }
+
 
     /**
      * Display the specified resource.

@@ -7,9 +7,23 @@
             <div class="container box box-primary">
                 <div class="box-header">
                     <h3 class="box-title">User table</h3>
-                    <div class="box-tools">
+                    <div class="box no-border">
+                        <table class="table table-hover no-border">
+                            <tr class="row">
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                            </tr>
+                            {{-- {{ dd( $users ) }}--}}
+                            @foreach($users as $user)
+                                <tr class="row" onclick="location.href='manager/{{$user->id}}'">
 
-
+                                    <td>{{ $user->name  }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->phone }}</td>
+                                </tr>
+                            @endforeach
+                        </table>
                     </div>
                 </div>
                 <!-- /.box-header -->
@@ -30,7 +44,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body box-responsive ">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ url('/manager') }}">
                         @csrf
                         <div class="form-group row">
                             <label for="name"
@@ -104,7 +118,8 @@
 
                             <div class="col-md-6">
                                 <input id="role" type="number"
-                                       class="form-control @error('role') is-invalid @enderror" name="role" value="3">
+                                       class="form-control @error('role') is-invalid @enderror" name="role"
+                                       value="{{ '3' }}">
 
                             </div>
                         </div>

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Manager;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ManagerController extends Controller
 {
@@ -14,7 +16,9 @@ class ManagerController extends Controller
      */
     public function index()
     {
-        return view("manager.view");
+        $users = User::where('role', '3')->get();
+//        dd($user);
+        return view("manager.view", compact('users'));
     }
 
     /**
@@ -35,7 +39,31 @@ class ManagerController extends Controller
      */
     public function store(Request $request)
     {
-        
+//        dd( $request->all());
+//        dd( Auth::user());
+
+        request()->validate([
+            'name' => 'required',
+            'email'  => ['required', 'email', 'unique:users'],
+            'password' => ['required', 'min:4', 'confirmed'],
+//            Have to add validate on Bd structure
+            'phone' => ['required']
+        ]);
+
+        $user = new User();
+
+        $user->name = request('name');
+        $user->email = request('email');
+        $user->password = request('password');
+        $user->phone = request('phone');
+        $user->role = '3';
+        $user->status = 'manager';
+        $user->org_id = Auth::user()->org_id ;
+        $user->save();
+
+        return redirect('/manager');
+
+
     }
 
     /**

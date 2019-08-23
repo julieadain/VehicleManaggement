@@ -10,4 +10,9 @@ class Manager extends Model
         'name', 'Email', 'phone', 'password'
     ];
 
+    /*public function getManagerAttribute()
+    {
+        return $this->user()->where('role', '3')->first();
+    }*/
+
 }
