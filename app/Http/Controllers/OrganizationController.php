@@ -15,8 +15,10 @@ class OrganizationController extends Controller
     public function index()
     {
         $organizations = Organization::all();
-//        $requests = Organization::;
-        return view('organization.view', compact('organizations'));
+        $requests = Organization::where('status', '10')->get();
+        $denials = Organization::where('status', '0')->get();
+//        dd($denials);
+        return view('organization.view', compact('organizations', 'requests', 'denials'));
     }
 
     /**

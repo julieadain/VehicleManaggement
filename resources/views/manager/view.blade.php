@@ -16,26 +16,27 @@
                             </tr>
                             {{-- {{ dd( $users ) }}--}}
                             @foreach($users as $user)
-                                <tr class="row" onclick="location.href='manager/{{$user->id}}'">
-
+                                <tr class="row">
                                     <td>{{ $user->name  }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->phone }}</td>
+                                    <td>
+                                        <form method="POST" action="{{ url('/manager/'. $user->id)}}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="fa fa-trash-o"></button>
+                                        </form>
+                                    </td>
+
                                 </tr>
                             @endforeach
                         </table>
                     </div>
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body table-responsive no-padding">
-
-
-                </div>
-                <!-- /.box-body -->
             </div>
             <!-- /.box -->
         </div>
-
 
         <div class="col-xs-5">
             <div class="container box box-primary">
@@ -112,18 +113,6 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row hidden">
-                            <label for="role"
-                                   class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="role" type="number"
-                                       class="form-control @error('role') is-invalid @enderror" name="role"
-                                       value="{{ '3' }}">
-
-                            </div>
-                        </div>
-
                         <div class="form-group row">
                             <label for="password-confirm"
                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
@@ -141,7 +130,6 @@
                             </div>
                         </div>
                     </form>
-
                 </div>
                 <!-- /.box-body -->
             </div>

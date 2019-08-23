@@ -34,7 +34,7 @@ class ManagerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -44,7 +44,7 @@ class ManagerController extends Controller
 
         request()->validate([
             'name' => 'required',
-            'email'  => ['required', 'email', 'unique:users'],
+            'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'min:4', 'confirmed'],
 //            Have to add validate on Bd structure
             'phone' => ['required']
@@ -58,7 +58,7 @@ class ManagerController extends Controller
         $user->phone = request('phone');
         $user->role = '3';
         $user->status = 'manager';
-        $user->org_id = Auth::user()->org_id ;
+        $user->org_id = Auth::user()->org_id;
         $user->save();
 
         return redirect('/manager');
@@ -69,7 +69,7 @@ class ManagerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Manager  $manager
+     * @param \App\Manager $manager
      * @return \Illuminate\Http\Response
      */
     public function show(Manager $manager)
@@ -80,7 +80,7 @@ class ManagerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Manager  $manager
+     * @param \App\Manager $manager
      * @return \Illuminate\Http\Response
      */
     public function edit(Manager $manager)
@@ -91,8 +91,8 @@ class ManagerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Manager  $manager
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Manager $manager
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Manager $manager)
@@ -103,11 +103,14 @@ class ManagerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Manager  $manager
+     * @param \App\Manager $manager
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Manager $manager)
+    public function destroy(User $user, $id)
     {
-        //
+//        dd('Hey...it worked on the id '. $id);
+
+        User::find($id)->delete();
+        return redirect()->back();
     }
 }

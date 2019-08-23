@@ -9,7 +9,7 @@
                     <h3 class="box-title">Organizations |
                         <span class="label label-primary pull-right">{{ "125"}}</span>
                     </h3>
-
+{{--                    {{dd($denials)}}--}}
                     <div class="box-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
                             <input type="text" name="table_search" class="form-control pull-right"
@@ -66,11 +66,13 @@
                         </thead>
                         <tbody>
 
-                        <tr class="lovelyrow" onclick="location.href='organization/{{$organization->id}}'">
-                            <td>Try</td>
-                            <td>Mr. Abc</td>
-                            <td>abc@xyz.com</td>
-                        </tr>
+                        @foreach($requests as $request)
+                            <tr class="lovelyrow" onclick="location.href='organization/{{$request->id}}'">
+                                <td>{{$request->org_name}}</td>
+                                <td>{{ $request->owner ? $request->owner->name : null }}</td>
+                                <td>{{ $request->owner ? $request->owner->email : null }}</td>
+                            </tr>
+                        @endforeach
 
                         <tr class="lovelyrow" onclick="location.href='organization/{{$organization->id}}'">
                             <td>Trident</td>
@@ -111,13 +113,16 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($denials as $denial)
+                            <tr class="lovelyrow">
+                                <td>{{$denial->org_name}}</td>
+                                <td>{{ $denial->owner ? $denial->owner->name : null }}</td>
+                                <td>{{ $denial->owner ? $denial->owner->email : null }}</td>
+                                <td><a class="btn btn-success" href="organization/{{$denial->id}}">Approve</a></td>
+                            </tr>
+                        @endforeach
                         <tr>
-                            <td>Trident</td>
-                            <td>Mr. Abc</td>
-                            <td>abc@xyz.com</td>
-                            <th><a class="btn btn-success" href="#">Approve</a></th>
-                        </tr>
-                        <tr>
+
                             <td>Trident</td>
                             <td>Mr. Abc</td>
                             <td>abc@xyz.com</td>
