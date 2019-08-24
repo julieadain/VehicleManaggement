@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Organization;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,8 +27,9 @@ class HomeController extends Controller
 
 
 //        dd(" this is home controller ");
-
-
+        $id = session('org');
+        $organizations = Organization::find($id)->first();
+        dd($organizations);
        return view('dashboard');
     }
 }
