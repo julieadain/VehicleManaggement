@@ -40,6 +40,10 @@ class HomeController extends Controller
             Session::forget('org_info');
         }
 
+        if (auth()->user()->role == 1) {
+           return view('SuperDash');
+        }
+
         return view('dashboard');
     }
 }
