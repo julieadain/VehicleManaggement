@@ -62,7 +62,7 @@
                     <!-- small box -->
                     <div class="small-box bg-red">
                         <div class="inner">
-                            <h3>25</h3>
+                            <h3>20</h3>
 
                             <p>SMS</p>
                         </div>

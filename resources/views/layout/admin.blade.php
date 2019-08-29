@@ -136,17 +136,26 @@
                 </div>
             </form>
             <!-- /.search form -->
-
             <!-- Sidebar user panel -->
+            @if( session('org_info') )
+{{--            {{ dd(session('org_info')) }}--}}
+            <?php $org_info = session('org_info')  ?>
+
+            {{--                {{dd($organization->owner->name)}}--}}
             <div class="user-panel">
                 <div class="pull-left image">
                     <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
                 </div>
+                <span class="pull-right-container">
+              <span class="label label-danger pull-right "><a href="{{ url('/unset') }}"> Close <span
+                              class="fa fa-close"> </span></a></span>
+            </span>
                 <div class="pull-left info">
-                    <p>{{"Username"}}</p>
-                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    <p>{{ $org_info->org_name }}</p>
+                    <a href="#"><i class="fa fa-circle "></i> {{ $org_info->owner->name }}</a>
                 </div>
             </div>
+
 
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree">
@@ -227,6 +236,7 @@
                 </li>
             </ul>
         </section>
+    @endif
         <!-- /.sidebar -->
     </aside>
 

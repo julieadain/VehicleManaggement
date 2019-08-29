@@ -132,9 +132,14 @@ class OrganizationController extends Controller
 
 //        dd("Here goes the detail info of selected organization $ the id is ". $id);
         Session::forget('org');
-        Session(['org' => $id]);
+        session(['org' => $id]);
 //        dd(session('org'));
         return redirect('/home');
 
+    }
+    public function unset(){
+//        dd("Unset button clicked");
+        Session::forget("org");
+       return redirect("/home");
     }
 }

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Organization;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
@@ -26,10 +28,18 @@ class HomeController extends Controller
     {
 
 
-//        dd(" this is home controller ");
+//        dd(" Here's the home controller ");
+//        dd(session('org_info'));
         $id = session('org');
-        $organizations = Organization::find($id)->first();
-        dd($organizations);
-       return view('dashboard');
+        if ($id) {
+        $org = Organization::find($id);
+        session::forget('org_info');
+        Session::put('org_info', $org);
+//        dd( session('org_info'));
+        }else{
+            Session::forget('org_info');
+        }
+
+        return view('dashboard');
     }
 }

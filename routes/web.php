@@ -23,6 +23,7 @@ Route::get("/approve/{id}", "OrganizationController@approve")->name('organizatio
 Route::get("/deny/{id}", "OrganizationController@deny")->name('organization.deny');
 Route::get("/pending/{id}", "OrganizationController@pending")->name('organization.pending');
 Route::get("/details/{id}", "OrganizationController@details")->name('organization.details');
+Route::get("/unset", "OrganizationController@unset")->name('organization.unset');
 Route::Resource("/manager", "ManagerController");
 Route::Resource("/client", "ClientController");
 Route::Resource("/reservation", "ReservationController");
