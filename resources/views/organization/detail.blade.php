@@ -15,16 +15,14 @@
                             @endif
                         </h4>
                         <div class="box-tools">
-                            <div class="input-group input-group-sm" style="width: 200px;">
+                            <div class="input-group input-group-sm" style="width: 250px;">
 
                                 @if($organization->status != 1)
                                     <div class="input-group-btn">
                                         <a class="btn btn-primary text-bold"
                                            href="{{ url('/approve/'. $organization->id) }}"> Approve <span
-                                                    class="fa fa-check"> </span></a> |
+                                                    class="fa fa-check"> </span></a>
                                     </div>
-
-
                                 @elseif($organization->status !=10)
                                     <div class="input-group-btn">
                                         <a class="btn btn-success text-bold"
@@ -34,13 +32,11 @@
                                         <a class="btn btn-warning text-bold"
                                            href="{{ url('/pending/'. $organization->id) }}"> Pending </a>
                                     </div>
-
-                                @else
                                 @endif
                                 <div class="input-group-btn">
                                     <a class="btn btn-danger text-bold"
                                        href="{{ url('/deny/'. $organization->id) }}"> Deny <span
-                                                class="fa fa-close"> </span></a> |
+                                                class="fa fa-close"> </span></a>
                                 </div>
 
                             </div>

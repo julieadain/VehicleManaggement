@@ -102,6 +102,7 @@ class OrganizationController extends Controller
 //        dd($organization->status);
         $organization->status = '1';
         $organization->save();
+
         return redirect('/organization');
     }
 
@@ -130,16 +131,20 @@ class OrganizationController extends Controller
     public function details($id)
     {
 
-//        dd("Here goes the detail info of selected organization $ the id is ". $id);
-        Session::forget('org');
-        session(['org' => $id]);
-//        dd(session('org'));
+        if ($id) {
+            $org = Organization::find($id);
+            session::forget('org_info');
+            Session::put('org_info', $org);
+//        dd( session('org_info'));
+        } else {
+            Session::forget('org_info');
+        }
         return redirect('/home');
 
     }
     public function unset(){
 //        dd("Unset button clicked");
-        Session::forget("org");
+        Session::forget("org_info");
        return redirect("/home");
     }
 }

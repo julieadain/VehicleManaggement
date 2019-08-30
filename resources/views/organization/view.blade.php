@@ -99,6 +99,7 @@
                         <tbody>
                         @foreach($denials as $denial)
                             <tr class="lovelyrow">
+                                {{ dd($denail->owner) }}
                                 <td>{{$denial->org_name}}</td>
                                 <td>{{ $denial->owner ? $denial->owner->name : null }}</td>
                                 <td>{{ $denial->owner ? $denial->owner->email : null }}</td>

@@ -29,19 +29,19 @@ class HomeController extends Controller
 
 
 //        dd(" Here's the home controller ");
-//        dd(session('org_info'));
-        $id = session('org');
-        if ($id) {
-        $org = Organization::find($id);
-        session::forget('org_info');
-        Session::put('org_info', $org);
-//        dd( session('org_info'));
-        }else{
-            Session::forget('org_info');
+//        dd( auth()->user()->organization->org_name);
+
+
+        if (auth()->user()->organization->status == 10) {
+            return view('pending');
+        }
+
+        if (session('org_info')) {
+            return view('dashboard');
         }
 
         if (auth()->user()->role == 1) {
-           return view('SuperDash');
+            return view('SuperDash');
         }
 
         return view('dashboard');
