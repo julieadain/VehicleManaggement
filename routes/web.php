@@ -25,6 +25,7 @@ Route::get("/pending/{id}", "OrganizationController@pending")->name('organizatio
 Route::get("/details/{id}", "OrganizationController@details")->name('organization.details');
 Route::get("/unset", "OrganizationController@unset")->name('organization.unset');
 Route::Resource("/manager", "ManagerController");
+Route::Resource("/expense", "ExpenseController");
 Route::Resource("/client", "ClientController");
 Route::Resource("/reservation", "ReservationController");
 Auth::routes();

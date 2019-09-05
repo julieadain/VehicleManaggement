@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Expense;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 
 class ExpenseController extends Controller
 {
@@ -14,7 +16,9 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        //
+        session::forget('exp');
+        Session::put('exp', '1');
+        return view("expense");
     }
 
     /**
