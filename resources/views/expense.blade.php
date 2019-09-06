@@ -4,35 +4,37 @@
 
     <div class="Container">
         <label> Select expense purpose : </label><br/>
-        <input type="text" id="keyword">
-        <ul id="suggestion">
-
-        </ul>
+        <input id="#txtKeyword" type="text">
+        <ul id="suggestion"></ul>
     </div>
 
 @endsection
 
 @push('page-js')
+
     <script>
-        data = ["Dhaka", "Chittagong", "Rajshahi", "khulna", "Barishal", "Sylhet", "Mymensing", "Rangpur"];
-        $(document).ready(function () {
-            console.log("Document is ready");
-            $('#keyword').on('keyup', function () {
-                $('#suggestion').html("");
-                input = $(this).val();
-                // console.log(input);
-                if (input == "") return;
-                $.each(data, function (i, v) {
-                    if (v.toLowerCase().indexOf(input.toLowerCase()) >= 0) {
-                        $('#suggestion').append("<li>" + v + "</li>")
-                    }
-                })
+        $(function ($) {
+            i = 0;
+            var sto;
+            $("input").on('keyup', function () {
+                if (sto) clearTimeout(sto);
+
+                var text = $(this).val();
+
+                sto = setTimeout(function () {
+                    $('#suggestion').html("");
+                    $.ajax({
+                        url: '{{ url("/ajaxRequest") }}',
+                        data: {keyword: text},
+                        dataType:'JSON',
+                        success: function (data) {
+                            $.each(data.success, function (i, v) {
+                                $('#suggestion').append("<li>" + v.title + "</li>");
+                            });
+                        }
+                    });
+                }, 500);
             });
-            $('#suggestion').on('click', 'li', function () {
-                console.log("Li clicked");
-                $('#keyword').val($(this).html());
-                $('#suggestion').html("");
-            })
-        })
+        }(jQuery));
     </script>
 @endpush
