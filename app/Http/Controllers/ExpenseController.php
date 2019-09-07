@@ -40,7 +40,33 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:155',
+            'amount' => 'required',
+        ]);
+
+//        dd($request->title);
+
+       $purpose = Purpose::where('title', $request->title)->first();
+//        dd($purpose->id);
+        if (empty($purpose)){
+
+            $purpose = new Purpose();
+
+            $purpose->title = $request->title ;
+
+            $purpose->save();
+        }
+//        dd($purpose->id);
+
+        $expense = new Expense();
+
+        $expense->amount = $request->amount ;
+        $expense->purpose_id = $purpose->id ;
+
+        $expense->save();
+
+return redirect()->back();
     }
 
     /**
@@ -91,10 +117,9 @@ class ExpenseController extends Controller
     public function ajaxRequest()
     {
 //        return "Test";
-        $input = request('keyword');
 
-        $data = Purpose::where('title','LIKE','%'.$input.'%')->get();
-//        dd( console.log($data));
-        return response()->json(['success'=> $data]);
+        $data = Purpose::where('title', 'LIKE', '%' . request('keyword') . '%')->get();
+
+        return response()->json(['success' => $data]);
     }
 }
