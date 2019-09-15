@@ -15,7 +15,7 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        $data= Vehicle::paginate(3);
+        $data= Vehicle::paginate(10);
         return view("vehicle.detail")->with('vehicles', $data);
     }
 
@@ -47,10 +47,10 @@ class VehicleController extends Controller
             'reg_date'=>'required',
             'seat_capacity'=>'required',
             'ac'=>'required',
-            'reg_scan_copy'=>'->nullable|mimes:jpg,jpeg,png,gif,bmp',
-            'photo'=>'->nullable|mimes:jpg,jpeg,png,gif,bmp',
-            'insurance_scan_copy'=>'->nullable|mimes:jpg,jpeg,png,gif,bmp',
-            'roadPermit_scan_copy'=>'->nullable|mimes:jpg,jpeg,png,gif,bmp',
+            'reg_scan_copy'=>'nullable|mimes:jpg,jpeg,png,gif,bmp',
+            'photo'=>'nullable|mimes:jpg,jpeg,png,gif,bmp',
+            'insurance_scan_copy'=>'nullable|mimes:jpg,jpeg,png,gif,bmp',
+            'roadPermit_scan_copy'=>'nullable|mimes:jpg,jpeg,png,gif,bmp',
             'ownership_status'=>'required',
             'status'=>'required'
         ]);

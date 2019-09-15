@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use mysql_xdevapi\Schema;
 
@@ -24,6 +25,23 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-      \Illuminate\Support\Facades\Schema::defaultStringLength(191);
+        \Illuminate\Support\Facades\Schema::defaultStringLength(191);
+
+        Blade::directive('Super_admin', function () {
+            return '<?php if(auth()->user()->role == 1) { ?>';
+        });
+
+        Blade::directive('endSuper_admin', function () {
+            return '<?php } ?>';
+        });
+
+        Blade::directive('admin', function () {
+        return '<?php if(auth()->user()->role == 2) { ?>';
+        });
+
+        Blade::directive('endadmin', function () {
+            return '<?php } ?>';
+        });
+
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\organization;
+use App\Manager;
 use Illuminate\Http\Request;
 
-class OrganizationController extends Controller
+class ManagerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-        $organizations = Organization::all();
-        return view('organization.view', compact('organizations'));
+        return view("manager.view");
     }
 
     /**
@@ -31,34 +30,32 @@ class OrganizationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
      * Display the specified resource.
      *
-     * @param \App\organization $organization
+     * @param  \App\Manager  $manager
      * @return \Illuminate\Http\Response
      */
-    public function show(organization $organization)
+    public function show(Manager $manager)
     {
-//        dd("SINGLE VIEW OF ORGANIZATION");
-        return view("organization.detail");
-
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\organization $organization
+     * @param  \App\Manager  $manager
      * @return \Illuminate\Http\Response
      */
-    public function edit(organization $organization)
+    public function edit(Manager $manager)
     {
         //
     }
@@ -66,11 +63,11 @@ class OrganizationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\organization $organization
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Manager  $manager
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, organization $organization)
+    public function update(Request $request, Manager $manager)
     {
         //
     }
@@ -78,10 +75,10 @@ class OrganizationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\organization $organization
+     * @param  \App\Manager  $manager
      * @return \Illuminate\Http\Response
      */
-    public function destroy(organization $organization)
+    public function destroy(Manager $manager)
     {
         //
     }

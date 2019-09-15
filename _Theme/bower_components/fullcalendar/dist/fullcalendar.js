@@ -10031,7 +10031,7 @@ var DateComponent = /** @class */ (function (_super) {
         _this.isDatesRendered = false;
         // hack to set options prior to the this.opt calls
         if (_view) {
-            _this['view'] = _view;
+            _this['view.blade.php'] = _view;
         }
         if (_options) {
             _this['options'] = _options;

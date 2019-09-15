@@ -4,7 +4,27 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class organization extends Model
+class Organization extends Model
 {
-    //
+    protected $fillable = [
+        'org_name', 'address', 'trade_license_copy', 'status'
+    ];
+
+    public function users()
+    {
+
+        return $this->hasMany(User::class, 'org_id');
+
+    }
+
+    public function getOwnerAttribute()
+    {
+        return $this->users()->where('status', 'owner')->first();
+    }
+
+ /*   public function getOrgNameAttribute($value)
+    {
+        return strtoupper($value);
+    }*/
+
 }

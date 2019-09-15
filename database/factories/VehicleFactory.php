@@ -11,16 +11,16 @@ $factory->define(\App\Vehicle::class, function (Faker $faker) {
         'model' => $faker->numberBetween(2000, 2020),
         'color' => $faker->colorName,
         'reg_number' => $faker->randomNumber(),
-        'reg_date' => $faker->date(),
-        'seat_capacity'=> $faker->numberBetween(1,5),
+        'reg_date' => $faker->date(), 'seat_capacity'=> $faker->numberBetween(1,5),
         'ac'=>$faker->numberBetween(1,2),
         'ownership_status'=>$faker->numberBetween(1,2),
-        'reg_scan_copy' => $faker->text,
+        'reg_scan_copy' => \Illuminate\Support\Str::random(50),
         'insurance_scan_copy' => \Illuminate\Support\Str::random(50),
         'roadPermit_scan_copy' => \Illuminate\Support\Str::random(50),
         'photo' => \Illuminate\Support\Str::random(50),
         'status'=> $faker->numberBetween(0,1),
         'user_id'=> 1,
+        'org_id'=>1,
 
     ];
 });

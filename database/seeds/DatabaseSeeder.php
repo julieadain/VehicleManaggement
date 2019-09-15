@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ExpensesTableSeeder::class);*/
 
 //        factory(Purpose::class, 100)->create();
-        factory(\App\Vehicle::class, 5)->create();
-
+        factory(\App\Vehicle::class, 50)->create();
+         factory(\App\Client::class, 50)->create();
+       factory(\App\Driver::class,50)->create();
     }
 }

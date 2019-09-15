@@ -3,20 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\client;
+use App\Organization;
 use App\Rules\ValidMobile;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
-    /**
+    /*
      * Display a listing of the resource.
-     *
+
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $data= Client::paginate(5);
-        return view('client.detail')->with('clients', $data);
+        $organization = Organization::all();
+        $data = Client::paginate(10);
+        return view('client.detail')
+            ->with('clients', $data)
+            ->with('organizations',$organization);
     }
 
     /**
@@ -29,20 +33,19 @@ class ClientController extends Controller
         return view('client.add');
     }
 
-    /**
+    /*
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'name'=>'required',
-            'email'=>'required|email|unique:clients,email',
-            'phone'=>['required', new ValidMobile()],
-            'address'=>'required'
-        ], [ "email.unique"=> "Given email address already taken"
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:clients,email',
+            'phone' => ['required', new ValidMobile()],
+            'address' => 'required'
+        ], ["email.unique" => "Given email address already taken"
         ]);
 
         Client::create($request->all());
@@ -52,7 +55,7 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\client  $client
+     * @param \App\client $client
      * @return \Illuminate\Http\Response
      */
     public function show(client $client)
@@ -63,7 +66,7 @@ class ClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\client  $client
+     * @param \App\client $client
      * @return \Illuminate\Http\Response
      */
     public function edit(client $client)
@@ -75,17 +78,17 @@ class ClientController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\client  $client
+     * @param \Illuminate\Http\Request $request
+     * @param \App\client $client
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, client $client)
     {
-        $this->validate($request,[
-            'name'=>'required',
-            'email'=>'required',
-            'phone'=>'required',
-            'address'=>'required'
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'address' => 'required'
         ]);
 
         $client->name = $request->get('name');
@@ -100,7 +103,7 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\client  $client
+     * @param \App\client $client
      * @return \Illuminate\Http\Response
      */
     public function destroy(Client $client)
