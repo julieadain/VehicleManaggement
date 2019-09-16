@@ -19,7 +19,7 @@ class Organization extends Model
 
     public function getOwnerAttribute()
     {
-        return $this->users()->where('status', 'owner')->first();
+        return $this->users()->where('status', '1')->first();
     }
 
  /*   public function getOrgNameAttribute($value)

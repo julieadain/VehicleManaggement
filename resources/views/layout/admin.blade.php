@@ -28,7 +28,6 @@
     <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-daterangepicker/daterangepicker.css') }}">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -45,7 +44,7 @@
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="home" class="logo">
+        <a href="{{url('/home')}}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>V</b>M</span>
             <!-- logo for regular state and mobile devices -->
@@ -120,12 +119,13 @@
                 @admin
                 <li class="">
                     <a href="{{url('/manager')}}">
-                        <i class="fa fa-dashboard"></i> <span>Manage manager</span>
+                        <i class="fa fa-dashboard"></i> <span>Manage user</span>
                     </a>
                 </li>
             </ul>
             @endadmin
             <!-- search form only for Super Admin-->
+           @Super_admin
             <form action="#" method="get" class="sidebar-form">
                 <div class="input-group">
                     <input type="text" name="q" class="form-control" placeholder="Search organization...">
@@ -136,18 +136,29 @@
                 </div>
             </form>
             <!-- /.search form -->
-
             <!-- Sidebar user panel -->
+            @endSuper_admin
+            @if( session('org_info') )
+{{--            {{ dd(session('org_info')) }}--}}
+            <?php $org_info = session('org_info' )  ?>
+
+            {{--                {{dd($organization->owner->name)}}--}}
             <div class="user-panel">
                 <div class="pull-left image">
                     <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
                 </div>
+                <span class="pull-right-container">
+              <span class="label label-danger pull-right "><a href="{{ url('/unset') }}"> Close <span
+                              class="fa fa-close"> </span></a></span>
+            </span>
                 <div class="pull-left info">
-                    <p>{{"Username"}}</p>
-                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    <p>{{ $org_info->org_name }}</p>
+                    <a href="#"><i class="fa fa-circle "></i> {{ $org_info->owner->name }}</a>
                 </div>
             </div>
+            @endif
 
+            @if( auth()->user()->role == 2 || session('org_info'))
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="responsive">
@@ -226,6 +237,7 @@
                 </li>
             </ul>
         </section>
+    @endif
         <!-- /.sidebar -->
     </aside>
 

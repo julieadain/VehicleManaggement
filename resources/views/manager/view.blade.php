@@ -7,21 +7,36 @@
             <div class="container box box-primary">
                 <div class="box-header">
                     <h3 class="box-title">User table</h3>
-                    <div class="box-tools">
+                    <div class="box no-border">
+                        <table class="table table-hover no-border">
+                            <tr class="row">
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                            </tr>
+                            {{-- {{ dd( $users ) }}--}}
+                            @foreach($users as $user)
+                                <tr class="row">
+                                    <td>{{ $user->name  }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->phone }}</td>
+                                    <td>
+                                        <form method="POST" action="{{ url('/manager/'. $user->id)}}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="fa fa-trash-o"></button>
+                                        </form>
+                                    </td>
 
-
+                                </tr>
+                            @endforeach
+                        </table>
                     </div>
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body table-responsive no-padding">
-
-
-                </div>
-                <!-- /.box-body -->
             </div>
             <!-- /.box -->
         </div>
-
 
         <div class="col-xs-5">
             <div class="container box box-primary">
@@ -30,7 +45,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body box-responsive ">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ url('/manager') }}">
                         @csrf
                         <div class="form-group row">
                             <label for="name"
@@ -98,17 +113,6 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row hidden">
-                            <label for="role"
-                                   class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="role" type="number"
-                                       class="form-control @error('role') is-invalid @enderror" name="role" value="3">
-
-                            </div>
-                        </div>
-
                         <div class="form-group row">
                             <label for="password-confirm"
                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
@@ -126,7 +130,6 @@
                             </div>
                         </div>
                     </form>
-
                 </div>
                 <!-- /.box-body -->
             </div>

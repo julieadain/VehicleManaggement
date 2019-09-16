@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\organization;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class OrganizationController extends Controller
 {
@@ -14,8 +15,12 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-        $organizations = Organization::all();
-        return view('organization.view', compact('organizations'));
+        $organizations = Organization::where('status', '1')->get();
+        $requests = Organization::where('status', '10')->get();
+        $denials = Organization::where('status', '0')->get();
+//        dd($denials);
+//        dd($organizations->count());
+        return view('organization.view', compact('organizations', 'requests', 'denials'));
     }
 
     /**
@@ -39,6 +44,7 @@ class OrganizationController extends Controller
         //
     }
 
+
     /**
      * Display the specified resource.
      *
@@ -48,7 +54,8 @@ class OrganizationController extends Controller
     public function show(organization $organization)
     {
 //        dd("SINGLE VIEW OF ORGANIZATION");
-        return view("organization.detail");
+//        dd($organization->owner);
+        return view("organization.detail", compact('organization'));
 
     }
 
@@ -84,5 +91,60 @@ class OrganizationController extends Controller
     public function destroy(organization $organization)
     {
         //
+    }
+
+    public function approve($id)
+    {
+
+//        dd('Your org request has been approved & id is '. $id);
+
+        $organization = Organization::find($id);
+//        dd($organization->status);
+        $organization->status = '1';
+        $organization->save();
+
+        return redirect('/organization');
+    }
+
+    public function deny($id)
+    {
+
+//        dd('Your org request has been denied');
+        $organization = Organization::find($id);
+//        dd($organization->status);
+        $organization->status = '0';
+        $organization->save();
+        return redirect('/organization');
+    }
+
+    public function pending($id)
+    {
+
+//        dd('Your org request is pending');
+        $organization = Organization::find($id);
+//        dd($organization->status);
+        $organization->status = '10';
+        $organization->save();
+        return redirect('/organization');
+    }
+
+    public function details($id)
+    {
+
+        if ($id) {
+            $org = Organization::find($id);
+            session::forget('org_info');
+            Session::put('org_info', $org);
+//        dd( session('org_info'));
+        } else {
+            Session::forget('org_info');
+        }
+        return redirect('/home');
+
+    }
+    public function unset(){
+//        dd("Unset button clicked");
+        Session::forget("org_info");
+       return redirect("/home");
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\vehicle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use function Sodium\add;
 
 class VehicleController extends Controller
@@ -80,7 +81,7 @@ class VehicleController extends Controller
 
 
 
-
+//         $data['user_id']= Auth::id();
 
         Vehicle::create($data);
         return redirect('vehicle');
