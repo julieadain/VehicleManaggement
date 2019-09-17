@@ -37,7 +37,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-<!-- Google Font -->
+    <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -232,7 +232,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{url('')}}">
+                        <a href="{{url('/report')}}">
                             <i class="fa fa-file"></i> <span>Report</span>
                         </a>
                     </li>
@@ -250,8 +250,10 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
+
     @yield('content')
-    <!-- /.content -->
+
+    <!--    /.content -->
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
@@ -497,6 +499,9 @@
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 
 @stack('page-js')
+
+
+
 
 </body>
 </html>

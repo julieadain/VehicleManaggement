@@ -41,7 +41,9 @@ class HomeController extends Controller
         }
 
         if (auth()->user()->role == 1) {
-            return view('SuperDash');
+            $months = json_encode(['January', 'February', 'March', 'April', 'May', 'June', 'July']);
+            $data1 = json_encode([65, 59, 80, 81, 56, 55, 40]);
+            return view('SuperDash', compact('months', 'data1'));
         }
 
         return view('dashboard');
