@@ -28,9 +28,11 @@
     <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-daterangepicker/daterangepicker.css') }}">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -76,7 +78,7 @@
 
                                 <p>
                                     {{auth()->user()->name}} - {{auth()->user()->status}}
-                                    <small>Member since {{auth()->user()->created_at}}</small>
+                                    <small>Member since {{auth()->user()->created_at }}</small>
                                 </p>
                             </li>
 
@@ -125,7 +127,7 @@
             </ul>
             @endadmin
             <!-- search form only for Super Admin-->
-           @Super_admin
+            @Super_admin
             <form action="#" method="get" class="sidebar-form">
                 <div class="input-group">
                     <input type="text" name="q" class="form-control" placeholder="Search organization...">
@@ -139,113 +141,119 @@
             <!-- Sidebar user panel -->
             @endSuper_admin
             @if( session('org_info') )
-{{--            {{ dd(session('org_info')) }}--}}
-            <?php $org_info = session('org_info' )  ?>
+                {{--            {{ dd(session('org_info')) }}--}}
+                <?php $org_info = session('org_info')  ?>
 
-            {{--                {{dd($organization->owner->name)}}--}}
-            <div class="user-panel">
-                <div class="pull-left image">
-                    <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
-                </div>
-                <span class="pull-right-container">
+                {{--                {{dd($organization->owner->name)}}--}}
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                    </div>
+                    <span class="pull-right-container">
               <span class="label label-danger pull-right "><a href="{{ url('/unset') }}"> Close <span
                               class="fa fa-close"> </span></a></span>
             </span>
-                <div class="pull-left info">
-                    <p>{{ $org_info->org_name }}</p>
-                    <a href="#"><i class="fa fa-circle "></i> {{ $org_info->owner->name }}</a>
+                    <div class="pull-left info">
+                        <p>{{ $org_info->org_name }}</p>
+                        <a href="#"><i class="fa fa-circle "></i> {{ $org_info->owner->name }}</a>
+                    </div>
                 </div>
-            </div>
-            @endif
+        @endif
 
-            @if( auth()->user()->role == 2 || session('org_info'))
+        @if( auth()->user()->role == 2 || session('org_info'))
             <!-- sidebar menu: : style can be found in sidebar.less -->
-            <ul class="sidebar-menu" data-widget="tree">
-                <li class="responsive">
-                    <a href="{{url('/home')}}">
-                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="responsive">
+                        <a href="{{url('/home')}}">
+                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
 
-                    </a>
+                        </a>
 
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-car"></i>
-                        <span>Vehicles</span>
-                        <span class="pull-right-container">
+                    </li>
+                    <li class="treeview">
+                        <a href="{{ url('') }}">
+                            <i class="fa fa-car"></i>
+                            <span>Vehicles</span>
+                            <span class="pull-right-container">
               <span class="label label-primary pull-right">{{ "Total vehicle"}}</span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="{{ url('vehicle/create') }}"><i class="fa fa-circle-o"></i> Add vehicle</a></li>
-                        <li><a href="{{ url('vehicle/') }}"><i class="fa fa-circle-o"></i> Vehicle's details</a></li>
-                        <li><a href="{{ url('') }}"><i class="fa fa-circle-o"></i> Available vehicles</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-male"></i>
-                        <span>Drivers</span>
-                        <span class="pull-right-container">
+            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ url('vehicle/create') }}"><i class="fa fa-circle-o"></i> Add vehicle</a>
+                            </li>
+                            <li><a href="{{ url('vehicle/') }}"><i class="fa fa-circle-o"></i> Vehicle's details</a>
+                            </li>
+                            <li><a href="{{ url('') }}"><i class="fa fa-circle-o"></i> Available vehicles</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-male"></i>
+                            <span>Drivers</span>
+                            <span class="pull-right-container">
               <span class="label label-primary pull-right">{{ "Total  drivers"}}</span>
             </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="{{ url('driver/create') }}"><i class="fa fa-circle-o"></i> Add driver</a></li>
-                        <li><a href="{{ url('driver') }}"><i class="fa fa-circle-o"></i> Driver's details</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-edit"></i> <span>Clients</span>
-                        <span class="pull-right-container">
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ url('driver/create') }}"><i class="fa fa-circle-o"></i> Add driver</a></li>
+                            <li><a href="{{ url('') }}"><i class="fa fa-circle-o"></i> Driver's details</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-edit"></i> <span>Clients</span>
+                            <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="{{url('client/create')}}"><i class="fa fa-circle-o"></i> Register client</a></li>
-                        <li><a href="{{url('')}}"><i class="fa fa-circle-o"></i> <span>Active client</span>
-                                <span class="pull-right-container">
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{url('client/create')}}"><i class="fa fa-circle-o"></i> Register client</a>
+                            </li>
+                            <li><a href="{{url('')}}"><i class="fa fa-circle-o"></i> <span>Active client</span>
+                                    <span class="pull-right-container">
               <small class="label pull-right bg-blue-active">12</small>
                                 </span></a>
-                        </li>
-                        <li><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Client's history</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="{{url('')}}">
-                        <i class="fa fa-envelope"></i> <span>SMS</span>
-                        <span class="pull-right-container">
+                            </li>
+                            <li><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Client's history</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{url('')}}">
+                            <i class="fa fa-envelope"></i> <span>SMS</span>
+                            <span class="pull-right-container">
               <small class="label pull-right bg-green">New sms</small>
             </span>
-                    </a>
-                </li>
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="{{url('')}}">
-                        <i class="fa fa-th"></i> <span>Expense</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{url('')}}">
-                        <i class="fa fa-file"></i> <span>Report</span>
-                    </a>
-                </li>
-                <ul class="treeview-menu">
-                    <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-                    <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+                    <li>
+                        <a href="{{url('/expense')}}">
+                            <i class="fa fa-th"></i> <span>Expense</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('/report')}}">
+                            <i class="fa fa-file"></i> <span>Report</span>
+                        </a>
+                    </li>
+                    <ul class="treeview-menu">
+                        <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
+                        <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+                    </ul>
+                    </li>
                 </ul>
-                </li>
-            </ul>
         </section>
     @endif
-        <!-- /.sidebar -->
+    <!-- /.sidebar -->
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
+
     @yield('content')
-    <!-- /.content -->
+
+    <!--    /.content -->
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
@@ -489,5 +497,11 @@
 <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('dist/js/demo.js') }}"></script>
+
+@stack('page-js')
+
+
+
+
 </body>
 </html>

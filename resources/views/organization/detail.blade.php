@@ -6,7 +6,7 @@
             <div class="col-xs-12">
                 <div class="container box">
                     <div class="box-header">
-                        {{--                        {{ dd($organization->owner) }}--}}
+{{--                                                {{ dd($organization->owner) }}--}}
                         <h4 class="box-title">{{$organization->org_name}}
                             @if($organization->status == 1)
                                 <span class="label label-primary">Approved</span>
@@ -23,7 +23,7 @@
                                            href="{{ url('/approve/'. $organization->id) }}"> Approve <span
                                                     class="fa fa-check"> </span></a>
                                     </div>
-                                @elseif($organization->status !=10)
+                                @elseif($organization->status !=0)
                                     <div class="input-group-btn">
                                         <a class="btn btn-success text-bold"
                                            href="{{ url('/details/'. $organization->id) }}"> View details </a>

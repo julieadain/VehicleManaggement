@@ -28,6 +28,8 @@
                 <!-- form start -->
                 <form action="{{url('reservation')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                     @csrf
+
+
                     <div class="form-group">
                         <label for="inputBrand" class="col-sm-2 control-label">Start Date Time</label>
 
@@ -49,17 +51,7 @@
                             <input type="text" name="seat_capacity" class="form-control" id="inputBrand" placeholder="">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputAc" class="col-sm-2 control-label">Select Vehicle</label>
-                        <div class="col-sm-10">
-                            <select name="vehicle_id" class="form-control">
-                                @foreach ($reservation as $res )
-                                    <option value="{{$res->vehicle_id}}">{{$res->vehicle_id/*->vehicles*/->brand}}</option>
-                                    @endforeach
 
-                            </select>
-                        </div>
-                    </div>
                     <div class="form-group">
                         <label for="exampleInputAc" class="col-sm-2 control-label">Select</label>
                         <div class="col-sm-10">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\organization;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class OrganizationController extends Controller
@@ -15,9 +16,9 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-        $organizations = Organization::where('status', '1')->get();
-        $requests = Organization::where('status', '10')->get();
-        $denials = Organization::where('status', '0')->get();
+        $organizations = Organization::where("id","!=",Auth::user()->org_id)->where('status', '1')->get();
+        $requests = Organization::where('status', '0')->get();
+        $denials = Organization::where('status', '-1')->get();
 //        dd($denials);
 //        dd($organizations->count());
         return view('organization.view', compact('organizations', 'requests', 'denials'));
@@ -55,6 +56,7 @@ class OrganizationController extends Controller
     {
 //        dd("SINGLE VIEW OF ORGANIZATION");
 //        dd($organization->owner);
+//        dd($organization->id);
         return view("organization.detail", compact('organization'));
 
     }
@@ -112,7 +114,7 @@ class OrganizationController extends Controller
 //        dd('Your org request has been denied');
         $organization = Organization::find($id);
 //        dd($organization->status);
-        $organization->status = '0';
+        $organization->status = '-1';
         $organization->save();
         return redirect('/organization');
     }
@@ -123,14 +125,13 @@ class OrganizationController extends Controller
 //        dd('Your org request is pending');
         $organization = Organization::find($id);
 //        dd($organization->status);
-        $organization->status = '10';
+        $organization->status = '0';
         $organization->save();
         return redirect('/organization');
     }
 
     public function details($id)
     {
-
         if ($id) {
             $org = Organization::find($id);
             session::forget('org_info');

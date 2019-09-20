@@ -18,7 +18,7 @@ class CreateOrganizationsTable extends Migration
             $table->string('org_name',50);
             $table->string('address',100);
             $table->string('trade_license_copy',100);
-            $table->boolean('status')->default('10');
+            $table->boolean('status')->default('0');
             $table->timestamps();
         });
     }

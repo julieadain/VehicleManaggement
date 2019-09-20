@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Expense;
+use App\Purpose;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 
 class ExpenseController extends Controller
 {
@@ -14,7 +17,9 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        //
+        session::forget('exp');
+        Session::put('exp', '1');
+        return view("expense");
     }
 
     /**
@@ -30,18 +35,44 @@ class ExpenseController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:155',
+            'amount' => 'required',
+        ]);
+
+//        dd($request->title);
+
+       $purpose = Purpose::where('title', $request->title)->first();
+//        dd($purpose->id);
+        if (empty($purpose)){
+
+            $purpose = new Purpose();
+
+            $purpose->title = $request->title ;
+
+            $purpose->save();
+        }
+//        dd($purpose->id);
+
+        $expense = new Expense();
+
+        $expense->amount = $request->amount ;
+        $expense->purpose_id = $purpose->id ;
+
+        $expense->save();
+
+return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Expense  $expense
+     * @param \App\Expense $expense
      * @return \Illuminate\Http\Response
      */
     public function show(Expense $expense)
@@ -52,7 +83,7 @@ class ExpenseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Expense  $expense
+     * @param \App\Expense $expense
      * @return \Illuminate\Http\Response
      */
     public function edit(Expense $expense)
@@ -63,8 +94,8 @@ class ExpenseController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Expense  $expense
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Expense $expense
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Expense $expense)
@@ -75,11 +106,20 @@ class ExpenseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Expense  $expense
+     * @param \App\Expense $expense
      * @return \Illuminate\Http\Response
      */
     public function destroy(Expense $expense)
     {
         //
+    }
+
+    public function ajaxRequest()
+    {
+//        return "Test";
+
+        $data = Purpose::where('title', 'LIKE', '%' . request('keyword') . '%')->get();
+
+        return response()->json(['success' => $data]);
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
+use App\Driver;
 use App\Reservation;
 use App\Vehicle;
 use Illuminate\Http\Request;
@@ -26,9 +28,10 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        $data = Reservation::with('vehicles')->get();
-//        return $data;
-        return view('reservation.add')->with('reservation', $data );
+//        $data = Reservation::with('vehicles')->get();
+
+
+        return view('reservation.add');
     }
 
     /*
