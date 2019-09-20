@@ -627,7 +627,6 @@
 
     var months = JSON.parse('{!! $months !!}');
     var data1 = JSON.parse('{!! $data1 !!}');
-    var data2 = JSON.parse('{!! $data2 !!}');
 
     var salesChartData = {
         labels: months,
@@ -641,17 +640,8 @@
                 pointHighlightFill: '#fff',
                 pointHighlightStroke: 'rgb(220,220,220)',
                 data: data1
-            },
-            {
-                label: 'Expenses',
-                fillColor: 'rgb(222,130,123)',
-                strokeColor: 'rgb(222,123,184)',
-                pointColor: 'rgb(222,177,119)',
-                pointStrokeColor: '#d1689a',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: 'rgb(220,220,220)',
-                data: data2
             }
+
         ]
     };
 

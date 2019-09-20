@@ -23,7 +23,7 @@
                                            href="{{ url('/approve/'. $organization->id) }}"> Approve <span
                                                     class="fa fa-check"> </span></a>
                                     </div>
-                                @elseif($organization->status !=10)
+                                @elseif($organization->status !=0)
                                     <div class="input-group-btn">
                                         <a class="btn btn-success text-bold"
                                            href="{{ url('/details/'. $organization->id) }}"> View details </a>

@@ -30,9 +30,13 @@ class HomeController extends Controller
 
 //        dd(" Here's the home controller ");
 //        dd( auth()->user()->organization->org_name);
+//        dd( auth()->user()->organization->status);
+        $org_info = session('org_info');
+
+//        dd($org_info->status );
 
 
-        if (auth()->user()->organization->status == 10) {
+        if (auth()->user()->organization->status == 0) {
             return view('pending');
         }
 

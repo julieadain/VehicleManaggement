@@ -78,7 +78,7 @@
 
                                 <p>
                                     {{auth()->user()->name}} - {{auth()->user()->status}}
-                                    <small>Member since {{auth()->user()->created_at}}</small>
+                                    <small>Member since {{auth()->user()->created_at }}</small>
                                 </p>
                             </li>
 
