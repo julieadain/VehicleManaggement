@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Driver;
 use App\Rules\ValidMobile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Nullable;
 
 class DriverController extends Controller
@@ -44,9 +45,9 @@ class DriverController extends Controller
             'email'=> 'nullable|email|unique:drivers,email',
             'phone'=>['required', new ValidMobile()],
             'address'=>'required',
-            'dl_scan'=>'required',
-            'nid_scan'=>'required',
-            'photo'=>'required'
+            'dl_scan'=>'required|mimes:jpg,jpeg,png,gif,bmp',
+            'nid_scan'=>'required|mimes:jpg,jpeg,png,gif,bmp',
+            'photo'=>'required|mimes:jpg,jpeg,png,gif,bmp'
         ],[ "email.unique"=> "Given email address already taken"
             ]);
 
@@ -66,6 +67,9 @@ class DriverController extends Controller
             $request->file('nid_scan')->move(public_path('/upload'), $filename);
             $data['nid_scan']= $filename;
         }
+
+        $data['user_id']= Auth::id();
+        $data['org_id']= Auth::user()->org_id;
 
         Driver::create($data);
         return redirect('driver');

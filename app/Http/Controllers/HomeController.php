@@ -38,14 +38,17 @@ class HomeController extends Controller
         }
 
         if (session('org_info')) {
-            return view('dashboard');
+
+            $data= Client::all()->sortByDesc('id')->take('5');
+//            dd($data);
+
+        return view('dashboard')->with('clients',$data);
+//            return view('dashboard');
         }
 
         if (auth()->user()->role == 1) {
             return view('SuperDash');
         }
-        $data= Client::all()->sortByDesc('id')->take('5');
 
-        return view('dashboard')->with('clients',$data);
     }
 }

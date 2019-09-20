@@ -6,6 +6,7 @@ use App\client;
 use App\Organization;
 use App\Rules\ValidMobile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
@@ -47,8 +48,10 @@ class ClientController extends Controller
             'address' => 'required'
         ], ["email.unique" => "Given email address already taken"
         ]);
+        $data = $request->all();
+        $data['org_id']= Auth::user()->org_id;
 
-        Client::create($request->all());
+        Client::create($data);
         return redirect('home');
     }
 
