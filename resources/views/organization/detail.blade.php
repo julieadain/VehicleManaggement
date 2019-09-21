@@ -6,37 +6,32 @@
             <div class="col-xs-12">
                 <div class="container box">
                     <div class="box-header">
-                        {{--                        {{ dd($organization->owner) }}--}}
+                        {{-- {{ dd($organization->owner) }}--}}
                         <h4 class="box-title">{{$organization->org_name}}
                             @if($organization->status == 1)
+
                                 <span class="label label-primary">Approved</span>
                             @else
                                 <span class="label label-warning">Pending</span>
                             @endif
                         </h4>
                         <div class="box-tools">
-                            <div class="input-group input-group-sm" style="width: 250px;">
+                            <div class="input-group input-group-sm" style="width: 300px;">
 
                                 @if($organization->status != 1)
-                                    <div class="input-group-btn">
-                                        <a class="btn btn-primary text-bold"
-                                           href="{{ url('/approve/'. $organization->id) }}"> Approve <span
-                                                    class="fa fa-check"> </span></a>
+                                    <div class="input-group-btn" style="padding-right: 5px;">
+                                         <span class="label label-primary"><a class="btn btn-success text-bold" href="{{  url('/approve/'. $organization->id) }}"> Approve </a></span>
                                     </div>
                                 @elseif($organization->status !=0)
-                                    <div class="input-group-btn">
-                                        <a class="btn btn-success text-bold"
-                                           href="{{ url('/details/'. $organization->id) }}"> View details </a>
+                                    <div class="input-group-btn" style="padding-right: 5px;">
+                                        <span class="label label-primary"><a class="btn btn-success text-bold" href="{{ url('/details/'. $organization->id) }}"> View details </a></span>
                                     </div>
-                                    <div class="input-group-btn">
-                                        <a class="btn btn-warning text-bold"
-                                           href="{{ url('/pending/'. $organization->id) }}"> Pending </a>
+                                    <div class="input-group-btn" style="padding-right: 5px;">
+                                        <span class="label label-primary"><a class="btn btn-warning text-bold" href="{{ url('/pending/'. $organization->id)}}"> Pending </a></span>
                                     </div>
                                 @endif
-                                <div class="input-group-btn">
-                                    <a class="btn btn-danger text-bold"
-                                       href="{{ url('/deny/'. $organization->id) }}"> Deny <span
-                                                class="fa fa-close"> </span></a>
+                                <div class="input-group-btn" style="padding-right: 5px;">
+                                    <span class="label label-primary"><a class="btn btn-danger text-bold" href="{{ url('/deny/'. $organization->id) }}"> Deny </a></span>
                                 </div>
 
                             </div>

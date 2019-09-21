@@ -1,145 +1,258 @@
 @extends("layout.admin")
 
 @section('content')
-<div class="row">
-    <div class="col-md-12">
-        <div class="box">
-            <div class="box-header with-border">
-                <h3 class="box-title">Monthly Report</h3>
+    <style>
+        #suggestion {
+            padding: 0;
+            margin: 0;
+            float: left;
+            position: absolute;
+            border: 1px solid #dfdfdf;
+        }
 
-                <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                class="fa fa-minus"></i>
-                    </button>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-box-tool dropdown-toggle"
-                                data-toggle="dropdown">
-                            <i class="fa fa-wrench"></i></button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
+        #suggestion li:hover {
+            background: #cbddd8;
+            cursor: pointer;
+            border: 1px solid #6f72df;
+
+        }
+
+        #suggestion li {
+            padding: 5px 20px;
+            list-style-type: none;
+            border-bottom: 1px solid #dfdfdf;
+        }
+    </style>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Monthly Report</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
+                        </button>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-box-tool dropdown-toggle"
+                                    data-toggle="dropdown">
+                                <i class="fa fa-wrench"></i></button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </div>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                    class="fa fa-times"></i></button>
                     </div>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i
-                                class="fa fa-times"></i></button>
                 </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                <div class="row">
-                    <div class="col-md-8">
-                        <p class="text-center">
-                            <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
-                        </p>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-11">
+                            <p class="text-center">
+                                <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+                            </p>
 
-                        <div class="chart">
-                            <!-- Sales Chart Canvas -->
-                            <canvas id="salesChart" style="height: 180px;"></canvas>
+                            <div class="chart">
+                                <!-- Sales Chart Canvas -->
+                                <canvas id="salesChart" style="height: 180px;"></canvas>
+                            </div>
+                            <!-- /.chart-responsive -->
                         </div>
-                        <!-- /.chart-responsive -->
+                        <!-- /.col -->
                     </div>
-                    <!-- /.col -->
-                    <div class="col-md-4">
-                        <p class="text-center">
-                            <strong>Last few months income</strong>
-                        </p>
-
-                        <div class="progress-group">
-                            <span class="progress-text">Some info</span>
-                            <span class="progress-number"><b>31</b>/08</b>/2019</span>
-
-                            <div class="progress sm">
-                                <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <!-- /.progress-group -->
-                        <div class="progress-group">
-                            <span class="progress-text">Some info</span>
-                            <span class="progress-number"><b>31</b>/07</b>/2019</span>
-
-                            <div class="progress sm">
-                                <div class="progress-bar progress-bar-red" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <!-- /.progress-group -->
-                        <div class="progress-group">
-                            <span class="progress-text">Some info</span>
-                            <span class="progress-number"><b>30</b>/06</b>/2019</span>
-
-                            <div class="progress sm">
-                                <div class="progress-bar progress-bar-green" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <!-- /.progress-group -->
-                        <div class="progress-group">
-                            <span class="progress-text">Some info</span>
-                            <span class="progress-number"><b>31</b>/05</b>/2019</span>
-
-                            <div class="progress sm">
-                                <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <!-- /.progress-group -->
-                    </div>
-                    <!-- /.col -->
+                    <!-- /.row -->
                 </div>
-                <!-- /.row -->
-            </div>
-            <!-- ./box-body -->
-            <div class="box-footer">
-                <div class="row">
-                    <div class="col-sm-3 col-xs-6">
-                        <div class="description-block border-right">
+                <!-- ./box-body -->
+                <div class="box-footer">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="description-block border-right">
                                     <span class="description-percentage text-green"><i
                                                 class="fa fa-caret-up"></i> 0%</span>
-                            <h5 class="description-header">$0</h5>
-                            <span class="description-text">TOTAL REVENUE</span>
+                                <h5 class="description-header">$0</h5>
+                                <span class="description-text">TOTAL REVENUE</span>
+                            </div>
+                            <!-- /.description-block -->
                         </div>
-                        <!-- /.description-block -->
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-sm-3 col-xs-6">
-                        <div class="description-block border-right">
+                        <!-- /.col -->
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="description-block border-right">
                                         <span class="description-percentage text-yellow"><i
                                                     class="fa fa-caret-left"></i> 0%</span>
-                            <h5 class="description-header">$0</h5>
-                            <span class="description-text">TOTAL COST</span>
+                                <h5 class="description-header">$0</h5>
+                                <span class="description-text">TOTAL COST</span>
+                            </div>
+                            <!-- /.description-block -->
                         </div>
-                        <!-- /.description-block -->
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-sm-3 col-xs-6">
-                        <div class="description-block border-right">
+                        <!-- /.col -->
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="description-block border-right">
                                     <span class="description-percentage text-green"><i
                                                 class="fa fa-caret-up"></i> 0%</span>
-                            <h5 class="description-header">$0</h5>
-                            <span class="description-text">TOTAL PROFIT</span>
+                                <h5 class="description-header">$0</h5>
+                                <span class="description-text">TOTAL PROFIT</span>
+                            </div>
+                            <!-- /.description-block -->
                         </div>
-                        <!-- /.description-block -->
+                        <!-- /.col -->
                     </div>
-                    <!-- /.col -->
-                    <div class="col-sm-3 col-xs-6">
-                        <div class="description-block">
-                                    <span class="description-percentage text-red"><i
-                                                class="fa fa-caret-down"></i> 18%</span>
-                            <h5 class="description-header">1200</h5>
-                            <span class="description-text">GOAL COMPLETIONS</span>
-                        </div>
-                        <!-- /.description-block -->
-                    </div>
+                    <!-- /.row -->
                 </div>
-                <!-- /.row -->
+                <!-- /.box-footer -->
             </div>
-            <!-- /.box-footer -->
         </div>
-        <!-- /.box -->
+        <div class="col-md-5 pull-right">
+            <div class="container box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Add expense</h3>
+                </div>
+                <div class="offset-md-4 col-md-8">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li><h4>{{ $error }}</h4></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <form role="form" action="{{ url("expense") }}" method="post">
+                        @csrf
+                        <div class="box-body" style="width: 350px;">
+                            <div class="form-group">
+                                <label>Purpose</label><br/>
+                                <input class="form-control" id="txtKeyword" type="text" name="title"  autocomplete="off"
+                                       style="width: 100%;">
+                                <ul class="" id="suggestion"></ul>
+                            </div>
+                            <!-- /.form-group -->
+                            <div class="form-group">
+                                <label>Amounts</label>
+                                <input class="form-control" id="amount" type="number" name="amount"
+                                       style="width: 100%;">
+                            </div>
+                            <div class="form-group row mb-0">
+                                <div class="col-md-3 pull-right">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Save') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- /.form-group -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 pull-left">
+            <div class=" box">
+                <div class="box-header">
+                    <h3 class="box-title">Expense in this month</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Title</th>
+                            <th>Amount(Tk.)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        @foreach($expenses as $expense)
+                            <tr>
+{{--                                {{ dd($expense->purpose->title) }}--}}
+                                <td>{{$expense->created_at->format('d-m-y')}}</td>
+                                <td>{{$expense->purpose->title}}</td>
+                                <td>{{ $expense->amount}}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-6 pull-left">
+            <div class=" box">
+                <div class="box-header">
+                    <h3 class="box-title">Income from this month</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Amount(Tk.)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Trident</td>
+                            <td>Internet
+                                Explorer 4.0
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
     </div>
-    <!-- /.col -->
-</div>
+    <!-- /.row -->
+
 @endsection
+@push('page-js')
+
+    <script>
+        $(function ($) {
+                i = 0;
+                var sto;
+                $('#txtKeyword').on('keyup', function () {
+
+                    if (sto) clearTimeout(sto);
+                    $('#suggestion').html("");
+                    var text = $(this).val();
+                    if (text == "") return;
+
+                    sto = setTimeout(function () {
+                        $.ajax({
+                            url: '{{ url("/ajaxRequest") }}',
+                            data: {keyword: text},
+                            dataType: 'JSON',
+                            success: function (data) {
+                                $.each(data.success, function (i, v) {
+                                    $('#suggestion').append("<li class='form-control'>" + v.title + "</li>");
+                                });
+                            }
+                        });
+                    }, 350);
+                });
+
+                $('#suggestion').on('click', 'li', function () {
+                    // console.log("Li clicked");
+                    $('#txtKeyword').val($(this).html());
+                    $('#suggestion').html("");
+                });
+                $('#suggestion').html("");
+
+            }(jQuery)
+        );
+    </script>
+@endpush
 
 @push('page-js')
     <!-- ChartJS -->

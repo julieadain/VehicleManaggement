@@ -17,9 +17,10 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        session::forget('exp');
+
+     /*   session::forget('exp');
         Session::put('exp', '1');
-        return view("expense");
+        return view("expense");*/
     }
 
     /**

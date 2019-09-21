@@ -16,6 +16,7 @@ class OrganizationController extends Controller
      */
     public function index()
     {
+
         $organizations = Organization::where("id","!=",Auth::user()->org_id)->where('status', '1')->get();
         $requests = Organization::where('status', '0')->get();
         $denials = Organization::where('status', '-1')->get();

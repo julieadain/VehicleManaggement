@@ -26,6 +26,7 @@ Route::get("/details/{id}", "OrganizationController@details")->name('organizatio
 Route::get("/unset", "OrganizationController@unset")->name('organization.unset');
 Route::Resource("/manager", "ManagerController");
 Route::Resource("/expense", "ExpenseController");
+Route::Resource("/purpose", "PurposeController");
 Route::Resource("/report", "ReportController");
 Route::get("/ajaxRequest", "ExpenseController@ajaxRequest")->name('expense.ajaxRequest');
 Route::Resource("/client", "ClientController");

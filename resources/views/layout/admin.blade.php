@@ -32,9 +32,9 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="{{ 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'}}"></script>
+    <script src="{{'https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js'}}"></script>
+    <script src="{{'https://oss.maxcdn.com/respond/1.4.2/respond.min.js'}}"></script>
     <![endif]-->
 
     <!-- Google Font -->
@@ -203,16 +203,18 @@
                         <a href="#">
                             <i class="fa fa-edit"></i> <span>Clients</span>
                             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="{{url('client/create')}}"><i class="fa fa-circle-o"></i> Register client</a>
                             </li>
-                            <li><a href="{{url('')}}"><i class="fa fa-circle-o"></i> <span>Active client</span>
+                            <li>
+                                <a href="{{url('')}}"><i class="fa fa-circle-o"></i> <span>Active client</span>
                                     <span class="pull-right-container">
-              <small class="label pull-right bg-blue-active">12</small>
-                                </span></a>
+                                    <small class="label pull-right bg-blue-active">12</small>
+                                    </span>
+                                </a>
                             </li>
                             <li><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Client's history</a></li>
                         </ul>
@@ -221,14 +223,8 @@
                         <a href="{{url('')}}">
                             <i class="fa fa-envelope"></i> <span>SMS</span>
                             <span class="pull-right-container">
-              <small class="label pull-right bg-green">New sms</small>
-            </span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="{{url('/expense')}}">
-                            <i class="fa fa-th"></i> <span>Expense</span>
+                            <small class="label pull-right bg-green">New sms</small>
+                            </span>
                         </a>
                     </li>
                     <li>
@@ -499,8 +495,6 @@
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 
 @stack('page-js')
-
-
 
 
 </body>
