@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Expense;
 use App\Purpose;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Session;
 
 
@@ -18,9 +20,9 @@ class ExpenseController extends Controller
     public function index()
     {
 
-     /*   session::forget('exp');
-        Session::put('exp', '1');
-        return view("expense");*/
+        /*   session::forget('exp');
+           Session::put('exp', '1');
+           return view("expense");*/
     }
 
     /**
@@ -44,30 +46,27 @@ class ExpenseController extends Controller
         $request->validate([
             'title' => 'required|max:155',
             'amount' => 'required',
+            'date' => "required"
         ]);
 
-//        dd($request->title);
-
-       $purpose = Purpose::where('title', $request->title)->first();
-//        dd($purpose->id);
-        if (empty($purpose)){
+        $purpose = Purpose::where('title', $request->title)->first();
+        if (empty($purpose)) {
 
             $purpose = new Purpose();
-
-            $purpose->title = $request->title ;
+            $purpose->title = $request->title;
 
             $purpose->save();
         }
 //        dd($purpose->id);
-
         $expense = new Expense();
 
-        $expense->amount = $request->amount ;
-        $expense->purpose_id = $purpose->id ;
+        $expense->amount = $request->amount;
+        $expense->purpose_id = $purpose->id;
+        $expense->created_at = date('Y-m-d', strtotime($request->date));
 
         $expense->save();
 
-return redirect()->back();
+        return redirect()->back();
     }
 
     /**

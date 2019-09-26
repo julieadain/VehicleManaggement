@@ -125,6 +125,17 @@
                         @csrf
                         <div class="box-body" style="width: 350px;">
                             <div class="form-group">
+                                <label>Date</label>
+
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" id="datepicker" name="date" autocomplete="off">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                            <div class="form-group">
                                 <label>Purpose</label><br/>
                                 <input class="form-control" id="txtKeyword" type="text" name="title"  autocomplete="off"
                                        style="width: 100%;">
@@ -251,6 +262,10 @@
 
             }(jQuery)
         );
+        //Date picker
+        $('#datepicker').datepicker({
+            autoclose: true
+        })
     </script>
 @endpush
 
