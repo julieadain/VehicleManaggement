@@ -7,11 +7,11 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="{{  asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="{{ asset('bower_components/Ionicons/css/ionicons.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('bower_components/Ionicons/css/ionicons.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -32,9 +32,8 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="{{'https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js'}}"></script>
+    <script src="{{'https://oss.maxcdn.com/respond/1.4.2/respond.min.js'}}"></script>
     <![endif]-->
 
     <!-- Google Font -->
@@ -89,7 +88,7 @@
                                 </div>
 
                                 <div class="pull-right">
-                                    <form action="{{"logout"}}" role="presentation" id="logout-form" method="post">
+                                    <form action="{{route('logout')}}" role="presentation" id="logout-form" method="post">
                                         @csrf
                                         <a href="#" class="btn btn-default btn-flat"
                                            onclick="document.getElementById('logout-form').submit()">Log out</a>
@@ -119,43 +118,37 @@
                 @endSuper_admin
 
                 @admin
-                <li class="">
+                <li class="" >
                     <a href="{{url('/manager')}}">
                         <i class="fa fa-dashboard"></i> <span>Manage user</span>
                     </a>
                 </li>
-            </ul>
-            @endadmin
-            <!-- search form only for Super Admin-->
-            @Super_admin
 
-            <!-- /.search form -->
-            <!-- Sidebar user panel -->
-            @endSuper_admin
-            @if( session('org_info') )
-                {{--            {{ dd(session('org_info')) }}--}}
-                <?php $org_info = session('org_info')  ?>
+                @endadmin
 
-                {{--                {{dd($organization->owner->name)}}--}}
-                <div class="user-panel">
-                    <div class="pull-left image">
-                        <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
-                    </div>
-                    <span class="pull-right-container">
+                @if( session('org_info') )
+                    {{--            {{ dd(session('org_info')) }}--}}
+                    <?php $org_info = session('org_info')  ?>
+
+                    {{--                {{dd($organization->owner->name)}}--}}
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                        </div>
+                        <span class="pull-right-container">
               <span class="label label-danger pull-right "><a href="{{ url('/unset') }}"> Close <span
                               class="fa fa-close"> </span></a></span>
             </span>
-                    <div class="pull-left info">
-                        <p>{{ $org_info->org_name }}</p>
-                        <a href="#"><i class="fa fa-circle "></i> {{ $org_info->owner->name }}</a>
+                        <div class="pull-left info">
+                            <p>{{ $org_info->org_name }}</p>
+                            <a href="#"><i class="fa fa-circle "></i> {{ $org_info->owner->name }}</a>
+                        </div>
                     </div>
-                </div>
-        @endif
+            @endif
 
-        @if( auth()->user()->role == 2 || session('org_info'))
-            <!-- sidebar menu: : style can be found in sidebar.less -->
-                <ul class="sidebar-menu" data-widget="tree">
-                    <li class="responsive">
+            @if( auth()->user()->role == 2 || session('org_info'))
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <li class="">
                         <a href="{{url('/home')}}">
                             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
 
@@ -187,7 +180,8 @@
             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="{{ url('driver/create') }}"><i class="fa fa-circle-o"></i> Add driver</a></li>
+                            <li><a href="{{ url('driver/create') }}"><i class="fa fa-circle-o"></i> Add driver</a>
+                            </li>
                             <li><a href="{{ url('') }}"><i class="fa fa-circle-o"></i> Driver's details</a></li>
                         </ul>
                     </li>
@@ -199,7 +193,8 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="{{url('client/create')}}"><i class="fa fa-circle-o"></i> Register client</a>
+                            <li><a href="{{url('client/create')}}"><i class="fa fa-circle-o"></i> Register
+                                    client</a>
                             </li>
                             <li>
                                 <a href="{{url('')}}"><i class="fa fa-circle-o"></i> <span>Active client</span>
@@ -224,7 +219,7 @@
                             <i class="fa fa-file"></i> <span>Report</span>
                         </a>
                     </li>
-                </ul>
+            </ul>
         </section>
     @endif
     <!-- /.sidebar -->
