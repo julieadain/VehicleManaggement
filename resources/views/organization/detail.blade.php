@@ -9,7 +9,6 @@
                         {{-- {{ dd($organization->owner) }}--}}
                         <h4 class="box-title">{{$organization->org_name}}
                             @if($organization->status == 1)
-
                                 <span class="label label-primary">Approved</span>
                             @else
                                 <span class="label label-warning">Pending</span>

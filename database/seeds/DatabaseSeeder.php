@@ -1,5 +1,6 @@
 <?php
 
+use App\Purpose;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,6 +12,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        /*$this->call(PurposesTableSeeder::class);
+        $this->call(ExpensesTableSeeder::class);*/
+
+//        factory(Purpose::class, 100)->create();
+        factory(\App\Vehicle::class, 50)->create();
+         factory(\App\Client::class, 50)->create();
+       factory(\App\Driver::class,50)->create();
     }
 }

@@ -33,4 +33,5 @@ Route::Resource("/client", "ClientController");
 Route::Resource("/reservation", "ReservationController");
 Auth::routes();
 
+Route::resource("client", "ClientController");
 //Route::get('/home', 'HomeController@index')->name('home');

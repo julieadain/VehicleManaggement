@@ -57,6 +57,7 @@ class OrganizationController extends Controller
     {
 //        dd("SINGLE VIEW OF ORGANIZATION");
 //        dd($organization->owner);
+//        dd($organization->id);
         return view("organization.detail", compact('organization'));
 
     }

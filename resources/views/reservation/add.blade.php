@@ -4,12 +4,9 @@
     <section class="content-header">
         <h1>
             Add Reservation
-            {{--            <small>Preview</small>--}}
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Forms</a></li>
-            <li class="active">Add Client</li>
+            <li><a href="{{url('home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
         </ol>
     </section>
 
@@ -17,9 +14,8 @@
     <section class="content">
         <div class="col-md-12">
             <!-- Horizontal Form -->
-            <div class="box box-info">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Add Client information</h3>
+            <div class=" container box box-info">
+                <div class="box-header">
                 </div>
                 @if ($errors->any())
                     @foreach ($errors->all() as $error)
@@ -32,6 +28,8 @@
                 <!-- form start -->
                 <form action="{{url('reservation')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                     @csrf
+
+
                     <div class="form-group">
                         <label for="inputBrand" class="col-sm-2 control-label">Start Date Time</label>
 
@@ -50,24 +48,25 @@
                         <label for="inputBrand" class="col-sm-2 control-label">Seat Capacity</label>
 
                         <div class="col-sm-10">
-                            <input type="number" name="seat_capacity" class="form-control" id="inputBrand" placeholder="">
+                            <input type="text" name="seat_capacity" class="form-control" id="inputBrand" placeholder="">
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label for="exampleInputAc" class="col-sm-2 control-label">Select</label>
                         <div class="col-sm-10">
                             <select name="ac" class="form-control">
-                                <option>AC</option>
-                                <option>Non-AC</option>
+                                <option value="1">AC</option>
+                                <option value="2">Non-AC</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputAc" class="col-sm-2 control-label">Share</label>
+                        <label for="exampleInputAc" class="col-sm-2 control-label">Ownership</label>
                         <div class="col-sm-10">
                             <select name="share" class="form-control">
-                                <option>Yes</option>
-                                <option>No</option>
+                                <option value="1">Yes</option>
+                                <option value="2">No</option>
                             </select>
                         </div>
                     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
 use App\Organization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -41,7 +42,12 @@ class HomeController extends Controller
         }
 
         if (session('org_info')) {
-            return view('dashboard');
+
+            $data= Client::all()->sortByDesc('id')->take('5');
+//            dd($data);
+
+        return view('dashboard')->with('clients',$data);
+//            return view('dashboard');
         }
 
         if (auth()->user()->role == 1) {
@@ -50,6 +56,5 @@ class HomeController extends Controller
             return view('SuperDash', compact('months', 'data1'));
         }
 
-        return view('dashboard');
     }
 }

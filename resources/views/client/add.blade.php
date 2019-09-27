@@ -3,30 +3,27 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Add Vehicle
-{{--            <small>Preview</small>--}}
+            Add Client
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Forms</a></li>
-            <li class="active">Add Client</li>
-        </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
         <div class="col-md-12">
             <!-- Horizontal Form -->
-            <div class="box box-info">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Add Client information</h3>
+            <div class=" container box box-info">
+                <div class="box-header">
+
                 </div>
                 @if ($errors->any())
-                    @foreach ($errors->all() as $error)
-                        <p>{{$error}}</p>
-                @endforeach
-
-            @endif
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
             <!-- /.box-header -->
                 <!-- form start -->
@@ -50,21 +47,24 @@
                         <label for="exampleInputColor" class="col-sm-2 control-label">Phone</label>
 
                         <div class="col-sm-10">
-                            <input type="number" name="phone" class="form-control" id="exampleInputColor" placeholder="">
+                            <input type="number" name="phone" class="form-control" id="exampleInputColor"
+                                   placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputRegnum" class="col-sm-2 control-label">Address</label>
 
                         <div class="col-sm-10">
-                            <input type="text" name="address" class="form-control" id="exampleInputRegNum" placeholder="">
+                            <input type="text" name="address" class="form-control" id="exampleInputRegNum"
+                                   placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputbtn" class="col-sm-2 control-label"></label>
 
                         <div class="col-md-1">
-                            <button type="submit" class="form-control btn btn-primary" id="exampleInputbtn">Save</button>
+                            <button type="submit" class="form-control btn btn-primary" id="exampleInputbtn">Save
+                            </button>
                         </div>
                     </div>
                     <br/>
