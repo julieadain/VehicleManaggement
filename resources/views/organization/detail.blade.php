@@ -7,7 +7,7 @@
                 <div class="container box">
                     <div class="box-header">
 {{--                                                {{ dd($organization->owner) }}--}}
-                        <h4 class="box-title">{{$organization->org_name}}
+                        <h4 class="box-title">{{$organization->org_name ?? ''}}
                             @if($organization->status == 1)
                                 <span class="label label-primary">Approved</span>
                             @else
@@ -58,19 +58,19 @@
                             </tr>
                             <tr>
                                 <th scope="row">Owner</th>
-                                <td>{{ $organization->owner->name }}</td>
+                                <td>{{ $organization->owner->name ?? '' }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">Email</th>
-                                <td colspan="2">{{ $organization->owner->email }}d</td>
+                                <td colspan="2">{{ $organization->owner->email ?? '' }}d</td>
                             </tr>
                             <tr>
                                 <th scope="row">Phone</th>
-                                <td colspan="2">{{ $organization->owner->phone }}</td>
+                                <td colspan="2">{{ $organization->owner->phone ?? ''}}</td>
                             </tr>
                             <tr>
                                 <th scope="row">Trade license</th>
-                                <td colspan="2"><a href="#">{{ $organization->trade_license_copy }}</a></td>
+                                <td colspan="2"><a href="#">{{ $organization->trade_license_copy ?? ''}}</a></td>
                             </tr>
                             </tbody>
                         </table>

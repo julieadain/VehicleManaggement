@@ -91,7 +91,7 @@
 
                         <h3 class="box-title">Reservation</h3>
                         <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-default pull-right"><a href="{{url('reservation/create')}}"> <i class="fa fa-plus"></i></a> </button>
+                            <button type="button" class="btn btn-default pull-right"><a href="{{url('client')}}"> <i class="fa fa-plus"></i></a> </button>
                         </div>
 
                     </div>

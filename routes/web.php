@@ -29,6 +29,12 @@ Route::Resource("/expense", "ExpenseController");
 Route::Resource("/report", "ReportController");
 Route::get("/ajaxRequest", "ExpenseController@ajaxRequest")->name('expense.ajaxRequest');
 Route::Resource("/client", "ClientController");
+Route::get("client/{clientId}/reservation/create","ClientController@reservation");
+Route::post("client/{clientId}/reservation/create","ClientController@res");
+Route::get("client/{clientId}/reservation","ClientController@reservationIndex");
+
+
+
 Route::Resource("/reservation", "ReservationController");
 Auth::routes();
 

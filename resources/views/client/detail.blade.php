@@ -42,6 +42,8 @@
                             <td>{{$client->phone}}</td>
                             <td>{{$client->address}}</td>
                             <td>
+                                <a title="rdgrdg" href="{{url("client/$client->id/reservation/create")}}" class="btn btn-primary" style="float: left; margin-right: 2px"> Order now </a>
+
                                 <a title="rdgrdg" href="{{url("client/$client->id/edit")}}" class="btn btn-primary" style="float: left; margin-right: 2px"><i class="fa fa-pencil"></i></a>
                                 <form action="{{ route('client.destroy', $client->id) }}" method="post" style="float: left; margin-right: 2px">
                                     @csrf

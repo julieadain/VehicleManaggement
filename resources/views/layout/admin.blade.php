@@ -68,7 +68,7 @@
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{{ asset('dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
-                            <span class="hidden-xs">{{auth()->user()->name}}</span>
+                            <span class="hidden-xs">{{auth()->user()->name ?? ''}}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
@@ -77,8 +77,8 @@
                                      alt="User Image">
 
                                 <p>
-                                    {{auth()->user()->name}} - {{auth()->user()->status}}
-                                    <small>Member since {{auth()->user()->created_at }}</small>
+                                    {{auth()->user()->name ?? ''}} - {{auth()->user()->status ?? ''}}
+                                    <small>Member since {{auth()->user()->created_at ?? ''}}</small>
                                 </p>
                             </li>
 
@@ -155,7 +155,7 @@
             </span>
                     <div class="pull-left info">
                         <p>{{ $org_info->org_name }}</p>
-                        <a href="#"><i class="fa fa-circle "></i> {{ $org_info->owner->name }}</a>
+                        <a href="#"><i class="fa fa-circle "></i> {{ $org_info->owner->name ?? '' }}</a>
                     </div>
                 </div>
         @endif
@@ -215,6 +215,23 @@
                                 </span></a>
                             </li>
                             <li><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Client's history</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-edit"></i> <span>Reservation</span>
+                            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Reservation List </a>
+                            </li>
+                            <li><a href="{{url('')}}"><i class="fa fa-circle-o"></i> <span>Running Reservation</span>
+                                    <span class="pull-right-container">
+              <small class="label pull-right bg-blue-active">12</small>
+                                </span></a>
+                            </li>
                         </ul>
                     </li>
                     <li>

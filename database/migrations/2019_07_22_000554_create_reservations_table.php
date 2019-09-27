@@ -25,15 +25,15 @@ class CreateReservationsTable extends Migration
             $table->string('start_meter_reading',50);
             $table->string('end_meter_reading',50);
             $table->string('total_payable',50);
-            $table->bigInteger('user_id')->unsigned();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->bigInteger('org_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('org_id')->nullable();
             $table->foreign('org_id')->references('id')->on('organizations')->onDelete('cascade');
-            $table->bigInteger('vehicle_id')->unsigned();
+            $table->unsignedBigInteger('vehicle_id')->nullable();
             $table->foreign('vehicle_id')->references('id')->on('vehicles')->onDelete('cascade');
-            $table->bigInteger('driver_id')->unsigned();
+            $table->unsignedBigInteger('driver_id')->nullable();
             $table->foreign('driver_id')->references('id')->on('drivers')->onDelete('cascade');
-            $table->bigInteger('client_id')->unsigned();
+            $table->unsignedBigInteger('client_id')->nullable();
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
 
 

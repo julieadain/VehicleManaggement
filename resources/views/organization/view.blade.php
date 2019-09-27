@@ -69,8 +69,8 @@
                         @foreach($requests as $request)
                             <tr class="lovelyrow" onclick="location.href='organization/{{$request->id}}'">
                                 <td>{{$request->org_name}}</td>
-                                <td>{{ $request->owner ? $request->owner->name : null }}</td>
-                                <td>{{ $request->owner ? $request->owner->email : null }}</td>
+                                <td>{{ $request->owner ? $request->owner->name : null ?? ''}}</td>
+                                <td>{{ $request->owner ? $request->owner->email : null  ?? ''}}</td>
                             </tr>
                         @endforeach
                     </table>
