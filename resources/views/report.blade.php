@@ -304,10 +304,10 @@
                 },
                 {
                     label: 'Expenses',
-                    fillColor: 'rgb(222,130,123)',
-                    strokeColor: 'rgb(222,123,184)',
+                    fillColor: 'rgb(190,222,217)',
+                    strokeColor: 'rgb(185,204,222)',
                     pointColor: 'rgb(222,177,119)',
-                    pointStrokeColor: '#d1689a',
+                    pointStrokeColor: '#d192cf',
                     pointHighlightFill: '#fff',
                     pointHighlightStroke: 'rgb(220,220,220)',
                     data: data2
