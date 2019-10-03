@@ -28,11 +28,8 @@
                             <th scope="col">Seat Capacity </th>
                             <th scope="col">AC/Non-AC</th>
                             <th scope="col">Ownership</th>
-{{--                            <th scope="col">Pickup Address</th>--}}
-{{--                            <th scope="col">Location</th>--}}
-{{--                            <th scope="col">Start Meter reading</th>--}}
-{{--                            <th scope="col"> End Meter reading</th>--}}
-{{--                            <th scope="col">Total Payable</th>--}}
+                            <th scope="col">Option</th>
+
 
                         </tr>
                         </thead>
@@ -48,27 +45,22 @@
                                 <td>{{$reservation->seat_capacity}}</td>
                                 <td>
                                 @if ($reservation->ac == 1)
-                                    {{"yes"}}
+                                    {{"Yes"}}
                                 @else
-                                    {{"no"}}
+                                    {{"No"}}
 
                                 @endif
 
                                 </td>
                                 <td>
                                 @if ($reservation->share == 1)
-                                    {{"yes"}}
+                                    {{"Yes"}}
                                 @else
-                                    {{"no"}}
+                                    {{"No"}}
 
                                 @endif
 
                                 </td>
-{{--                                <td>{{$reservation->pickup_address}}</td>--}}
-{{--                                <td>{{$reservation->location}}</td>--}}
-{{--                                <td>{{$reservation->start_meter_reading}}</td>--}}
-{{--                                <td>{{$reservation->end_meter_reading}}</td>--}}
-{{--                                <td>{{$reservation->total_payable}}</td>--}}
 
                                 <td>
                                     <a title="rdgrdg" href="{{url("reservation/$reservation->id")}}" class="btn btn-primary" style="float: left; margin-right: 2px">View</a>

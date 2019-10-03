@@ -23,6 +23,10 @@
                         <caption></caption>
                         <thead>
 
+                        <tr>
+                            <th scope="row">Client Name:</th>
+                            <td>{{ $reservationList->clients-> name }}</td>
+                        </tr>
 
                         <tr>
                             <th scope="row">Start Date Time:</th>
@@ -38,7 +42,7 @@
                             <td>{{ $reservationList->seat_capacity}}</td>
                         </tr>
                         <tr>
-                            <th scope="row">AC:</th>
+                            <th scope="row">AC/Non AC:</th>
                             <td>@if ($reservationList->ac == 1)
                                     {{'AC'}}
                                 @else

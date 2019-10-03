@@ -24,6 +24,11 @@
                         <caption></caption>
                         <thead>
 
+                        <tr>
+                            <th scope="row">Client Name:</th>
+                            <td>{{ $reservation->clients-> name }}</td>
+                        </tr>
+
 
                         <tr>
                             <th scope="row">Start Date Time:</th>
@@ -92,14 +97,6 @@
 {{--                            {{dd($driver)}}--}}
 
                             <td><a href={{url('/driverAssign/'. $driver->id)}}> {{$driver->name}} </a></td>
-
-
-
-
-
-
-
-
 
 
 {{--                            <li class="treeview">--}}

@@ -50,7 +50,7 @@
                                 @if ($vehicle->ac == 1)
                                     {{"AC"}}
                                     @else
-                                {{"Non-ac"}}
+                                {{"Non AC"}}
                                     @endif
                             </td>
 
