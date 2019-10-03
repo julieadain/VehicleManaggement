@@ -1,13 +1,35 @@
 @extends("layout.admin")
 
 @section('content')
+    <style>
+        #suggestion {
+            padding: 0;
+            margin: 0;
+            float: left;
+            position: absolute;
+            border: 1px solid #dfdfdf;
+        }
+
+        #suggestion li:hover {
+            background: #cbddd8;
+            cursor: pointer;
+            border: 1px solid #6f72df;
+
+        }
+
+        #suggestion li {
+            padding: 5px 20px;
+            list-style-type: none;
+            border-bottom: 1px solid #dfdfdf;
+        }
+    </style>
     <div class="container box">
         <div class="box-header with-border">
             <h3 class="box-title">Add expense</h3>
         </div>
-        <div class=" box-body">
+        <div class="col-md-6">
             <div class="container">
-                <div class="col-md-6">
+                <div class="offset-md-3 col-md-6">
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -22,18 +44,18 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label>Purpose</label><br/>
-                                <input class="form-control" id="txtKeyword" type="text" name="title" autocapitalize="words"  style="width: 100%;">
-                                <ul id="suggestion" style="width: 100%;"></ul>
+                                <input class="form-control" id="txtKeyword" type="text" name="title" autocomplete="off"
+                                       style="width: 100%;">
+                                <ul class="" id="suggestion"></ul>
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group">
                                 <label>Amounts</label>
                                 <input class="form-control" id="amount" type="number" name="amount"
                                        style="width: 100%;">
-
                             </div>
                             <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
+                                <div class="col-md-3 pull-right">
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Save') }}
                                     </button>
@@ -58,9 +80,8 @@
                 $('#txtKeyword').on('keyup', function () {
 
                     if (sto) clearTimeout(sto);
-
+                    $('#suggestion').html("");
                     var text = $(this).val();
-
                     if (text == "") return;
 
                     sto = setTimeout(function () {
@@ -70,15 +91,15 @@
                             dataType: 'JSON',
                             success: function (data) {
                                 $.each(data.success, function (i, v) {
-                                    $('#suggestion').append("<li class='form-control' >" + v.title + "</li>");
+                                    $('#suggestion').append("<li class='form-control'>" + v.title + "</li>");
                                 });
                             }
                         });
-                    }, 500);
+                    }, 350);
                 });
 
                 $('#suggestion').on('click', 'li', function () {
-                   // console.log("Li clicked");
+                    // console.log("Li clicked");
                     $('#txtKeyword').val($(this).html());
                     $('#suggestion').html("");
                 });

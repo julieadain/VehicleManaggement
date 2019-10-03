@@ -7,7 +7,7 @@
             Dashboard
             <small>Control panel</small>
         </h1>
-{{--        <h1>{{$user->organization['id']}}</h1>--}}
+        {{--        <h1>{{$user->organization['id']}}</h1>--}}
     </section>
 
     <!-- Main content -->
@@ -21,14 +21,14 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>50</h3>
 
                         <p>Vehicles</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-android-car"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{url("vehicle")}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -36,14 +36,14 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3>153</h3>
+                        <h3>50</h3>
 
                         <p>Drivers</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{url("driver")}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -90,8 +90,13 @@
                         <i class="ion ion-clipboard"></i>
 
                         <h3 class="box-title">Reservation</h3>
+
+                        <button class="btn btn-default" ><a href="{{url("currentReservation")}}"> <i class="fa fa-file" ></i> </a></button>
+
+
                         <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-default pull-right"><a href="{{url('client')}}"> <i class="fa fa-plus"></i></a> </button>
+                            <button type="button" class="btn btn-default pull-right"><a href="{{url('client')}}"> <i
+                                            class="fa fa-plus"></i></a></button>
                         </div>
 
                     </div>
@@ -99,51 +104,35 @@
                     <div class="box-body">
                         <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
                         <ul class="todo-list">
-                            <li>
-                                <span class="text">1st Booking details</span>
-                                <!-- Emphasis label -->
-                                <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-                                <!-- General tools such as edit or delete-->
-                                <div class="tools">
-                                    <i class="fa fa-trash-o"></i>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="text">2nd Booking details</span>
-                                <!-- Emphasis label -->
-                                <small class="label label-danger"><i class="fa fa-clock-o"></i> 1 hour</small>
-                                <!-- General tools such as edit or delete-->
-                                <div class="tools">
-                                    <i class="fa fa-trash-o"></i>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="text">3rd Booking details</span>
-                                <!-- Emphasis label -->
-                                <small class="label label-danger"><i class="fa fa-clock-o"></i> 2.5 hours</small>
-                                <!-- General tools such as edit or delete-->
-                                <div class="tools">
-                                    <i class="fa fa-trash-o"></i>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="text">4th Booking details</span>
-                                <!-- Emphasis label -->
-                                <small class="label label-danger"><i class="fa fa-clock-o"></i> 4 hours</small>
-                                <!-- General tools such as edit or delete-->
-                                <div class="tools">
-                                    <i class="fa fa-trash-o"></i>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="text">5th Booking details</span>
-                                <!-- Emphasis label -->
-                                <small class="label label-danger"><i class="fa fa-clock-o"></i> 3 days</small>
-                                <!-- General tools such as edit or delete-->
-                                <div class="tools">
-                                    <i class="fa fa-trash-o"></i>
-                                </div>
-                            </li>
+
+
+                            @foreach($reservations as $reservation)
+
+                                <li>
+
+
+                                   <b> <a href="{{url("$reservation->id/currentReservation")}}"> {{$reservation->clients-> name}}&nbsp; </a></b>
+
+
+
+                                    {{date("dM y,", strtotime( $reservation->start_date_time))}}
+                                            at{{date(" h:ia", strtotime( $reservation->start_date_time))}}&nbsp;
+                                            to {{date("dM y,", strtotime( $reservation->end_date_time))}}
+                                            at{{date(" h:ia", strtotime( $reservation->start_date_time))}}&nbsp;&nbsp;
+
+
+
+                                        <small class="location" > <i class="fa fa-map-marker"> </i>{{ $reservation-> location }} </small>
+
+
+                                    <!-- General tools such as edit or delete-->
+                                    <div class="tools">
+                                        <i class="fa fa-trash-o"></i>
+                                    </div>
+                                </li>
+                            @endforeach
+
+
                         </ul>
                     </div>
                     <!-- /.box-body -->
@@ -155,7 +144,8 @@
 
                         <h3 class="box-title">Recent Clients</h3>
                         <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-default pull-right"><a href="{{url('client/create')}}"> <i class="fa fa-plus"> </i> </a> </button>
+                            <button type="button" class="btn btn-default pull-right"><a href="{{url('client/create')}}">
+                                    <i class="fa fa-plus"> </i> </a></button>
                         </div>
 
                     </div>
@@ -163,15 +153,16 @@
                         <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
                         <ul class="todo-list">
                             @foreach($clients as $client)
-                            <li>
-                                    <td><a href="{{url('client')}}"> <span class="text">{{$client->name}} </span> </a></td>
-{{--                                <span class="text">A client</span>--}}
+                                <li>
+                                    <td><a href="{{url('client')}}"> <span class="text">{{$client->name}} </span> </a>
+                                    </td>
+                                {{--                                <span class="text">A client</span>--}}
                                 <!-- Emphasis label -->
-{{--                                <small class="label label-danger"><i class="fa fa-clock-o"> </i> </small>--}}
-                                <div class="tools">
-                                    <i class="fa fa-trash-o"></i>
-                                </div>
-                            </li>
+                                    {{--                                <small class="label label-danger"><i class="fa fa-clock-o"> </i> </small>--}}
+                                    <div class="tools">
+                                        <i class="fa fa-trash-o"></i>
+                                    </div>
+                                </li>
                             @endforeach
                         </ul>
                     </div>

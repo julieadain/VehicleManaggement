@@ -28,10 +28,8 @@
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Phone</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">Driver Photo</th>
-                        <th scope="col">DL Scan Copy</th>
-                        <th scope="col">NID Scan Copy</th>
+                        <th scope="col">Option</th>
+
 
                     </tr>
                     </thead>
@@ -42,19 +40,11 @@
                             <td>{{$driver->name}}</td>
                             <td>{{$driver->email}}</td>
                             <td>{{$driver->phone}}</td>
-                            <td>{{$driver->address}}</td>
-                            <td>
-                                <img src="{{asset('upload').'/'.$driver->photo}}" alt="image" height="50px" width="50px">
-                            </td>
 
                             <td>
-                                <img src="{{asset('upload').'/'.$driver->dl_scan}}" alt="image" height="50px" width="50px">
-                            </td>
-                            <td>
-                                <img src="{{asset('upload').'/'.$driver->nid_scan}}" alt="image" height="50px" width="50px">
-                            </td>
-                            <td>
-                            <a title="rdgrdg" href="{{url("driver/$driver->id/edit")}}" class="btn btn-primary" style="float: left; margin-right: 2px"><i class="fa fa-pencil"></i></a>
+                                <a title="rdgrdg" href="{{url("driver/$driver->id")}}" class="btn btn-primary" style="float: left; margin-right: 2px">View</a>
+
+                                <a title="rdgrdg" href="{{url("driver/$driver->id/edit")}}" class="btn btn-primary" style="float: left; margin-right: 2px"><i class="fa fa-pencil"></i></a>
                                 <form action="{{url("driver/$driver->id") }}" method="post" style="float: left; margin-right: 2px">
                                     @csrf
                                     @method('DELETE')

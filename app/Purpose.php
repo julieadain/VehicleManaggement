@@ -10,7 +10,7 @@ class Purpose extends Model
         'title'
     ];
 
-    public function expense(){
+    public function expenses(){
 
         return $this->hasMany( Expense::class, 'purpose_id');
     }

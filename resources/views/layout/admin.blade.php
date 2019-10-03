@@ -7,11 +7,11 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="{{  asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="{{ asset('bower_components/Ionicons/css/ionicons.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('bower_components/Ionicons/css/ionicons.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -32,9 +32,8 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="{{'https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js'}}"></script>
+    <script src="{{'https://oss.maxcdn.com/respond/1.4.2/respond.min.js'}}"></script>
     <![endif]-->
 
     <!-- Google Font -->
@@ -68,7 +67,7 @@
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{{ asset('dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
-                            <span class="hidden-xs">{{auth()->user()->name ?? ''}}</span>
+                            <span class="hidden-xs">{{auth()->user()->name}}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
@@ -77,8 +76,8 @@
                                      alt="User Image">
 
                                 <p>
-                                    {{auth()->user()->name ?? ''}} - {{auth()->user()->status ?? ''}}
-                                    <small>Member since {{auth()->user()->created_at ?? ''}}</small>
+                                    {{auth()->user()->name}} - {{auth()->user()->status}}
+                                    <small>Member since {{auth()->user()->created_at }}</small>
                                 </p>
                             </li>
 
@@ -89,7 +88,7 @@
                                 </div>
 
                                 <div class="pull-right">
-                                    <form action="{{"logout"}}" role="presentation" id="logout-form" method="post">
+                                    <form action="{{route('logout')}}" role="presentation" id="logout-form" method="post">
                                         @csrf
                                         <a href="#" class="btn btn-default btn-flat"
                                            onclick="document.getElementById('logout-form').submit()">Log out</a>
@@ -119,51 +118,37 @@
                 @endSuper_admin
 
                 @admin
-                <li class="">
+                <li class="" >
                     <a href="{{url('/manager')}}">
                         <i class="fa fa-dashboard"></i> <span>Manage user</span>
                     </a>
                 </li>
-            </ul>
-            @endadmin
-            <!-- search form only for Super Admin-->
-            @Super_admin
-            <form action="#" method="get" class="sidebar-form">
-                <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Search organization...">
-                    <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-                </div>
-            </form>
-            <!-- /.search form -->
-            <!-- Sidebar user panel -->
-            @endSuper_admin
-            @if( session('org_info') )
-                {{--            {{ dd(session('org_info')) }}--}}
-                <?php $org_info = session('org_info')  ?>
 
-                {{--                {{dd($organization->owner->name)}}--}}
-                <div class="user-panel">
-                    <div class="pull-left image">
-                        <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
-                    </div>
-                    <span class="pull-right-container">
+                @endadmin
+
+                @if( session('org_info') )
+                    {{--            {{ dd(session('org_info')) }}--}}
+                    <?php $org_info = session('org_info')  ?>
+
+                    {{--                {{dd($organization->owner->name)}}--}}
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                        </div>
+                        <span class="pull-right-container">
               <span class="label label-danger pull-right "><a href="{{ url('/unset') }}"> Close <span
                               class="fa fa-close"> </span></a></span>
             </span>
-                    <div class="pull-left info">
-                        <p>{{ $org_info->org_name }}</p>
-                        <a href="#"><i class="fa fa-circle "></i> {{ $org_info->owner->name ?? '' }}</a>
+                        <div class="pull-left info">
+                            <p>{{ $org_info->org_name }}</p>
+                            <a href="#"><i class="fa fa-circle "></i> {{ $org_info->owner->name }}</a>
+                        </div>
                     </div>
-                </div>
-        @endif
+            @endif
 
-        @if( auth()->user()->role == 2 || session('org_info'))
-            <!-- sidebar menu: : style can be found in sidebar.less -->
-                <ul class="sidebar-menu" data-widget="tree">
-                    <li class="responsive">
+            @if( auth()->user()->role == 2 || session('org_info'))
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <li class="">
                         <a href="{{url('/home')}}">
                             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
 
@@ -181,9 +166,9 @@
                         <ul class="treeview-menu">
                             <li><a href="{{ url('vehicle/create') }}"><i class="fa fa-circle-o"></i> Add vehicle</a>
                             </li>
-                            <li><a href="{{ url('vehicle/') }}"><i class="fa fa-circle-o"></i> Vehicle's details</a>
+                            <li><a href="{{ url('vehicle/') }}"><i class="fa fa-circle-o"></i> Vehicle's List</a>
                             </li>
-                            <li><a href="{{ url('') }}"><i class="fa fa-circle-o"></i> Available vehicles</a></li>
+{{--                            <li><a href="{{ url('') }}"><i class="fa fa-circle-o"></i> Available vehicles</a></li>--}}
                         </ul>
                     </li>
                     <li class="treeview">
@@ -195,42 +180,50 @@
             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="{{ url('driver/create') }}"><i class="fa fa-circle-o"></i> Add driver</a></li>
-                            <li><a href="{{ url('') }}"><i class="fa fa-circle-o"></i> Driver's details</a></li>
+                            <li><a href="{{ url('driver/create') }}"><i class="fa fa-circle-o"></i> Add driver</a>
+                            </li>
+                            <li><a href="{{ url('driver') }}"><i class="fa fa-circle-o"></i> Driver's List</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-edit"></i> <span>Clients</span>
                             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="{{url('client/create')}}"><i class="fa fa-circle-o"></i> Register client</a>
                             </li>
-                            <li><a href="{{url('')}}"><i class="fa fa-circle-o"></i> <span>Active client</span>
+                            <li><a href="{{url('client')}}"><i class="fa fa-circle-o"></i>Client List</a>
+                            </li>
+                            <li>
+                                <a href="{{url('activeClient')}}"><i class="fa fa-circle-o"></i> <span>Active Client</span>
                                     <span class="pull-right-container">
-              <small class="label pull-right bg-blue-active">12</small>
-                                </span></a>
+                                    <small class="label pull-right bg-blue-active">12</small>
+                                    </span>
+                                </a>
                             </li>
                             <li><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Client's history</a></li>
                         </ul>
                     </li>
+
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-edit"></i> <span>Reservation</span>
                             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Reservation List </a>
+                            <li><a href="{{url("reservation")}}"><i class="fa fa-circle-o"></i> Reservation </a>
                             </li>
-                            <li><a href="{{url('')}}"><i class="fa fa-circle-o"></i> <span>Running Reservation</span>
+                            <li>
+                                <a href="{{url("currentReservation")}}"><i class="fa fa-circle-o"></i> <span>Current Reservation</span>
                                     <span class="pull-right-container">
-              <small class="label pull-right bg-blue-active">12</small>
-                                </span></a>
+                                    <small class="label pull-right bg-blue-active">12</small>
+                                    </span>
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -238,14 +231,8 @@
                         <a href="{{url('')}}">
                             <i class="fa fa-envelope"></i> <span>SMS</span>
                             <span class="pull-right-container">
-              <small class="label pull-right bg-green">New sms</small>
-            </span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="{{url('/expense')}}">
-                            <i class="fa fa-th"></i> <span>Expense</span>
+                            <small class="label pull-right bg-green">New sms</small>
+                            </span>
                         </a>
                     </li>
                     <li>
@@ -253,12 +240,7 @@
                             <i class="fa fa-file"></i> <span>Report</span>
                         </a>
                     </li>
-                    <ul class="treeview-menu">
-                        <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-                        <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
-                    </ul>
-                    </li>
-                </ul>
+            </ul>
         </section>
     @endif
     <!-- /.sidebar -->
@@ -516,8 +498,6 @@
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 
 @stack('page-js')
-
-
 
 
 </body>

@@ -25,6 +25,15 @@ class ClientController extends Controller
             ->with('organizations',$organization);
     }
 
+    public function activeClient(){
+
+        $activeClient = Client::where('status','1')->get() ;
+
+//        dd($activeClient);
+
+        return view('client.active-Client', compact('activeClient'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -64,7 +73,7 @@ class ClientController extends Controller
      */
     public function show(client $client)
     {
-        //
+
     }
 
     /**

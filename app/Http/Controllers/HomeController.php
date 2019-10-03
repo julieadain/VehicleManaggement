@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Client;
 use App\Organization;
+use App\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -28,7 +29,6 @@ class HomeController extends Controller
     public function index()
     {
 
-
 //        dd(" Here's the home controller ");
 //        dd( auth()->user()->organization->org_name);
 //        dd( auth()->user()->organization->status);
@@ -43,11 +43,17 @@ class HomeController extends Controller
 
         if (session('org_info')) {
 
-            $data= Client::all()->sortByDesc('id')->take('5');
-//            dd($data);
+            $data = Client::all()->sortByDesc('id')->take('5');
+            $reservations = Reservation::where('status', '1')
 
-        return view('dashboard')->with('clients',$data);
-//            return view('dashboard');
+                                                ->orderBy('id', 'desc')
+                                                ->limit(5)
+                                                ->get();
+
+
+            return view('dashboard')
+                ->with('clients', $data)
+                ->with('reservations', $reservations);
         }
 
         if (auth()->user()->role == 1) {

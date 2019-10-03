@@ -95,7 +95,7 @@ class VehicleController extends Controller
      */
     public function show(vehicle $vehicle)
     {
-        //
+        return view("vehicle.single-list", compact('vehicle'));
     }
 
     /**
@@ -198,6 +198,8 @@ class VehicleController extends Controller
     }
 
     public function available(){
+        $vehicles = Vehicle::with('');
+
         dd("This is display of available vehicle");
     }
 }

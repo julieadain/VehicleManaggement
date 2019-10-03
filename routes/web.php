@@ -18,6 +18,10 @@ Route::get('/', function () {
 Route::Resource("/home", "HomeController");
 Route::Resource("/vehicle", "VehicleController");
 Route::Resource("/driver", "DriverController");
+Route::Resource("/reservation", "ReservationController");
+
+
+
 Route::Resource("/organization", "OrganizationController");
 Route::get("/approve/{id}", "OrganizationController@approve")->name('organization.approve');
 Route::get("/deny/{id}", "OrganizationController@deny")->name('organization.deny');
@@ -26,16 +30,28 @@ Route::get("/details/{id}", "OrganizationController@details")->name('organizatio
 Route::get("/unset", "OrganizationController@unset")->name('organization.unset');
 Route::Resource("/manager", "ManagerController");
 Route::Resource("/expense", "ExpenseController");
+Route::Resource("/purpose", "PurposeController");
 Route::Resource("/report", "ReportController");
 Route::get("/ajaxRequest", "ExpenseController@ajaxRequest")->name('expense.ajaxRequest');
 Route::Resource("/client", "ClientController");
+
+
 Route::get("client/{clientId}/reservation/create","ClientController@reservation");
 Route::post("client/{clientId}/reservation/create","ClientController@res");
 Route::get("client/{clientId}/reservation","ClientController@reservationIndex");
 
 
 
-Route::Resource("/reservation", "ReservationController");
+Route::get("/vehicleAssign/{id}", "ReservationController@vehicleAssign")->name('reservation.vehicleAssign');
+Route::get("/driverAssign/{id}", "ReservationController@driverAssign")->name('reservation.driverAssign');
+Route::get("/currentReservation", "ReservationController@currentRes")->name('reservation.currentReservation');
+Route::get("/activeClient", "ClientController@activeClient")->name('client.activeClient');
+
+Route::get("{reservation}/currentReservation", "ReservationController@currentReservationShow");
+
+
+
+
 Auth::routes();
 
 Route::resource("client", "ClientController");

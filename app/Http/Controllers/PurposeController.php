@@ -14,7 +14,10 @@ class PurposeController extends Controller
      */
     public function index()
     {
-        //
+        /*$purpose = Purpose::with('expense')->find(1);
+                   return $purpose;
+                dd( $purpose->expense[1]->amount);*/
+
     }
 
     /**

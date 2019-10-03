@@ -28,14 +28,10 @@
                         <th scope="col">Brand</th>
                         <th scope="col">Model</th>
                         <th scope="col">Color</th>
-                        <th scope="col">Registration Number</th>
-                        <th scope="col">Registration Date</th>
+
                         <th scope="col">Seat Capacity</th>
                         <th scope="col">AC/Non-AC</th>
-                        <th scope="col">Registration Scan copy</th>
-                        <th scope="col">Photo</th>
-                        <th scope="col">Insurance Scan Copy</th>
-                        <th scope="col">Route Permit  Scan Copy</th>
+
                         <th scope="col">Owner</th>
                         <th scope="col">Status</th>
                         <th scope="col">option</th>
@@ -49,8 +45,6 @@
                             <td>{{$vehicle->brand}}</td>
                             <td>{{$vehicle->model}}</td>
                             <td>{{$vehicle->color}}</td>
-                            <td>{{$vehicle->reg_number}}</td>
-                            <td>{{$vehicle->reg_date}}</td>
                             <td>{{$vehicle->seat_capacity}}</td>
                             <td>
                                 @if ($vehicle->ac == 1)
@@ -59,37 +53,26 @@
                                 {{"Non-ac"}}
                                     @endif
                             </td>
-                            <td>
-                                <img src="{{asset('upload').'/'.$vehicle->reg_scan_copy}}" alt="image" height="50px" width="50px">
-                            </td>
 
                             <td>
-                                <img src="{{asset('upload').'/'.$vehicle->photo}}" alt="image" height="50px" width="50px">
-                            </td>
-                            <td>
-                                <img src="{{asset('upload').'/'.$vehicle->insurance_scan_copy}}" alt="image" height="50px" width="50px">
-                            </td>
-                            <td>
-                                <img src="{{asset('upload').'/'.$vehicle->roadPermit_scan_copy}}" alt="image" height="50px" width="50px">
-                            </td>
-                            <td>
                                 @if( $vehicle->ownership_status == 1)
-                                    {{"yes"}}
+                                    {{"Yes"}}
                                     @else
-                                    {{"no"}}
+                                    {{"No"}}
                                    @endif
 
                             </td>
                             <td>
                                @if ($vehicle->status== 1)
-                                   {{"yes"}}
+                                   {{"Yes"}}
                                    @else
-                                   {{"no"}}
+                                   {{"No"}}
 
                                @endif
 
                             <td>
-                                <a title="rdgrdg" href="{{url("vehicle/$vehicle->id/edit")}}" class="btn btn-primary" style="float: left; margin-right: 2px"><i class="fa fa-pencil"></i></a>
+                                <a title="" href="{{url("vehicle/$vehicle->id")}}" class="btn btn-primary" style="float: left; margin-right: 2px"><i>View</i></a>
+                                <a title="" href="{{url("vehicle/$vehicle->id/edit")}}" class="btn btn-primary" style="float: left; margin-right: 2px"><i class="fa fa-pencil"></i></a>
                                 <form action="{{url("vehicle/$vehicle->id") }}" method="post" style="float: left; margin-right: 2px">
                                     @csrf
                                     @method('DELETE')
