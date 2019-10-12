@@ -162,12 +162,20 @@
                     <div class="box-body">
                         <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
                         <ul class="todo-list">
+
+{{--                                {{dd($clients) }}--}}
                             @foreach($clients as $client)
                             <li>
                                     <td><a href="{{url('client')}}"> <span class="text">{{$client->name}} </span> </a></td>
 {{--                                <span class="text">A client</span>--}}
                                 <!-- Emphasis label -->
-{{--                                <small class="label label-danger"><i class="fa fa-clock-o"> </i> </small>--}}
+                                <?php
+                                    $date1 = new DateTime($client->created_at);
+                                    $date2 = new DateTime(now());
+                                    $interval = $date1->diff($date2);
+                                ?>
+
+                                <small class="label label-primary"><i class="fa fa-clock-o">{{ ('  ' .$interval->format('%a')).'  '. 'Days ago' }} </i> </small>
                                 <div class="tools">
                                     <i class="fa fa-trash-o"></i>
                                 </div>

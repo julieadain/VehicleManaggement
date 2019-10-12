@@ -6,7 +6,7 @@
             <div class="col-xs-12">
                 <div class="container box">
                     <div class="box-header">
-                        {{-- {{ dd($organization->owner) }}--}}
+{{--                         {{ dd($organization->owner) }}--}}
                         <h4 class="box-title">{{$organization->org_name}}
                             @if($organization->status == 1)
                                 <span class="label label-primary">Approved</span>

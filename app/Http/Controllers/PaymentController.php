@@ -14,7 +14,9 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        $payment= Payment::all();
+
+        return view('payment-list');
     }
 
     /**
@@ -24,7 +26,7 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        //
+        return view("invoice");
     }
 
     /**
@@ -35,7 +37,7 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -81,5 +83,9 @@ class PaymentController extends Controller
     public function destroy(Payment $payment)
     {
         //
+    }
+    public function invoicePrint()
+    {
+        return view("invoice-print");
     }
 }

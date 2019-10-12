@@ -31,7 +31,8 @@ Route::Resource("/report", "ReportController");
 Route::get("/ajaxRequest", "ExpenseController@ajaxRequest")->name('expense.ajaxRequest');
 Route::Resource("/client", "ClientController");
 Route::Resource("/reservation", "ReservationController");
+Route::Resource("/payment", "PaymentController");
+Route::get("/invoicePrint", "PaymentController@invoicePrint")->name('payment.invoicePrint');
 Auth::routes();
 
 Route::resource("client", "ClientController");
-//Route::get('/home', 'HomeController@index')->name('home');

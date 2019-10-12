@@ -219,6 +219,11 @@
                             <i class="fa fa-file"></i> <span>Report</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{url('/payment')}}">
+                            <i class="fa fa-file"></i> <span>Payment</span>
+                        </a>
+                    </li>
             </ul>
         </section>
     @endif

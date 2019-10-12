@@ -16,12 +16,12 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-
+//        dd(session('org_info'));
         $organizations = Organization::where("id","!=",Auth::user()->org_id)->where('status', '1')->get();
         $requests = Organization::where('status', '0')->get();
         $denials = Organization::where('status', '-1')->get();
 //        dd($denials);
-//        dd($organizations->count());
+//        dd($organizations->users()->id);
         return view('organization.view', compact('organizations', 'requests', 'denials'));
     }
 
