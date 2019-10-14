@@ -35,7 +35,33 @@
     <script src="{{'https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js'}}"></script>
     <script src="{{'https://oss.maxcdn.com/respond/1.4.2/respond.min.js'}}"></script>
     <![endif]-->
+    {{--<style>
+        .btn-file {
+            display: block;
+            height: 20px;
+            overflow: hidden;
+            position: relative;
+            vertical-align: middle;
+            width: 120px;
+        }
 
+
+        .btn-file > input {
+            cursor: pointer;
+            direction: ltr;
+            font-size: 23px;
+            margin: 0;
+            opacity: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform: translate(-300px, 0px) scale(4);
+        }
+
+        input[type="file"] {
+            display: block;
+        }
+    </style>--}}
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -74,7 +100,6 @@
                             <li class="user-header">
                                 <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle"
                                      alt="User Image">
-
                                 <p>
                                     {{auth()->user()->name}} - {{auth()->user()->status}}
                                     <small>Member since {{auth()->user()->created_at }}</small>
@@ -84,11 +109,17 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Upload photo</a>
+                                    <span class="btn default btn-file">
+                                        <span class="fileinput-new">
+                                           <span class="fa fa-upload"></span>
+                                         </span>
+                                    <input type="file" class="textbox wp95 fl fileupload fileInput" name="files" id="fileupload" style="border: 1px solid black">
+                                    </span>
                                 </div>
 
                                 <div class="pull-right">
-                                    <form action="{{route('logout')}}" role="presentation" id="logout-form" method="post">
+                                    <form action="{{route('logout')}}" role="presentation" id="logout-form"
+                                          method="post">
                                         @csrf
                                         <a href="#" class="btn btn-default btn-flat"
                                            onclick="document.getElementById('logout-form').submit()">Log out</a>
@@ -118,7 +149,7 @@
                 @endSuper_admin
 
                 @admin
-                <li class="" >
+                <li class="">
                     <a href="{{url('/manager')}}">
                         <i class="fa fa-dashboard"></i> <span>Manage user</span>
                     </a>
@@ -166,9 +197,9 @@
                         <ul class="treeview-menu">
                             <li><a href="{{ url('vehicle/create') }}"><i class="fa fa-circle-o"></i> Add vehicle</a>
                             </li>
-                            <li><a href="{{ url('vehicle/') }}"><i class="fa fa-circle-o"></i> Vehicle's details</a>
+                            <li><a href="{{ url('vehicle/') }}"><i class="fa fa-circle-o"></i> Vehicle's List</a>
                             </li>
-                            <li><a href="{{ url('') }}"><i class="fa fa-circle-o"></i> Available vehicles</a></li>
+                            {{--                            <li><a href="{{ url('') }}"><i class="fa fa-circle-o"></i> Available vehicles</a></li>--}}
                         </ul>
                     </li>
                     <li class="treeview">
@@ -182,7 +213,7 @@
                         <ul class="treeview-menu">
                             <li><a href="{{ url('driver/create') }}"><i class="fa fa-circle-o"></i> Add driver</a>
                             </li>
-                            <li><a href="{{ url('') }}"><i class="fa fa-circle-o"></i> Driver's details</a></li>
+                            <li><a href="{{ url('driver') }}"><i class="fa fa-circle-o"></i> Driver's List</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -193,17 +224,39 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="{{url('client/create')}}"><i class="fa fa-circle-o"></i> Register
-                                    client</a>
+                            <li><a href="{{url('client/create')}}"><i class="fa fa-circle-o"></i> Register client</a>
+                            </li>
+                            <li><a href="{{url('client')}}"><i class="fa fa-circle-o"></i>Client List</a>
                             </li>
                             <li>
-                                <a href="{{url('')}}"><i class="fa fa-circle-o"></i> <span>Active client</span>
+                                <a href="{{url('activeClient')}}"><i class="fa fa-circle-o"></i>
+                                    <span>Active Client</span>
                                     <span class="pull-right-container">
                                     <small class="label pull-right bg-blue-active">12</small>
                                     </span>
                                 </a>
                             </li>
                             <li><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Client's history</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-edit"></i> <span>Reservation</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{url("reservation")}}"><i class="fa fa-circle-o"></i> Reservation </a>
+                            </li>
+                            <li>
+                                <a href="{{url("currentReservation")}}"><i class="fa fa-circle-o"></i> <span>Current Reservation</span>
+                                    <span class="pull-right-container">
+                                    <small class="label pull-right bg-blue-active">12</small>
+                                    </span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>

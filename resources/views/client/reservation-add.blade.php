@@ -17,16 +17,21 @@
             <div class=" container box box-info">
                 <div class="box-header">
                 </div>
-                @if ($errors->any())
-                    @foreach ($errors->all() as $error)
-                        <p>{{$error}}</p>
-                @endforeach
 
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
             @endif
 
             <!-- /.box-header -->
                 <!-- form start -->
-                <form action="{{url('reservation')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <form action="{{url("client/$clientId/reservation/create")}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                     @csrf
 
 
@@ -88,14 +93,14 @@
                         <label for="inputBrand" class="col-sm-2 control-label">Start Meter reading</label>
 
                         <div class="col-sm-10">
-                            <input type="number" name="start_meter_reading" class="form-control" id="inputBrand" placeholder="">
+                            <input type="text" name="start_meter_reading" class="form-control" id="inputBrand" placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputBrand" class="col-sm-2 control-label">End Meter Reading</label>
 
                         <div class="col-sm-10">
-                            <input type="number" name="end_meter_reading" class="form-control" id="inputBrand" placeholder="">
+                            <input type="text" name="end_meter_reading" class="form-control" id="inputBrand" placeholder="">
                         </div>
                     </div>
                     <div class="form-group">

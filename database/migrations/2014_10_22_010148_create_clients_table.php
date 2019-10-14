@@ -19,6 +19,7 @@ class CreateClientsTable extends Migration
             $table->string('phone',50);
             $table->string('email',50);
             $table->string('address',100);
+            $table->boolean('status')->default(0);
             $table->bigInteger('org_id')->unsigned();
             $table->foreign('org_id')->references('id')->on('organizations')->onDelete('cascade');
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\client;
 use App\Organization;
+use App\Reservation;
 use App\Rules\ValidMobile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,6 +23,15 @@ class ClientController extends Controller
         return view('client.detail')
             ->with('clients', $data)
             ->with('organizations',$organization);
+    }
+
+    public function activeClient(){
+
+        $activeClient = Client::where('status','1')->get() ;
+
+//        dd($activeClient);
+
+        return view('client.active-Client', compact('activeClient'));
     }
 
     /**
@@ -63,7 +73,7 @@ class ClientController extends Controller
      */
     public function show(client $client)
     {
-        //
+
     }
 
     /**
@@ -113,5 +123,64 @@ class ClientController extends Controller
     {
         $client->delete();
         return redirect('client');
+    }
+
+    public function reservation($clientId){
+
+        return view('client.reservation-add')->with('clientId', $clientId);
+
+    }
+
+    /**
+     * @param Request $request
+     * @param ClientId $clientId
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function res(Request $request, $clientId){
+//        $data =$request->all();
+//        $data['client_id']= $clientId;
+//        $data['user_id']=Auth::id();
+//        $data['org_id']= Auth::user()->org_id;
+//
+//
+//
+//        Reservation::create($data);
+//        return redirect()->back();
+
+        $this->validate( $request,[
+            'start_date_time'=> 'required',
+            'end_date_time'=> 'required',
+            'seat_capacity'=> 'required',
+            'ac'=> 'required',
+            'share'=> 'required',
+            'pickup_address'=> 'required',
+            'location'=> 'required',
+            'start_meter_reading'=> 'required',
+            'end_meter_reading'=> 'required',
+            'total_payable'=> 'required'
+
+        ]);
+
+        $data = $request->all();
+
+        $data['client_id']= $clientId;
+        $data['user_id']=Auth::id();
+        $data['org_id']= Auth::user()->id;
+
+
+
+
+//        Reservation::create($data);
+//        return redirect()->back();
+
+        Reservation::create($data);
+        return redirect("client/$clientId/reservation");
+    }
+
+    public  function reservationIndex( ){
+        $data = Reservation::all();
+
+        return view('client.reservation-list')->with('reservationList', $data);
     }
 }

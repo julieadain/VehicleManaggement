@@ -14,10 +14,9 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        $payment= Payment::all();
-
-        return view('payment-list');
+        return view("paymentRequest");
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -26,6 +25,7 @@ class PaymentController extends Controller
      */
     public function create()
     {
+
         return view("invoice");
     }
 
@@ -87,5 +87,10 @@ class PaymentController extends Controller
     public function invoicePrint()
     {
         return view("invoice-print");
+    }
+    public function paymentRequest(){
+
+        return view("invoice");
+
     }
 }
