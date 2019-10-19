@@ -21,7 +21,7 @@
 
                 <table class="table">
                     <caption></caption>
-                    <thead>
+                    <tbody>
 
 
                     <tr>
@@ -95,7 +95,7 @@
                             <img src="{{asset('upload').'/'.$vehicle->roadPermit_scan_copy}}" alt="image" style="width: 20rem;">
                         </td>
                     </tr>
-                    </thead>
+                    </tbody>
                 </table>
             </div>
         </div>

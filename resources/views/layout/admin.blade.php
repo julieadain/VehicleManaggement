@@ -216,12 +216,16 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="{{url("reservation")}}"><i class="fa fa-circle-o"></i> Reservation </a>
+                            <li>
+                                <a href="{{url("reservation")}}"><i class="fa fa-circle-o"></i> Pending Reservation </a>
+                                <span class="pull-right-container">
+                                    <small class="label pull-right bg-blue-active">{{ \App\Reservation::whereStatus(0)->count() }}</small>
+                                    </span>
                             </li>
                             <li>
-                                <a href="{{url("currentReservation")}}"><i class="fa fa-circle-o"></i> <span>Current Reservation</span>
+                                <a href="{{url("currentReservation")}}"><i class="fa fa-circle-o"></i> <span>Running Reservation</span>
                                     <span class="pull-right-container">
-                                    <small class="label pull-right bg-blue-active">12</small>
+                                    <small class="label pull-right bg-blue-active">{{ \App\Reservation::whereStatus(1)->count() }}</small>
                                     </span>
                                 </a>
                             </li>

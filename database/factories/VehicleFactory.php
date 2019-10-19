@@ -19,7 +19,7 @@ $factory->define(\App\Vehicle::class, function (Faker $faker) {
         'roadPermit_scan_copy' => \Illuminate\Support\Str::random(50),
         'photo' => \Illuminate\Support\Str::random(50),
         'status'=> $faker->numberBetween(0,1),
-        'user_id'=> 1,
+        'user_id'=> $faker->numberBetween(1,10),
         'org_id'=>1,
 
     ];

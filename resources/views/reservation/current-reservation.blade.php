@@ -4,11 +4,10 @@
 @section('content')
     <section class="content-header">
         <h3>
-            Current Reservation
+            Running Reservation
         </h3>
 
     </section>
-
     <!-- Main content -->
     <section class="content">
         <div class="col-md-12">
@@ -29,9 +28,6 @@
                             <th scope="col">Seat Capacity </th>
                             <th scope="col">AC/Non-AC</th>
                             <th scope="col">Ownership</th>
-
-                            <th scope="col">Vehicle</th>
-                            <th scope="col">Driver</th>
                             <th scope="col">Option</th>
 
 
@@ -50,10 +46,12 @@
 
                             <tr>
                                 <td>{{$reservation->clients-> name}}</td>
-                                <td>{{$reservation->start_date_time}}</td>
+                                <td>{{date("dM y,", strtotime( $reservation->start_date_time))}}
+                                    at{{date(" h:ia", strtotime( $reservation->start_date_time))}}</td>
 
 
-                                <td>{{$reservation->end_date_time}}</td>
+                                <td>{{date("dM y,", strtotime( $reservation->end_date_time))}}
+                                    at{{date(" h:ia", strtotime( $reservation->end_date_time))}}</td>
                                 <td>{{$reservation->seat_capacity}}</td>
                                 <td>
                                 @if ($reservation->ac == 1)
@@ -74,8 +72,7 @@
 
                                 </td>
 
-                                <td>{{$reservation->vehicles->reg_number}}</td>
-                                <td>{{$reservation->clients->name}}</td>
+
 
 
 
@@ -87,8 +84,9 @@
 
                                 <td>
                                     <a title="rdgrdg" href="{{url("$reservation->id/currentReservation")}}" class="btn btn-primary" style="float: left; margin-right: 2px">View</a>
-                                    <a title="rdgrdg" href="{{url("reservation/$reservation->id/edit")}}" class="btn btn-primary" style="float: left; margin-right: 2px"><i class="fa fa-pencil"></i></a>
-                                    <form action="{{ url("reservation/$reservation->id")  }}" method="post" style="float: left; margin-right: 2px">
+                                    <a title="rdgrdg" href="{{url("reservation/$reservation->id/completed")}}" class="btn btn-primary" style="float: left; margin-right: 2px">Completed</a>
+                                    <a title="rdgrdg" href="{{url("RunReservation/$reservation->id/edit")}}" class="btn btn-primary" style="float: left; margin-right: 2px"><i class="fa fa-pencil"></i></a>
+                                    <form action="{{ url("RunReservation/$reservation->id")}}" method="post" style="float: left; margin-right: 2px">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure')"><i class="fa fa-trash-o"></i></button>

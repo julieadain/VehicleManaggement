@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\Driver;
 use App\Organization;
 use App\Reservation;
+use App\User;
+use App\Vehicle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
@@ -41,26 +45,73 @@ class HomeController extends Controller
             return view('pending');
         }
 
+
+
         if (session('org_info')) {
 
-            $data = Client::all()->sortByDesc('id')->take('5');
-            $reservations = Reservation::where('status', '1')
+            $vehicles = Vehicle::where('org_id', session()->get('org_info')->id)
+                ->orderBy('id', 'desc')
+                ->take('5')
+                ->get();
+            $clients = Vehicle::where('org_id', session()->get('org_info')->id)
+                ->orderBy('id', 'desc')
+                ->take('5')
+                ->get();
 
-                                                ->orderBy('id', 'desc')
-                                                ->limit(5)
-                                                ->get();
+//            dd($vehicles);
+
+        } else {
+
+            $vehicles = Vehicle::where('org_id', Auth::user()->org_id)
+                ->orderBy('id', 'desc')
+                ->take('5')
+                ->get();
+            $clients = Client::where('org_id', session()->get('org_info')->id)
+                ->orderBy('id', 'desc')
+                ->take('5')
+                ->get();
+
+
+        }
+
+
+//            dd($vehicles);
+
+
+//             $vehicles = Vehicle::all()->sortByDesc('id')->take('5');
+//            $data = Client::all()->sortByDesc('id')->take('5');
+            $reservations = Reservation::where('status', '1')
+                ->orderBy('id', 'desc')
+                ->limit(5)
+                ->get();
 
 
             return view('dashboard')
-                ->with('clients', $data)
-                ->with('reservations', $reservations);
-        }
+                ->with('clients', $clients)
+                ->with('reservations', $reservations)
+                ->with('vehicles', $vehicles);
 
-        if (auth()->user()->role == 1) {
+
+        if (User::ADMIN == 1) {
             $months = json_encode(['January', 'February', 'March', 'April', 'May', 'June', 'July']);
             $data1 = json_encode([65, 59, 80, 81, 56, 55, 40]);
             return view('SuperDash', compact('months', 'data1'));
         }
 
     }
+
+    public  function vehicle(Vehicle $vehicle){
+
+          $data['reservations'] = Reservation::with('clients', 'vehicles')->where('vehicle_id', $vehicle->id)->paginate(3);
+        $data['vehicle'] = $vehicle;
+
+        $data['vehicleHistory']= Reservation::where('status','2')->get();
+
+        //return $data;
+
+
+        return view('dashboard-vehicle-info', $data);
+
+    }
+
 }

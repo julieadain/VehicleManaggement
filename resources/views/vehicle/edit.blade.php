@@ -134,7 +134,7 @@
                         <label for="exampleInputbtn" class="col-sm-2 control-label"></label>
 
                         <div class="col-md-1">
-                            <button type="submit" class="form-control btn btn-primary" id="exampleInputbtn">Save</button>
+                            <button type="submit" class="form-control btn btn-primary" id="exampleInputbtn"> Update </button>
                         </div>
                     </div>
                     <br/>

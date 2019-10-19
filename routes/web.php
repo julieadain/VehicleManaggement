@@ -18,7 +18,21 @@ Route::get('/', function () {
 Route::Resource("/home", "HomeController");
 Route::Resource("/vehicle", "VehicleController");
 Route::Resource("/driver", "DriverController");
-Route::Resource("/reservation", "ReservationController");
+Route::resource("/reservation", "ReservationController");
+
+Route::get("/RunReservation/{reservation}/edit", "ReservationController@runReservationEdit")->name('runningReservation.edit');
+Route::patch("/RunReservation/{reservation}", "ReservationController@RunReservationUpdate")->name('runningReservation.update');
+Route::delete("/RunReservation/{reservation}", "ReservationController@runReservationDestroy")->name('runningReservation.destroy');
+
+Route::get("/reservation/{reservation}/completed", "ReservationController@completed");
+
+
+
+
+
+Route::get("dashboard/vehicle/{vehicle}","HomeController@vehicle")->name('dashboard.vehicle');
+Route::get("dashboard/vehicle/{vehicle}/history","HomeController@vehicle")->name('dashboard.vehicleHistory');
+
 
 
 
@@ -48,6 +62,8 @@ Route::get("/currentReservation", "ReservationController@currentRes")->name('res
 Route::get("/activeClient", "ClientController@activeClient")->name('client.activeClient');
 
 Route::get("{reservation}/currentReservation", "ReservationController@currentReservationShow");
+
+
 
 
 

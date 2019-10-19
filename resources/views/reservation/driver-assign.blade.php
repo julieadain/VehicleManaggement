@@ -87,41 +87,52 @@
                 <!-- form start -->
 
 
-                <table class="table">
                      <h3>Driver</h3>
-                    <thead>
-                    <tr>
+                <table class="table">
 
+                <tbody>
+                    <tr>
                         @foreach($drivers as $driver)
 
-{{--                            {{dd($driver)}}--}}
-
-                            <td><a href={{url('/driverAssign/'. $driver->id)}}> {{$driver->name}} </a></td>
-
-
-{{--                            <li class="treeview">--}}
-{{--                            <a href="#">--}}
-{{--                                <i class="fa fa-male"></i>--}}
-{{--                                <span>{{ $vehicle->brand }}</span>--}}
-{{--                                <span class="pull-right-container">--}}
-{{--              <span class="label label-primary pull-right">{{ "Total  drivers"}}</span>--}}
-{{--            </span>--}}
-{{--                            </a>--}}
-{{--                            <ul class="treeview-menu">--}}
-{{--                                <li><a href="{{ url() }}"><i class="fa fa-circle-o"></i>{{$vehicle->start_date_time}}</a>--}}
-{{--                                </li>--}}
-{{--                                <li><a href="{{ url('') }}"><i class="fa fa-circle-o"></i> {{$vehicle->end_date_time}} </a></li>--}}
-{{--                            </ul>--}}
-{{--                        </li>--}}
+                            <td>
+                                <a href={{url('/driverAssign/'. $driver->id)}}> {{$driver->name}}</a>
+                                @foreach($driver->reservations->all() as $reservation)
+                                    <br/>
+                                    {{ date("dM y"), strtotime( $reservation->start_date_time)}}
+                                    at{{ date("h:m a"), strtotime( $reservation->start_date_time)}}
+                                    to  {{ date("dM y"), strtotime( $reservation->end_date_time)}}
+                                    at {{  date("h:m a"), strtotime($reservation->end_date_time)}}
 
 
+                                    <small class="location" > <i class="fa fa-map-marker"> </i>{{ $reservation-> location}} </small>
+                                @endforeach
+                            </td>
 
-{{--                        <th scope="col">Brand</th>--}}
+
 
                     </tr>
                     @endforeach
+                       {{-- @foreach($drivers as $driver)
 
-                    </thead>
+--}}{{--                            {{dd($driver)}}--}}{{--
+
+                            <td><a href={{url('/driverAssign/'. $driver->id)}}> {{$driver->name}} </a></td>
+--}}{{--{{ dd($driver->reservations) }}--}}{{--
+--}}{{--                            @foreach($driver->reseravations as $reservation)--}}{{--
+                                <br/>
+                                {{ date("dM y"), strtotime( $reservation->start_date_time)}}
+                                at{{ date("h:m a"), strtotime( $reservation->start_date_time)}}
+                                to  {{ date("dM y"), strtotime( $reservation->end_date_time)}}
+                                at {{  date("h:m a"), strtotime($reservation->end_date_time)}}
+
+
+                                <small class="location" > <i class="fa fa-map-marker"> </i>{{ $reservation-> location}} </small>
+--}}{{--                            @endforeach--}}{{--
+
+                    </tr>
+                    @endforeach--}}
+
+                    </tbody>
 
 
                 </table>

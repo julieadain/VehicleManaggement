@@ -1,6 +1,10 @@
 <?php
 
+use App\Client;
+use App\Driver;
 use App\Purpose;
+use App\User;
+use App\Vehicle;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,8 +20,10 @@ class DatabaseSeeder extends Seeder
         $this->call(ExpensesTableSeeder::class);*/
 
 //        factory(Purpose::class, 100)->create();
-        factory(\App\Vehicle::class, 50)->create();
-         factory(\App\Client::class, 50)->create();
-       factory(\App\Driver::class,50)->create();
+        factory(\App\Organization::class, 5)->create();
+        factory(User::class, 10)->create();
+        factory(Vehicle::class, 50)->create();
+        factory(Client::class, 50)->create();
+       factory(Driver::class,50)->create();
     }
 }

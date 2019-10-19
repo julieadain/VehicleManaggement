@@ -30,7 +30,7 @@
                     </tr>
                     <tr>
                         <th scope="row">Vehicle:</th>
-                        <td>{{ $reservation->vehicles-> reg_number }}</td>
+                        <td>{{ $reservation->vehicles->brand  }}</td>
                     </tr>
                     <tr>
                         <th scope="row">Driver:</th>
