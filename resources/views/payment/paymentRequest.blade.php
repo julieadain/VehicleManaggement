@@ -9,6 +9,9 @@
                 <small>{{'#000343'}}</small>
             </h1>
         </section>
+{{--        Package Option--}}
+        <div class="pull-right" style="width: 250px;" ><a href='{{ url('package') }}' class="btn btn-success">Select package</a></div>
+
         <!-- Main content -->
         <section class="invoice col-md-11">
             <!-- title row -->

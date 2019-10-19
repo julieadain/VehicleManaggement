@@ -19,9 +19,7 @@ Route::resource("/home", "HomeController");
 Route::resource("/vehicle", "VehicleController");
 Route::resource("/driver", "DriverController");
 Route::resource("/reservation", "ReservationController");
-
-
-
+Route::resource("/package", "PackageController");
 Route::resource("/organization", "OrganizationController");
 Route::get("/approve/{id}", "OrganizationController@approve")->name('organization.approve');
 Route::get("/deny/{id}", "OrganizationController@deny")->name('organization.deny');
@@ -38,23 +36,15 @@ Route::resource("/reservation", "ReservationController");
 Route::resource("/payment", "PaymentController");
 Route::get("/invoicePrint", "PaymentController@invoicePrint")->name('payment.invoicePrint');
 Route::get("/paymentRequest", "PaymentController@paymentRequest")->name('payment.paymentRequest');
-
-
+Route::get("/org_ajaxRequest", "PaymentController@org_ajaxRequest")->name('payment.org_ajaxRequest');
 Route::get("client/{clientId}/reservation/create","ClientController@reservation");
 Route::post("client/{clientId}/reservation/create","ClientController@res");
 Route::get("client/{clientId}/reservation","ClientController@reservationIndex");
-
-
-
 Route::get("/vehicleAssign/{id}", "ReservationController@vehicleAssign")->name('reservation.vehicleAssign');
 Route::get("/driverAssign/{id}", "ReservationController@driverAssign")->name('reservation.driverAssign');
 Route::get("/currentReservation", "ReservationController@currentRes")->name('reservation.currentReservation');
 Route::get("/activeClient", "ClientController@activeClient")->name('client.activeClient');
-
 Route::get("{reservation}/currentReservation", "ReservationController@currentReservationShow");
-
-
-
 
 Auth::routes();
 

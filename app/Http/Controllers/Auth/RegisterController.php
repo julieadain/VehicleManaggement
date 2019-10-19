@@ -72,6 +72,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         $organization = Organization::create($data);
         $data['org_id'] = $organization->id;
         $data['password'] = Hash::make($data['password']);
