@@ -15,12 +15,21 @@ Route::get('/', function () {
     return view('auth.login');
 })->middleware('guest');
 
-Route::resource("/home", "HomeController");
-Route::resource("/vehicle", "VehicleController");
-Route::resource("/driver", "DriverController");
+Route::Resource("/home", "HomeController");
+Route::Resource("/vehicle", "VehicleController");
+Route::Resource("/driver", "DriverController");
 Route::resource("/reservation", "ReservationController");
+
+Route::get("/RunReservation/{reservation}/edit", "ReservationController@runReservationEdit")->name('runningReservation.edit');
+Route::patch("/RunReservation/{reservation}", "ReservationController@RunReservationUpdate")->name('runningReservation.update');
+Route::delete("/RunReservation/{reservation}", "ReservationController@runReservationDestroy")->name('runningReservation.destroy');
+Route::get("/reservation/{reservation}/completed", "ReservationController@completed");
+
+Route::get("dashboard/vehicle/{vehicle}","HomeController@vehicle")->name('dashboard.vehicle');
+Route::get("dashboard/vehicle/{vehicle}/history","HomeController@vehicle")->name('dashboard.vehicleHistory');
+
+Route::Resource("/organization", "OrganizationController");
 Route::resource("/package", "PackageController");
-Route::resource("/organization", "OrganizationController");
 Route::get("/approve/{id}", "OrganizationController@approve")->name('organization.approve');
 Route::get("/deny/{id}", "OrganizationController@deny")->name('organization.deny');
 Route::get("/pending/{id}", "OrganizationController@pending")->name('organization.pending');

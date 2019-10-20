@@ -26,7 +26,7 @@
 
             <!-- /.box-header -->
                 <!-- form start -->
-                <form action="{{url("reservation/$reservation->id")}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <form action="{{url('RunReservation/'."$reservation->id")}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                     @csrf
                     @method('PATCH')
 

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Reservation;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use mysql_xdevapi\Schema;
@@ -41,6 +42,14 @@ class AppServiceProvider extends ServiceProvider
 
         Blade::directive('endadmin', function () {
             return '<?php } ?>';
+        });
+        Blade::directive('countCurrentReservation', function () {
+           $res = Reservation::where('status', '1');
+            return $res->count();
+        });
+        Blade::directive('countPendingReservation', function () {
+            $res = Reservation::where('status', '0');
+            return $res->count();
         });
 
     }

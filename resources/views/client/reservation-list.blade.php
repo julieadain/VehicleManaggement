@@ -40,8 +40,12 @@
 
                             <tr>
 
-                                <td>{{$reservation->start_date_time}}</td>
-                                <td>{{$reservation->end_date_time}}</td>
+                                <td>{{date("dM y,", strtotime( $reservation->start_date_time))}}
+                                    at{{date(" h:ia", strtotime( $reservation->start_date_time))}}
+
+                                </td>
+                                <td>{{date("dM y,", strtotime( $reservation->end_date_time))}}
+                                    at{{date(" h:ia", strtotime( $reservation->end_date_time))}}</td>
                                 <td>{{$reservation->seat_capacity}}</td>
                                 <td>
                                 @if ($reservation->ac == 1)

@@ -35,7 +35,7 @@ class PackageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return view("package");
     }
 
     /**

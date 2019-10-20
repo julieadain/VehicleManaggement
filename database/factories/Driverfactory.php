@@ -4,6 +4,7 @@
 
 use App\Driver;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 $factory->define(Driver::class, function (Faker $faker) {
     return [
@@ -11,9 +12,9 @@ $factory->define(Driver::class, function (Faker $faker) {
         'email'=> $faker->unique()->safeEmail,
         'phone'=> $faker->phoneNumber,
         'address'=> $faker->address,
-        'dl_scan'=> \Illuminate\Support\Str::random(50),
-        'nid_scan'=> \Illuminate\Support\Str::random(50),
-        'photo'=> \Illuminate\Support\Str::random(50),
+        'dl_scan'=> Str::random(50),
+        'nid_scan'=> Str::random(50),
+        'photo'=> Str::random(50),
         'user_id'=> 1,
         'org_id'=>1,
     ];

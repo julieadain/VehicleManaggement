@@ -37,7 +37,7 @@
                 <div class="col-xs-6">
                     <div class="col-xs-10">
                         <!-- small box -->
-                        <form role="form" action="{{ url("expense") }}" method="post">
+                        <form role="form" action="{{ url("package") }}" method="post">
                             @csrf
                             <div class="box-body" style="width: 350px;">
                                 <div class="form-group">

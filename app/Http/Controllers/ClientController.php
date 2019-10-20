@@ -163,6 +163,7 @@ class ClientController extends Controller
         ]);
 
         $data = $request->all();
+        $data['status'] = 0;
 
         $data['client_id']= $clientId;
         $data['user_id']=Auth::id();
@@ -175,7 +176,9 @@ class ClientController extends Controller
 //        return redirect()->back();
 
         Reservation::create($data);
-        return redirect("client/$clientId/reservation");
+//        return redirect("client/$clientId/reservation");
+        return redirect("reservation");
+
     }
 
     public  function reservationIndex( ){

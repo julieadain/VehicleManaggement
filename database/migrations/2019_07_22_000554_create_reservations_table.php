@@ -25,7 +25,7 @@ class CreateReservationsTable extends Migration
             $table->string('start_meter_reading',50);
             $table->string('end_meter_reading',50);
             $table->string('total_payable',50);
-            $table->boolean('status')->default(0);
+            $table->unsignedTinyInteger('status');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('org_id')->nullable();

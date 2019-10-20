@@ -20,15 +20,19 @@ class ReservationController extends Controller
      */
     public function index()
     {
+//    Pending Reservations
 
-        $data = Reservation::all();
+        $reservationList = Reservation::where('status', '0')->get();
+
+
+//        dd($data->vehicles->id);
 
 //        $data['client_id'] = $clientId;
 //        $data['user_id'] = Auth::id();
 //        $data['org_id'] = Auth::user()->org_id;
 
 
-        return view('client.reservation-list')->with('reservationList', $data);
+        return view('client.reservation-list', compact('reservationList'));
     }
 
     /*
@@ -66,7 +70,13 @@ class ReservationController extends Controller
 //        $data['user_id'] = Auth::id();
 //        Reservation:: create($data);
 
-        Reservation::create($request);
+
+        $data = $request->all();
+        $data['status'] = 0;
+
+        dd($data);
+
+        Reservation::create($data);
         return redirect('reservation');
     }
 
@@ -78,15 +88,15 @@ class ReservationController extends Controller
      */
     public function show(Reservation $reservation)
     {
-
+//        return Driver::find(11)->reservations;
 
 //        Reservation::all();
-        if (session('org_info')){
+        if (session('org_info')) {
 
 
-            $vehicles = Vehicle::where('org_id', session()->get('org_info')->id )->get();
+            $vehicles = Vehicle::where('org_id', session()->get('org_info')->id)->get();
 
-        }else{
+        } else {
 
             $vehicles = Vehicle::where('org_id', Auth::user()->org_id)->get();
 
@@ -95,17 +105,14 @@ class ReservationController extends Controller
         session::forget('res_info');
         Session::put('res_info', $reservation);
 
-        return view('reservation.reservation-detail')->with('reservationList', $reservation)
+        return view('reservation.vehicle-assign')->with('reservation', $reservation)
             ->with('vehicles', $vehicles);
     }
 
 
+    public function DriverAssign($id)
+    {
 
-
-
-
-
-    public function DriverAssign($id){
         $reservation = Reservation::find(session()->get('res_info')->id);
         $reservation->driver_id = $id;
         $reservation->status = '1';
@@ -120,36 +127,31 @@ class ReservationController extends Controller
         return redirect('currentReservation');
 
 
-
     }
 
 
-
-
-
-    public  function vehicleAssign($id )
+    public function vehicleAssign($id)
     {
 //        dd(session()->get('res_info')->id);
 
         $reservation = Reservation::find(session()->get('res_info')->id);
-        $reservation ->vehicle_id =  $id;
+        $reservation->vehicle_id = $id;
         $reservation->save();
 
 
+        if (session('org_info')) {
 
-        if (session('org_info')){
 
+            $drivers = Driver::where('org_id', session()->get('org_info')->id)->get();
 
-            $drivers = Driver::where('org_id', session()->get('org_info')->id )->get();
-
-        }else{
+        } else {
 
             $drivers = Driver::where('org_id', Auth::user()->org_id)->get();
 
         }
 
 
-        return view("reservation.reservation-driver", compact('reservation','drivers'));
+        return view("reservation.driver-assign", compact('reservation', 'drivers'));
 
     }
 
@@ -162,6 +164,11 @@ class ReservationController extends Controller
     public function edit(Reservation $reservation)
     {
         return view('reservation.edit')->with('reservation', $reservation);
+    }
+
+    public function runReservationEdit(Reservation $reservation)
+    {
+        return view('reservation.running-reservation-edit')->with('reservation', $reservation);
     }
 
     /**
@@ -186,15 +193,43 @@ class ReservationController extends Controller
             'total_payable' => 'required'
         ]);
 
-       $reservation->save();
-       $reservation->update($request->all());
+        $reservation->save();
+        $reservation->update($request->all());
 
 //        $data =  $request->all();
 //        $data['user_id'] = Auth::id();
 //        Reservation:: create($data);
-        return redirect('reservation');
+//        return redirect('reservation');
+        return view('reservation.vehicle-assign');
+    }
+
+
+    public function RunReservationUpdate(Request $request, Reservation $reservation)
+    {
+        $this->validate($request, [
+            'start_date_time' => 'required',
+            'end_date_time' => 'required',
+            'seat_capacity' => 'required',
+            'ac' => 'required',
+            'share' => 'required',
+            'pickup_address' => 'required',
+            'location' => 'required',
+            'start_meter_reading' => 'required',
+            'end_meter_reading' => 'required',
+            'total_payable' => 'required'
+        ]);
+
+        $reservation->save();
+        $reservation->update($request->all());
+
+//        $data =  $request->all();
+//        $data['user_id'] = Auth::id();
+//        Reservation:: create($data);
+        return redirect("reservation/$reservation->id");
+//        return view('reservation.vehicle-assign');
 
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -208,29 +243,46 @@ class ReservationController extends Controller
         return redirect('reservation');
     }
 
+    /**
+     * @param Reservation $reservation
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Exception
+     */
+    public function runReservationDestroy(Reservation $reservation)
+    {
+//        dd($reservation);
+        $reservation->delete();
+        return redirect('currentReservation');
+    }
 
 
-
-
-
-    public function currentRes(){
+    public function currentRes()
+    {
 
         $reservations = Reservation::where('status', '1')->get();
 
-        return view('reservation.current-reservation', compact('reservations')) ;
+        return view('reservation.current-reservation', compact('reservations'));
+
 
     }
 
 
+    public function currentReservationShow(Reservation $reservation)
+    {
 
 
-
-    public function currentReservationShow( Reservation $reservation ){
-
-
-        return view('reservation.current-res-single-list',compact('reservation'));
+        return view('reservation.current-res-single-list', compact('reservation'));
 
 
+    }
+
+    public function completed(Reservation $reservation)
+    {
+
+//        dd($reservation->id);
+        $reservation->status = 2;
+        $reservation->save();
+        return redirect("currentReservation");
 
     }
 
