@@ -16,9 +16,24 @@ class VehicleController extends Controller
      */
     public function index()
     {
+        if (session('org_info')) {
 
-        $data= Vehicle::paginate(10);
-        return view("vehicle.detail")->with('vehicles', $data);
+            $vehicles = Vehicle::where('org_id', session()->get('org_info')->id)
+                ->paginate(5);
+
+//            dd($vehicles);
+
+        } else {
+
+            $vehicles = Vehicle::where('org_id', Auth::user()->org_id)
+                ->paginate(5);
+        }
+
+
+
+
+//        $data= Vehicle::paginate(10);
+        return view("vehicle.detail")->with('vehicles', $vehicles);
     }
 
     /**

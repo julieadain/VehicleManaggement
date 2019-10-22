@@ -3,15 +3,15 @@
 
 @section('content')
     <section class="content-header">
-        <h3>
-            Driver Information
+        <h3 class="container">
+            Driver Detail
         </h3>
 
     </section>
 
     <!-- Main content -->
     <section class="content">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <!-- Horizontal Form -->
             <div class="box box-info">
 

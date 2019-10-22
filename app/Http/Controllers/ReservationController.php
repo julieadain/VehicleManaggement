@@ -282,8 +282,18 @@ class ReservationController extends Controller
 //        dd($reservation->id);
         $reservation->status = 2;
         $reservation->save();
-        return redirect("currentReservation");
+        return redirect("history");
 
+    }
+
+    public  function historyReservation(){
+
+//        dd('asche');
+
+          $reservation = Reservation::where('status','2')->get();
+//        dd($reservation);
+
+        return view('reservation.reservation-history')->with( 'reservations', $reservation);
     }
 
 }

@@ -17,17 +17,32 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+
     {
-        $organization = Organization::all();
-        $data = Client::paginate(10);
+
+        if (session('org_info')) {
+
+            $clients = Client::where('org_id', session()->get('org_info')->id)
+                ->paginate(5);
+
+//            dd($vehicles);
+
+        } else {
+
+            $clients = Client::where('org_id', Auth::user()->org_id)
+                ->paginate(5);
+        }
+
+//        $organization = Organization::all();
+//        $data = Client::paginate(10);
         return view('client.detail')
-            ->with('clients', $data)
-            ->with('organizations',$organization);
+            ->with('clients', $clients);
+//            ->with('organizations',$organization);
     }
 
     public function activeClient(){
 
-        $activeClient = Client::where('status','1')->get() ;
+        $activeClient = Client::where('status','1')->paginate(4) ;
 
 //        dd($activeClient);
 
@@ -62,7 +77,7 @@ class ClientController extends Controller
         $data['org_id']= Auth::user()->org_id;
 
         Client::create($data);
-        return redirect('home');
+        return redirect('client');
     }
 
     /**

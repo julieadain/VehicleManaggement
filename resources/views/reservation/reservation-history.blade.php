@@ -1,10 +1,11 @@
 
+
 @extends("layout.admin")
 
 @section('content')
     <section class="content-header">
         <h3 >
-            Running Reservation
+            Reservation History
         </h3>
 
     </section>
@@ -16,7 +17,7 @@
         <!-- /.col -->
         <!-- /.row -->
         <div class="row">
-            <div class="col-xs-11">
+            <div class="col-xs-10">
                 <div class="box">
 
                     <div class="box-body table-responsive no-padding">
@@ -28,8 +29,6 @@
                                 <th class="bg-primary">Seat Capacity  </th>
                                 <th class="bg-primary">AC/Non AC </th>
                                 <th class="bg-primary">Owner </th>
-                                <th class="bg-primary"> Option </th>
-
 
 
 
@@ -57,16 +56,7 @@
 
                                         @endif
                                     </td>
-                                    <td>
-                                        <a title="rdgrdg" href="{{url("$reservation->id/currentReservation")}}" class="btn btn-primary" style="float: left; margin-right: 2px">View</a>
-                                        <a title="rdgrdg" href="{{url("reservation/$reservation->id/completed")}}" class="btn btn-primary" style="float: left; margin-right: 2px">Completed</a>
-                                        <a title="rdgrdg" href="{{url("RunReservation/$reservation->id/edit")}}" class="btn btn-primary" style="float: left; margin-right: 2px"><i class="fa fa-pencil"></i></a>
-                                        <form action="{{ url("RunReservation/$reservation->id")}}" method="post" style="float: left; margin-right: 2px">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure')"><i class="fa fa-trash-o"></i></button>
-                                                                        </form>
-                                                                    </td>
+
 
 
 
@@ -76,7 +66,7 @@
 
 
                         </table>
-{{--                        {{$reservations->links()}}--}}
+                        {{--                        {{$reservations->links()}}--}}
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -85,4 +75,11 @@
         </div>
     </section>
 
+
+
+
+
+
 @endsection
+
+

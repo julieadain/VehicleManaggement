@@ -25,13 +25,17 @@ Route::patch("/RunReservation/{reservation}", "ReservationController@RunReservat
 Route::delete("/RunReservation/{reservation}", "ReservationController@runReservationDestroy")->name('runningReservation.destroy');
 
 Route::get("/reservation/{reservation}/completed", "ReservationController@completed");
+Route::get("/history", "ReservationController@historyReservation");
+
 
 
 
 
 
 Route::get("dashboard/vehicle/{vehicle}","HomeController@vehicle")->name('dashboard.vehicle');
-Route::get("dashboard/vehicle/{vehicle}/history","HomeController@vehicle")->name('dashboard.vehicleHistory');
+//Route::get("dashboard/vehicle/{vehicle}/history","HomeController@vehicle")->name('dashboard.vehicleHistory');
+Route::get("dashboard/driver/{driver}","DriverController@dashboardDriver")->name('dashboard.driver');
+
 
 
 

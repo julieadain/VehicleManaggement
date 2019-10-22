@@ -11,7 +11,7 @@
 
         <div class="col-md-4 pull-left">
             <h3>
-                Vehicle Information
+                Driver Information
             </h3>
 {{--            <a title="rdgrdg" href="{{url("vehicle/$vehicle->id/edit")}}" class="btn btn-primary" style="float: left; margin-right: 2px"><i class="fa fa-pencil"></i></a>--}}
             <!-- Horizontal Form -->
@@ -26,79 +26,44 @@
                     <tbody>
                     {{--                    {{ dd($vehicle) }}--}}
                     <tr>
-                        <th scope="row">Brand:</th>
-                        <td>{{ $vehicle->brand }}</td>
+                        <th scope="row">Name:</th>
+                        <td>{{ $driver->name }}</td>
                     </tr>
 
                     <tr>
-                        <th scope="row">Model:</th>
-                        <td>{{ $vehicle->model}}</td>
+                        <th scope="row">Email:</th>
+                        <td>{{ $driver->email}}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Color:</th>
-                        <td>{{ $vehicle->color}}</td>
+                        <th scope="row">Phone:</th>
+                        <td>{{ $driver->phone}}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Reg Number:</th>
-                        <td>{{ $vehicle->reg_number}}</td>
+                        <th scope="row">Address:</th>
+                        <td>{{ $driver->address}}</td>
                     </tr>
-                    <tr>
-                        <th scope="row">Reg Date:</th>
-                        <td>{{ $vehicle-> reg_date}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Seat Capacity:</th>
-                        <td>{{ $vehicle->seat_capacity}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Owner:</th>
-                        <td>
-                            @if ($vehicle->ownership_status == 1)
-                                {{"Yes"}}
-                            @else
-                                {{"No"}}
 
-                            @endif
-                        </td>
-                    </tr>
                     <tr>
-                        <th scope="row">AC:</th>
+                        <th scope="row">DL Scan Copy:</th>
                         <td>
-                            @if ($vehicle->ac == 1)
-                                {{"Yes"}}
-                            @else
-                                {{"No"}}
-
-                            @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Reg Scan Copy:</th>
-                        <td>
-                            <img src="{{asset('upload').'/'.$vehicle->reg_scan_copy}}" alt="image"
+                            <img src="{{asset('upload').'/'.$driver->dl_scan}}" alt="image"
                                  style="width: 20rem;">
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">Photo:</th>
                         <td>
-                            <img src="{{asset('upload').'/'.$vehicle->photo}}" alt="image" style="width: 20rem;">
+                            <img src="{{asset('upload').'/'.$driver->photo}}" alt="image" style="width: 20rem;">
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">Insurance Scan Copy:</th>
+                        <th scope="row">nid_scanInsurance Scan Copy:</th>
                         <td>
-                            <img src="{{asset('upload').'/'.$vehicle->insurance_scan_copy}}" alt="image"
+                            <img src="{{asset('upload').'/'.$driver->nid_scan }}" alt="image"
                                  style="width: 20rem;">
                         </td>
                     </tr>
-                    <tr>
-                        <th scope="row">RoadPermit Scan Copy:</th>
-                        <td>
-                            <img src="{{asset('upload').'/'.$vehicle->roadPermit_scan_copy}}" alt="image"
-                                 style="width: 20rem;">
-                        </td>
-                    </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -116,10 +81,10 @@
                     <thead>
                     <tr>
                         <th scope="col"> Client Name</th>
-                        <th scope="col">Start Date Time</th>
-                        <th scope="col">End Date Time</th>
-                        <th scope="col">Pickup Address</th>
-                        <th scope="col">location</th>
+                        <th  scope="col">Start Date Time</th>
+                        <th  scope="col">End Date Time</th>
+                        <th  scope="col">Pickup Address</th>
+                        <th   scope="col">location</th>
 {{--                        <th scope="col">Option</th>--}}
 
 
@@ -142,6 +107,15 @@
                             </td>
                             <td>{{$reservation->pickup_address}}</td>
                             <td>{{$reservation->location}}</td>
+{{--                            <td>--}}
+{{--                            <a title="rdgrdg" href="{{url("")}}" class="btn btn-primary" style="float: left; margin-right: 2px"><i class="fa fa-pencil"></i></a>--}}
+{{--                            <form action="{{ url("")  }}" method="post" style="float: left; margin-right: 2px">--}}
+{{--                                @csrf--}}
+{{--                                @method('DELETE')--}}
+{{--                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure')"><i class="fa fa-trash-o"></i></button>--}}
+
+{{--                            </form>--}}
+{{--                            </td>--}}
 
                         </tr>
 
@@ -186,34 +160,36 @@
 
                     <tbody>
 
-                    @foreach($vehicleHistory as $vHistory)
+                    @foreach($driverHistory as $dHistory)
                         <tr>
 
-                            <td>{{ $vHistory->clients->name }}</td>
+                            <td>{{ $dHistory->clients->name }}</td>
 
-                            <td>{{date("dM y", strtotime( $vHistory->start_date_time))}}
-                                at{{date(" h:ia", strtotime( $vHistory->start_date_time))}}
+                            <td>{{date("dM y", strtotime( $dHistory->start_date_time))}}
+                                at{{date(" h:ia", strtotime( $dHistory->start_date_time))}}
                             </td>
                             <td>
-                                {{date("dM y", strtotime( $vHistory->end_date_time))}}
-                                at{{date(" h:ia", strtotime( $vHistory->end_date_time))}}
+                                {{date("dM y", strtotime( $dHistory->end_date_time))}}
+                                at{{date(" h:ia", strtotime( $dHistory->end_date_time))}}
                             </td>
-                            <td>{{$vHistory->pickup_address}}</td>
-                            <td>{{$vHistory->location}}</td>
+                            <td>{{$dHistory->pickup_address}}</td>
+                            <td>{{$dHistory->location}}</td>
 
                         </tr>
 
 
                     @endforeach
 
-                    {{ $vehicleHistory->links() }}
 
 
 
                     </tbody>
 
 
+
                 </table>
+                {{ $driverHistory->links() }}
+
             </div>
         </div>
 

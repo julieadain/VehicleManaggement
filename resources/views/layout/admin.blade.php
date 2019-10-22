@@ -88,7 +88,8 @@
                                 </div>
 
                                 <div class="pull-right">
-                                    <form action="{{route('logout')}}" role="presentation" id="logout-form" method="post">
+                                    <form action="{{route('logout')}}" role="presentation" id="logout-form"
+                                          method="post">
                                         @csrf
                                         <a href="#" class="btn btn-default btn-flat"
                                            onclick="document.getElementById('logout-form').submit()">Log out</a>
@@ -97,7 +98,8 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- Control Sidebar Toggle Button -->
+
+                <!-- Control Sidebar Toggle Button -->
                 </ul>
             </div>
         </nav>
@@ -118,7 +120,7 @@
                 @endSuper_admin
 
                 @admin
-                <li class="" >
+                <li class="">
                     <a href="{{url('/manager')}}">
                         <i class="fa fa-dashboard"></i> <span>Manage user</span>
                     </a>
@@ -160,15 +162,19 @@
                             <i class="fa fa-car"></i>
                             <span>Vehicles</span>
                             <span class="pull-right-container">
-              <span class="label label-primary pull-right">{{ "Total vehicle"}}</span>
+              <span class="label label-primary pull-right">{{ \App\Vehicle::whereOrg_id(session('org_info')->id)->count() }}</span>
             </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="{{ url('vehicle/create') }}"><i class="fa fa-circle-o"></i> Add vehicle</a>
                             </li>
-                            <li><a href="{{ url('vehicle/') }}"><i class="fa fa-circle-o"></i> Vehicle's List</a>
+                            <li><a href="{{ url('vehicle/') }}"><i class="fa fa-circle-o"></i> Vehicle's List
+                                    <span class="pull-right-container">
+                                    <small class="label pull-right bg-blue-active">{{--{{ \App\Vehicle::whereOrg_id(session('org_info')->id)->count() }}--}}</small>
+                                    </span>
+                                </a>
                             </li>
-{{--                            <li><a href="{{ url('') }}"><i class="fa fa-circle-o"></i> Available vehicles</a></li>--}}
+                            {{--                            <li><a href="{{ url('') }}"><i class="fa fa-circle-o"></i> Available vehicles</a></li>--}}
                         </ul>
                     </li>
                     <li class="treeview">
@@ -176,7 +182,7 @@
                             <i class="fa fa-male"></i>
                             <span>Drivers</span>
                             <span class="pull-right-container">
-              <span class="label label-primary pull-right">{{ "Total  drivers"}}</span>
+              <span class="label label-primary pull-right">{{ \App\Driver::whereOrg_id(session('org_info')->id)->count() }}</span>
             </span>
                         </a>
                         <ul class="treeview-menu">
@@ -198,9 +204,10 @@
                             <li><a href="{{url('client')}}"><i class="fa fa-circle-o"></i>Client List</a>
                             </li>
                             <li>
-                                <a href="{{url('activeClient')}}"><i class="fa fa-circle-o"></i> <span>Active Client</span>
+                                <a href="{{url('activeClient')}}"><i class="fa fa-circle-o"></i>
+                                    <span>Active Client</span>
                                     <span class="pull-right-container">
-                                    <small class="label pull-right bg-blue-active">12</small>
+                                    <small class="label pull-right bg-blue-active">{{ \App\Client::whereStatus(1)->count() }}</small>
                                     </span>
                                 </a>
                             </li>
@@ -217,15 +224,23 @@
                         </a>
                         <ul class="treeview-menu">
                             <li>
-                                <a href="{{url("reservation")}}"><i class="fa fa-circle-o"></i> Pending Reservation </a>
+                                <a href="{{url("reservation")}}"><i class="fa fa-circle-o"></i> Pending Reservation
                                 <span class="pull-right-container">
                                     <small class="label pull-right bg-blue-active">{{ \App\Reservation::whereStatus(0)->count() }}</small>
                                     </span>
+                                </a>
                             </li>
                             <li>
                                 <a href="{{url("currentReservation")}}"><i class="fa fa-circle-o"></i> <span>Running Reservation</span>
                                     <span class="pull-right-container">
                                     <small class="label pull-right bg-blue-active">{{ \App\Reservation::whereStatus(1)->count() }}</small>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{url("/history")}}"><i class="fa fa-circle-o"></i> <span> Completed Reservation</span>
+                                    <span class="pull-right-container">
+                                    <small class="label pull-right bg-blue-active">{{ \App\Reservation::whereStatus(2)->count() }}</small>
                                     </span>
                                 </a>
                             </li>

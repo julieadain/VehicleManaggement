@@ -3,66 +3,71 @@
 
 @section('content')
     <section class="content-header">
-        <h3>
-            Driver Detail
+        <h3 >
+            Driver List
         </h3>
-{{--        <ol class="breadcrumb">--}}
-{{--            <li><a href="{{url('home')}}"><i class="fa fa-dashboard"></i> Home</a></li>--}}
-{{--        </ol>--}}
+
     </section>
 
+
     <!-- Main content -->
-    <section class="content">
-        <div class="col-md-12">
-            <!-- Horizontal Form -->
-            <div class="box box-info">
+    <section class="container">
 
-                <!-- /.box-header -->
-                <!-- form start -->
+        <!-- /.col -->
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-xs-11">
+                <div class="box">
+
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tr>
+                                <th class="bg-primary">Name</th>
+                                <th class="bg-primary">Email</th>
+                                <th class="bg-primary">Phone</th>
+                                <th class="bg-primary"> Address </th>
+                                <th class="bg-primary"> Option </th>
 
 
-                <table class="table">
-                    <caption></caption>
-                    <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Phone</th>
-                        <th scope="col">Option</th>
+
+                            </tr>
+                            @foreach($drivers as $driver)
+                                <tr>
+                                    <td> {{$driver-> name}}</td>
+                                    <td> {{$driver->email}} </td>
+                                    <td> {{$driver->phone}}</td>
+                                    <td> {{$driver->address}}</td>
+
+                                    <td>
+                                        <a title="" href="{{url("driver/$driver->id")}}" class="btn btn-primary" style="float: left; margin-right: 2px"><i>View</i></a>
+                                        <a title="" href="{{url("driver/$driver->id/edit")}}" class="btn btn-primary" style="float: left; margin-right: 2px"><i class="fa fa-pencil"></i></a>
+                                        <form action="{{url("driver/$driver->id") }}" method="post" style="float: left; margin-right: 2px">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure')"><i class="fa fa-trash-o"></i></button>
+                                        </form>
+                                    </td>
 
 
-                    </tr>
-                    </thead>
 
-                    @foreach($drivers as $driver)
 
-                        <tr>
-                            <td>{{$driver->name}}</td>
-                            <td>{{$driver->email}}</td>
-                            <td>{{$driver->phone}}</td>
+                                </tr>
+                            @endforeach
 
-                            <td>
-                                <a title="rdgrdg" href="{{url("driver/$driver->id")}}" class="btn btn-primary" style="float: left; margin-right: 2px">View</a>
 
-                                <a title="rdgrdg" href="{{url("driver/$driver->id/edit")}}" class="btn btn-primary" style="float: left; margin-right: 2px"><i class="fa fa-pencil"></i></a>
-                                <form action="{{url("driver/$driver->id") }}" method="post" style="float: left; margin-right: 2px">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure')"><i class="fa fa-trash-o"></i></button>
-
-                                </form>
-                            </td>
-
-                        </tr>
-
-                    @endforeach
-                    {{$drivers->links()}}
-
-                </table>
+                        </table>
+                        {{$drivers->links()}}
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
             </div>
         </div>
     </section>
 
 
-@endsection
 
+
+
+
+@endsection

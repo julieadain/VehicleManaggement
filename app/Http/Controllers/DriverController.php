@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Driver;
+use App\Reservation;
 use App\Rules\ValidMobile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,8 +18,22 @@ class DriverController extends Controller
      */
     public function index()
     {
-        $data= Driver::paginate(10);
-        return view("driver.detail")->with('drivers', $data );
+
+        if (session('org_info')) {
+
+            $drivers = Driver::where('org_id', session()->get('org_info')->id)
+                ->paginate(5);
+
+//            dd($vehicles);
+
+        } else {
+
+            $drivers = Driver::where('org_id', Auth::user()->org_id)
+                ->paginate(5);
+        }
+
+//        $data= Driver::paginate(10);
+        return view("driver.detail")->with('drivers', $drivers );
     }
 
     /**
@@ -165,5 +180,17 @@ class DriverController extends Controller
     {
         $driver->delete();
         return redirect('driver');
+    }
+
+    public function dashboardDriver( Driver $driver ){
+
+        $data['reservations']= Reservation::with('clients','vehicles')->where('driver_id', $driver->id)->where('status','1')->paginate(1);
+        $data['driver']= $driver;
+        $data['driverHistory']= Reservation::where('driver_id', $driver->id)->where('status','2')->paginate(1);
+
+
+
+        return view('dashboard-driver-info', $data );
+
     }
 }

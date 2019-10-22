@@ -9,19 +9,19 @@
         </h1>
         {{--        <h1>{{$user->organization['id']}}</h1>--}}
     </section>
-
     <!-- Main content -->
     <section class="content">
 
     @include('partials/_messages')
-
     <!-- Small boxes (Stat box) -->
         <div class="row">
             <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                        <h3>50</h3>
+
+                        <h3>{{ \App\Vehicle::whereOrg_id(session('org_info')->id)->count() }}</h3>
+
 
                         <p>Vehicles</p>
                     </div>
@@ -36,7 +36,7 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3>50</h3>
+                        <h3>{{ \App\Driver::whereOrg_id(session('org_info')->id)->count() }}</h3>
 
                         <p>Drivers</p>
                     </div>
@@ -51,7 +51,7 @@
                 <!-- small box -->
                 <div class="small-box bg-yellow">
                     <div class="inner">
-                        <h3>44</h3>
+                        <h3>{{ \App\Reservation::where('status','!=',2)->count() }}</h3>
 
                         <p>Booking</p>
                     </div>
@@ -105,12 +105,12 @@
 
 
                             @foreach($reservations as $reservation)
+{{--                                <tr class="lovelyrow" onclick="location.href='{{$reservation->id}}/currentReservation'">--}}
+
 
                                 <li>
 
                                     <a href="{{url("$reservation->id/currentReservation")}}"> {{$reservation->clients-> name}}&nbsp; </a>
-
-
 
                                     <b class="label label-primary">{{date("dM y,", strtotime( $reservation->start_date_time))}}
                                             at{{date(" h:ia", strtotime( $reservation->start_date_time))}}&nbsp;
@@ -127,6 +127,7 @@
 {{--                                        <i class="fa fa-trash-o"></i>--}}
 {{--                                    </div>--}}
                                 </li>
+{{--                                </tr>--}}
                             @endforeach
 
 
@@ -208,57 +209,25 @@
                             <div class="box-header">
                                 <i class="ion ion-clipboard"></i>
 
-                                <h3 class="box-title">Available drivers</h3>
+                                <h3 class="box-title">Available Drivers</h3>
 
                             </div>
                             <div class="box-body">
                                 <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
                                 <ul class="todo-list">
+                                    @foreach($drivers as $driver)
+
                                     <li>
-                                        <span class="text">Available one</span>
+                                        <span class="text"><a href="{{url('dashboard/driver/'.$driver->id )}}">{{$driver-> name}}</a></span>
                                         <!-- Emphasis label -->
-                                        <small class="label label-danger"><i class="fa fa-clock-o"></i></small>
+{{--                                        <small class="label label-danger"><i class="fa fa-clock-o"></i></small>--}}
                                         <!-- General tools such as edit or delete-->
-                                        <div class="tools">
-                                            <i class="fa fa-trash-o"></i>
-                                        </div>
+{{--                                        <div class="tools">--}}
+{{--                                            <i class="fa fa-trash-o"></i>--}}
+{{--                                        </div>--}}
                                     </li>
-                                    <li>
-                                        <span class="text">Available one</span>
-                                        <!-- Emphasis label -->
-                                        <small class="label label-danger"><i class="fa fa-clock-o"></i></small>
-                                        <!-- General tools such as edit or delete-->
-                                        <div class="tools">
-                                            <i class="fa fa-trash-o"></i>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <span class="text">Available one</span>
-                                        <!-- Emphasis label -->
-                                        <small class="label label-danger"><i class="fa fa-clock-o"></i></small>
-                                        <!-- General tools such as edit or delete-->
-                                        <div class="tools">
-                                            <i class="fa fa-trash-o"></i>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <span class="text">Available one</span>
-                                        <!-- Emphasis label -->
-                                        <small class="label label-danger"><i class="fa fa-clock-o"></i></small>
-                                        <!-- General tools such as edit or delete-->
-                                        <div class="tools">
-                                            <i class="fa fa-trash-o"></i>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <span class="text">Available one</span>
-                                        <!-- Emphasis label -->
-                                        <small class="label label-danger"><i class="fa fa-clock-o"></i></small>
-                                        <!-- General tools such as edit or delete-->
-                                        <div class="tools">
-                                            <i class="fa fa-trash-o"></i>
-                                        </div>
-                                    </li>
+                                    @endforeach
+
                                 </ul>
                             </div>
                         </div>

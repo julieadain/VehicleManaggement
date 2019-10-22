@@ -3,7 +3,7 @@
 
 @section('content')
     <section class="content-header">
-        <h3>
+        <h3 class="container">
             Current Reservation
         </h3>
 
@@ -11,7 +11,7 @@
 
     <!-- Main content -->
     <section class="content">
-        <div class="col-md-12">
+        <div class="col-md-9">
             <!-- Horizontal Form -->
             <div class="box box-info">
 
