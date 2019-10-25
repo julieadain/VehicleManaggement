@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="{{ asset('bower_components/morris.js/morris.css') }}">
     <!-- jvectormap -->
     <link rel="stylesheet" href="{{ asset('bower_components/jvectormap/jquery-jvectormap.css') }}">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
     <!-- Date Picker -->
     <link rel="stylesheet"
           href="{{ asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
@@ -277,7 +279,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{url('/paymentRequest')}}">
+                        <a href="{{url('/paymentRequestView')}}">
                             <i class="fa fa-file"></i> <span>Payment</span>
                         </a>
                     </li>

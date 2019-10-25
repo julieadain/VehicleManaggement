@@ -61,7 +61,7 @@ class HomeController extends Controller
                 ->with('vehicles', $vehicles);
 
 
-        } /*else {
+        } else {
 
             $vehicles = Vehicle::where('org_id', Auth::user()->org_id)
                 ->orderBy('id', 'desc')
@@ -71,37 +71,36 @@ class HomeController extends Controller
                 ->orderBy('id', 'desc')
                 ->take('5')
                 ->get();
-        }*/
+        }
         if (Auth::user()->id == 1) {
 
             $months = json_encode(['January', 'February', 'March', 'April', 'May', 'June', 'July']);
             $data1 = json_encode([65, 59, 80, 81, 56, 55, 40]);
-            $payment = Payment::orderBy('created_at', 'Desc')
-                ->limit('10')->get();
+
 
             $organizations = Organization::where('id', '!=', Auth::user()->org_id)
                 ->orderBy('created_at', 'Desc')
                 ->where('status', '1')
                 ->limit('5')
                 ->get();
-            return view('SuperDash', compact('months', 'data1', 'payment', 'organizations'));
+
+            $payments = Payment::with('package')
+                ->where('org_id', '!=', Auth::user()->org_id)
+                ->orderBy('created_at', 'Desc')
+                ->where('status', '1')
+                ->limit('8')
+                ->get();
+
+//            return $payments[1]->package ;
+            return view('SuperDash', compact('months', 'data1', 'organizations', 'payments'));
         }
 
-
-        //             $vehicles = Vehicle::all()->sortByDesc('id')->take('5');
-//            $data = Client::all()->sortByDesc('id')->take('5');
-
-//            dd($vehicles);
-//        if (User::ADMIN == 1) {
-        /*    return "hbasedhfab";
-
-        $clients = Client::all()->sortByDesc('id')->take('5');
         $reservations = Reservation::where('status', '1')
             ->orderBy('id', 'desc')
             ->limit(5)
             ->get();
 
-        return view('dashboard', compact('clients', 'reservations'));*/
+        return view('dashboard', compact('clients', 'reservations', 'vehicles'));
 
     }
 

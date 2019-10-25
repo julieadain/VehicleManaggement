@@ -9,15 +9,13 @@
                 <small>{{'#000343'}}</small>
             </h1>
         </section>
-        <!-- Package option -->
-        <div class="pull-right" style="width: 250px;" ><a href='{{ url('package') }}' class="btn btn-success">Select package</a></div>
         <!-- Main content -->
         <section class="invoice col-md-11">
             <!-- title row -->
             <div class="container row">
                 <div class="col-xs-10">
                     <h2 class="page-header">
-                        <i class="fa fa-globe"></i> LatentSoft.com
+                        <i class="fa fa-globe"></i> {{ $organization->org_name }}
                         <small class="pull-right">Date: {{ date('d-m-Y') }}</small>
                     </h2>
                 </div>
@@ -31,27 +29,26 @@
                         <strong>Latent Soft</strong><br>
                         795 Folsom Ave, Suite 600<br>
                         San Francisco, CA 94107<br>
-                        Phone: (804) 123-5432<br>
-                        Email: info@almasaeedstudio.com
-                    </address>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 invoice-col">
-                    To
-                    <address>
-                        <strong>John Doe</strong><br>
-                        795 Folsom Ave, Suite 600<br>
-                        San Francisco, CA 94107<br>
                         Phone: (555) 539-1037<br>
                         Email: john.doe@example.com
                     </address>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
-                    <b>Invoice #007612</b><br>
-                    <br>
+                    To
+                    <address>
+                        <strong>{{ $organization->org_name }}</strong><br>
+                        {{$organization->address}}
+                        <br>
+                        {{ $organization->owner->email}}
+                    </address>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+                <br>
+
                     <b>Order ID:</b> 4F3S8J<br>
-                    <b>Payment Due:</b> 2/22/2014<br>
+                    <b>Payment for:</b> {{'12/12/2020'}}<br>
                     <b>Account:</b> 968-34567
                 </div>
                 <!-- /.col -->
@@ -64,42 +61,20 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th>Qty</th>
-                            <th>Product</th>
                             <th>Serial #</th>
-                            <th>Description</th>
-                            <th>Subtotal</th>
+                            <th>Package</th>
+                            <th>Remark</th>
+                            <th>Cost(Tk.)</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Call of Duty</td>
-                            <td>455-981-221</td>
-                            <td>El snort testosterone trophy driving gloves handsome</td>
-                            <td>$64.50</td>
+                            <td>{{$organization->package->title}}</td>
+                            <td>{{$organization->package->remark? $organization->package->remark : null}}</td>
+                            <td>{{$organization->package->cost}}</td>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Need for Speed IV</td>
-                            <td>247-925-726</td>
-                            <td>Wes Anderson umami biodiesel</td>
-                            <td>$50.00</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Monsters DVD</td>
-                            <td>735-845-642</td>
-                            <td>Terry Richardson helvetica tousled street art master</td>
-                            <td>$10.70</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Grown Ups Blue Ray</td>
-                            <td>422-568-642</td>
-                            <td>Tousled lomo letterpress</td>
-                            <td>$25.99</td>
-                        </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -111,14 +86,12 @@
                 <!-- accepted payments column -->
 
                 <!-- /.col -->
-                <div class="col-xs-6 pull-right">
-                    <p class="lead">Amount Due 2/22/2014</p>
-
+                <div class="col-xs-6 pull-right" style="padding-top: 25px;">
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
-                                <th style="width:50%">Subtotal:</th>
-                                <td>$250.30</td>
+                                <th style="width:50%">Cost:</th>
+                                <td>{{$organization->package->cost}}</td>
                             </tr>
                             <tr>
                                 <th>Tax (15.00%)</th>
@@ -135,14 +108,14 @@
                 <!-- /.col -->
             </div>
             <!-- /.row -->
-
             <!-- this row will not appear when printing -->
             <div class="row no-print">
                 <div class="col-xs-12">
-                    <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit
-                        Payment
+                    <a href="{{url('/paymentRequest/'.$organization->id)}}"  class="btn btn-success pull-right"
+                       style="margin-right: 5px;"><i class="fa fa-credit-card"></i> Submit payment</a>
+
                     </button>
-                    <a href="{{ url('/invoicePrint') }}" target="_blank" class="btn btn-primary pull-right"
+                    <a href="{{ url('/invoicePrint/'.$organization->id) }}" target="_blank" class="btn btn-primary pull-right"
                        style="margin-right: 5px;"><i class="fa fa-print"></i> Print</a>
 
                 </div>

@@ -1,7 +1,7 @@
 @extends("layout.admin")
 
 @section('content')
-
+{{--    {{ dd($payments[1]->package->title) }}--}}
     <!-- Main content -->
     <section class="content">
         <!-- Info boxes -->
@@ -11,8 +11,8 @@
                     <span class="info-box-icon bg-aqua"><i  class="ion ion-ios-people-outline"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text"></span>
-                        <span class="info-box-number">90</span>
+                        <span class="info-box-text">{{'Organizations'}}</span>
+                        <span class="info-box-number">{{ \App\Organization::where('id', '!=', \Illuminate\Support\Facades\Auth::user()->id)->count() }}</span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -21,11 +21,11 @@
             <!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-red"><i  class="ion ion-ios-people-outline"></i></span>
+                    <span class="info-box-icon bg-green"><i  class="ion ion-ios-people-outline"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Requests</span>
-                        <span class="info-box-number">41,410</span>
+                        <span class="info-box-text">{{"Payments"}}</span>
+                        <span class="info-box-number">{{ \App\Payment::whereStatus(1)->count() }}</span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -38,11 +38,11 @@
 
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-green"><i  class="ion ion-ios-people-outline"></i></span>
+                    <span class="info-box-icon bg-yellow"><i  class="ion ion-ios-people-outline"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">{{"Payments"}}</span>
-                        <span class="info-box-number">1760</span>
+                        <span class="info-box-text">Requests</span>
+                        <span class="info-box-number">{{ \App\Payment::whereStatus(0)->count() }}</span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -51,11 +51,11 @@
             <!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+                    <span class="info-box-icon bg-red"><i class="ion ion-ios-people-outline"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">{{'Organizations'}}</span>
-                        <span class="info-box-number">2,000</span>
+                        <span class="info-box-text">Due</span>
+                        <span class="info-box-number">{{ \App\Payment::whereStatus(-1)->count() }}</span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -229,83 +229,28 @@
                             <table class="table no-margin">
                                 <thead>
                                 <tr>
-                                    <th>Order ID</th>
-                                    <th>Item</th>
+                                    <th>Serial no.</th>
+                                    <th>Package details</th>
                                     <th>Status</th>
-                                    <th>Popularity</th>
+                                    <th>Cost</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($payments as $payment)
                                 <tr>
-                                    <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                    <td>Call of Duty IV</td>
-                                    <td><span class="label label-success">Shipped</span></td>
-                                    <td>
-                                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                            90,80,90,-70,61,-83,63
-                                        </div>
+                                    <td>OR9842</td>
+                                    <td>{{$payment->package->title}}</td>
+                                    @if($payment->status == 1)
+                                    <td><span class="label label-success">{{"Paid"}}</span></td>
+                                    @elseif($payment->status == -1)
+                                        <td><span class="label label-success">{{"Due"}}</span></td>
+                                    @endif
+                                        <td>
+                                        <td>{{$payment->paid}}</td>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                    <td>Samsung Smart TV</td>
-                                    <td><span class="label label-warning">Pending</span></td>
-                                    <td>
-                                        <div class="sparkbar" data-color="#f39c12" data-height="20">
-                                            90,80,-90,70,61,-83,68
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                    <td>iPhone 6 Plus</td>
-                                    <td><span class="label label-danger">Delivered</span></td>
-                                    <td>
-                                        <div class="sparkbar" data-color="#f56954" data-height="20">
-                                            90,-80,90,70,-61,83,63
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                    <td>Samsung Smart TV</td>
-                                    <td><span class="label label-info">Processing</span></td>
-                                    <td>
-                                        <div class="sparkbar" data-color="#00c0ef" data-height="20">
-                                            90,80,-90,70,-61,83,63
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                    <td>Samsung Smart TV</td>
-                                    <td><span class="label label-warning">Pending</span></td>
-                                    <td>
-                                        <div class="sparkbar" data-color="#f39c12" data-height="20">
-                                            90,80,-90,70,61,-83,68
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                    <td>iPhone 6 Plus</td>
-                                    <td><span class="label label-danger">Delivered</span></td>
-                                    <td>
-                                        <div class="sparkbar" data-color="#f56954" data-height="20">
-                                            90,-80,90,70,-61,83,63
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                    <td>Call of Duty IV</td>
-                                    <td><span class="label label-success">Shipped</span></td>
-                                    <td>
-                                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                            90,80,90,-70,61,-83,63
-                                        </div>
-                                    </td>
-                                </tr>
+                                @endforeach
+
                                 </tbody>
                             </table>
                         </div>

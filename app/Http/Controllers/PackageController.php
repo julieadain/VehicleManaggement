@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PackageControllerRequest;
 use App\Package;
 use Illuminate\Http\Request;
 
@@ -27,15 +28,18 @@ class PackageController extends Controller
         //
     }
 
+
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return array|\Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(PackageControllerRequest $request)
     {
-        return view("package");
+
+        Package::create($request->all());
+
+        return redirect()->back();
     }
 
     /**
