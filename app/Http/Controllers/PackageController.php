@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Organization;
-use App\Payment;
+use App\Package;
 use Illuminate\Http\Request;
 
-class PaymentController extends Controller
+class PackageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,8 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        return view("package");
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -26,8 +24,7 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        return view("payment.adminPayment");
-//        return view("payment.adminInvoice");
+        //
     }
 
     /**
@@ -38,16 +35,16 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-
+        return view("package");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Payment  $payment
+     * @param  \App\Package  $package
      * @return \Illuminate\Http\Response
      */
-    public function show(Payment $payment)
+    public function show(Package $package)
     {
         //
     }
@@ -55,10 +52,10 @@ class PaymentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Payment  $payment
+     * @param  \App\Package  $package
      * @return \Illuminate\Http\Response
      */
-    public function edit(Payment $payment)
+    public function edit(Package $package)
     {
         //
     }
@@ -67,10 +64,10 @@ class PaymentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Payment  $payment
+     * @param  \App\Package  $package
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Payment $payment)
+    public function update(Request $request, Package $package)
     {
         //
     }
@@ -78,29 +75,11 @@ class PaymentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Payment  $payment
+     * @param  \App\Package  $package
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Payment $payment)
+    public function destroy(Package $package)
     {
         //
     }
-    public function invoicePrint()
-    {
-        return view("payment.invoice-print");
-    }
-    public function paymentRequest(){
-
-        return view("payment.paymentRequest");
-
-    }
-    public function org_ajaxRequest()
-    {
-//        return "Test";
-
-        $data = Organization::where('org_name', 'LIKE', '%' . request('keyword') . '%')->get();
-
-        return response()->json(['success' => $data]);
-    }
-
 }

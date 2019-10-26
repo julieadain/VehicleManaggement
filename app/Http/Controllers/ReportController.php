@@ -7,6 +7,7 @@ use App\Purpose;
 use App\Report;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
@@ -25,8 +26,19 @@ class ReportController extends Controller
             ->get();
 
 //        dd($exp);
+//        dd(Auth::user()->org_id);
 
-        $expenses = Expense::whereYear('created_at', date('Y'))->whereMonth('created_at', date('m'))->orderBy('created_at', 'Desc')->get();
+        if (session('org_info')){
+            $org_id = session()->get('org_info')->id;
+        }else{
+           $org_id = Auth::user()->org_id;
+        }
+//        dd($org_id);
+        $expenses = Expense::whereYear('created_at', date('Y'))
+            ->where('org_id', $org_id)
+            ->whereMonth('created_at', date('m'))
+            ->orderBy('created_at', 'Desc')
+            ->get();
 
 //        dd($expenses);
 

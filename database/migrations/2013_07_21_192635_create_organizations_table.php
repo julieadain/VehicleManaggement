@@ -19,6 +19,8 @@ class CreateOrganizationsTable extends Migration
             $table->string('address',100);
             $table->string('trade_license_copy',100);
             $table->boolean('status')->default('0');
+            $table->bigInteger('package_id')->unsigned()->nullable();
+            $table->foreign('package_id')->references('id')->on('packages');
             $table->timestamps();
         });
     }

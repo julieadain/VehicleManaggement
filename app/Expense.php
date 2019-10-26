@@ -8,7 +8,7 @@ class Expense extends Model
 {
 
     protected $fillable = [
-        'amount', 'purpose_id', 'created_at'
+        'amount', 'purpose_id', 'created_at', 'org_id'
     ];
 
     public function purpose(){

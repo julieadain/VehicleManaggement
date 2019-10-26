@@ -18,6 +18,8 @@ class CreateExpensesTable extends Migration
             $table->string('amount',50);
             $table->bigInteger('purpose_id')->unsigned();
             $table->foreign('purpose_id')->references('id')->on('purposes')->onDelete('cascade');
+            $table->bigInteger('org_id')->unsigned();
+            $table->foreign('org_id')->references('id')->on('organizations')->onDelete('cascade');
             $table->timestamps(false);
         });
     }

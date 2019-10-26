@@ -8,10 +8,10 @@
         <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+                    <span class="info-box-icon bg-aqua"><i  class="ion ion-ios-people-outline"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Organizations</span>
+                        <span class="info-box-text"></span>
                         <span class="info-box-number">90</span>
                     </div>
                     <!-- /.info-box-content -->
@@ -21,10 +21,10 @@
             <!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+                    <span class="info-box-icon bg-red"><i  class="ion ion-ios-people-outline"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Vehicles</span>
+                        <span class="info-box-text">Requests</span>
                         <span class="info-box-number">41,410</span>
                     </div>
                     <!-- /.info-box-content -->
@@ -38,10 +38,10 @@
 
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+                    <span class="info-box-icon bg-green"><i  class="ion ion-ios-people-outline"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Drivers</span>
+                        <span class="info-box-text">{{"Payments"}}</span>
                         <span class="info-box-number">1760</span>
                     </div>
                     <!-- /.info-box-content -->
@@ -54,7 +54,7 @@
                     <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Clients</span>
+                        <span class="info-box-text">{{'Organizations'}}</span>
                         <span class="info-box-number">2,000</span>
                     </div>
                     <!-- /.info-box-content -->
@@ -209,137 +209,11 @@
         <div class="row">
             <!-- Left col -->
             <div class="col-md-8">
-                <!-- MAP & BOX PANE -->
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Visitors Report</h3>
-
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                        class="fa fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i
-                                        class="fa fa-times"></i></button>
-                        </div>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body no-padding">
-                        <div class="row">
-                            <div class="col-md-9 col-sm-8">
-                                <div class="pad">
-                                    <!-- Map will be created here -->
-                                    <div id="world-map-markers" style="height: 325px;"></div>
-                                </div>
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-md-3 col-sm-4">
-                                <div class="pad box-pane-right bg-green" style="min-height: 280px">
-                                    <div class="description-block margin-bottom">
-                                        <div class="sparkbar pad" data-color="#fff">90,70,90,70,75,80,70</div>
-                                        <h5 class="description-header">8390</h5>
-                                        <span class="description-text">Visits</span>
-                                    </div>
-                                    <!-- /.description-block -->
-                                    <div class="description-block margin-bottom">
-                                        <div class="sparkbar pad" data-color="#fff">90,50,90,70,61,83,63</div>
-                                        <h5 class="description-header">30%</h5>
-                                        <span class="description-text">Referrals</span>
-                                    </div>
-                                    <!-- /.description-block -->
-                                    <div class="description-block">
-                                        <div class="sparkbar pad" data-color="#fff">90,50,90,70,61,83,63</div>
-                                        <h5 class="description-header">70%</h5>
-                                        <span class="description-text">Organic</span>
-                                    </div>
-                                    <!-- /.description-block -->
-                                </div>
-                            </div>
-                            <!-- /.col -->
-                        </div>
-                        <!-- /.row -->
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-                <div class="row">
-                    <div class="col-md-6">
-                        <!-- USERS LIST -->
-                        <div class="box box-danger">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">Latest Members</h3>
-
-                                <div class="box-tools pull-right">
-                                    <span class="label label-danger">8 New Members</span>
-                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                                class="fa fa-minus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i
-                                                class="fa fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="box-body no-padding">
-                                <ul class="users-list clearfix">
-                                    <li>
-                                        <img src="dist/img/user1-128x128.jpg" alt="User Image">
-                                        <a class="users-list-name" href="#">Alexander Pierce</a>
-                                        <span class="users-list-date">Today</span>
-                                    </li>
-                                    <li>
-                                        <img src="dist/img/user8-128x128.jpg" alt="User Image">
-                                        <a class="users-list-name" href="#">Norman</a>
-                                        <span class="users-list-date">Yesterday</span>
-                                    </li>
-                                    <li>
-                                        <img src="dist/img/user7-128x128.jpg" alt="User Image">
-                                        <a class="users-list-name" href="#">Jane</a>
-                                        <span class="users-list-date">12 Jan</span>
-                                    </li>
-                                    <li>
-                                        <img src="dist/img/user6-128x128.jpg" alt="User Image">
-                                        <a class="users-list-name" href="#">John</a>
-                                        <span class="users-list-date">12 Jan</span>
-                                    </li>
-                                    <li>
-                                        <img src="dist/img/user2-160x160.jpg" alt="User Image">
-                                        <a class="users-list-name" href="#">Alexander</a>
-                                        <span class="users-list-date">13 Jan</span>
-                                    </li>
-                                    <li>
-                                        <img src="dist/img/user5-128x128.jpg" alt="User Image">
-                                        <a class="users-list-name" href="#">Sarah</a>
-                                        <span class="users-list-date">14 Jan</span>
-                                    </li>
-                                    <li>
-                                        <img src="dist/img/user4-128x128.jpg" alt="User Image">
-                                        <a class="users-list-name" href="#">Nora</a>
-                                        <span class="users-list-date">15 Jan</span>
-                                    </li>
-                                    <li>
-                                        <img src="dist/img/user3-128x128.jpg" alt="User Image">
-                                        <a class="users-list-name" href="#">Nadia</a>
-                                        <span class="users-list-date">15 Jan</span>
-                                    </li>
-                                </ul>
-                                <!-- /.users-list -->
-                            </div>
-                            <!-- /.box-body -->
-                            <div class="box-footer text-center">
-                                <a href="javascript:void(0)" class="uppercase">View All Users</a>
-                            </div>
-                            <!-- /.box-footer -->
-                        </div>
-                        <!--/.box -->
-                    </div>
-                    <!-- /.col -->
-                </div>
-                <!-- /.row -->
 
                 <!-- TABLE: LATEST ORDERS -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Latest Orders</h3>
+                        <h3 class="box-title">Payment list</h3>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -439,10 +313,9 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">
-                        <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New
-                            Order</a>
+                        <a href="{{url('/payment/create')}}" class="btn btn-sm btn-info btn-flat pull-left">Place New Payment</a>
                         <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All
-                            Orders</a>
+                            Payments</a>
                     </div>
                     <!-- /.box-footer -->
                 </div>
@@ -451,81 +324,11 @@
             <!-- /.col -->
 
             <div class="col-md-4">
-                <!-- Info Boxes Style 2 -->
-                <div class="info-box bg-yellow">
-                    <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Inventory</span>
-                        <span class="info-box-number">5,200</span>
-
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 50%"></div>
-                        </div>
-                        <span class="progress-description">
-                    50% Increase in 30 Days
-                  </span>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-                <div class="info-box bg-green">
-                    <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Mentions</span>
-                        <span class="info-box-number">92,050</span>
-
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 20%"></div>
-                        </div>
-                        <span class="progress-description">
-                    20% Increase in 30 Days
-                  </span>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-                <div class="info-box bg-red">
-                    <span class="info-box-icon"><i class="ion ion-ios-cloud-download-outline"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Downloads</span>
-                        <span class="info-box-number">114,381</span>
-
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 70%"></div>
-                        </div>
-                        <span class="progress-description">
-                    70% Increase in 30 Days
-                  </span>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-                <div class="info-box bg-aqua">
-                    <span class="info-box-icon"><i class="ion-ios-chatbubble-outline"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Direct Messages</span>
-                        <span class="info-box-number">163,921</span>
-
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 40%"></div>
-                        </div>
-                        <span class="progress-description">
-                    40% Increase in 30 Days
-                  </span>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-
 
                 <!-- ORGANIZATION LIST -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Recently Added Organizations</h3>
+                        <h3 class="box-title">Latest Organizations</h3>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -538,63 +341,24 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <ul class="products-list product-list-in-box">
-                            <li class="item">
-                                <div class="product-img">
-                                    <img src="dist/img/default-50x50.gif" alt="Product Image">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">Samsung TV
-                                        <span class="label label-warning pull-right">$1800</span></a>
-                                    <span class="product-description">
-                          Samsung 32" 1080p 60Hz LED Smart HDTV.
-                        </span>
-                                </div>
-                            </li>
-                            <!-- /.item -->
-                            <li class="item">
-                                <div class="product-img">
-                                    <img src="dist/img/default-50x50.gif" alt="Product Image">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">Bicycle
-                                        <span class="label label-info pull-right">$700</span></a>
-                                    <span class="product-description">
-                          26" Mongoose Dolomite Men's 7-speed, Navy Blue.
-                        </span>
-                                </div>
-                            </li>
-                            <!-- /.item -->
-                            <li class="item">
-                                <div class="product-img">
-                                    <img src="dist/img/default-50x50.gif" alt="Product Image">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">Xbox One <span
-                                                class="label label-danger pull-right">$350</span></a>
-                                    <span class="product-description">
-                          Xbox One Console Bundle with Halo Master Chief Collection.
-                        </span>
-                                </div>
-                            </li>
-                            <!-- /.item -->
-                            <li class="item">
-                                <div class="product-img">
-                                    <img src="dist/img/default-50x50.gif" alt="Product Image">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">PlayStation 4
-                                        <span class="label label-success pull-right">$399</span></a>
-                                    <span class="product-description">
-                          PlayStation 4 500GB Console (PS4)
-                        </span>
-                                </div>
-                            </li>
+                            @foreach($organizations as $organization)
+                                <li class="item">
+                                    <div class="product-img">
+                                        <img src="dist/img/default-50x50.gif" alt="Product Image">
+                                    </div>
+                                    <div class="product-info">
+                                        <a href="javascript:void(0)" class="product-title">
+                                            <span class="label label-warning pull-right"> {{date('d-m-Y', strtotime($organization->created_at)) }}</span></a>
+                                        <span class="product-description">{{$organization->org_name}} </span>
+                                    </div>
+                                </li>
+                            @endforeach
                             <!-- /.item -->
                         </ul>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">
-                        <a href="javascript:void(0)" class="uppercase">View All Organizations</a>
+                        <a href="{{ url('/organization') }}" class="uppercase">View All Organizations</a>
                     </div>
                     <!-- /.box-footer -->
                 </div>
@@ -616,68 +380,68 @@
 
     <script>
 
-    // -----------------------
-    // - MONTHLY SALES CHART -
-    // -----------------------
+        // -----------------------
+        // - MONTHLY SALES CHART -
+        // -----------------------
 
-    // Get context with jQuery - using jQuery's .get() method.
-    var salesChartCanvas = $('#salesChart').get(0).getContext('2d');
-    // This will get the first returned node in the jQuery collection.
-    var salesChart = new Chart(salesChartCanvas);
+        // Get context with jQuery - using jQuery's .get() method.
+        var salesChartCanvas = $('#salesChart').get(0).getContext('2d');
+        // This will get the first returned node in the jQuery collection.
+        var salesChart = new Chart(salesChartCanvas);
 
-    var months = JSON.parse('{!! $months !!}');
-    var data1 = JSON.parse('{!! $data1 !!}');
+        var months = JSON.parse('{!! $months !!}');
+        var data1 = JSON.parse('{!! $data1 !!}');
 
-    var salesChartData = {
-        labels: months,
-        datasets: [
-            {
-                label: 'Electronics',
-                fillColor: 'rgb(118,116,222)',
-                strokeColor: 'rgb(93,133,222)',
-                pointColor: 'rgb(133,75,222)',
-                pointStrokeColor: '#1212d1',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: 'rgb(220,220,220)',
-                data: data1
-            }
+        var salesChartData = {
+            labels: months,
+            datasets: [
+                {
+                    label: 'Electronics',
+                    fillColor: 'rgb(118,116,222)',
+                    strokeColor: 'rgb(93,133,222)',
+                    pointColor: 'rgb(133,75,222)',
+                    pointStrokeColor: '#1212d1',
+                    pointHighlightFill: '#fff',
+                    pointHighlightStroke: 'rgb(220,220,220)',
+                    data: data1
+                }
 
-        ]
-    };
+            ]
+        };
 
-    var salesChartOptions = {
-        // Boolean - If we should show the scale at all
-        showScale: true,
-        // Boolean - Whether grid lines are shown across the chart
-        scaleShowGridLines: false,
-        // String - Colour of the grid lines
-        scaleGridLineColor: 'rgba(0,0,0,.05)',
-        // Number - Width of the grid lines
-        scaleGridLineWidth: 1,
-        // Boolean - Whether to show horizontal lines (except X axis)
-        scaleShowHorizontalLines: true,
-        // Boolean - Whether to show vertical lines (except Y axis)
-        scaleShowVerticalLines: true,
-        // Boolean - Whether the line is curved between points
-        bezierCurve: true,
-        // Number - Tension of the bezier curve between points
-        bezierCurveTension: 0.3,
-        // Boolean - Whether to show a dot for each point
-        pointDot: false,
-        // Number - Radius of each point dot in pixels
-        pointDotRadius: 4,
-        // Number - Pixel width of point dot stroke
-        pointDotStrokeWidth: 1,
-        // Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-        pointHitDetectionRadius: 20,
-        // Boolean - Whether to show a stroke for datasets
-        datasetStroke: true,
-        // Number - Pixel width of dataset stroke
-        datasetStrokeWidth: 2,
-        // Boolean - Whether to fill the dataset with a color
-        datasetFill: true,
-        // String - A legend template
-        legendTemplate: '<ul class=\'<%=name.toLowerCase()%>-legend\'><% for (var i=0; i<datasets.length; i++){%><li><span style=\'background-color:<%=datasets[i].lineColor%>\'></span><%=datasets[i].label%></li><%}%></ul>',
+        var salesChartOptions = {
+            // Boolean - If we should show the scale at all
+            showScale: true,
+            // Boolean - Whether grid lines are shown across the chart
+            scaleShowGridLines: false,
+            // String - Colour of the grid lines
+            scaleGridLineColor: 'rgba(0,0,0,.05)',
+            // Number - Width of the grid lines
+            scaleGridLineWidth: 1,
+            // Boolean - Whether to show horizontal lines (except X axis)
+            scaleShowHorizontalLines: true,
+            // Boolean - Whether to show vertical lines (except Y axis)
+            scaleShowVerticalLines: true,
+            // Boolean - Whether the line is curved between points
+            bezierCurve: true,
+            // Number - Tension of the bezier curve between points
+            bezierCurveTension: 0.3,
+            // Boolean - Whether to show a dot for each point
+            pointDot: false,
+            // Number - Radius of each point dot in pixels
+            pointDotRadius: 4,
+            // Number - Pixel width of point dot stroke
+            pointDotStrokeWidth: 1,
+            // Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+            pointHitDetectionRadius: 20,
+            // Boolean - Whether to show a stroke for datasets
+            datasetStroke: true,
+            // Number - Pixel width of dataset stroke
+            datasetStrokeWidth: 2,
+            // Boolean - Whether to fill the dataset with a color
+            datasetFill: true,
+            // String - A legend template
+            legendTemplate: '<ul class=\'<%=name.toLowerCase()%>-legend\'><% for (var i=0; i<datasets.length; i++){%><li><span style=\'background-color:<%=datasets[i].lineColor%>\'></span><%=datasets[i].label%></li><%}%></ul>',
     // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
     maintainAspectRatio     : true,
     // Boolean - whether to make the chart responsive to window resizing

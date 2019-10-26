@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Client;
 use App\Driver;
 use App\Organization;
+use App\Payment;
 use App\Reservation;
 use App\User;
 use App\Vehicle;
@@ -33,28 +34,9 @@ class HomeController extends Controller
     public function index()
     {
 
-//        dd(" Here's the home controller ");
-//        dd( auth()->user()->organization->org_name);
-//        dd( auth()->user()->organization->status);
-        $org_info = session('org_info');
-
-//        dd($org_info->status );
-
-
         if (auth()->user()->organization->status == 0) {
             return view('pending');
         }
-//
-//        if (User::ADMIN == 1) {
-//
-//            $months = json_encode(['January', 'February', 'March', 'April', 'May', 'June', 'July']);
-//            $data1 = json_encode([65, 59, 80, 81, 56, 55, 40]);
-////            dd("asjibfakjwf");
-//            return view('SuperDash', compact('months', 'data1'));
-//
-//        }
-
-
 
         if (session('org_info')) {
 
@@ -73,7 +55,19 @@ class HomeController extends Controller
 
 //            dd($vehicles);
 
-        } else {
+            $reservations = Reservation::where('status', '1')
+                ->orderBy('id', 'desc')
+                ->limit(5)
+                ->get();
+
+            return view('dashboard')
+                ->with('clients', $clients)
+                ->with('reservations', $reservations)
+                ->with('vehicles', $vehicles)
+                ->with('drivers', $drivers);
+
+
+        } /*else {
 
             $vehicles = Vehicle::where('org_id', Auth::user()->org_id)
                 ->orderBy('id', 'desc')
@@ -87,21 +81,38 @@ class HomeController extends Controller
                 ->orderBy('id', 'desc')
                 ->take('5')
                 ->get();
+        }*/
+        if (Auth::user()->id == 1) {
 
+            $months = json_encode(['January', 'February', 'March', 'April', 'May', 'June', 'July']);
+            $data1 = json_encode([65, 59, 80, 81, 56, 55, 40]);
+            $payment = Payment::orderBy('created_at', 'Desc')
+                ->limit('10')->get();
 
+            $organizations = Organization::where('id', '!=', Auth::user()->org_id)
+                ->orderBy('created_at', 'Desc')
+                ->where('status', '1')
+                ->limit('5')
+                ->get();
+            return view('SuperDash', compact('months', 'data1', 'payment', 'organizations'));
         }
 
 
 //            dd($vehicles);
 
 
-
-//             $vehicles = Vehicle::all()->sortByDesc('id')->take('5');
+        //             $vehicles = Vehicle::all()->sortByDesc('id')->take('5');
 //            $data = Client::all()->sortByDesc('id')->take('5');
-            $reservations = Reservation::where('status', '1')
-                ->orderBy('id', 'desc')
-                ->limit(5)
-                ->get();
+
+//            dd($vehicles);
+//        if (User::ADMIN == 1) {
+        /*    return "hbasedhfab";
+
+        $clients = Client::all()->sortByDesc('id')->take('5');
+        $reservations = Reservation::where('status', '1')
+            ->orderBy('id', 'desc')
+            ->limit(5)
+            ->get();
 
 
             return view('dashboard')
@@ -112,6 +123,7 @@ class HomeController extends Controller
 
 
 
+        return view('dashboard', compact('clients', 'reservations'));*/
 
     }
 

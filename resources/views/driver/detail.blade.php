@@ -6,6 +6,15 @@
         <h3 >
             Driver List
         </h3>
+        <div class="box-tools">
+            <div class="input-group input-group-sm" style="width: 150px;">
+                <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </div>
 
     </section>
 
@@ -39,7 +48,7 @@
                                     <td> {{$driver->address}}</td>
 
                                     <td>
-                                        <a title="" href="{{url("driver/$driver->id")}}" class="btn btn-primary" style="float: left; margin-right: 2px"><i>View</i></a>
+                                        <a title="" href="{{url("driver/$driver->id")}}" class="btn btn-primary" style="float: left; margin-right: 2px"><i class="fa fa-eye"></i></a>
                                         <a title="" href="{{url("driver/$driver->id/edit")}}" class="btn btn-primary" style="float: left; margin-right: 2px"><i class="fa fa-pencil"></i></a>
                                         <form action="{{url("driver/$driver->id") }}" method="post" style="float: left; margin-right: 2px">
                                             @csrf

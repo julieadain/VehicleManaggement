@@ -28,14 +28,40 @@
     <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-daterangepicker/daterangepicker.css') }}">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
-
+{{--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">--}}
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="{{'https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js'}}"></script>
     <script src="{{'https://oss.maxcdn.com/respond/1.4.2/respond.min.js'}}"></script>
     <![endif]-->
+    {{--<style>
+        .btn-file {
+            display: block;
+            height: 20px;
+            overflow: hidden;
+            position: relative;
+            vertical-align: middle;
+            width: 120px;
+        }
 
+
+        .btn-file > input {
+            cursor: pointer;
+            direction: ltr;
+            font-size: 23px;
+            margin: 0;
+            opacity: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform: translate(-300px, 0px) scale(4);
+        }
+
+        input[type="file"] {
+            display: block;
+        }
+    </style>--}}
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -74,7 +100,6 @@
                             <li class="user-header">
                                 <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle"
                                      alt="User Image">
-
                                 <p>
                                     {{auth()->user()->name}} - {{auth()->user()->status}}
                                     <small>Member since {{auth()->user()->created_at }}</small>
@@ -84,7 +109,12 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Upload photo</a>
+                                    <span class="btn default btn-file">
+                                        <span class="fileinput-new">
+                                           <span class="fa fa-upload"></span>
+                                         </span>
+                                    <input type="file" class="textbox wp95 fl fileupload fileInput" name="files" id="fileupload" style="border: 1px solid black">
+                                    </span>
                                 </div>
 
                                 <div class="pull-right">
@@ -127,7 +157,6 @@
                 </li>
 
                 @endadmin
-
                 @if( session('org_info') )
                     {{--            {{ dd(session('org_info')) }}--}}
                     <?php $org_info = session('org_info')  ?>
@@ -211,7 +240,7 @@
                                     </span>
                                 </a>
                             </li>
-                            <li><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Client's history</a></li>
+                            <li><a href="{{url('clientHistory')}}"><i class="fa fa-circle-o"></i> Client's history</a></li>
                         </ul>
                     </li>
 
@@ -247,7 +276,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="{{url('')}}">
+                        <a href="{{url('massage')}}">
                             <i class="fa fa-envelope"></i> <span>SMS</span>
                             <span class="pull-right-container">
                             <small class="label pull-right bg-green">New sms</small>
@@ -257,6 +286,11 @@
                     <li>
                         <a href="{{url('/report')}}">
                             <i class="fa fa-file"></i> <span>Report</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('/paymentRequest')}}">
+                            <i class="fa fa-file"></i> <span>Payment</span>
                         </a>
                     </li>
             </ul>

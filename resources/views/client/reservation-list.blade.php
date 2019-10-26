@@ -36,12 +36,12 @@
                             </tr>
                             @foreach($reservationList as $reservation)
                                 <tr>
-                                    <td>{{$reservation->clients-> name}}</td>
-                                    <td>{{date("dM y,", strtotime( $reservation->start_date_time))}}
-                                        at{{date(" h:ia", strtotime( $reservation->start_date_time))}}</td>
-                                    <td>{{date("dM y,", strtotime( $reservation->end_date_time))}}
-                                        at{{date(" h:ia", strtotime( $reservation->end_date_time))}}</td>
-                                    <td>{{$reservation->seat_capacity}}</td>
+                                    <td>{{$reservation->clients-> name ?? ''}}</td>
+                                    <td>{{date("dM y,", strtotime( $reservation->start_date_time ?? ''))}}
+                                        at{{date(" h:ia", strtotime( $reservation->start_date_time ?? ''))}}</td>
+                                    <td>{{date("dM y,", strtotime( $reservation->end_date_time ?? ''))}}
+                                        at{{date(" h:ia", strtotime( $reservation->end_date_time ?? ''))}}</td>
+                                    <td>{{$reservation->seat_capacity ?? ''}}</td>
                                     <td>
                                         @if ($reservation->ac == 1)
                                             {{"Yes"}}
@@ -58,7 +58,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a title="rdgrdg" href="{{url("reservation/$reservation->id")}}" class="btn btn-primary" style="float: left; margin-right: 2px">View</a>
+                                        <a title="rdgrdg" href="{{url("reservation/$reservation->id")}}" class="btn btn-primary" style="float: left; margin-right: 2px"><i class="fa fa-eye"></i></a>
                                         <a title="rdgrdg" href="{{url("reservation/$reservation->id/edit")}}" class="btn btn-primary" style="float: left; margin-right: 2px"><i class="fa fa-pencil"></i></a>
                                         <form action="{{ url("reservation/$reservation->id")  }}" method="post" style="float: left; margin-right: 2px">
                                             @csrf

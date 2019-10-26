@@ -6,6 +6,7 @@ use App\Expense;
 use App\Purpose;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Session;
 
@@ -63,6 +64,11 @@ class ExpenseController extends Controller
         $expense->amount = $request->amount;
         $expense->purpose_id = $purpose->id;
         $expense->created_at = date('Y-m-d', strtotime($request->date));
+        if (session('org_info')){
+            $expense->org_id = session()->get('org_info')->id;
+        }else{
+            $expense->org_id = Auth::user()->org_id;
+        }
 
         $expense->save();
 

@@ -11,4 +11,9 @@ class Client extends Model
     public function organizations(){
         return $this->belongsTo('\App\organization','org_id','id');
     }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::Class);
+    }
 }

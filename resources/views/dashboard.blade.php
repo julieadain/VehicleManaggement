@@ -58,7 +58,7 @@
                     <div class="icon">
                         <i class="ion ion-android-checkbox"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{'currentReservation'}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -103,32 +103,47 @@
                         <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
                         <ul class="todo-list">
 
+                                <div class="box-body table-responsive no-padding">
+                                    <table class="table table-hover">
+                                        <tr class="lovelyrow">
 
-                            @foreach($reservations as $reservation)
-{{--                                <tr class="lovelyrow" onclick="location.href='{{$reservation->id}}/currentReservation'">--}}
+                                        </tr>
+                                        @foreach($reservations as $reservation)
+                                            <tr class="lovelyrow" onclick="location.href='{{$reservation->id}}/currentReservation'">
+
+                                                <td><b>{{$reservation->clients->name}}</b></td>
+                                                <td>{{date("dM y,", strtotime( $reservation->start_date_time))}}
+                                                    at{{date(" h:ia", strtotime( $reservation->start_date_time))}}
+                                                    to {{date("dM y,", strtotime( $reservation->end_date_time))}}
+                                                    at{{date(" h:ia", strtotime( $reservation->start_date_time))}}</td>
+                                                <td><i class="fa fa-map-marker"> </i><small  >{{ $reservation-> location }} </small></td>
+                                            </tr>
+                                        @endforeach
+                                    </table>
+                                </div>
 
 
-                                <li>
+{{--                                <li>--}}
+{{--                            @foreach($reservations as $reservation)--}}
+{{--                                <a href="{{url("$reservation->id/currentReservation")}}"> {{$reservation->clients-> name}}&nbsp; </a>--}}
 
-                                    <a href="{{url("$reservation->id/currentReservation")}}"> {{$reservation->clients-> name}}&nbsp; </a>
-
-                                    <b class="label label-primary">{{date("dM y,", strtotime( $reservation->start_date_time))}}
-                                            at{{date(" h:ia", strtotime( $reservation->start_date_time))}}&nbsp;
-                                            to {{date("dM y,", strtotime( $reservation->end_date_time))}}
-                                            at{{date(" h:ia", strtotime( $reservation->start_date_time))}}&nbsp; &nbsp;
-                                    </b>
-
-
-                                         <i class="fa fa-map-marker"> </i><small  >{{ $reservation-> location }} </small>
+{{--                                    <b class="label label-primary">{{date("dM y,", strtotime( $reservation->start_date_time))}}--}}
+{{--                                            at{{date(" h:ia", strtotime( $reservation->start_date_time))}}&nbsp;--}}
+{{--                                            to {{date("dM y,", strtotime( $reservation->end_date_time))}}--}}
+{{--                                            at{{date(" h:ia", strtotime( $reservation->start_date_time))}}&nbsp; &nbsp;--}}
+{{--                                    </b>--}}
 
 
-                                    <!-- General tools such as edit or delete-->
+{{--                                         <i class="fa fa-map-marker"> </i><small  >{{ $reservation-> location }} </small>--}}
+
+
+{{--                                    <!-- General tools such as edit or delete-->--}}
 {{--                                    <div class="tools">--}}
 {{--                                        <i class="fa fa-trash-o"></i>--}}
 {{--                                    </div>--}}
-                                </li>
+{{--                                </li>--}}
 {{--                                </tr>--}}
-                            @endforeach
+{{--                            @endforeach--}}
 
 
                         </ul>
@@ -150,18 +165,52 @@
                     <div class="box-body">
                         <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
                         <ul class="todo-list">
-                            @foreach($clients as $client)
-                                <li>
-                                    <td><a href="{{url('client')}}"> <span class="text">{{$client->name}} </span> </a>
-                                    </td>
-                                {{--                                <span class="text">A client</span>--}}
-                                <!-- Emphasis label -->
-                                    {{--                                <small class="label label-danger"><i class="fa fa-clock-o"> </i> </small>--}}
-                                    <div class="tools">
-                                        <i class="fa fa-trash-o"></i>
-                                    </div>
-                                </li>
-                            @endforeach
+
+
+
+
+
+                            <div class="box-body table-responsive no-padding">
+                                <table class="table table-hover">
+                                    <tr class="lovelyrow">
+
+                                    </tr>
+                                    @foreach($clients as $client)
+                                        <tr class="lovelyrow" onclick="location.href='client'">
+
+                                            <td><b>{{$client-> name}}</b></td>
+                                            <td>                               <?php
+                                                                                    $date1 = new DateTime($client->created_at);
+                                                                                    $date2 = new DateTime(now());
+                                                                                    $interval = $date1->diff($date2);
+                                                                                ?></td>
+
+
+                                        </tr>
+                                    @endforeach
+                                </table>
+                            </div>
+
+
+
+{{--                            @foreach($clients as $client)--}}
+{{--                                <li>--}}
+{{--                                    <td><a href="{{url('client')}}"> <span class="text">{{$client->name}} </span> </a>--}}
+{{--                                    </td>--}}
+
+{{--                                <!-- Emphasis label -->--}}
+{{--                                <?php--}}
+{{--                                    $date1 = new DateTime($client->created_at);--}}
+{{--                                    $date2 = new DateTime(now());--}}
+{{--                                    $interval = $date1->diff($date2);--}}
+{{--                                ?>--}}
+
+{{--                                <small class="label label-primary"><i class="fa fa-clock-o">{{ ('  ' .$interval->format('%a')).'  '. 'Days ago' }} </i> </small>--}}
+{{--                                <div class="tools">--}}
+{{--                                    <i class="fa fa-trash-o"></i>--}}
+{{--                                </div>--}}
+{{--                            </li>--}}
+{{--                            @endforeach--}}
                         </ul>
                     </div>
                 </div>
@@ -182,17 +231,38 @@
                         <div class="box-body">
                             <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
                             <ul class="todo-list">
-                                @foreach($vehicles as $vehicle)
-                                <li>
-                                    <span class="text"> <a href="{{url('dashboard/vehicle/'.$vehicle->id )}}">{{$vehicle-> brand}}</a></span>
-                                    <!-- Emphasis label -->
+
+                                <div class="box-body table-responsive no-padding">
+                                    <table class="table table-hover">
+                                        <tr class="lovelyrow">
+
+                                        </tr>
+                                        @foreach($vehicles as $vehicle)
+                                            <tr class="lovelyrow" onclick="location.href='dashboard/vehicle/{{$vehicle->id}}'">
+
+                                                <td style="color: #0b58a2"><b>{{$vehicle->brand}}</b></td>
+
+                                            </tr>
+                                        @endforeach
+                                    </table>
+                                </div>
+
+
+
+
+
+
+{{--                                @foreach($vehicles as $vehicle)--}}
+{{--                                <li>--}}
+{{--                                    <span class="text"> <a href="{{url('dashboard/vehicle/'.$vehicle->id )}}">{{$vehicle-> brand}}</a></span>--}}
+{{--                                    <!-- Emphasis label -->--}}
 {{--                                    <small class="label label-danger"><i class="fa fa-clock-o"></i></small>--}}
-                                    <!-- General tools such as edit or delete-->
-                                    <div class="tools">
-                                        <i class="fa fa-trash-o"></i>
-                                    </div>
-                                </li>
-                                @endforeach
+{{--                                    <!-- General tools such as edit or delete-->--}}
+{{--                                    <div class="tools">--}}
+{{--                                        <i class="fa fa-trash-o"></i>--}}
+{{--                                    </div>--}}
+{{--                                </li>--}}
+{{--                                @endforeach--}}
 
 
 
@@ -215,18 +285,43 @@
                             <div class="box-body">
                                 <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
                                 <ul class="todo-list">
-                                    @foreach($drivers as $driver)
 
-                                    <li>
-                                        <span class="text"><a href="{{url('dashboard/driver/'.$driver->id )}}">{{$driver-> name}}</a></span>
-                                        <!-- Emphasis label -->
+
+
+                                    <div class="box-body table-responsive no-padding">
+                                        <table class="table table-hover">
+                                            <tr class="lovelyrow">
+
+                                            </tr>
+                                            @foreach($drivers as $driver)
+                                                <tr class="lovelyrow" onclick="location.href='dashboard/driver/{{$driver->id}}'">
+
+                                                    <td style="color: #0b58a2"><b>{{$driver->name}}</b></td>
+
+                                                </tr>
+                                            @endforeach
+                                        </table>
+                                    </div>
+
+
+
+
+
+
+
+
+{{--                                    @foreach($drivers as $driver)--}}
+
+{{--                                    <li>--}}
+{{--                                        <span class="text"><a href="{{url('dashboard/driver/'.$driver->id )}}">{{$driver-> name}}</a></span>--}}
+{{--                                        <!-- Emphasis label -->--}}
 {{--                                        <small class="label label-danger"><i class="fa fa-clock-o"></i></small>--}}
-                                        <!-- General tools such as edit or delete-->
+{{--                                        <!-- General tools such as edit or delete-->--}}
 {{--                                        <div class="tools">--}}
 {{--                                            <i class="fa fa-trash-o"></i>--}}
 {{--                                        </div>--}}
-                                    </li>
-                                    @endforeach
+{{--                                    </li>--}}
+{{--                                    @endforeach--}}
 
                                 </ul>
                             </div>

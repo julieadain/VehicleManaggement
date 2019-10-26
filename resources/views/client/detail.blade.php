@@ -1,16 +1,14 @@
 
-
-
-
-
-
-
 @extends("layout.admin")
 
 @section('content')
     <section class="content-header">
         <h3 >
             Client List
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-default" style="margin-right: 45px;" ><a href="{{url('client/create')}}">
+                        <i class="fa fa-plus"> </i> </a></button>
+            </div>
         </h3>
 
     </section>

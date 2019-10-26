@@ -2,6 +2,8 @@
 
 use App\Client;
 use App\Driver;
+use App\Organization;
+use App\Package;
 use App\Purpose;
 use App\User;
 use App\Vehicle;
@@ -20,7 +22,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ExpensesTableSeeder::class);*/
 
 //        factory(Purpose::class, 100)->create();
-        factory(\App\Organization::class, 5)->create();
+        factory(Package::class, 10)->create();
+        factory(Organization::class, 5)->create();
         factory(User::class, 10)->create();
         factory(Vehicle::class, 50)->create();
         factory(Client::class, 50)->create();
