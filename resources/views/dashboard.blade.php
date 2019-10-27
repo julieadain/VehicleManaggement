@@ -28,7 +28,8 @@
                     <div class="icon">
                         <i class="ion ion-android-car"></i>
                     </div>
-                    <a href="{{url("vehicle")}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{url("vehicle")}}" class="small-box-footer">More info <i
+                                class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -43,7 +44,8 @@
                     <div class="icon">
                         <i class="ion ion-person"></i>
                     </div>
-                    <a href="{{url("driver")}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{url("driver")}}" class="small-box-footer">More info <i
+                                class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -58,7 +60,8 @@
                     <div class="icon">
                         <i class="ion ion-android-checkbox"></i>
                     </div>
-                    <a href="{{'currentReservation'}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{'currentReservation'}}" class="small-box-footer">More info <i
+                                class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -91,7 +94,8 @@
 
                         <h3 class="box-title">Reservation</h3>
                         <div class="box-tools pull-right">
-                            <button class="btn btn-default" style="margin-right: 5px;" ><a href="{{url("currentReservation")}}"> <i class="fa fa-file" ></i> </a></button>
+                            <button class="btn btn-default" style="margin-right: 5px;"><a
+                                        href="{{url("currentReservation")}}"> <i class="fa fa-file"></i> </a></button>
 
                             <button type="button" class="btn btn-default pull-right"><a href="{{url('client')}}"> <i
                                             class="fa fa-plus"></i></a></button>
@@ -103,49 +107,27 @@
                         <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
                         <ul class="todo-list">
 
-                                <div class="box-body table-responsive no-padding">
-                                    <table class="table table-hover">
-                                        <tr class="lovelyrow">
+                            <div class="box-body table-responsive no-padding">
+                                <table class="table table-hover">
+                                    <tr class="lovelyrow">
 
+                                    </tr>
+                                    @foreach($reservations as $reservation)
+                                        <tr class="lovelyrow"
+                                            onclick="location.href='{{$reservation->id}}/currentReservation'">
+
+                                            <td><b>{{$reservation->clients->name}}</b></td>
+                                            <td>{{date("dM y,", strtotime( $reservation->start_date_time))}}
+                                                at{{date(" h:ia", strtotime( $reservation->start_date_time))}}
+                                                to {{date("dM y,", strtotime( $reservation->end_date_time))}}
+                                                at{{date(" h:ia", strtotime( $reservation->start_date_time))}}</td>
+                                            <td><i class="fa fa-map-marker"> </i>
+                                                <small>{{ $reservation-> location }} </small>
+                                            </td>
                                         </tr>
-                                        @foreach($reservations as $reservation)
-                                            <tr class="lovelyrow" onclick="location.href='{{$reservation->id}}/currentReservation'">
-
-                                                <td><b>{{$reservation->clients->name}}</b></td>
-                                                <td>{{date("dM y,", strtotime( $reservation->start_date_time))}}
-                                                    at{{date(" h:ia", strtotime( $reservation->start_date_time))}}
-                                                    to {{date("dM y,", strtotime( $reservation->end_date_time))}}
-                                                    at{{date(" h:ia", strtotime( $reservation->start_date_time))}}</td>
-                                                <td><i class="fa fa-map-marker"> </i><small  >{{ $reservation-> location }} </small></td>
-                                            </tr>
-                                        @endforeach
-                                    </table>
-                                </div>
-
-
-{{--                                <li>--}}
-{{--                            @foreach($reservations as $reservation)--}}
-{{--                                <a href="{{url("$reservation->id/currentReservation")}}"> {{$reservation->clients-> name}}&nbsp; </a>--}}
-
-{{--                                    <b class="label label-primary">{{date("dM y,", strtotime( $reservation->start_date_time))}}--}}
-{{--                                            at{{date(" h:ia", strtotime( $reservation->start_date_time))}}&nbsp;--}}
-{{--                                            to {{date("dM y,", strtotime( $reservation->end_date_time))}}--}}
-{{--                                            at{{date(" h:ia", strtotime( $reservation->start_date_time))}}&nbsp; &nbsp;--}}
-{{--                                    </b>--}}
-
-
-{{--                                         <i class="fa fa-map-marker"> </i><small  >{{ $reservation-> location }} </small>--}}
-
-
-{{--                                    <!-- General tools such as edit or delete-->--}}
-{{--                                    <div class="tools">--}}
-{{--                                        <i class="fa fa-trash-o"></i>--}}
-{{--                                    </div>--}}
-{{--                                </li>--}}
-{{--                                </tr>--}}
-{{--                            @endforeach--}}
-
-
+                                    @endforeach
+                                </table>
+                            </div>
                         </ul>
                     </div>
                     <!-- /.box-body -->
@@ -167,9 +149,6 @@
                         <ul class="todo-list">
 
 
-
-
-
                             <div class="box-body table-responsive no-padding">
                                 <table class="table table-hover">
                                     <tr class="lovelyrow">
@@ -180,37 +159,16 @@
 
                                             <td><b>{{$client-> name}}</b></td>
                                             <td>                               <?php
-                                                                                    $date1 = new DateTime($client->created_at);
-                                                                                    $date2 = new DateTime(now());
-                                                                                    $interval = $date1->diff($date2);
-                                                                                ?></td>
+                                                $date1 = new DateTime($client->created_at);
+                                                $date2 = new DateTime(now());
+                                                $interval = $date1->diff($date2);
+                                                ?></td>
 
 
                                         </tr>
                                     @endforeach
                                 </table>
                             </div>
-
-
-
-{{--                            @foreach($clients as $client)--}}
-{{--                                <li>--}}
-{{--                                    <td><a href="{{url('client')}}"> <span class="text">{{$client->name}} </span> </a>--}}
-{{--                                    </td>--}}
-
-{{--                                <!-- Emphasis label -->--}}
-{{--                                <?php--}}
-{{--                                    $date1 = new DateTime($client->created_at);--}}
-{{--                                    $date2 = new DateTime(now());--}}
-{{--                                    $interval = $date1->diff($date2);--}}
-{{--                                ?>--}}
-
-{{--                                <small class="label label-primary"><i class="fa fa-clock-o">{{ ('  ' .$interval->format('%a')).'  '. 'Days ago' }} </i> </small>--}}
-{{--                                <div class="tools">--}}
-{{--                                    <i class="fa fa-trash-o"></i>--}}
-{{--                                </div>--}}
-{{--                            </li>--}}
-{{--                            @endforeach--}}
                         </ul>
                     </div>
                 </div>
@@ -238,7 +196,8 @@
 
                                         </tr>
                                         @foreach($vehicles as $vehicle)
-                                            <tr class="lovelyrow" onclick="location.href='dashboard/vehicle/{{$vehicle->id}}'">
+                                            <tr class="lovelyrow"
+                                                onclick="location.href='dashboard/vehicle/{{$vehicle->id}}'">
 
                                                 <td style="color: #0b58a2"><b>{{$vehicle->brand}}</b></td>
 
@@ -248,22 +207,17 @@
                                 </div>
 
 
-
-
-
-
-{{--                                @foreach($vehicles as $vehicle)--}}
-{{--                                <li>--}}
-{{--                                    <span class="text"> <a href="{{url('dashboard/vehicle/'.$vehicle->id )}}">{{$vehicle-> brand}}</a></span>--}}
-{{--                                    <!-- Emphasis label -->--}}
-{{--                                    <small class="label label-danger"><i class="fa fa-clock-o"></i></small>--}}
-{{--                                    <!-- General tools such as edit or delete-->--}}
-{{--                                    <div class="tools">--}}
-{{--                                        <i class="fa fa-trash-o"></i>--}}
-{{--                                    </div>--}}
-{{--                                </li>--}}
-{{--                                @endforeach--}}
-
+                                {{--                                @foreach($vehicles as $vehicle)--}}
+                                {{--                                <li>--}}
+                                {{--                                    <span class="text"> <a href="{{url('dashboard/vehicle/'.$vehicle->id )}}">{{$vehicle-> brand}}</a></span>--}}
+                                {{--                                    <!-- Emphasis label -->--}}
+                                {{--                                    <small class="label label-danger"><i class="fa fa-clock-o"></i></small>--}}
+                                {{--                                    <!-- General tools such as edit or delete-->--}}
+                                {{--                                    <div class="tools">--}}
+                                {{--                                        <i class="fa fa-trash-o"></i>--}}
+                                {{--                                    </div>--}}
+                                {{--                                </li>--}}
+                                {{--                                @endforeach--}}
 
 
                             </ul>
@@ -287,14 +241,14 @@
                                 <ul class="todo-list">
 
 
-
                                     <div class="box-body table-responsive no-padding">
                                         <table class="table table-hover">
                                             <tr class="lovelyrow">
 
                                             </tr>
                                             @foreach($drivers as $driver)
-                                                <tr class="lovelyrow" onclick="location.href='dashboard/driver/{{$driver->id}}'">
+                                                <tr class="lovelyrow"
+                                                    onclick="location.href='dashboard/driver/{{$driver->id}}'">
 
                                                     <td style="color: #0b58a2"><b>{{$driver->name}}</b></td>
 
@@ -304,24 +258,18 @@
                                     </div>
 
 
+                                    {{--                                    @foreach($drivers as $driver)--}}
 
-
-
-
-
-
-{{--                                    @foreach($drivers as $driver)--}}
-
-{{--                                    <li>--}}
-{{--                                        <span class="text"><a href="{{url('dashboard/driver/'.$driver->id )}}">{{$driver-> name}}</a></span>--}}
-{{--                                        <!-- Emphasis label -->--}}
-{{--                                        <small class="label label-danger"><i class="fa fa-clock-o"></i></small>--}}
-{{--                                        <!-- General tools such as edit or delete-->--}}
-{{--                                        <div class="tools">--}}
-{{--                                            <i class="fa fa-trash-o"></i>--}}
-{{--                                        </div>--}}
-{{--                                    </li>--}}
-{{--                                    @endforeach--}}
+                                    {{--                                    <li>--}}
+                                    {{--                                        <span class="text"><a href="{{url('dashboard/driver/'.$driver->id )}}">{{$driver-> name}}</a></span>--}}
+                                    {{--                                        <!-- Emphasis label -->--}}
+                                    {{--                                        <small class="label label-danger"><i class="fa fa-clock-o"></i></small>--}}
+                                    {{--                                        <!-- General tools such as edit or delete-->--}}
+                                    {{--                                        <div class="tools">--}}
+                                    {{--                                            <i class="fa fa-trash-o"></i>--}}
+                                    {{--                                        </div>--}}
+                                    {{--                                    </li>--}}
+                                    {{--                                    @endforeach--}}
 
                                 </ul>
                             </div>

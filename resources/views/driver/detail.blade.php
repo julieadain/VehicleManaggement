@@ -1,51 +1,44 @@
-
 @extends("layout.admin")
 
 @section('content')
-    <section class="content-header">
-        <h3 >
-            Driver List
-        </h3>
-        <div class="box-tools">
-            <div class="input-group input-group-sm" style="width: 150px;">
-                <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
 
-                <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                </div>
-            </div>
+
+
+    <section class="content">
+        <div class="row">
+
+            <!-- /.col -->
+
+            <!-- /.col -->
         </div>
-
-    </section>
-
-
-    <!-- Main content -->
-    <section class="container">
-
-        <!-- /.col -->
         <!-- /.row -->
         <div class="row">
-            <div class="col-xs-11">
+            <div class="col-xs-12">
                 <div class="box">
+                    <div class="box-header">
+                        <h2 class="box-title">Driver List </h2>
 
+                    </div>
+                    <!-- /.box-header -->
                     <div class="box-body table-responsive no-padding">
-                        <table class="table table-hover">
+                        <table id="driver_datatable" class="table table-hover">
+                            <thead>
                             <tr>
                                 <th class="bg-primary">Name</th>
                                 <th class="bg-primary">Email</th>
                                 <th class="bg-primary">Phone</th>
-                                <th class="bg-primary"> Address </th>
-                                <th class="bg-primary"> Option </th>
+                                <th class="bg-primary">Address</th>
 
-
-
+                                <th class="bg-primary">Option</th>
                             </tr>
-                            @foreach($drivers as $driver)
+                            </thead>
+                            <tbody>
+                            @foreach($drivers as $driver )
                                 <tr>
-                                    <td> {{$driver-> name}}</td>
-                                    <td> {{$driver->email}} </td>
-                                    <td> {{$driver->phone}}</td>
-                                    <td> {{$driver->address}}</td>
+                                    <td>{{ $driver->name }}</td>
+                                    <td> {{$driver->email}}</td>
+                                    <td>{{$driver->phone}}</td>
+                                    <td>{{$driver->address}}</td>
 
                                     <td>
                                         <a title="" href="{{url("driver/$driver->id")}}" class="btn btn-primary" style="float: left; margin-right: 2px"><i class="fa fa-eye"></i></a>
@@ -56,18 +49,23 @@
                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure')"><i class="fa fa-trash-o"></i></button>
                                         </form>
                                     </td>
-
-
-
-
                                 </tr>
-                            @endforeach
 
+                            @endforeach
+                            </tbody>
 
                         </table>
-                        {{$drivers->links()}}
                     </div>
                     <!-- /.box-body -->
+                    <div class="box-footer clearfix" style="margin-right:50px;">
+
+                        <ul class="pagination pagination-sm no-margin pull-right">
+                            {{$drivers->links()}}
+
+                        </ul>
+                    </div>
+
+
                 </div>
                 <!-- /.box -->
             </div>
@@ -76,7 +74,34 @@
 
 
 
-
-
-
 @endsection
+
+
+@push("page-js")
+    <!-- DataTables -->
+    <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+    <script>
+        $('#driver_datatable').DataTable({
+            'paging': false,
+            'lengthChange': false,
+            'searching': true,
+            'ordering': false,
+            'info': false,
+            'autoWidth': false
+        })
+    </script>
+
+@endpush
+
+
+
+
+
+
+
+
+
+
+
+

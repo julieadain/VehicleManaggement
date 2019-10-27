@@ -34,6 +34,7 @@ Route::get("dashboard/driver/{driver}","DriverController@dashboardDriver")->name
 
 Route::Resource("/organization", "OrganizationController");
 Route::resource("/package", "PackageController");
+Route::post("/packaged", "paymentController@packaged");
 Route::get("/approve/{id}", "OrganizationController@approve")->name('organization.approve');
 Route::get("/deny/{id}", "OrganizationController@deny")->name('organization.deny');
 Route::get("/pending/{id}", "OrganizationController@pending")->name('organization.pending');
@@ -47,8 +48,9 @@ Route::get("/ajaxRequest", "ExpenseController@ajaxRequest")->name('expense.ajaxR
 Route::resource("/client", "ClientController");
 Route::resource("/reservation", "ReservationController");
 Route::resource("/payment", "PaymentController");
-Route::get("/invoicePrint", "PaymentController@invoicePrint")->name('payment.invoicePrint');
-Route::get("/paymentRequest", "PaymentController@paymentRequest")->name('payment.paymentRequest');
+Route::get("/invoicePrint/{id}", "PaymentController@invoicePrint")->name('payment.invoicePrint');
+Route::get("/paymentRequestView", "PaymentController@paymentRequestView")->name('payment.paymentRequest');
+Route::get("/paymentRequest/{id}", "PaymentController@paymentRequest")->name('payment.paymentRequest');
 Route::get("/org_ajaxRequest", "PaymentController@org_ajaxRequest")->name('payment.org_ajaxRequest');
 Route::get("client/{clientId}/reservation/create","ClientController@reservation");
 Route::post("client/{clientId}/reservation/create","ClientController@res");

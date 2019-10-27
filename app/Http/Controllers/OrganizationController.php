@@ -17,7 +17,7 @@ class OrganizationController extends Controller
     public function index()
     {
 //        dd(session('org_info'));
-        $organizations = Organization::where("id","!=",Auth::user()->org_id)->where('status', '1')->get();
+        $organizations = Organization::where("id","!=",Auth::user()->org_id)->where('status', '1')->paginate('8');
         $requests = Organization::where('status', '0')->get();
         $denials = Organization::where('status', '-1')->get();
 //        dd($denials);

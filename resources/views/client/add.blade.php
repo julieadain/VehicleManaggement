@@ -34,21 +34,21 @@
                         <label for="inputBrand" class="col-sm-2 control-label">Name</label>
 
                         <div class="col-sm-4">
-                            <input type="text" name="name" class="form-control" id="inputBrand" placeholder="">
+                            <input type="text" name="name" value=" {{old('name')}}" class="form-control" id="inputBrand" placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputModel" class="col-sm-2 control-label">Email</label>
 
                         <div class="col-sm-4">
-                            <input type="email" name="email" class="form-control" id="exampleInputModel" placeholder="">
+                            <input type="email" name="email" value=" {{old('email')}}" class="form-control" id="exampleInputModel" placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputColor" class="col-sm-2 control-label">Phone</label>
 
                         <div class="col-sm-4">
-                            <input type="text" name="phone" class="form-control" id="exampleInputColor"
+                            <input type="text" name="phone" value=" {{old('phone')}}" class="form-control" id="exampleInputColor"
                                    placeholder="">
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                         <label for="exampleInputRegnum" class="col-sm-2 control-label">Address</label>
 
                         <div class="col-sm-8">
-                           <textarea rows = "5" cols = "50" name = "address">
+                           <textarea rows = "5" cols = "50" name = "address" value=" {{old('address')}}">
          </textarea>
                         </div>
                     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Organization;
 use App\vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,7 @@ class VehicleController extends Controller
         if (session('org_info')) {
 
             $vehicles = Vehicle::where('org_id', session()->get('org_info')->id)
+                ->orderBy('id', 'desc')
                 ->paginate(5);
 
 //            dd($vehicles);
@@ -95,9 +97,19 @@ class VehicleController extends Controller
             $data['roadPermit_scan_copy']= $filename;
         }
 
-        $data['user_id']= Auth::id();
-        $data['org_id']= Auth::user()->org_id;
 
+        if (Auth::user()->role != 1){
+            $data['org_id'] = Auth::user()->org_id;
+        }else{
+            $data['org_id'] = session()->get('org_info')->id;
+        }
+
+        if (Auth::user()->role != 1){
+            $data['user_id'] = Auth::user()->id;
+        }else{
+           $org = Organization::find( session()->get('org_info')->id);
+            $data['user_id'] = $org->owner->id;
+        }
         Vehicle::create($data);
         return redirect('vehicle');
       }
@@ -212,9 +224,4 @@ class VehicleController extends Controller
     return redirect('vehicle');
     }
 
-    public function available(){
-        $vehicles = Vehicle::with('');
-
-        dd("This is display of available vehicle");
-    }
 }

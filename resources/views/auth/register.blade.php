@@ -53,7 +53,7 @@
                                        class="col-md-4 col-form-label text-md-right">{{ __('Trade license') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="trade_license_copy" type="text"
+                                    <input id="trade_license_copy" type="file"
                                            class="form-control @error('trade_license_copy') is-invalid @enderror"
                                            name="trade_license_copy" value="{{ old('trade_license_copy') }}" required
                                            placeholder="Scanned copy" autofocus>
@@ -87,7 +87,7 @@
                                        class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="phone" type="number"
+                                    <input id="phone" type="text"
                                            class="form-control @error('Phone') is-invalid @enderror" name="phone"
                                            value="{{ old('phone') }}" required autocomplete="phone" autofocus>
 

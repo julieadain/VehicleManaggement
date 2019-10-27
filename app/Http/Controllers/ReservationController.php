@@ -118,8 +118,9 @@ class ReservationController extends Controller
         $reservation->status = '1';
         $reservation->save();
 
-        $reservation->status='1';
-        $reservation->sendSms();
+
+//        $reservation->status='1';
+//        $reservation->sendSms();
 
 
         $client = Client::find($reservation->client_id);
@@ -302,8 +303,9 @@ class ReservationController extends Controller
     public function massage(){
         return view('massage');
     }
-    function sendSms($to, $message, $from = null)
+    function sendSms($to, $from = null)
     {
+        $message = 'ksbekgjkjsk sdkjs the message body';
         $uri = 'https://cheapsms.com.bd/api/send';
         $auth = base64_encode('example@latentsoft.com:JDJ5J*****WT0RH');
         $data = [

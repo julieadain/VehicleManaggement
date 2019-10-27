@@ -9,43 +9,41 @@
                     <h3 class="box-title">Organizations |
                         <span class="label label-primary pull-right">{{ $organizations->count() }}</span>
                     </h3>
-{{--                    {{dd($denials)}}--}}
-                    <div class="box-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control pull-right"
-                                   placeholder="Search">
-
-                            <div class="input-group-btn">
-                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover">
-                        <tr class="lovelyrow">
+                    <table id="org_datatable" class="table table-hover">
+                        <thead>
+                        <tr>
                             <th>Name</th>
                             <th>Owner</th>
                             <th>Email</th>
                             <th>Status</th>
                         </tr>
+                        </thead>
+                        <tbody>
                         @foreach($organizations as $organization)
                             <tr class="lovelyrow" onclick="location.href='organization/{{$organization->id}}'">
                                 <td>{{$organization->org_name}}</td>
-
                                 <td>{{ $organization->owner ? $organization->owner->name : null }}</td>
                                 <td>{{ $organization->owner ? $organization->owner->email : null }}</td>
                                 <td><span class="label label-success">Approved</span></td>
                             </tr>
                         @endforeach
+                        </tbody>
                     </table>
+                    <div class="box-footer clearfix" style="margin-right:50px;">
+
+                        <ul class="pagination pagination-sm no-margin pull-right">
+                            {{$organizations->links()}}
+
+                        </ul>
+                    </div>
                 </div>
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
         </div>
-
 
         <div class="col-xs-5">
             <div class="container box box-primary">
@@ -56,7 +54,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive no-padding">
-                    <table id="example1" class="table table-hover ">
+                    <table class="table table-hover ">
                         <thead>
                         <tr>
                             <th>Name</th>
@@ -88,7 +86,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive no-padding">
-                    <table id="example1" class="table table-hover ">
+                    <table class="table table-hover ">
                         <thead>
                         <tr>
                             <th>Name</th>
@@ -99,7 +97,7 @@
                         <tbody>
                         @foreach($denials as $denial)
                             <tr class="lovelyrow">
-{{--                                {{ dd($denial->owner) }}--}}
+                                {{--                                {{ dd($denial->owner) }}--}}
                                 <td>{{$denial->org_name}}</td>
                                 <td>{{ $denial->owner ? $denial->owner->name : null }}</td>
                                 <td>{{ $denial->owner ? $denial->owner->email : null }}</td>
@@ -107,6 +105,10 @@
                             </tr>
                         @endforeach
                     </table>
+
+
+
+
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -117,3 +119,20 @@
     <!-- /.content -->
 
 @endsection
+
+@push("page-js")
+    <!-- DataTables -->
+    <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+    <script>
+        $('#org_datatable').DataTable({
+            'paging': false,
+            'lengthChange': false,
+            'searching': true,
+            'ordering': false,
+            'info': false,
+            'autoWidth': false
+        })
+    </script>
+
+@endpush

@@ -8,12 +8,10 @@
 
     <!-- Main content -->
     <section class="content">
+        <h3>Vehicle Information</h3>
 
-        <div class="col-md-4 pull-left">
-            <h3>
-                Vehicle Information
-            </h3>
-{{--            <a title="rdgrdg" href="{{url("vehicle/$vehicle->id/edit")}}" class="btn btn-primary" style="float: left; margin-right: 2px"><i class="fa fa-pencil"></i></a>--}}
+        <div class="col-md-6 pull-left">
+
             <!-- Horizontal Form -->
             <div class=" container box box-success">
 
@@ -72,38 +70,38 @@
                             @endif
                         </td>
                     </tr>
+
                     <tr>
-                        <th scope="row">Reg Scan Copy:</th>
-                        <td>
-                            <img src="{{asset('upload').'/'.$vehicle->reg_scan_copy}}" alt="image"
-                                 style="width: 20rem;">
+                        <th scope="row">vehicle Photo:</th>
+                        <td><a href="{{asset('upload').'/'.$vehicle->photo}}" target="_blank">{{$vehicle->photo}}</a>
+
                         </td>
                     </tr>
+
                     <tr>
-                        <th scope="row">Photo:</th>
-                        <td>
-                            <img src="{{asset('upload').'/'.$vehicle->photo}}" alt="image" style="width: 20rem;">
+                        <th scope="row">Registration Scan Copy:</th>
+                        <td><a href="{{asset('upload').'/'.$vehicle->reg_scan_copy}}" target="_blank">{{$vehicle->reg_scan_copy}}</a>
+
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">Insurance Scan Copy:</th>
-                        <td>
-                            <img src="{{asset('upload').'/'.$vehicle->insurance_scan_copy}}" alt="image"
-                                 style="width: 20rem;">
+                        <td><a href="{{asset('upload').'/'.$vehicle->insurance_scan_copy}}" target="_blank">{{$vehicle->insurance_scan_copy}}</a>
+
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">RoadPermit Scan Copy:</th>
-                        <td>
-                            <img src="{{asset('upload').'/'.$vehicle->roadPermit_scan_copy}}" alt="image"
-                                 style="width: 20rem;">
+                        <td><a href="{{asset('upload').'/'.$vehicle->insurance_scan_copy}}" target="_blank">{{$vehicle->roadPermit_scan_copy}}</a>
+
                         </td>
                     </tr>
+
                     </tbody>
                 </table>
             </div>
         </div>
-        <div class="col-md-8 pull-right">
+        <div class="col-md-6 pull-right">
             <h4>Running Reservation</h4>
             <!-- Horizontal Form -->
             <div class="container box box-info">
@@ -160,7 +158,7 @@
         </div>
 
 
-        <div class="col-md-8 pull-right">
+        <div class="col-md-6 pull-right">
             <h4 >Reservation History</h4>
 
             <!-- Horizontal Form -->

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Driver;
+use App\Organization;
 use App\Reservation;
 use App\Rules\ValidMobile;
 use Illuminate\Http\Request;
@@ -22,6 +23,7 @@ class DriverController extends Controller
         if (session('org_info')) {
 
             $drivers = Driver::where('org_id', session()->get('org_info')->id)
+                ->orderBy('id', 'desc')
                 ->paginate(5);
 
 //            dd($vehicles);
@@ -83,8 +85,18 @@ class DriverController extends Controller
             $data['nid_scan']= $filename;
         }
 
-        $data['user_id']= Auth::id();
-        $data['org_id']= Auth::user()->org_id;
+        if (Auth::user()->role != 1){
+            $data['org_id'] = Auth::user()->org_id;
+        }else{
+            $data['org_id'] = session()->get('org_info')->id;
+        }
+
+        if (Auth::user()->role != 1){
+            $data['user_id'] = Auth::user()->id;
+        }else{
+            $org = Organization::find( session()->get('org_info')->id);
+            $data['user_id'] = $org->owner->id;
+        }
 
         Driver::create($data);
         return redirect('driver');

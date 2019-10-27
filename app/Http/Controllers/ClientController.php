@@ -24,6 +24,7 @@ class ClientController extends Controller
         if (session('org_info')) {
 
             $clients = Client::where('org_id', session()->get('org_info')->id)
+                ->orderBy('id', 'desc')
                 ->paginate(5);
 
 //            dd($vehicles);
@@ -76,13 +77,16 @@ class ClientController extends Controller
         ], ["email.unique" => "Given email address already taken"
         ]);
         $data = $request->all();
+
         if (Auth::user()->role != 1){
-        $data['org_id'] = Auth::user()->org_id;
+            $data['org_id'] = Auth::user()->org_id;
         }else{
             $data['org_id'] = session()->get('org_info')->id;
         }
+
+
         Client::create($data);
-        return redirect('client');
+        return redirect('client', compact('Request'));
     }
 
     /**

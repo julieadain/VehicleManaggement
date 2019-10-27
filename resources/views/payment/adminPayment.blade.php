@@ -34,10 +34,11 @@
         <section class="invoice col-md-11">
             <!-- title row -->
             <div class="container">
-                <div class="col-xs-6">
+                <div class="col-xs-6 pull-left">
                     <div class="col-xs-10">
                         <!-- small box -->
-                        <form role="form" action="{{ url("package") }}" method="post">
+                        <br><br>
+                        <form role="form" action="{{ url("packaged") }}" method="post">
                             @csrf
                             <div class="box-body" style="width: 350px;">
                                 <div class="form-group">
@@ -50,17 +51,55 @@
                                 <!-- /.form-group -->
                                 <div class="form-group">
                                     <label>Choose Package</label>
-                                    <select class="form-control">
-                                        <option selected>{{ 'Current Package'.' :  '.'aiiwbfiuabf ' .'@'.' '. 'Cost' }}</option>
-                                        {{--                                        @foreach( as )--}}
-                                        <option>One</option>
-                                        {{--                                        @endforeach--}}
+                                    <select class="form-control" name="package">
+                                        <option > {{'current'}}</option>
+
+                                        @foreach($packages as $package)
+                                            <option>{{$package->id.' - '. $package->title. ' @ '. $package->cost . 'tk'}}</option>
+
+                                        @endforeach
+
                                     </select>
                                 </div>
                                 <div class="form-group row mb-0">
                                     <div class="col-md-3 pull-right">
                                         <button type="submit" class="btn btn-primary">
                                             {{ __('Submit') }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-xs-6 pull-right">
+                    <h4>Create Package</h4>
+                    <div class="col-xs-8">
+                        <!-- small box -->
+                        <form role="form" action="{{ url("package") }}" method="post">
+                            @csrf
+                            <div class="box-body" style="width: 350px;">
+                                <div class="form-group">
+                                    <label>Title</label><br/>
+                                    <input class="form-control" type="text" name="title"
+                                           style="width: 100%;">
+                                </div>
+                                <!-- /.form-group -->
+                                <div class="form-group">
+                                    <label>Cost</label>
+                                    <input class="form-control" type="number" name="cost"
+                                           style="width: 100%;">
+                                </div>
+                                <div class="form-group">
+                                    <label>Remark</label>
+                                    <input class="form-control" type="text" name="remark"
+                                           style="width: 100%;">
+                                </div>
+                                <div class="form-group row mb-0">
+                                    <div class="col-md-3 pull-right">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __('Save') }}
                                         </button>
                                     </div>
                                 </div>
@@ -93,6 +132,7 @@
                         dataType: 'JSON',
                         success: function (data) {
                             $.each(data.success, function (i, v) {
+                                $('#suggestion').append("<li class='form-control'>" + v.org_name + "</li>");
                                 $('#suggestion').append("<li class='form-control'>" + v.org_name + "</li>");
                             });
                         }
