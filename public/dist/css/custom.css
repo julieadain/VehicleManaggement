@@ -1,0 +1,8 @@
+a{
+    text-decoration: none !important;
+}
+
+.inner > a{
+    text-decoration: none !important;
+    color: #fff;
+}

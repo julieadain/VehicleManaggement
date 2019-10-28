@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PackageControllerRequest;
+use App\Organization;
 use App\Package;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PackageController extends Controller
 {
@@ -15,7 +17,16 @@ class PackageController extends Controller
      */
     public function index()
     {
-        return view("package");
+        if (session('org_info')){
+            $id = session()->get('org_info')->id ;
+        }else{
+            $id = Auth::User()->org_id ;
+        }
+        $organization = Organization::find($id);
+        $packages = Package::all();
+
+//        return $organization->package->title ;
+        return view("package", compact('packages', 'organization'));
     }
 
     /**
@@ -85,5 +96,14 @@ class PackageController extends Controller
     public function destroy(Package $package)
     {
         //
+    }
+    public function setPackage($id)
+    {
+        $package = Package::find($id);
+
+        $organization = Organization::find($package->organization->id);
+        $organization->package_id = $id;
+        $organization->save();
+        return redirect('paymentRequestView');
     }
 }

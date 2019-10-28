@@ -72,7 +72,7 @@ class HomeController extends Controller
                 ->take('5')
                 ->get();
         }
-        if (Auth::user()->id == 1) {
+        if (Auth::user()->role == 1) {
 
             $months = json_encode(['January', 'February', 'March', 'April', 'May', 'June', 'July']);
             $data1 = json_encode([65, 59, 80, 81, 56, 55, 40]);

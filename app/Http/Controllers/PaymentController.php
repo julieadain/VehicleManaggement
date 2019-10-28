@@ -116,8 +116,15 @@ class PaymentController extends Controller
 
     public function paymentRequestView()
     {
+        if (session('org_info')) {
+            $id = session()->get('org_info')->id;
+        } else {
+            $id = Auth::User()->org_id;
+        }
+        $organization = Organization::find($id);
+        return $organization->package->cost ;
 
-        return view("payment.paymentRequest");
+        return view("payment.paymentRequest", compact('organization'));
 
     }
 

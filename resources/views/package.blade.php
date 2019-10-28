@@ -18,14 +18,19 @@
                         <!-- small box -->
                         <div class="small-box bg-green">
                             <div class="inner">
-                                <div class="inner">
-                                    {{--                               @if($package)--}}
-                                    <h4>{{"Package Title"}}</h4>
-                                    <p class="text-bold">{{"Package Cost"}}</p>
-                                    {{--                                   @else--}}
-                                    <h4 class="text-bold">Not selected</h4>
-                                    {{--                                   @endif--}}
-                                </div>
+                                <a href="{{url('/setPackage/'.$organization->package->id)}}">
+                                    <div class="inner">
+                                        @if($organization->package)
+                                            <h4>{{$organization->package->title}}</h4>
+                                            @if($organization->package->remark)
+                                                <p class="text-bold">{{ $organization->package->remark}}</p>
+                                            @endif
+                                            <p class="text-bold">{{$organization->package->cost}}</p>
+                                        @else
+                                            <h4 class="text-bold">{{"Not selected"}}</h4>
+                                        @endif
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -74,51 +79,30 @@
             <div class="container row">
                 <div class=" col-xs-10 pull-left">
                     <h4>Available Package</h4>
-                    <div class="col-xs-4">
-                        <!-- small box -->
-                        <div class="small-box bg-light-blue">
-                            <div class="inner">
+                    @foreach($packages as $package)
+                        <div class="col-xs-4">
+                            <!-- small box -->
+                            <div class="small-box bg-light-blue">
                                 <div class="inner">
-                                    {{--                               @if($package)--}}
-                                    <h4>{{"Package Title"}}</h4>
-                                    <p class="text-bold">{{"Package Cost"}}</p>
-                                    {{--                                   @else--}}
-                                    <h4 class="text-bold">Not selected</h4>
-                                    {{--                                   @endif--}}
+                                    <a href="{{url('/setPackage/'.$package->id)}}">
+                                        <div class="inner">
+                                            @if($package)
+                                                <h4>{{$package->title}}</h4>
+                                                @if($package->remark)
+                                                    <p class="text-bold">{{ $package->remark}}</p>
+                                                @endif
+                                                <p class="text-bold">{{ "Cost ".$package->cost. " Tk."}}</p>
+
+                                            @else
+                                                <h4 class="text-bold">{{"No packages available"}}</h4>
+                                            @endif
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xs-4">
-                        <!-- small box -->
-                        <div class="small-box bg-light-blue">
-                            <div class="inner">
-                                <div class="inner">
-                                    {{--                               @if($package)--}}
-                                    <h4>{{"Package Title"}}</h4>
-                                    <p class="text-bold">{{"Package Cost"}}</p>
-                                    {{--                                   @else--}}
-                                    <h4 class="text-bold">Not selected</h4>
-                                    {{--                                   @endif--}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-4">
-                        <!-- small box -->
-                        <div class="small-box bg-light-blue">
-                            <div class="inner">
-                                <div class="inner">
-                                    {{--                               @if($package)--}}
-                                    <h4>{{"Package Title"}}</h4>
-                                    <p class="text-bold">{{"Package Cost"}}</p>
-                                    {{--                                   @else--}}
-                                    <h4 class="text-bold">Not selected</h4>
-                                    {{--                                   @endif--}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+
                 </div>
 
             </div>

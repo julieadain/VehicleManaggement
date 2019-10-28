@@ -30,6 +30,7 @@ Route::get("dashboard/vehicle/{vehicle}/history","HomeController@vehicle")->name
 
 Route::Resource("/organization", "OrganizationController");
 Route::resource("/package", "PackageController");
+Route::get("/setPackage/{id}", "PackageController@setPackage")->name('package.setPackage');
 Route::post("/packaged", "paymentController@packaged");
 Route::get("/approve/{id}", "OrganizationController@approve")->name('organization.approve');
 Route::get("/deny/{id}", "OrganizationController@deny")->name('organization.deny');
