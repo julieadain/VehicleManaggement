@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="content-header">
-        <h1>
+        <h1 class="container">
             Add Reservation
         </h1>
         <ol class="breadcrumb">
@@ -34,7 +34,17 @@
                 <form action="{{url("client/$clientId/reservation/create")}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                     @csrf
 
+{{--                    <div class="form-group">--}}
+{{--                        <label>Date and time range:</label>--}}
 
+{{--                        <div class="input-group">--}}
+{{--                            <div class="input-group-addon">--}}
+{{--                                <i class="fa fa-clock-o"></i>--}}
+{{--                            </div>--}}
+{{--                            <input type="text" class="form-control pull-right" id="reservationtime">--}}
+{{--                        </div>--}}
+{{--                        <!-- /.input group -->--}}
+{{--                    </div>--}}
                     <div class="form-group">
                         <label for="inputBrand" class="col-sm-2 control-label">Start Date Time</label>
 
@@ -123,7 +133,12 @@
             </div>
         </div>
     </section>
-
-
 @endsection
 
+<script>
+
+        //Date range picker with time picker
+        $('#reservationtime').daterangepicker({ timePicker: true,
+            timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A' })
+
+</script>

@@ -32,6 +32,13 @@
                         @endforeach
                         </tbody>
                     </table>
+                    <div class="box-footer clearfix" style="margin-right:50px;">
+
+                        <ul class="pagination pagination-sm no-margin pull-right">
+                            {{$organizations->links()}}
+
+                        </ul>
+                    </div>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -98,6 +105,10 @@
                             </tr>
                         @endforeach
                     </table>
+
+
+
+
                 </div>
                 <!-- /.box-body -->
             </div>

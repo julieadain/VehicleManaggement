@@ -118,9 +118,13 @@ class ReservationController extends Controller
         $reservation->status = '1';
         $reservation->save();
 
+
+//        $reservation->status='1';
+//        $reservation->sendSms();
+
+
         $client = Client::find($reservation->client_id);
         $client->status = '1';
-
         $client->save();
 
 
@@ -282,8 +286,54 @@ class ReservationController extends Controller
 //        dd($reservation->id);
         $reservation->status = 2;
         $reservation->save();
-        return redirect("currentReservation");
+        return redirect("history");
 
+    }
+
+    public  function historyReservation(){
+
+//        dd('asche');
+
+          $reservation = Reservation::where('status','2')->get();
+//        dd($reservation);
+
+        return view('reservation.reservation-history')->with( 'reservations', $reservation);
+    }
+
+    public function massage(){
+        return view('massage');
+    }
+    function sendSms($to, $from = null)
+    {
+        $message = 'ksbekgjkjsk sdkjs the message body';
+        $uri = 'https://cheapsms.com.bd/api/send';
+        $auth = base64_encode('example@latentsoft.com:JDJ5J*****WT0RH');
+        $data = [
+            'client_phone' => $to,
+            'org_name' => $from,
+            'message' => $message,
+        ];
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $uri,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => json_encode($data),
+            CURLOPT_HTTPHEADER => array(
+                "content-type: application/json",
+                "auth: $auth"
+            ),
+        ));
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+        if ($response) {
+            return json_decode($response);
+        }else{
+            return $err;
+        }
     }
 
 }

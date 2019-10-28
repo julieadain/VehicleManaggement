@@ -2,8 +2,8 @@
 
 @section('content')
     <section class="content-header">
-        <h3>
-            Edit Client Informatin
+        <h3 class="container">
+            Edit Client
         </h3>
         <ol class="breadcrumb">
             <li><a href="{{url('home')}}"><i class="fa fa-dashboard"></i> Home</a></li>

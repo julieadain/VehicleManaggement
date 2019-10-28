@@ -19,11 +19,14 @@ class Reservation extends Model
     }
 
     public function clients(){
-        return $this->belongsTo('App\Client','client_id');
+        return $this->belongsTo(Client::class,'client_id');
 //                return $this->belongsTo(Reservation::class,'client_id');
 
     }
     public  function drivers(){
         return $this->belongsTo('App\Driver','driver_id');
+    }
+    public  function payments(){
+        return $this->hasMany('App\Payment','res_id');
     }
 }

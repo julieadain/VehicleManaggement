@@ -33,6 +33,7 @@ class ReportController extends Controller
         }else{
            $org_id = Auth::user()->org_id;
         }
+//        dd($org_id);
         $expenses = Expense::whereYear('created_at', date('Y'))
             ->where('org_id', $org_id)
             ->whereMonth('created_at', date('m'))

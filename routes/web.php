@@ -24,9 +24,13 @@ Route::get("/RunReservation/{reservation}/edit", "ReservationController@runReser
 Route::patch("/RunReservation/{reservation}", "ReservationController@RunReservationUpdate")->name('runningReservation.update');
 Route::delete("/RunReservation/{reservation}", "ReservationController@runReservationDestroy")->name('runningReservation.destroy');
 Route::get("/reservation/{reservation}/completed", "ReservationController@completed");
+Route::get("/history", "ReservationController@historyReservation");
+
 
 Route::get("dashboard/vehicle/{vehicle}","HomeController@vehicle")->name('dashboard.vehicle');
-Route::get("dashboard/vehicle/{vehicle}/history","HomeController@vehicle")->name('dashboard.vehicleHistory');
+//Route::get("dashboard/vehicle/{vehicle}/history","HomeController@vehicle")->name('dashboard.vehicleHistory');
+Route::get("dashboard/driver/{driver}","DriverController@dashboardDriver")->name('dashboard.driver');
+
 
 Route::Resource("/organization", "OrganizationController");
 Route::resource("/package", "PackageController");
@@ -51,6 +55,14 @@ Route::get("/paymentRequest/{id}", "PaymentController@paymentRequest")->name('pa
 Route::get("/org_ajaxRequest", "PaymentController@org_ajaxRequest")->name('payment.org_ajaxRequest');
 Route::get("client/{clientId}/reservation/create","ClientController@reservation");
 Route::post("client/{clientId}/reservation/create","ClientController@res");
+Route::get("clientHistory/","ClientController@clientHistoryAll");
+Route::get("clientHistory/{client}","ClientController@clientHistory");
+
+
+Route::get("massage","ReservationController@massage");
+
+
+
 Route::get("client/{clientId}/reservation","ClientController@reservationIndex");
 Route::get("/vehicleAssign/{id}", "ReservationController@vehicleAssign")->name('reservation.vehicleAssign');
 Route::get("/driverAssign/{id}", "ReservationController@driverAssign")->name('reservation.driverAssign');

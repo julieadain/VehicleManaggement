@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Driver;
+use App\Organization;
+use App\Reservation;
 use App\Rules\ValidMobile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,8 +19,23 @@ class DriverController extends Controller
      */
     public function index()
     {
-        $data= Driver::paginate(10);
-        return view("driver.detail")->with('drivers', $data );
+
+        if (session('org_info')) {
+
+            $drivers = Driver::where('org_id', session()->get('org_info')->id)
+                ->orderBy('id', 'desc')
+                ->paginate(5);
+
+//            dd($vehicles);
+
+        } else {
+
+            $drivers = Driver::where('org_id', Auth::user()->org_id)
+                ->paginate(5);
+        }
+
+//        $data= Driver::paginate(10);
+        return view("driver.detail")->with('drivers', $drivers );
     }
 
     /**
@@ -68,8 +85,18 @@ class DriverController extends Controller
             $data['nid_scan']= $filename;
         }
 
-        $data['user_id']= Auth::id();
-        $data['org_id']= Auth::user()->org_id;
+        if (Auth::user()->role != 1){
+            $data['org_id'] = Auth::user()->org_id;
+        }else{
+            $data['org_id'] = session()->get('org_info')->id;
+        }
+
+        if (Auth::user()->role != 1){
+            $data['user_id'] = Auth::user()->id;
+        }else{
+            $org = Organization::find( session()->get('org_info')->id);
+            $data['user_id'] = $org->owner->id;
+        }
 
         Driver::create($data);
         return redirect('driver');
@@ -165,5 +192,17 @@ class DriverController extends Controller
     {
         $driver->delete();
         return redirect('driver');
+    }
+
+    public function dashboardDriver( Driver $driver ){
+
+        $data['reservations']= Reservation::with('clients','vehicles')->where('driver_id', $driver->id)->where('status','1')->paginate(1);
+        $data['driver']= $driver;
+        $data['driverHistory']= Reservation::where('driver_id', $driver->id)->where('status','2')->paginate(1);
+
+
+
+        return view('dashboard-driver-info', $data );
+
     }
 }

@@ -11,6 +11,6 @@ $factory->define(\App\Client::class, function (Faker $faker) {
         'phone'=> $faker->phoneNumber,
         'email'=> $faker->unique()->safeEmail,
         'address'=> $faker->address,
-        'org_id'=>1,
+        'org_id'=>$faker->numberBetween(1,5),
     ];
 });

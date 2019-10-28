@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\client;
 use App\Organization;
+use App\Payment;
 use App\Reservation;
 use App\Rules\ValidMobile;
 use Illuminate\Http\Request;
@@ -17,17 +18,34 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+
     {
-        $organization = Organization::all();
-        $data = Client::paginate(10);
+
+        if (session('org_info')) {
+
+            $clients = Client::where('org_id', session()->get('org_info')->id)
+                ->orderBy('id', 'desc')
+                ->paginate(5);
+
+//            dd($vehicles);
+
+        } else {
+
+            $clients = Client::where('org_id', Auth::user()->org_id)
+                ->paginate(5);
+        }
+
+//        $organization = Organization::all();
+//        $data = Client::paginate(10);
         return view('client.detail')
-            ->with('clients', $data)
-            ->with('organizations',$organization);
+            ->with('clients', $clients);
+//            ->with('organizations',$organization);
     }
 
-    public function activeClient(){
+    public function activeClient()
+    {
 
-        $activeClient = Client::where('status','1')->get() ;
+        $activeClient = Client::where('status', '1')->paginate(4);
 
 //        dd($activeClient);
 
@@ -59,10 +77,16 @@ class ClientController extends Controller
         ], ["email.unique" => "Given email address already taken"
         ]);
         $data = $request->all();
-        $data['org_id']= Auth::user()->org_id;
+
+        if (Auth::user()->role != 1){
+            $data['org_id'] = Auth::user()->org_id;
+        }else{
+            $data['org_id'] = session()->get('org_info')->id;
+        }
+
 
         Client::create($data);
-        return redirect('home');
+        return redirect('client', compact('Request'));
     }
 
     /**
@@ -125,7 +149,8 @@ class ClientController extends Controller
         return redirect('client');
     }
 
-    public function reservation($clientId){
+    public function reservation($clientId)
+    {
 
         return view('client.reservation-add')->with('clientId', $clientId);
 
@@ -137,7 +162,8 @@ class ClientController extends Controller
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function res(Request $request, $clientId){
+    public function res(Request $request, $clientId)
+    {
 //        $data =$request->all();
 //        $data['client_id']= $clientId;
 //        $data['user_id']=Auth::id();
@@ -148,28 +174,26 @@ class ClientController extends Controller
 //        Reservation::create($data);
 //        return redirect()->back();
 
-        $this->validate( $request,[
-            'start_date_time'=> 'required',
-            'end_date_time'=> 'required',
-            'seat_capacity'=> 'required',
-            'ac'=> 'required',
-            'share'=> 'required',
-            'pickup_address'=> 'required',
-            'location'=> 'required',
-            'start_meter_reading'=> 'required',
-            'end_meter_reading'=> 'required',
-            'total_payable'=> 'required'
+        $this->validate($request, [
+            'start_date_time' => 'required',
+            'end_date_time' => 'required',
+            'seat_capacity' => 'required',
+            'ac' => 'required',
+            'share' => 'required',
+            'pickup_address' => 'required',
+            'location' => 'required',
+            'start_meter_reading' => 'required',
+            'end_meter_reading' => 'required',
+            'total_payable' => 'required'
 
         ]);
 
         $data = $request->all();
         $data['status'] = 0;
 
-        $data['client_id']= $clientId;
-        $data['user_id']=Auth::id();
-        $data['org_id']= Auth::user()->id;
-
-
+        $data['client_id'] = $clientId;
+        $data['user_id'] = Auth::id();
+        $data['org_id'] = Auth::user()->id;
 
 
 //        Reservation::create($data);
@@ -181,9 +205,35 @@ class ClientController extends Controller
 
     }
 
-    public  function reservationIndex( ){
+    public function reservationIndex()
+    {
         $data = Reservation::all();
 
         return view('client.reservation-list')->with('reservationList', $data);
+    }
+
+    public function clientHistoryAll()
+    {
+        $data['clientRcvs'] = Client::with('reservations')->get();
+        return view('client.client-history', $data);
+    }
+
+    public function clientHistory(Client $client)
+    {
+
+
+         $data['client'] = Client::with('reservations')
+             ->where('id',$client->id)
+             ->first();
+       //return $data;
+        // $data['reservations'] = Reservation::with('payments')->where('id',2)->first();
+
+        return view('client.client-history', $data);
+
+        // $reservations = Reservation::with('payments')->where('status','2')->get();
+// return $reservations[1]->payments[0]->paid;
+//        dd($reservations);
+        // return view('client.client-history', compact('reservations'));
+
     }
 }

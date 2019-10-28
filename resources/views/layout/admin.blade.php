@@ -33,46 +33,45 @@
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/custom.css') }}">
 {{--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">--}}
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="{{'https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js'}}"></script>
     <script src="{{'https://oss.maxcdn.com/respond/1.4.2/respond.min.js'}}"></script>
     <![endif]-->
-    {{--<style>
-        .btn-file {
-            display: block;
-            height: 20px;
-            overflow: hidden;
-            position: relative;
-            vertical-align: middle;
-            width: 120px;
-        }
+{{--<style>
+    .btn-file {
+        display: block;
+        height: 20px;
+        overflow: hidden;
+        position: relative;
+        vertical-align: middle;
+        width: 120px;
+    }
 
 
-        .btn-file > input {
-            cursor: pointer;
-            direction: ltr;
-            font-size: 23px;
-            margin: 0;
-            opacity: 0;
-            position: absolute;
-            right: 0;
-            top: 0;
-            transform: translate(-300px, 0px) scale(4);
-        }
+    .btn-file > input {
+        cursor: pointer;
+        direction: ltr;
+        font-size: 23px;
+        margin: 0;
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translate(-300px, 0px) scale(4);
+    }
 
-        input[type="file"] {
-            display: block;
-        }
-    </style>--}}
-    <!-- Google Font -->
+    input[type="file"] {
+        display: block;
+    }
+</style>--}}
+<!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
     <header class="main-header">
         <!-- Logo -->
         <a href="{{url('/home')}}" class="logo">
@@ -117,7 +116,8 @@
                                         <span class="fileinput-new">
                                            <span class="fa fa-upload"></span>
                                          </span>
-                                    <input type="file" class="textbox wp95 fl fileupload fileInput" name="files" id="fileupload" style="border: 1px solid black">
+                                    <input type="file" class="textbox wp95 fl fileupload fileInput" name="files"
+                                           id="fileupload" style="border: 1px solid black">
                                     </span>
                                 </div>
 
@@ -133,7 +133,7 @@
                         </ul>
                     </li>
 
-                <!-- Control Sidebar Toggle Button -->
+                    <!-- Control Sidebar Toggle Button -->
                 </ul>
             </div>
         </nav>
@@ -162,10 +162,8 @@
 
                 @endadmin
                 @if( session('org_info') )
-                    {{--            {{ dd(session('org_info')) }}--}}
                     <?php $org_info = session('org_info')  ?>
 
-                    {{--                {{dd($organization->owner->name)}}--}}
                     <div class="user-panel">
                         <div class="pull-left image">
                             <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
@@ -186,22 +184,24 @@
                     <li class="">
                         <a href="{{url('/home')}}">
                             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-
                         </a>
-
                     </li>
                     <li class="treeview">
                         <a href="{{ url('') }}">
                             <i class="fa fa-car"></i>
                             <span>Vehicles</span>
                             <span class="pull-right-container">
-              <span class="label label-primary pull-right">{{ "Total vehicle"}}</span>
+              <span class="label label-primary pull-right">{{ \App\Vehicle::whereOrg_id(session('org_info')->id)->count() }}</span>
             </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="{{ url('vehicle/create') }}"><i class="fa fa-circle-o"></i> Add vehicle</a>
                             </li>
-                            <li><a href="{{ url('vehicle/') }}"><i class="fa fa-circle-o"></i> Vehicle's List</a>
+                            <li><a href="{{ url('vehicle/') }}"><i class="fa fa-circle-o"></i> Vehicle's List
+                                    <span class="pull-right-container">
+                                    <small class="label pull-right bg-blue-active">{{--{{ \App\Vehicle::whereOrg_id(session('org_info')->id)->count() }}--}}</small>
+                                    </span>
+                                </a>
                             </li>
                             {{--                            <li><a href="{{ url('') }}"><i class="fa fa-circle-o"></i> Available vehicles</a></li>--}}
                         </ul>
@@ -211,7 +211,7 @@
                             <i class="fa fa-male"></i>
                             <span>Drivers</span>
                             <span class="pull-right-container">
-              <span class="label label-primary pull-right">{{ "Total  drivers"}}</span>
+              <span class="label label-primary pull-right">{{ \App\Driver::whereOrg_id(session('org_info')->id)->count() }}</span>
             </span>
                         </a>
                         <ul class="treeview-menu">
@@ -236,11 +236,12 @@
                                 <a href="{{url('activeClient')}}"><i class="fa fa-circle-o"></i>
                                     <span>Active Client</span>
                                     <span class="pull-right-container">
-                                    <small class="label pull-right bg-blue-active">12</small>
+                                    <small class="label pull-right bg-blue-active">{{ \App\Client::whereStatus(1)->count() }}</small>
                                     </span>
                                 </a>
                             </li>
-                            <li><a href="{{url('')}}"><i class="fa fa-circle-o"></i> Client's history</a></li>
+                            <li><a href="{{url('clientHistory')}}"><i class="fa fa-circle-o"></i> Client's history</a>
+                            </li>
                         </ul>
                     </li>
 
@@ -253,10 +254,11 @@
                         </a>
                         <ul class="treeview-menu">
                             <li>
-                                <a href="{{url("reservation")}}"><i class="fa fa-circle-o"></i> Pending Reservation </a>
-                                <span class="pull-right-container">
+                                <a href="{{url("reservation")}}"><i class="fa fa-circle-o"></i> Pending Reservation
+                                    <span class="pull-right-container">
                                     <small class="label pull-right bg-blue-active">{{ \App\Reservation::whereStatus(0)->count() }}</small>
                                     </span>
+                                </a>
                             </li>
                             <li>
                                 <a href="{{url("currentReservation")}}"><i class="fa fa-circle-o"></i> <span>Running Reservation</span>
@@ -265,10 +267,17 @@
                                     </span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{url("/history")}}"><i class="fa fa-circle-o"></i> <span> Completed Reservation</span>
+                                    <span class="pull-right-container">
+                                    <small class="label pull-right bg-blue-active">{{ \App\Reservation::whereStatus(2)->count() }}</small>
+                                    </span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="{{url('')}}">
+                        <a href="{{url('massage')}}">
                             <i class="fa fa-envelope"></i> <span>SMS</span>
                             <span class="pull-right-container">
                             <small class="label pull-right bg-green">New sms</small>
@@ -286,9 +295,10 @@
                         </a>
                     </li>
             </ul>
+            @endif
         </section>
-    @endif
-    <!-- /.sidebar -->
+
+        <!-- /.sidebar -->
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
@@ -543,7 +553,6 @@
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 
 @stack('page-js')
-
 
 </body>
 </html>

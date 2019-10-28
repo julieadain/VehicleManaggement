@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\organization;
+use App\Rules\ValidMobile;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Registered;
@@ -55,12 +56,18 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'org_name' => 'required|unique:organizations|string|max:255',
             'address' => ['required', 'string', 'max:255'],
-            'trade_license_copy' => ['required', 'string', 'max:255'],
+            'trade_license_copy'=>'required|mimes:jpg,jpeg,png,gif,bmp',
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:4', 'confirmed'],
-            'phone' => ['required']
+            'phone' => ['required', new ValidMobile()]
         ]);
+
+//        if ($request->hasFile("trade_license_copy")){
+//            $filename=  time(). rand(). rand().'.'. $request->file('trade_license_copy')->getClientOriginalExtension();
+//            $request->file('trade_license_copy')->move(public_path('/upload'), $filename);
+//            $data['trade_license_copy']= $filename;
+//        }
 
     }
 

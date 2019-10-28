@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\Driver;
 use App\Organization;
 use App\Payment;
 use App\Reservation;
@@ -43,7 +44,11 @@ class HomeController extends Controller
                 ->orderBy('id', 'desc')
                 ->take('5')
                 ->get();
-            $clients = Vehicle::where('org_id', session()->get('org_info')->id)
+            $clients = Client::where('org_id', session()->get('org_info')->id)
+                ->orderBy('id', 'desc')
+                ->take('5')
+                ->get();
+            $drivers = Driver::where('org_id', session()->get('org_info')->id)
                 ->orderBy('id', 'desc')
                 ->take('5')
                 ->get();
@@ -58,7 +63,8 @@ class HomeController extends Controller
             return view('dashboard')
                 ->with('clients', $clients)
                 ->with('reservations', $reservations)
-                ->with('vehicles', $vehicles);
+                ->with('vehicles', $vehicles)
+                ->with('drivers', $drivers);
 
 
         } else {
@@ -68,6 +74,11 @@ class HomeController extends Controller
                 ->take('5')
                 ->get();
             $clients = Client::where('org_id', Auth::user()->org_id)
+                ->orderBy('id', 'desc')
+                ->take('5')
+                ->get();
+
+            $drivers = Driver::where('org_id', Auth::user()->org_id)
                 ->orderBy('id', 'desc')
                 ->take('5')
                 ->get();
@@ -104,13 +115,12 @@ class HomeController extends Controller
 
     }
 
-    public function vehicle(Vehicle $vehicle)
-    {
-
-        $data['reservations'] = Reservation::with('clients', 'vehicles')->where('vehicle_id', $vehicle->id)->paginate(3);
+    public  function vehicle(Vehicle $vehicle){
+//            dd($vehicle->id);
+          $data['reservations'] = Reservation::with('clients', 'vehicles')->where('vehicle_id', $vehicle->id)->where('status', '1')->paginate(1);
         $data['vehicle'] = $vehicle;
 
-        $data['vehicleHistory'] = Reservation::where('status', '2')->get();
+        $data['vehicleHistory']= Reservation::where('vehicle_id', $vehicle->id)->where('status','2')->paginate('1');
 
         //return $data;
 

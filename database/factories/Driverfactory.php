@@ -15,7 +15,7 @@ $factory->define(Driver::class, function (Faker $faker) {
         'dl_scan'=> Str::random(50),
         'nid_scan'=> Str::random(50),
         'photo'=> Str::random(50),
-        'user_id'=> 1,
-        'org_id'=>1,
+        'user_id'=> $faker->numberBetween(1,5),
+        'org_id'=>$faker->numberBetween(1,5)
     ];
 });
