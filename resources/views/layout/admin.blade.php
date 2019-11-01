@@ -169,18 +169,21 @@
                     <?php $org_info = session('org_info')  ?>
 
                     <div class="user-panel">
+
                         <div class="pull-left image">
                             <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
                         </div>
-                        <span class="pull-right-container">
-              <span class="label label-danger pull-right "><a href="{{ url('/unset') }}"> Close <span
-                              class="fa fa-close"> </span></a></span>
-            </span>
+
                         <div class="pull-left info">
                             <p>{{ $org_info->org_name }}</p>
                             <a href="#"><i class="fa fa-circle "></i> {{ $org_info->owner->name }}</a>
                         </div>
                     </div>
+                        <span class="pull-right-container clearfix" >
+              <span class="label label-danger pull-right "><a href="{{ url('/unset') }}"> Close <span
+                              class="fa fa-close"> </span></a></span>
+            </span>
+
             @endif
 
             @if( auth()->user()->role == 2 || session('org_info'))
