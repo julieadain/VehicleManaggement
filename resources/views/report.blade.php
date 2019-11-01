@@ -194,6 +194,10 @@
                 }, 350);
             });
 
+            $('#txtKeyword').on('focusout', function () {
+                $('#suggestion').html("");
+            });
+
             $('#suggestion').on('click', 'li', function () {
                 // console.log("Li clicked");
                 $('#txtKeyword').val($(this).html());

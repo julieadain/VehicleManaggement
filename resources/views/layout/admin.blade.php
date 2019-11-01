@@ -124,7 +124,7 @@
                                 <div class="pull-left">
                                     <span class="btn default btn-file">
                                         <span class="fileinput-new">
-                                           <span class="fa fa-upload"></span>
+                                           <span class="fa fa-upload">Upload Photo</span>
                                          </span>
                                     <input type="file" class="textbox wp95 fl fileupload fileInput" name="photo"
                                            id="fileupload" style="border: 1px solid black">
