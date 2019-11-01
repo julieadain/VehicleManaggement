@@ -47,6 +47,7 @@ class PaymentController extends Controller
      */
     public function create()
     {
+
         $packages = Package::all();
         return view("payment.adminPayment", compact('packages'));
 //        return view("payment.adminInvoice");
@@ -113,11 +114,10 @@ class PaymentController extends Controller
 
     public function packaged(PackagedControllerRequest $request)
     {
-        $package = explode(" ", $request->package);
-//       return $request;
+        $package = Package::where('title', 'LIKE', '%' . current(explode(" @", $request->package)) . '%')->first();
 
         $organization = Organization::where('org_name', 'LIKE', '%' . $request->organization . '%')->first();
-        $organization->package_id = $package[0];
+        $organization->package_id = $package->id;
         $organization->save();
 
 //       return $organization->package;
@@ -146,6 +146,11 @@ class PaymentController extends Controller
 
         return view("payment.invoice-print", compact('organization'));
     }
+    public function paymentView(Payment $payment){
+
+        $packages = Package::all();
+        return view("payment.adminMakePayment", compact('packages', 'payment'));
+    }
 
     public function paymentRequestView()
     {
@@ -157,6 +162,14 @@ class PaymentController extends Controller
         $organization = Organization::find($id);
 
         return view("payment.paymentRequest", compact('organization'));
+
+    }
+    public function paymentDueList()
+    {
+        $payments = Payment::whereNotNUll('package_id')
+            ->where('status', '-1')
+            ->paginate('10');
+        return view("payment.dueList", compact('payments'));
 
     }
 
@@ -184,7 +197,10 @@ class PaymentController extends Controller
     {
 //        return "Test";
 
-        $data = Organization::where('org_name', 'LIKE', '%' . request('keyword') . '%')->get();
+        $data = Organization::with('package')
+            ->where('org_name', 'LIKE', '%' . request('keyword') . '%')
+            ->where('status', '1')
+            ->get();
         return response()->json(['success' => $data]);
     }
 

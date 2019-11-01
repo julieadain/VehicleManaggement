@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>Vehicle Management</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -122,13 +122,7 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <span class="btn default btn-file">
-                                        <span class="fileinput-new">
-                                           <span class="fa fa-upload">Upload Photo</span>
-                                         </span>
-                                    <input type="file" class="textbox wp95 fl fileupload fileInput" name="photo"
-                                           id="fileupload" style="border: 1px solid black">
-                                    </span>
+                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
 
                                 <div class="pull-right">

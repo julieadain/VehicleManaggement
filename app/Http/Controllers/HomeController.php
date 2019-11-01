@@ -133,4 +133,9 @@ class HomeController extends Controller
 
     }
 
+    public function photoUpload(){
+
+        dd("apowiighoaiwsgoinogn");
+    }
+
 }

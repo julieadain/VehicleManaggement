@@ -44,6 +44,7 @@
                                 <div class="form-group">
                                     <label>Choose Organization</label>
                                     <input class="form-control" id="txtKeyword" type="text" name="organization"
+                                           value="{{$payment? $payment->organization->org_name : null}}"
                                            autocomplete="off"
                                            style="width: 100%;">
                                     <ul class="" id="suggestion"></ul>
@@ -52,13 +53,10 @@
                                 <div class="form-group">
                                     <label>Choose Package</label>
                                     <select class="form-control" name="package">
-                                        <option selected id="selectedPackage"> </option>
-
+                                        <option selected> {{$payment->package->title. ' @ ' .$payment->package->cost}}</option>
                                         @foreach($packages as $package)
-                                            <option>{{$package->title. ' @ '. $package->cost . 'tk'}}</option>
-
+                                            <option>{{$package->id.' - '. $package->title. ' @ '. $package->cost . 'tk'}}</option>
                                         @endforeach
-
                                     </select>
                                 </div>
                                 <div class="form-group row mb-0">
@@ -133,6 +131,7 @@
                         success: function (data) {
                             $.each(data.success, function (i, v) {
                                 $('#suggestion').append("<li class='form-control'>" + v.org_name + "</li>");
+                                $('#suggestion').append("<li class='form-control'>" + v.org_name + "</li>");
                             });
                         }
                     });
@@ -143,9 +142,6 @@
                 // console.log("Li clicked");
                 $('#txtKeyword').val($(this).html());
                 $('#suggestion').html("");
-            });
-            $('#suggestion').on('click', 'li', function () {
-
             });
             $('#suggestion').html("");
 

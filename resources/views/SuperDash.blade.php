@@ -51,16 +51,18 @@
             </div>
             <!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="info-box">
-                    <span class="info-box-icon bg-red"><i class="ion ion-ios-people-outline"></i></span>
+                <a href="{{url("/paymentDueList")}}">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-red"><i class="ion ion-ios-people-outline"></i></span>
 
-                    <div class="info-box-content">
-                        <span class="info-box-text">Payment Due</span>
-                        <span class="info-box-number">{{ \App\Payment::whereStatus(-1)->count() }}</span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Payment Due</span>
+                            <span class="info-box-number">{{ \App\Payment::whereStatus(-1)->count() }}</span>
+                        </div>
+                        <!-- /.info-box-content -->
                     </div>
-                    <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
+                    <!-- /.info-box -->
+                </a>
             </div>
             <!-- /.col -->
         </div>

@@ -20,6 +20,7 @@ Route::Resource("/vehicle", "VehicleController");
 Route::Resource("/driver", "DriverController");
 Route::resource("/reservation", "ReservationController");
 
+Route::post("/photoUpload", "HomeController@photoUpload")->name('photoUpload');
 Route::get("/RunReservation/{reservation}/edit", "ReservationController@runReservationEdit")->name('runningReservation.edit');
 Route::patch("/RunReservation/{reservation}", "ReservationController@RunReservationUpdate")->name('runningReservation.update');
 Route::delete("/RunReservation/{reservation}", "ReservationController@runReservationDestroy")->name('runningReservation.destroy');
@@ -52,6 +53,8 @@ Route::resource("/payment", "PaymentController");
 Route::get("/invoicePrint/{id}", "PaymentController@invoicePrint")->name('payment.invoicePrint');
 Route::get("/paymentRequestView", "PaymentController@paymentRequestView")->name('payment.paymentRequest');
 Route::get("/paymentRequestList", "PaymentController@requestList")->name('payment.requestList');
+Route::get("/paymentView/{payment}", "PaymentController@paymentView")->name('payment.paymentView');
+Route::get("/paymentDueList", "PaymentController@paymentDueList")->name('payment.dueList');
 Route::get("/paymentRequest/{id}", "PaymentController@paymentRequest")->name('payment.paymentRequest');
 Route::get("/paymentApprove/{id}", "PaymentController@paymentApprove")->name('payment.paymentApprove');
 Route::get("/org_ajaxRequest", "PaymentController@org_ajaxRequest")->name('payment.org_ajaxRequest');
