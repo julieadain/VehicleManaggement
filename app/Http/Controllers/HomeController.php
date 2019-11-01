@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Client;
 use App\Driver;
 use App\Organization;
+use App\Package;
 use App\Payment;
 use App\Reservation;
 use App\User;
@@ -33,7 +34,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         if (auth()->user()->organization->status == 0) {
             return view('pending');
         }
@@ -59,6 +59,9 @@ class HomeController extends Controller
                 ->orderBy('id', 'desc')
                 ->limit(5)
                 ->get();
+
+//            $package = Package::find( session()->get('org_info')->package_id);
+
 
             return view('dashboard')
                 ->with('clients', $clients)
@@ -98,11 +101,12 @@ class HomeController extends Controller
             $payments = Payment::with('package')
                 ->where('org_id', '!=', Auth::user()->org_id)
                 ->orderBy('created_at', 'Desc')
-                ->where('status', '1')
+                ->whereNotNull('package_id')
+                ->where('status', '!=', '0')
                 ->limit('8')
                 ->get();
 
-//            return $payments[1]->package ;
+//            return $payments[2]->package ;
             return view('SuperDash', compact('months', 'data1', 'organizations', 'payments'));
         }
 
@@ -111,7 +115,7 @@ class HomeController extends Controller
             ->limit(5)
             ->get();
 
-        return view('dashboard', compact('clients', 'reservations', 'vehicles'));
+        return view('dashboard', compact('clients', 'reservations', 'vehicles', 'drivers'));
 
     }
 

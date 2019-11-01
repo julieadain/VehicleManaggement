@@ -13,4 +13,17 @@ public function Package()
 {
     return $this->belongsTo(Package::class, 'package_id');
 }
+public function Organization()
+{
+    return $this->belongsTo(Organization::class, 'org_id');
+}
+public function Reservation()
+{
+    return $this->belongsTo(Reservation::class, 'res_id');
+}
+public function Client()
+{
+    return $this->belongsTo(Client::class, 'client_id');
+}
+
 }

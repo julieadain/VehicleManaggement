@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Mockery\Exception;
 
 class RegisterController extends Controller
 {
@@ -56,18 +57,12 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'org_name' => 'required|unique:organizations|string|max:255',
             'address' => ['required', 'string', 'max:255'],
-            'trade_license_copy'=>'required|mimes:jpg,jpeg,png,gif,bmp',
+            'trade_license_copy' => 'required',
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:4', 'confirmed'],
             'phone' => ['required', new ValidMobile()]
         ]);
-
-//        if ($request->hasFile("trade_license_copy")){
-//            $filename=  time(). rand(). rand().'.'. $request->file('trade_license_copy')->getClientOriginalExtension();
-//            $request->file('trade_license_copy')->move(public_path('/upload'), $filename);
-//            $data['trade_license_copy']= $filename;
-//        }
 
     }
 
@@ -79,11 +74,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $filename = time() . rand() . rand() . '.' . $data['trade_license_copy']->getClientOriginalExtension();
+        $data['trade_license_copy']->move(public_path('/upload'), $filename);
 
-        $organization = Organization::create($data);
-        $data['org_id'] = $organization->id;
-        $data['password'] = Hash::make($data['password']);
-        $user = User::create($data);
-        return $user;
+        DB::beginTransaction();
+        try {
+            $data['trade_license_copy'] = $filename;
+            $organization = Organization::create($data);
+            $data['org_id'] = $organization->id;
+            $data['password'] = Hash::make($data['password']);
+
+            $user = User::create($data);
+            DB::commit();
+            return $user;
+        }catch (Exception $exception){
+            DB::rollBack();
+            echo $exception->getMessage();
+        }
     }
 }

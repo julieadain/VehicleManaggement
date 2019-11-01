@@ -2,14 +2,8 @@
 @extends("layout.admin")
 
 @section('content')
-
-
-
     <section class="content">
         <div class="row">
-
-            <!-- /.col -->
-
             <!-- /.col -->
         </div>
         <!-- /.row -->
@@ -18,16 +12,6 @@
                 <div class="box">
                     <div class="box-header">
                         <h2 class="box-title">Vehicle List </h2>
-
-                        {{--<div class="box-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                                <div class="input-group-btn">
-                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                </div>
-                            </div>
-                        </div>--}}
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body table-responsive no-padding">
@@ -79,12 +63,6 @@
 
                         <ul class="pagination pagination-sm no-margin pull-right">
                             {{$vehicles->links()}}
-
-                            {{--                            <li><a href="#">&laquo;</a></li>--}}
-{{--                            <li><a href="#">1</a></li>--}}
-{{--                            <li><a href="#">2</a></li>--}}
-{{--                            <li><a href="#">3</a></li>--}}
-{{--                            <li><a href="#">&raquo;</a></li>--}}
                         </ul>
                     </div>
 
@@ -94,9 +72,6 @@
             </div>
         </div>
     </section>
-
-
-
 @endsection
 
 @push("page-js")

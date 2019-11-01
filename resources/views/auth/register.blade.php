@@ -12,7 +12,7 @@
                         @if(isset($error))
                             {{ $error }}
                         @endif
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row">
                                 <label for="org_name"
@@ -55,7 +55,7 @@
                                 <div class="col-md-6">
                                     <input id="trade_license_copy" type="file"
                                            class="form-control @error('trade_license_copy') is-invalid @enderror"
-                                           name="trade_license_copy" value="{{ old('trade_license_copy') }}" required
+                                           name="trade_license_copy" required
                                            placeholder="Scanned copy" autofocus>
 
                                     @error('trade_license_copy')

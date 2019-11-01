@@ -76,7 +76,6 @@
         <!-- Logo -->
         <a href="{{url('/home')}}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>V</b>M</span>
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><b>Vehicle management</b></span>
         </a>
@@ -91,8 +90,16 @@
                 <!-- Menu Body -->
 
                 <ul class="nav navbar-nav">
-
-                    <!-- User Account: style can be found in dropdown.less -->
+                    @admin
+                    @if(\App\Payment::where('org_id', \Illuminate\Support\Facades\Auth::user()->org_id)->where('status', '0')->where('date', '<=', date('Y-m-d', strtotime('+ 7days')))->first())
+                        <li class="dropdown notifications-menu">
+                            <a href="{{url('/paymentRequestView')}}" class="dropdown-toggle">
+                                <i class="fa fa-bell-o"></i>
+                                <span class="label label-warning">1</span>
+                            </a>
+                        </li>
+                    @endif
+                    @endadmin
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{{ asset('dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
@@ -105,8 +112,11 @@
                                      alt="User Image">
                                 <p>
                                     {{auth()->user()->name}} - {{auth()->user()->status}}
-                                    <small>Member since {{auth()->user()->created_at }}</small>
+                                    <small>Member since
+                                        - {{date('d M Y', strtotime(auth()->user()->created_at)) }}</small>
+                                    <a href="#">Change password</a>
                                 </p>
+
                             </li>
 
                             <!-- Menu Footer-->
@@ -116,7 +126,7 @@
                                         <span class="fileinput-new">
                                            <span class="fa fa-upload"></span>
                                          </span>
-                                    <input type="file" class="textbox wp95 fl fileupload fileInput" name="files"
+                                    <input type="file" class="textbox wp95 fl fileupload fileInput" name="photo"
                                            id="fileupload" style="border: 1px solid black">
                                     </span>
                                 </div>
@@ -191,19 +201,22 @@
                             <i class="fa fa-car"></i>
                             <span>Vehicles</span>
                             <span class="pull-right-container">
-              <span class="label label-primary pull-right">{{ \App\Vehicle::whereOrg_id(session('org_info')->id)->count() }}</span>
+              <span class="label label-primary pull-right">
+                  @admin
+                  {{ \App\Vehicle::whereOrg_id(\Illuminate\Support\Facades\Auth::user()->org_id)->count() }}
+                  @endadmin
+
+                  @Super_admin
+                  {{ \App\Vehicle::whereOrg_id(session('org_info')->id)->count() }}
+                  @endSuper_admin
+              </span>
             </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="{{ url('vehicle/create') }}"><i class="fa fa-circle-o"></i> Add vehicle</a>
                             </li>
-                            <li><a href="{{ url('vehicle/') }}"><i class="fa fa-circle-o"></i> Vehicle's List
-                                    <span class="pull-right-container">
-                                    <small class="label pull-right bg-blue-active">{{--{{ \App\Vehicle::whereOrg_id(session('org_info')->id)->count() }}--}}</small>
-                                    </span>
-                                </a>
+                            <li><a href="{{ url('vehicle/') }}"><i class="fa fa-circle-o"></i> Vehicle's List </a>
                             </li>
-                            {{--                            <li><a href="{{ url('') }}"><i class="fa fa-circle-o"></i> Available vehicles</a></li>--}}
                         </ul>
                     </li>
                     <li class="treeview">
@@ -211,8 +224,15 @@
                             <i class="fa fa-male"></i>
                             <span>Drivers</span>
                             <span class="pull-right-container">
-              <span class="label label-primary pull-right">{{ \App\Driver::whereOrg_id(session('org_info')->id)->count() }}</span>
-            </span>
+                              <span class="label label-primary pull-right">
+                                                        @Super_admin
+                                                        {{ \App\Driver::whereOrg_id(session('org_info')->id)->count() }}
+                                                        @endSuper_admin
+                                                        @admin
+                                                        {{ \App\Driver::whereOrg_id(\Illuminate\Support\Facades\Auth::User()->org_id)->count() }}
+                                                        @endadmin
+                              </span>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="{{ url('driver/create') }}"><i class="fa fa-circle-o"></i> Add driver</a>
@@ -224,19 +244,35 @@
                         <a href="#">
                             <i class="fa fa-edit"></i> <span>Clients</span>
                             <span class="pull-right-container">
+                                <span class="pull-right-container">
+                              <span class="label label-primary pull-right">
+                                                        @Super_admin
+                                                        {{ \App\Client::whereOrg_id(session('org_info')->id)->count() }}
+                                                        @endSuper_admin
+                                                        @admin
+                                                        {{ \App\Client::whereOrg_id(\Illuminate\Support\Facades\Auth::User()->org_id)->count() }}
+                                                        @endadmin
+                              </span>
+                            </span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="{{url('client/create')}}"><i class="fa fa-circle-o"></i> Register client</a>
                             </li>
-                            <li><a href="{{url('client')}}"><i class="fa fa-circle-o"></i>Client List</a>
-                            </li>
+                            <li><a href="{{url('client')}}"><i class="fa fa-circle-o"></i>Client List</a></li>
                             <li>
                                 <a href="{{url('activeClient')}}"><i class="fa fa-circle-o"></i>
                                     <span>Active Client</span>
                                     <span class="pull-right-container">
-                                    <small class="label pull-right bg-blue-active">{{ \App\Client::whereStatus(1)->count() }}</small>
+                                        <small class="label pull-right bg-blue-active">
+                                                            @Super_admin
+                                                            {{ \App\Client::where('org_id', session('org_info')->id)->whereStatus(1)->where('status','1')->count() }}
+                                                            @endSuper_admin
+                                                            @admin
+                                                            {{ \App\Client::where('org_id', \Illuminate\Support\Facades\Auth::User()->org_id)->where('status','1')->count() }}
+                                                            @endadmin
+                                        </small>
                                     </span>
                                 </a>
                             </li>
@@ -256,21 +292,42 @@
                             <li>
                                 <a href="{{url("reservation")}}"><i class="fa fa-circle-o"></i> Pending Reservation
                                     <span class="pull-right-container">
-                                    <small class="label pull-right bg-blue-active">{{ \App\Reservation::whereStatus(0)->count() }}</small>
+                                    <small class="label pull-right bg-blue-active">
+                                        @Super_admin
+                                            {{ \App\Reservation::where('org_id', session('org_info')->id)->where('status','0')->count() }}
+                                            @endSuper_admin
+                                            @admin
+                                            {{ \App\Reservation::where('org_id', \Illuminate\Support\Facades\Auth::User()->org_id)->where('status','0')->count() }}
+                                        @endadmin
+                                    </small>
                                     </span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{url("currentReservation")}}"><i class="fa fa-circle-o"></i> <span>Running Reservation</span>
                                     <span class="pull-right-container">
-                                    <small class="label pull-right bg-blue-active">{{ \App\Reservation::whereStatus(1)->count() }}</small>
+                                    <small class="label pull-right bg-blue-active">
+                                        @Super_admin
+                                            {{ \App\Reservation::where('org_id', session('org_info')->id)->where('status','1')->count() }}
+                                            @endSuper_admin
+                                            @admin
+                                            {{ \App\Reservation::where('org_id', \Illuminate\Support\Facades\Auth::User()->org_id)->where('status','1')->count() }}
+                                        @endadmin
+                                    </small>
                                     </span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{url("/history")}}"><i class="fa fa-circle-o"></i> <span> Completed Reservation</span>
                                     <span class="pull-right-container">
-                                    <small class="label pull-right bg-blue-active">{{ \App\Reservation::whereStatus(2)->count() }}</small>
+                                    <small class="label pull-right bg-blue-active">
+                                        @Super_admin
+                                            {{ \App\Reservation::where('org_id', session('org_info')->id)->where('status','2')->count() }}
+                                            @endSuper_admin
+                                            @admin
+                                            {{ \App\Reservation::where('org_id', \Illuminate\Support\Facades\Auth::User()->org_id)->where('status','2')->count() }}
+                                        @endadmin
+                                       </small>
                                     </span>
                                 </a>
                             </li>
@@ -279,9 +336,7 @@
                     <li>
                         <a href="{{url('massage')}}">
                             <i class="fa fa-envelope"></i> <span>SMS</span>
-                            <span class="pull-right-container">
-                            <small class="label pull-right bg-green">New sms</small>
-                            </span>
+
                         </a>
                     </li>
                     <li>
@@ -290,7 +345,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{url('/paymentRequestView')}}">
+                        <a href="{{url('/payment')}}">
                             <i class="fa fa-file"></i> <span>Payment</span>
                         </a>
                     </li>

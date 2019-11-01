@@ -19,9 +19,12 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
-
-                        <h3>{{ \App\Vehicle::whereOrg_id(session('org_info')->id)->count() }}</h3>
-
+                        @Super_admin
+                        <h3>{{ \App\Vehicle::whereOrg_id(session()->get('org_info')->id)->count() }}</h3>
+                        @endSuper_admin
+                        @admin
+                        <h3>{{ \App\Vehicle::whereOrg_id(Auth::user()->org_id)->count() }}</h3>
+                        @endadmin
 
                         <p>Vehicles</p>
                     </div>
@@ -37,7 +40,12 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3>{{ \App\Driver::whereOrg_id(session('org_info')->id)->count() }}</h3>
+                        @Super_admin
+                        <h3>{{ \App\Driver::whereOrg_id(session()->get('org_info')->id)->count() }}</h3>
+                        @endSuper_admin
+                        @admin
+                        <h3>{{ \App\Driver::whereOrg_id(\Illuminate\Support\Facades\Auth::user()->org_id)->count() }}</h3>
+                        @endadmin
 
                         <p>Drivers</p>
                     </div>
@@ -53,7 +61,12 @@
                 <!-- small box -->
                 <div class="small-box bg-yellow">
                     <div class="inner">
-                        <h3>{{ \App\Reservation::where('status','!=',2)->count() }}</h3>
+                        @Super_admin
+                        <h3>{{  \App\Reservation::where('status','!=',2)->count() }}</h3>
+                        @endSuper_admin
+                        @admin
+                        <h3>{{  \App\Reservation::where('status','!=',2)->count() }}</h3>
+                        @endadmin
 
                         <p>Booking</p>
                     </div>
@@ -69,8 +82,13 @@
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
-                        <h3>25</h3>
-
+                        <h3>9238</h3>
+                        {{--@Super_admin
+                        <h3>{{  \App\sms::where('status','!=',2)->count() }}</h3>
+                        @endSuper_admin
+                        @admin
+                        <h3>{{  \App\sms::where('status','!=',2)->count() }}</h3>
+                        @endadmin--}}
                         <p>SMS</p>
                     </div>
                     <div class="icon">
@@ -133,7 +151,7 @@
                     <!-- /.box-body -->
                 </div>
 
-                <div class="nav-tabs-custom">
+                <div class="box box-primary">
                     <div class="box-header">
                         <i class="ion ion-clipboard"></i>
 
@@ -158,13 +176,6 @@
                                         <tr class="lovelyrow" onclick="location.href='client'">
 
                                             <td><b>{{$client-> name}}</b></td>
-                                            <td>                               <?php
-                                                $date1 = new DateTime($client->created_at);
-                                                $date2 = new DateTime(now());
-                                                $interval = $date1->diff($date2);
-                                                ?></td>
-
-
                                         </tr>
                                     @endforeach
                                 </table>
@@ -178,7 +189,7 @@
             <section class="col-lg-5 connectedSortable">
 
                 <!-- Map box -->
-                <div class="box box-solid bg-light-blue-gradient">
+                <div class="box box-primary">
                     <div class="nav-tabs-custom">
                         <div class="box-header">
                             <i class="ion ion-clipboard"></i>
@@ -205,21 +216,6 @@
                                         @endforeach
                                     </table>
                                 </div>
-
-
-                                {{--                                @foreach($vehicles as $vehicle)--}}
-                                {{--                                <li>--}}
-                                {{--                                    <span class="text"> <a href="{{url('dashboard/vehicle/'.$vehicle->id )}}">{{$vehicle-> brand}}</a></span>--}}
-                                {{--                                    <!-- Emphasis label -->--}}
-                                {{--                                    <small class="label label-danger"><i class="fa fa-clock-o"></i></small>--}}
-                                {{--                                    <!-- General tools such as edit or delete-->--}}
-                                {{--                                    <div class="tools">--}}
-                                {{--                                        <i class="fa fa-trash-o"></i>--}}
-                                {{--                                    </div>--}}
-                                {{--                                </li>--}}
-                                {{--                                @endforeach--}}
-
-
                             </ul>
                         </div>
                     </div>
@@ -227,7 +223,7 @@
                 <!-- /.box -->
 
                 <!-- solid sales graph -->
-                <div class="box box-solid bg-teal-gradient">
+                <div class="box box-primary">
                     <div class="box box-solid bg-light-blue-gradient">
                         <div class="nav-tabs-custom">
                             <div class="box-header">

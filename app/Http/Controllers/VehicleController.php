@@ -31,10 +31,6 @@ class VehicleController extends Controller
                 ->paginate(5);
         }
 
-
-
-
-//        $data= Vehicle::paginate(10);
         return view("vehicle.detail")->with('vehicles', $vehicles);
     }
 

@@ -7,6 +7,7 @@ use App\Http\Requests\PackagedControllerRequest;
 use App\Organization;
 use App\Package;
 use App\Payment;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +20,23 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        if (session('org_info')) {
+            $payments = Payment::with('client', 'reservation', 'organization')
+                ->orderBy('date', 'desc')
+                ->whereNull('package_id')
+                ->where('org_id', session()->get('org_info')->id)
+                ->paginate('8');
+        } elseif (Auth::user()->role == 1 && empty(session('org_info'))) {
+            $payments = Payment::with('client', 'reservation', 'organization', 'package')
+                ->whereNotNull('package_id')
+                ->paginate('8');
+        } else {
+            $payments = Payment::with('client', 'reservation', 'organization')
+                ->whereNull('package_id')
+                ->where('org_id', Auth::user()->org_id)
+                ->paginate('8');
+        }
+        return view("payment.paymentList", compact('payments'));
     }
 
 
@@ -90,7 +107,8 @@ class PaymentController extends Controller
      */
     public function destroy(Payment $payment)
     {
-        //
+        $payment->delete();
+        return redirect()->back() ;
     }
 
     public function packaged(PackagedControllerRequest $request)
@@ -105,6 +123,21 @@ class PaymentController extends Controller
 //       return $organization->package;
 
         return view("payment.adminInvoice", compact('organization'));
+    }
+    public function requestList()
+    {
+
+        $payments = Payment::where('status', '0')
+            ->whereNull('res_id')
+            ->paginate('8');
+        return view("payment.requestList", compact('payments'));
+    }
+    public function paymentApprove($id)
+    {
+        $payment = Payment::find($id);
+        $payment->status = '1';
+        $payment->save();
+        return redirect()->back();
     }
 
     public function invoicePrint($id)
@@ -122,7 +155,6 @@ class PaymentController extends Controller
             $id = Auth::User()->org_id;
         }
         $organization = Organization::find($id);
-        return $organization->package->cost ;
 
         return view("payment.paymentRequest", compact('organization'));
 
@@ -155,5 +187,6 @@ class PaymentController extends Controller
         $data = Organization::where('org_name', 'LIKE', '%' . request('keyword') . '%')->get();
         return response()->json(['success' => $data]);
     }
+
 
 }
