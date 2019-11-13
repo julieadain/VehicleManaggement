@@ -16,6 +16,13 @@ Route::get('/', function () {
 })->middleware('guest');
 
 Route::Resource("/home", "HomeController");
+Route::Resource("/profile", "ProfileController");
+Route::get("/changeLogo", "ProfileController@changeLogo");
+Route::get("/changeEmail", "ProfileController@changeEmail");
+Route::get("/changeAddress", "ProfileController@changeAddress");
+Route::get("/changePhone", "ProfileController@changePhone");
+Route::get("/changePassword", "ProfileController@changePassword");
+
 Route::Resource("/vehicle", "VehicleController");
 Route::Resource("/driver", "DriverController");
 Route::resource("/reservation", "ReservationController");
@@ -28,9 +35,9 @@ Route::get("/reservation/{reservation}/completed", "ReservationController@comple
 Route::get("/history", "ReservationController@historyReservation");
 
 
-Route::get("dashboard/vehicle/{vehicle}","HomeController@vehicle")->name('dashboard.vehicle');
+Route::get("dashboard/vehicle/{vehicle}", "HomeController@vehicle")->name('dashboard.vehicle');
 //Route::get("dashboard/vehicle/{vehicle}/history","HomeController@vehicle")->name('dashboard.vehicleHistory');
-Route::get("dashboard/driver/{driver}","DriverController@dashboardDriver")->name('dashboard.driver');
+Route::get("dashboard/driver/{driver}", "DriverController@dashboardDriver")->name('dashboard.driver');
 
 
 Route::Resource("/organization", "OrganizationController");
@@ -58,17 +65,17 @@ Route::get("/paymentDueList", "PaymentController@paymentDueList")->name('payment
 Route::get("/paymentRequest/{id}", "PaymentController@paymentRequest")->name('payment.paymentRequest');
 Route::get("/paymentApprove/{id}", "PaymentController@paymentApprove")->name('payment.paymentApprove');
 Route::get("/org_ajaxRequest", "PaymentController@org_ajaxRequest")->name('payment.org_ajaxRequest');
-Route::get("client/{clientId}/reservation/create","ClientController@reservation");
-Route::post("client/{clientId}/reservation/create","ClientController@res");
-Route::get("clientHistory/","ClientController@clientHistoryAll");
-Route::get("clientHistory/{client}","ClientController@clientHistory");
+Route::get("client/{clientId}/reservation/create", "ClientController@reservation");
+Route::post("client/{clientId}/reservation/create", "ClientController@res");
+Route::get("clientHistory/", "ClientController@clientHistoryAll");
+Route::get("clientHistory/{client}", "ClientController@clientHistory");
 
 
-Route::get("massage","ReservationController@massage");
+Route::get("massage", "ReservationController@massage");
 
 
 
-Route::get("client/{clientId}/reservation","ClientController@reservationIndex");
+Route::get("client/{clientId}/reservation", "ClientController@reservationIndex");
 Route::get("/vehicleAssign/{id}", "ReservationController@vehicleAssign")->name('reservation.vehicleAssign');
 Route::get("/driverAssign/{id}", "ReservationController@driverAssign")->name('reservation.driverAssign');
 Route::get("/currentReservation", "ReservationController@currentRes")->name('reservation.currentReservation');

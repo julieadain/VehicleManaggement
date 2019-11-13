@@ -53,15 +53,10 @@ class HomeController extends Controller
                 ->take('5')
                 ->get();
 
-//            dd($vehicles);
-
             $reservations = Reservation::where('status', '1')
                 ->orderBy('id', 'desc')
                 ->limit(5)
                 ->get();
-
-//            $package = Package::find( session()->get('org_info')->package_id);
-
 
             return view('dashboard')
                 ->with('clients', $clients)

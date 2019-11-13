@@ -1,8 +1,6 @@
     @extends("layout.admin")
 
 @section('content')
-
-
     <!-- Main content -->
     <section class="content">
         <h3 class="container">
