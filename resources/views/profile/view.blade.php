@@ -43,16 +43,19 @@
                     <div class="box-body ">
                         <ul class="list-group">
                             <li class="list-group-item no-border">
-                                <a href="">Change profile Logo</a>
+                                <a href="{{url('changeLogo')}}">Change profile Logo</a>
+                            </li>
+                            <li class="list-group-item no-border">
+                                <a href="{{url('changePhone')}}">Change Phone</a>
                             </li>
                             <li class="list-group-item no-border ">
-                                <a href="">Change Email</a>
+                                <a href="{{url('changeEmail')}}">Change Email</a>
                             </li>
                             <li class="list-group-item no-border">
-                                <a href="">Change Address</a>
+                                <a href="{{url('changeAddress')}}">Change Address</a>
                             </li>
                             <li class="list-group-item no-border">
-                                <a href="">Change Password</a>
+                                <a href="{{url('changePassword')}}">Change Password</a>
                             </li>
 
                         </ul>

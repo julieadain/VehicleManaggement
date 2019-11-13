@@ -5,18 +5,19 @@
         <section class="col-md-6 connectedSortable pull-left" style="padding-top: 10px;">
             <!-- Profile Image -->
             <div class="box box-primary">
-                <div class="box-body box-profile">
-                    <img class="profile-user-img img-responsive img-circle"
-                         src="{{asset('dist/img/user4-128x128.jpg')}}" alt="User profile picture">
-                </div>
                 <form style="padding: 10px;">
+
                     <div class="form-group">
-                        <label for="exampleInputFile">Logo</label>
-                        <input type="file" class="form-control" name="logo" id="exampleInputFile" aria-describedby="fileHelp">
+                        <label for="exampleInputPassword1">Current Password</label>
+                        <input type="password" class="form-control" name="currentPassword" id="exampleInputPassword1"  placeholder="Enter current phone">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Enter Password</label>
-                        <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
+                        <label for="exampleInputPassword2">New Password</label>
+                        <input type="password" class="form-control" name="password1" id="exampleInputPassword2" aria-describedby="addressHelp" placeholder="Enter new password">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword3">Re-enter new Password</label>
+                        <input type="password" class="form-control" name="password2" id="exampleInputPassword3" placeholder="Re-enter new Password">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

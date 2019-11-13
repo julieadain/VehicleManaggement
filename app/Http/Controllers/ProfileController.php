@@ -80,6 +80,33 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function changeLogo()
+    {
+//        dd("change Request");
+        return view("profile.change_logo");
+    }
+    public function changeEmail()
+    {
+//        dd("change Request");
+       return view("profile.change_email");
+    }
+    public function changePhone()
+    {
+//        dd("change Request");
+        return view("profile.change_phone");
+
+    }
+    public function changeAddress()
+    {
+//        dd("change Request");
+        return  view("profile.change_address");
+    }
+    public function changePassword()
+    {
+//        dd("change Request");
+        return view("profile.change_password");
+
+    }
     public function destroy($id)
     {
         //
