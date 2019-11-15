@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Organization;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class ProfileController extends Controller
 {
@@ -32,7 +35,7 @@ class ProfileController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -43,7 +46,7 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -54,7 +57,7 @@ class ProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -65,8 +68,8 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -77,36 +80,62 @@ class ProfileController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function changeLogo()
     {
-//        dd("change Request");
-        return view("profile.change_logo");
+        $organization = Organization::find(Auth::user()->org_id);
+        return view("profile.change_logo", compact('organization'));
     }
+
+    public function storeLogo(Request $request)
+    {
+        $this->validate($request, [
+            'logo' => 'required',
+            'password' => 'required'
+        ]);
+
+        $origin = User::find(Auth::user()->id);
+
+        if (Hash::check($request['password'], $origin->password)) {
+
+            $filename = time() . rand() . rand() . '.' . $request->file('logo')->getClientOriginalExtension();
+            $request->file('logo')->move(public_path('/upload'), $filename);
+
+            $organization = Organization::find(Auth::user()->org_id);
+            $organization->logo = $filename;
+            $organization->save();
+//            dd($organization->logo);
+        }else{
+            Session::flash('error', 'Given Password did not match !');
+            return redirect()->back();
+        }
+        return redirect('profile');
+    }
+
     public function changeEmail()
     {
-//        dd("change Request");
-       return view("profile.change_email");
+        return view("profile.change_email");
     }
+
     public function changePhone()
     {
-//        dd("change Request");
         return view("profile.change_phone");
 
     }
+
     public function changeAddress()
     {
-//        dd("change Request");
-        return  view("profile.change_address");
+        return view("profile.change_address");
     }
+
     public function changePassword()
     {
-//        dd("change Request");
         return view("profile.change_password");
 
     }
+
     public function destroy($id)
     {
         //

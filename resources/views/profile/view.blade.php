@@ -7,7 +7,7 @@
                 <div class="box box-primary">
                     <div class="box-body box-profile">
                         <img class="profile-user-img img-responsive img-circle"
-                             src="{{asset('dist/img/user4-128x128.jpg')}}" alt="User profile picture">
+                             src="{{asset('upload').'/'.$organization->logo}}" alt="User profile picture">
 
                         <h3 class="profile-username text-center">{{$organization->org_name}}</h3>
 

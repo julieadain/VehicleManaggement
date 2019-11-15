@@ -6,17 +6,39 @@
             <!-- Profile Image -->
             <div class="box box-primary">
                 <div class="box-body box-profile">
-                    <img class="profile-user-img img-responsive img-circle"
-                         src="{{asset('dist/img/user4-128x128.jpg')}}" alt="User profile picture">
+                        <img class="profile-user-img img-responsive img-circle"
+                         src="{{asset('upload').'/'.$organization->logo}}" alt="User profile picture">
                 </div>
-                <form style="padding: 10px;">
+                @if ($errors->any())
+                    <div class="alert">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li class="text-danger">{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form method="POST" action="{{ url('/storeLogo') }}" enctype="multipart/form-data"
+                      style="padding: 10px;">
+                    @csrf
                     <div class="form-group">
                         <label for="exampleInputFile">Logo</label>
-                        <input type="file" class="form-control" name="logo" id="exampleInputFile" aria-describedby="fileHelp">
+                        <input type="file" class="form-control" name="logo" id="exampleInputFile"
+                               aria-describedby="fileHelp">
+                       {{--@if($errors('logo'))
+                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @endif--}}
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Enter Password</label>
-                        <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
+                        @if (session('error'))
+                            <h5 class="text-danger pull-right">{{session('error')}}</h5>
+                        @endif
+                        <input type="password" class="form-control" name="password" id="exampleInputPassword1"
+                               placeholder="Password">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

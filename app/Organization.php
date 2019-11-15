@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Organization extends Model
 {
     protected $fillable = [
-        'org_name', 'address', 'trade_license_copy', 'status'
+        'org_name', 'address', 'trade_license_copy', 'status', 'logo'
     ];
 
     public function users()

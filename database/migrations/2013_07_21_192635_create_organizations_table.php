@@ -17,8 +17,8 @@ class CreateOrganizationsTable extends Migration
             $table->bigIncrements('id');
             $table->string('org_name',50);
             $table->string('address',100);
-            $table->string('trade_license_copy',100);
-            $table->string('logo',100)->nullable();
+            $table->string('trade_license_copy',200);
+            $table->string('logo',200)->nullable();
             $table->boolean('status')->default('0');
             $table->bigInteger('package_id')->unsigned()->nullable();
             $table->foreign('package_id')->references('id')->on('packages');

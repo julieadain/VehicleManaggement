@@ -79,6 +79,8 @@
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><b>Vehicle management</b></span>
         </a>
+
+
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top">
             <!-- Sidebar toggle button-->
@@ -102,7 +104,7 @@
                     @endadmin
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{ asset('dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
+                            <img src="{{asset('upload').'/'.\Illuminate\Support\Facades\Auth::user()->organization->logo}}" class="user-image" alt="logo">
                             <span class="hidden-xs">{{auth()->user()->name}}</span>
                         </a>
                         <ul class="dropdown-menu">
@@ -114,7 +116,6 @@
                                     {{auth()->user()->name}} - {{auth()->user()->status}}
                                     <small>Member since
                                         - {{date('d M Y', strtotime(auth()->user()->created_at)) }}</small>
-                                    <a href="#">Change password</a>
                                 </p>
 
                             </li>
@@ -171,7 +172,7 @@
                     <div class="user-panel">
 
                         <div class="pull-left image">
-                            <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                            <img src="{{asset('upload').'/'.session('org_info')->logo}}" class="img-circle" alt="logo">
                         </div>
 
                         <div class="pull-left info">

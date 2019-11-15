@@ -42,14 +42,24 @@
                 @csrf
                 <div class="wrap-input100 validate-input m-b-26" data-validate="Email is required">
                     <span class="label-input100">Email</span>
-                    <input class="input100 @error('email') is-invalid @enderror" type="email"   name="email"  placeholder="Enter email address">
+                    <input class="input100 @error('email') is-invalid @enderror" type="email" name="email" value="{{ $email ?? old('email') }}"  placeholder="Enter email address">
                     <span class="focus-input100"></span>
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
                 </div>
 
                 <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
                     <span class="label-input100">Password</span>
                     <input class="input100 @error('password') is-invalid @enderror" type="password"  name="password" placeholder="Enter password">
                     <span class="focus-input100"></span>
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
                 </div>
 
                 <div class="flex-sb-m w-full p-b-30">

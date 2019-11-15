@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::Resource("/home", "HomeController");
 Route::Resource("/profile", "ProfileController");
 Route::get("/changeLogo", "ProfileController@changeLogo");
+Route::post("/storeLogo", "ProfileController@storeLogo");
 Route::get("/changeEmail", "ProfileController@changeEmail");
 Route::get("/changeAddress", "ProfileController@changeAddress");
 Route::get("/changePhone", "ProfileController@changePhone");
