@@ -5,19 +5,33 @@
         <section class="col-md-6 connectedSortable pull-left" style="padding-top: 10px;">
             <!-- Profile Image -->
             <div class="box box-primary">
-                <form style="padding: 10px;">
+                @if ($errors->any())
+                    <div class="alert">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li class="text-danger">{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <form method="POST" action="{{ url('storePass') }}" enctype="multipart/form-data"
+                      style="padding: 10px;">
+                    @csrf
 
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Current Password</label>
+                        <label for="exampleInputPassword1">Present Password</label>
                         <input type="password" class="form-control" name="currentPassword" id="exampleInputPassword1"  placeholder="Enter current phone">
+                        @if (session('errorPass'))
+                            <h5 class="text-danger pull-right">{{session('errorPass')}}</h5>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword2">New Password</label>
-                        <input type="password" class="form-control" name="password1" id="exampleInputPassword2" aria-describedby="addressHelp" placeholder="Enter new password">
+                        <input type="password" class="form-control" name="password" id="exampleInputPassword2" aria-describedby="addressHelp" placeholder="Enter new password">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword3">Re-enter new Password</label>
-                        <input type="password" class="form-control" name="password2" id="exampleInputPassword3" placeholder="Re-enter new Password">
+                        <input type="password" class="form-control" name="password_confirmation" id="password-confirm" placeholder="Re-enter new Password">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

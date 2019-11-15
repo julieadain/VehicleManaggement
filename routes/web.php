@@ -26,6 +26,7 @@ Route::post("/storeAddress", "ProfileController@storeAddress");
 Route::get("/changePhone", "ProfileController@changePhone");
 Route::post("/storePhone", "ProfileController@storePhone");
 Route::get("/changePassword", "ProfileController@changePassword");
+Route::post("/storePass", "ProfileController@storePass");
 
 Route::Resource("/vehicle", "VehicleController");
 Route::Resource("/driver", "DriverController");

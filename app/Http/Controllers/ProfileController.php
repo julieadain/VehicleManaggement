@@ -153,6 +153,7 @@ class ProfileController extends Controller
         }
         return redirect('profile');
     }
+
     public function storeEmail(Request $request)
     {
 //        dd('aisuhfiua');
@@ -185,6 +186,7 @@ class ProfileController extends Controller
     {
         return view("profile.change_address");
     }
+
     public function storeAddress(Request $request)
     {
         $this->validate($request, [
@@ -201,7 +203,7 @@ class ProfileController extends Controller
             $organization->save();
 
 //            dd('aisuhfiua');
-        }else {
+        } else {
             Session::flash('errorPass', 'Given Password did not match !');
             return redirect()->back();
         }
@@ -212,6 +214,27 @@ class ProfileController extends Controller
     {
         return view("profile.change_password");
 
+    }
+
+    public function storePass(Request $request)
+    {
+        $this->validate($request, [
+            'currentPassword' => 'required',
+            'password' => ['required', 'min:4', 'confirmed'],
+        ]);
+
+        $user = User::find(Auth::user()->id);
+
+        if (Hash::check($request['currentPassword'], $user->password)) {
+
+            $user->password = Hash::make($request['password']);
+            $user->save();
+
+        } else {
+            Session::flash('errorPass', 'Present Password did not match !');
+            return redirect()->back();
+        }
+        return redirect('profile');
     }
 
     public function destroy($id)
