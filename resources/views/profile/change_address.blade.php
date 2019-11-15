@@ -6,18 +6,23 @@
             <!-- Profile Image -->
             <div class="box box-primary">
 
-                <form style="padding: 10px;">
+                <form method="POST" action="{{ url('storeAddress') }}" enctype="multipart/form-data"
+                      style="padding: 10px;">
+                    @csrf
                     <ul class="list-group" style="padding-top: 10px;">
                         <b>{{"Current Address :"}}</b>
                         <li class="list-group-item">{{\Illuminate\Support\Facades\Auth::User()->organization->address}} </li>
                     </ul>
                     <div class="form-group">
                         <label for="exampleInputAddress">New Address</label>
-                        <input type=text class="form-control" name="address" id="exampleInputAddress" aria-describedby="addressHelp" placeholder="Enter new address">
+                        <input type="text" class="form-control" name="address" id="exampleInputAddress" aria-describedby="addressHelp" placeholder="Enter new address">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Enter Password</label>
                         <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
+                        @if (session('errorPass'))
+                            <h5 class="text-danger pull-right">{{session('errorPass')}}</h5>
+                        @endif
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

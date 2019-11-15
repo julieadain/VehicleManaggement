@@ -153,10 +153,59 @@ class ProfileController extends Controller
         }
         return redirect('profile');
     }
+    public function storeEmail(Request $request)
+    {
+//        dd('aisuhfiua');
+        $this->validate($request, [
+            'email' => 'required|email',
+            'newEmail' => 'required|email|unique:users,email',
+            'password' => 'required'
+        ]);
+        $user = User::find(Auth::user()->id);
+
+        if (Hash::check($request['password'], $user->password)) {
+
+            if ($request['email'] == $user->email) {
+                $user->email = $request['newEmail'];
+                $user->save();
+            } else {
+                Session::flash('errorEmail', 'Present Email address did not match !');
+                return redirect()->back()->with('request', $request);
+            }
+//            dd($user->email);
+
+        } else {
+            Session::flash('errorPass', 'Given Password did not match !');
+            return redirect()->back();
+        }
+        return redirect('profile');
+    }
 
     public function changeAddress()
     {
         return view("profile.change_address");
+    }
+    public function storeAddress(Request $request)
+    {
+        $this->validate($request, [
+            'address' => 'required',
+            'password' => 'required'
+        ]);
+//    dd('aisuhfiua');
+        $user = User::find(Auth::user()->id);
+
+        if (Hash::check($request['password'], $user->password)) {
+
+            $organization = Organization::find(Auth::user()->org_id);
+            $organization->address = $request['address'];
+            $organization->save();
+
+//            dd('aisuhfiua');
+        }else {
+            Session::flash('errorPass', 'Given Password did not match !');
+            return redirect()->back();
+        }
+        return redirect('profile');
     }
 
     public function changePassword()

@@ -5,11 +5,24 @@
         <section class="col-md-6 connectedSortable pull-left" style="padding-top: 10px;">
             <!-- Profile Image -->
             <div class="box box-primary">
-                <form style="padding: 10px;">
-
+                @if ($errors->any())
+                    <div class="alert">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li class="text-danger">{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+               <form method="POST" action="{{ url('storeEmail') }}" enctype="multipart/form-data"
+                         style="padding: 10px;">
+                    @csrf
                     <div class="form-group">
-                        <label for="exampleInputAddress1">Current Email</label>
-                        <input type=text class="form-control" name="currentEmail" id="exampleInputAddress1" aria-describedby="addressHelp" placeholder="Enter current email">
+                        <label for="exampleInputAddress1">Present Email</label>
+                        <input type="email" class="form-control" name="email" id="exampleInputAddress1" aria-describedby="addressHelp" placeholder="Enter current email">
+                        @if (session('errorEmail'))
+                            <h5 class="text-danger pull-right">{{session('errorEmail')}}</h5>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="exampleInputAddress">New Email</label>
@@ -18,6 +31,9 @@
                     <div class="form-group">
                         <label for="exampleInputPassword1">Enter Password</label>
                         <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
+                        @if (session('errorPass'))
+                            <h5 class="text-danger pull-right">{{session('errorPass')}}</h5>
+                        @endif
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
