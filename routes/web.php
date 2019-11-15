@@ -72,7 +72,7 @@ Route::get("/paymentApprove/{id}", "PaymentController@paymentApprove")->name('pa
 Route::get("/org_ajaxRequest", "PaymentController@org_ajaxRequest")->name('payment.org_ajaxRequest');
 Route::get("client/{clientId}/reservation/create", "ClientController@reservation");
 Route::post("client/{clientId}/reservation/create", "ClientController@res");
-Route::get("clientHistory/", "ClientController@clientHistoryAll");
+Route::get("clientHistory", "ClientController@clientHistory");
 Route::get("clientHistory/{client}", "ClientController@clientHistory");
 
 

@@ -164,16 +164,6 @@ class ClientController extends Controller
      */
     public function res(Request $request, $clientId)
     {
-//        $data =$request->all();
-//        $data['client_id']= $clientId;
-//        $data['user_id']=Auth::id();
-//        $data['org_id']= Auth::user()->org_id;
-//
-//
-//
-//        Reservation::create($data);
-//        return redirect()->back();
-
         $this->validate($request, [
             'start_date_time' => 'required',
             'end_date_time' => 'required',
@@ -185,22 +175,22 @@ class ClientController extends Controller
             'start_meter_reading' => 'required',
             'end_meter_reading' => 'required',
             'total_payable' => 'required'
-
         ]);
-
+//dd($request->all());
         $data = $request->all();
         $data['status'] = 0;
 
         $data['client_id'] = $clientId;
-        $data['user_id'] = Auth::id();
-        $data['org_id'] = Auth::user()->id;
+        $data['user_id'] = Auth::user()->id;
 
+        if (session('org_info')){
+           $data['org_id'] =session('org_info')->id;
+       }else{
+           $data['org_id'] = Auth::user()->org_id;
+       }
 
-//        Reservation::create($data);
-//        return redirect()->back();
-
+//       return $data;
         Reservation::create($data);
-//        return redirect("client/$clientId/reservation");
         return redirect("reservation");
 
     }
@@ -212,13 +202,15 @@ class ClientController extends Controller
         return view('client.reservation-list')->with('reservationList', $data);
     }
 
-    public function clientHistoryAll()
+    public function clientHistory()
     {
-        $data['clientRcvs'] = Client::with('reservations')->get();
-        return view('client.client-history', $data);
+//        dd('olnfg');
+        $reservations = Reservation::with('client')->paginate('10');
+        return view('client.client-history', compact('reservations'));
+
     }
 
-    public function clientHistory(Client $client)
+    /*public function clientHistory(Client $client)
     {
 
 
@@ -235,5 +227,5 @@ class ClientController extends Controller
 //        dd($reservations);
         // return view('client.client-history', compact('reservations'));
 
-    }
+    }*/
 }

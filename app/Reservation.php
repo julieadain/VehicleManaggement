@@ -18,12 +18,12 @@ class Reservation extends Model
         return $this->belongsTo(Vehicle::class, 'vehicle_id');
     }
 
-    public function clients(){
+    public function client(){
         return $this->belongsTo(Client::class,'client_id');
 //                return $this->belongsTo(Reservation::class,'client_id');
 
     }
-    public  function drivers(){
+    public  function driver(){
         return $this->belongsTo('App\Driver','driver_id');
     }
     public  function payments(){

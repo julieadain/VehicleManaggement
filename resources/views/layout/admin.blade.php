@@ -87,7 +87,6 @@
             <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                 <span class="sr-only">Toggle navigation</span>
             </a>
-
             <div class="navbar-custom-menu">
                 <!-- Menu Body -->
 
@@ -143,7 +142,7 @@
             </div>
         </nav>
     </header>
-    <!-- Left side column. contains the logo and sidebar -->
+<!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
@@ -157,15 +156,6 @@
                     </a>
                 </li>
                 @endSuper_admin
-
-                @admin
-                <li class="">
-                    <a href="{{url('/manager')}}">
-                        <i class="fa fa-dashboard"></i> <span>Manage user</span>
-                    </a>
-                </li>
-
-                @endadmin
                 @if( session('org_info') )
                     <?php $org_info = session('org_info')  ?>
 
@@ -194,6 +184,14 @@
                             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                         </a>
                     </li>
+                    @admin
+                    <li class="">
+                        <a href="{{url('/manager')}}">
+                            <i class="fa fa-dashboard"></i> <span>Manage user</span>
+                        </a>
+                    </li>
+                    @endadmin
+
                     <li class="treeview">
                         <a href="{{ url('') }}">
                             <i class="fa fa-car"></i>

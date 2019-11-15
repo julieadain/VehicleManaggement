@@ -17,7 +17,7 @@
         <!-- /.col -->
         <!-- /.row -->
         <div class="row">
-            <div class="col-xs-10">
+            <div class="col-xs-11">
                 <div class="box">
 
                     <div class="box-body table-responsive no-padding">
@@ -29,16 +29,14 @@
                                 <th class="bg-primary">Seat Capacity  </th>
                                 <th class="bg-primary">AC/Non AC </th>
                                 <th class="bg-primary">Owner </th>
-
-
-
+                                <th class="bg-primary">Driver </th>
                             </tr>
                             @foreach($reservations as $reservation)
                                 <tr>
-                                    <td>{{$reservation->clients-> name}}</td>
-                                    <td>{{date("dM y,", strtotime( $reservation->start_date_time))}}
+                                    <td>{{$reservation->client-> name}}</td>
+                                    <td>{{date("d M y,", strtotime( $reservation->start_date_time))}}
                                         at{{date(" h:ia", strtotime( $reservation->start_date_time))}}</td>
-                                    <td>{{date("dM y,", strtotime( $reservation->end_date_time))}}
+                                    <td>{{date("d M y,", strtotime( $reservation->end_date_time))}}
                                         at{{date(" h:ia", strtotime( $reservation->end_date_time))}}</td>
                                     <td>{{$reservation->seat_capacity}}</td>
                                     <td>
@@ -53,18 +51,11 @@
                                             {{"Yes"}}
                                         @else
                                             {{"No"}}
-
                                         @endif
                                     </td>
-
-
-
-
-
+                                    <td>{{$reservation->driver->name}}</td>
                                 </tr>
                             @endforeach
-
-
                         </table>
                         {{--                        {{$reservations->links()}}--}}
                     </div>

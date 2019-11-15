@@ -1,121 +1,102 @@
 @extends("layout.admin")
 
 @section('content')
-    <section class="content-header">
-
-
-    </section>
-
-    <!-- Main content -->
+       <!-- Main content -->
     <section class="content">
 
-        <div class="col-md-6 pull-left">
-            <h3>
-                Reservation Confirm Massage to Client
-            </h3>
+        <div class="col-md-7 pull-left">
             <!-- Horizontal Form -->
             <div class=" container box box-success">
+                <h4>
+                    Sms Log
+                </h4>
+                    <div class="box">
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <table id="example1" class="table  table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Details</th>
+                                    <th>to.</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {{--                                @foreach()--}}
+                                <tr>
+                                    {{--                              {{ dd($expense->purpose->title) }}--}}
+                                    {{--                                        <td>{{}}</td>--}}
+                                    {{--                                        <td>{{}}</td>--}}
+                                    {{--                                        <td>{{}}</td>--}}
+                                </tr>
+{{--                                @endforeach--}}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
 
-                <!-- /.box-header -->
-                <!-- form start -->
 
-
-                <table class="table">
-
-                    <tbody>
-
-                        <tr>'Client Name'</tr> </br>
-                        <tr> your order from Uttara to Tongi was confirmed from 8am to 9pm on November 7, from November 1 </tr>
-
-                    </tbody>
-                </table>
+                </div>
             </div>
         </div>
 
-        <div class="col-md-6 pull-left">
-            <h3>
-                Reservation Confirm Massage to Driver
-            </h3>
-            <!-- Horizontal Form -->
-            <div class=" container box box-success">
-
+        <div class="col-xs-5">
+            <div class="container box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">Sms Configuration</h3>
+                </div>
                 <!-- /.box-header -->
-                <!-- form start -->
+                <div class="box-body box-responsive ">
+                    <form method="POST" action="{{ url('#') }}">
+                        @csrf
+                        <div class="form-group row">
+                            <label for="email"
+                                   class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
 
+                            <div class="col-md-6">
+                                <input id="email" type="email"
+                                       class="form-control @error('email') is-invalid @enderror" name="email"
+                                       value="{{ old('email') }}" required autofocus>
 
-                <table class="table">
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
-                    <tbody>
-                    <tr>'Driver Name'</tr> </br>
-                    <tr> your order from Uttara to Tongi was confirmed from 8am to 9pm on November 7, from November 1 </tr>
+                        <div class="form-group row">
+                            <label for="password"
+                                   class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
-                    </tbody>
-                </table>
+                            <div class="col-md-6">
+                                <input id="password" type="password"
+                                       class="form-control @error('password') is-invalid @enderror" name="password"
+                                       required autocomplete="new-password">
+
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong class="text-danger">{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Register') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.box-body -->
             </div>
+            <!-- /.box -->
         </div>
-
-        <div class="col-md-6 pull-right">
-            <h3>Reservation Complete Massage to Driver</h3>
-            <!-- Horizontal Form -->
-            <div class="container box box-info">
-
-                <!-- /.box-header -->
-                <!-- form start -->
-
-
-                <table class="table">
-                    <thead>
-
-                    </thead>
-
-                    <tbody>
-                    <tr>'Driver Name'</tr> </br>
-                    <tr>your order from Uttara to Tongi was complete from 8am to 9pm on November 7, from November 1 </tr>
-
-                    </tbody>
-
-
-
-                </table>
-
-            </div>
-
         </div>
-
-
-        <div class="col-md-6 pull-right">
-            <h3 >Reservation Complete Massage to Client</h3>
-
-            <!-- Horizontal Form -->
-            <div class="container box box-info">
-
-                <!-- /.box-header -->
-                <!-- form start -->
-
-
-                <table class="table">
-                    <thead>
-
-
-
-
-                    </thead>
-
-                    <tbody>
-
-<tr>'Client Name'</tr>  </br>
-
-<tr>your order from Uttara to Tongi was finidhed from 8am to 9pm on November 7, from November 1 </tr>
-
-                    </tbody>
-
-
-                </table>
-            </div>
         </div>
-
-
-
     </section>
 
 

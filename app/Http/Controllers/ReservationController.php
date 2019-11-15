@@ -20,6 +20,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
+//        dd(test());
 //    Pending Reservations
 
         $reservationList = Reservation::where('status', '0')->get();
@@ -72,6 +73,7 @@ class ReservationController extends Controller
 
 
         $data = $request->all();
+        return $data;
         $data['status'] = 0;
 
         dd($data);
@@ -303,7 +305,7 @@ class ReservationController extends Controller
     public function massage(){
         return view('massage');
     }
-    function sendSms($to, $from = null)
+    /*function sendSms($to, $from = null)
     {
         $message = 'ksbekgjkjsk sdkjs the message body';
         $uri = 'https://cheapsms.com.bd/api/send';
@@ -333,7 +335,7 @@ class ReservationController extends Controller
             return json_decode($response);
         }else{
             return $err;
-        }
-    }
+        }*/
+//    }
 
 }

@@ -9,9 +9,11 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{asset('login_page/vendor/bootstrap/css/bootstrap.min.css')}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('login_page/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('login_page/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('login_page/fonts/Linearicons-Free-v1.0.0/icon-font.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('login_page/fonts/Linearicons-Free-v1.0.0/icon-font.min.css')}}">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{asset('login_page/vendor/animate/animate.css')}}">
     <!--===============================================================================================-->
@@ -38,22 +40,24 @@
 					</span>
             </div>
 
-            <form class="login100-form validate-form" method="post" action="{{ route('login') }}" >
+            <form class="login100-form validate-form" method="post" action="{{ route('login') }}">
                 @csrf
                 <div class="wrap-input100 validate-input m-b-26" data-validate="Email is required">
                     <span class="label-input100">Email</span>
-                    <input class="input100 @error('email') is-invalid @enderror" type="email" name="email" value="{{ $email ?? old('email') }}"  placeholder="Enter email address">
+                    <input class="input100 @error('email') is-invalid @enderror" type="email" name="email"
+                           value="{{old('email') }}" placeholder="Enter email address">
                     <span class="focus-input100"></span>
                     @error('email')
                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                        <strong>{{ $message }}</strong>
+                    </span>
                     @enderror
                 </div>
 
-                <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+                <div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
                     <span class="label-input100">Password</span>
-                    <input class="input100 @error('password') is-invalid @enderror" type="password"  name="password" placeholder="Enter password">
+                    <input class="input100 @error('password') is-invalid @enderror" type="password" name="password"
+                           placeholder="Enter password">
                     <span class="focus-input100"></span>
                     @error('password')
                     <span class="invalid-feedback" role="alert">

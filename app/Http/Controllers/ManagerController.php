@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Manager;
+use App\Rules\ValidMobile;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,8 +47,7 @@ class ManagerController extends Controller
             'name' => 'required',
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'min:4', 'confirmed'],
-//            Have to add validate on Bd structure
-            'phone' => ['required']
+            'phone' => ['required', new ValidMobile()]
         ]);
 
         $user = new User();
