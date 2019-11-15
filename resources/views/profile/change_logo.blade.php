@@ -19,7 +19,7 @@
                     </div>
                 @endif
 
-                <form method="POST" action="{{ url('/storeLogo') }}" enctype="multipart/form-data"
+                <form method="POST" action="{{ url('storeLogo') }}" enctype="multipart/form-data"
                       style="padding: 10px;">
                     @csrf
                     <div class="form-group">

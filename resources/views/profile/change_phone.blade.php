@@ -5,19 +5,35 @@
         <section class="col-md-6 connectedSortable pull-left" style="padding-top: 10px;">
             <!-- Profile Image -->
             <div class="box box-primary">
-                <form style="padding: 10px;">
-
+                @if ($errors->any())
+                    <div class="alert">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li class="text-danger">{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <form method="POST" action="{{ url('storePhone') }}" enctype="multipart/form-data"
+                      style="padding: 10px;">
+                    @csrf
                     <div class="form-group">
-                        <label for="exampleInputPhone1">Current Phone</label>
-                        <input type=tel class="form-control" name="phone1" id="exampleInputPhone1"  placeholder="Enter current phone">
+                        <label for="exampleInputPhone1">Present Phone</label>
+                        <input type=tel class="form-control" name="phone" id="exampleInputPhone1" {{--value="{{$request?? $request->old('phone') }}"--}} placeholder="Enter current phone">
+                        @if (session('errorPhone'))
+                            <h5 class="text-danger pull-right">{{session('errorPhone')}}</h5>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPhone">New Phone</label>
-                        <input type=tel class="form-control" name="newEmail" id="exampleInputPhone" aria-describedby="addressHelp" placeholder="Enter new phone">
+                        <input type=tel class="form-control" name="newPhone" id="exampleInputPhone" {{--value="{{$request?? $request->old('newPhone')}}"--}} aria-describedby="addressHelp" placeholder="Enter new phone">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Enter Password</label>
                         <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
+                        @if (session('errorPass'))
+                            <h5 class="text-danger pull-right">{{session('errorPass')}}</h5>
+                        @endif
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Organization;
+use App\Rules\ValidMobile;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -107,7 +108,7 @@ class ProfileController extends Controller
             $organization->logo = $filename;
             $organization->save();
 //            dd($organization->logo);
-        }else{
+        } else {
             Session::flash('error', 'Given Password did not match !');
             return redirect()->back();
         }
@@ -123,6 +124,34 @@ class ProfileController extends Controller
     {
         return view("profile.change_phone");
 
+    }
+
+    public function storePhone(Request $request)
+    {
+        $this->validate($request, [
+            'phone' => ['required', new ValidMobile()],
+            'newPhone' => ['required', new ValidMobile()],
+            'password' => 'required'
+        ]);
+//    dd('aisuhfiua');
+        $user = User::find(Auth::user()->id);
+
+        if (Hash::check($request['password'], $user->password)) {
+
+            if ($request['phone'] == $user->phone) {
+                $user->phone = $request['newPhone'];
+                $user->save();
+            } else {
+                Session::flash('errorPhone', 'Present phone number did not match !');
+                return redirect()->back()->with('request', $request);
+            }
+//            dd($user->phone);
+
+        } else {
+            Session::flash('errorPass', 'Given Password did not match !');
+            return redirect()->back();
+        }
+        return redirect('profile');
     }
 
     public function changeAddress()

@@ -110,7 +110,7 @@
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle"
+                                <img src="{{asset('upload').'/'.\Illuminate\Support\Facades\Auth::user()->organization->logo}}" class="img-circle"
                                      alt="User Image">
                                 <p>
                                     {{auth()->user()->name}} - {{auth()->user()->status}}
