@@ -5,8 +5,7 @@
         <section class="col-md-6 connectedSortable pull-left" style="padding-top: 10px;">
             <!-- Profile Image -->
             <div class="box box-primary">
-
-                <form method="POST" action="{{ url('storeAddress') }}" enctype="multipart/form-data"
+                <form method="POST" action="{{ url('storeAddress') }}"
                       style="padding: 10px;">
                     @csrf
                     <ul class="list-group" style="padding-top: 10px;">

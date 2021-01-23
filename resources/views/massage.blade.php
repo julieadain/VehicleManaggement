@@ -50,13 +50,13 @@
                     <form method="POST" action="{{ url('#') }}">
                         @csrf
                         <div class="form-group row">
-                            <label for="email"
-                                   class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
+                            <label for="id"
+                                   class="col-md-4 col-form-label text-md-right">{{ __('Id') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email"
-                                       class="form-control @error('email') is-invalid @enderror" name="email"
-                                       value="{{ old('email') }}" required autofocus>
+                                       class="form-control @error('id') is-invalid @enderror" name="id"
+                                       value="{{ old('id') }}" required autofocus>
 
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">

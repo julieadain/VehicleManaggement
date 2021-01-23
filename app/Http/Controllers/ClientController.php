@@ -184,7 +184,7 @@ class ClientController extends Controller
         $data['user_id'] = Auth::user()->id;
 
         if (session('org_info')){
-           $data['org_id'] =session('org_info')->id;
+           $data['org_id'] =session()->has('org_info')->id;
        }else{
            $data['org_id'] = Auth::user()->org_id;
        }

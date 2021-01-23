@@ -53,6 +53,18 @@ class PaymentController extends Controller
 //        return view("payment.adminInvoice");
     }
 
+    public function adminPaymentCreate()
+    {
+        if (session('org_info')) {
+            $id = session()->get('org_info')->id;
+        } else {
+            $id = Auth::User()->org_id;
+        }
+        $organization = Organization::find($id);
+
+        return view("payment.invoice", compact('organization'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -109,7 +121,7 @@ class PaymentController extends Controller
     public function destroy(Payment $payment)
     {
         $payment->delete();
-        return redirect()->back() ;
+        return redirect()->back();
     }
 
     public function packaged(PackagedControllerRequest $request)
@@ -124,6 +136,7 @@ class PaymentController extends Controller
 
         return view("payment.adminInvoice", compact('organization'));
     }
+
     public function requestList()
     {
 
@@ -132,6 +145,7 @@ class PaymentController extends Controller
             ->paginate('8');
         return view("payment.requestList", compact('payments'));
     }
+
     public function paymentApprove($id)
     {
         $payment = Payment::find($id);
@@ -146,7 +160,9 @@ class PaymentController extends Controller
 
         return view("payment.invoice-print", compact('organization'));
     }
-    public function paymentView(Payment $payment){
+
+    public function paymentView(Payment $payment)
+    {
 
         $packages = Package::all();
         return view("payment.adminMakePayment", compact('packages', 'payment'));
@@ -164,6 +180,7 @@ class PaymentController extends Controller
         return view("payment.paymentRequest", compact('organization'));
 
     }
+
     public function paymentDueList()
     {
         $payments = Payment::whereNotNUll('package_id')

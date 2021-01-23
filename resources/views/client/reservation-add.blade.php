@@ -31,32 +31,35 @@
 
             <!-- /.box-header -->
                 <!-- form start -->
-                <form action="{{url("client/$clientId/reservation/create")}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <form action="{{url("client/$clientId/reservation/create")}}" method="post"
+                      enctype="multipart/form-data" class="form-horizontal">
                     @csrf
 
-{{--                    <div class="form-group">--}}
-{{--                        <label>Date and time range:</label>--}}
+                    {{--                    <div class="form-group">--}}
+                    {{--                        <label>Date and time range:</label>--}}
 
-{{--                        <div class="input-group">--}}
-{{--                            <div class="input-group-addon">--}}
-{{--                                <i class="fa fa-clock-o"></i>--}}
-{{--                            </div>--}}
-{{--                            <input type="text" class="form-control pull-right" id="reservationtime">--}}
-{{--                        </div>--}}
-{{--                        <!-- /.input group -->--}}
-{{--                    </div>--}}
+                    {{--                        <div class="input-group">--}}
+                    {{--                            <div class="input-group-addon">--}}
+                    {{--                                <i class="fa fa-clock-o"></i>--}}
+                    {{--                            </div>--}}
+                    {{--                            <input type="text" class="form-control pull-right" id="reservationtime">--}}
+                    {{--                        </div>--}}
+                    {{--                        <!-- /.input group -->--}}
+                    {{--                    </div>--}}
                     <div class="form-group">
                         <label for="inputBrand" class="col-sm-2 control-label">Start Date Time</label>
 
                         <div class="col-sm-10">
-                            <input type="datetime-local" name="start_date_time" class="form-control" id="inputBrand" placeholder="">
+                            <input type="datetime-local" name="start_date_time" class="form-control" id="reservationTime"
+                                   placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputBrand" class="col-sm-2 control-label">End Date Time</label>
 
                         <div class="col-sm-10">
-                            <input type="datetime-local" name="end_date_time" class="form-control" id="inputBrand" placeholder="">
+                            <input type="datetime-local" name="end_date_time" class="form-control" id="inputBrand"
+                                   placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
@@ -89,7 +92,8 @@
                         <label for="inputBrand" class="col-sm-2 control-label">Pick up Address</label>
 
                         <div class="col-sm-10">
-                            <input type="text" name="pickup_address" class="form-control" id="inputBrand" placeholder="">
+                            <input type="text" name="pickup_address" class="form-control" id="inputBrand"
+                                   placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
@@ -103,14 +107,16 @@
                         <label for="inputBrand" class="col-sm-2 control-label">Start Meter reading</label>
 
                         <div class="col-sm-10">
-                            <input type="text" name="start_meter_reading" class="form-control" id="inputBrand" placeholder="">
+                            <input type="text" name="start_meter_reading" class="form-control" id="inputBrand"
+                                   placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputBrand" class="col-sm-2 control-label">End Meter Reading</label>
 
                         <div class="col-sm-10">
-                            <input type="text" name="end_meter_reading" class="form-control" id="inputBrand" placeholder="">
+                            <input type="text" name="end_meter_reading" class="form-control" id="inputBrand"
+                                   placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
@@ -125,7 +131,8 @@
                         <label for="exampleInputbtn" class="col-sm-2 control-label"></label>
 
                         <div class="col-md-1">
-                            <button type="submit" class="form-control btn btn-primary" id="exampleInputbtn">Save</button>
+                            <button type="submit" class="form-control btn btn-primary" id="exampleInputbtn">Save
+                            </button>
                         </div>
                     </div>
                     <br/>
@@ -134,11 +141,18 @@
         </div>
     </section>
 @endsection
+{{--
+@push( "page-js")
+    <script>
 
-<script>
+        $(function () {
+            //Date range picker with time picker
+            $('#reservationTime').daterangepicker({
+                timePicker: true,
+                timePickerIncrement: 30,
+                format: 'MM/DD/YYYY h:mm A'
+            })
+        })
 
-        //Date range picker with time picker
-        $('#reservationtime').daterangepicker({ timePicker: true,
-            timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A' })
-
-</script>
+    </script>
+@endpush--}}
