@@ -38,7 +38,7 @@ class ClientController extends Controller
 
         $activeClient = Client::where('status', '1')->paginate(4);
 
-        return view('client.active-Client', compact('activeClient'));
+        return view('client.active-client', compact('activeClient'));
     }
 
     /**

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Organization;
-use App\vehicle;
+use App\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -98,12 +98,12 @@ class VehicleController extends Controller
         if (Auth::user()->role != 1){
             $data['user_id'] = Auth::user()->id;
         }else{
-           $org = Organization::find( session()->get('org_info')->id);
+            $org = Organization::find( session()->get('org_info')->id);
             $data['user_id'] = $org->owner->id;
         }
         Vehicle::create($data);
         return redirect('vehicle');
-      }
+    }
 
     /**
      * Display the specified resource.
@@ -111,7 +111,7 @@ class VehicleController extends Controller
      * @param  \App\vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function show(vehicle $vehicle)
+    public function show(Vehicle $vehicle)
     {
         return view("vehicle.single-list", compact('vehicle'));
     }
@@ -122,7 +122,7 @@ class VehicleController extends Controller
      * @param  \App\vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function edit(vehicle $vehicle)
+    public function edit(Vehicle $vehicle)
     {
         return view("vehicle.edit")->with('vehicle',$vehicle);
     }
@@ -134,7 +134,7 @@ class VehicleController extends Controller
      * @param  \App\vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, vehicle $vehicle)
+    public function update(Request $request, Vehicle $vehicle)
     {
         $this->validate($request,[
             'brand'=>'required',
@@ -209,10 +209,10 @@ class VehicleController extends Controller
      * @param  \App\vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function destroy(vehicle $vehicle)
+    public function destroy(Vehicle $vehicle)
     {
-    $vehicle->delete();
-    return redirect('vehicle');
+        $vehicle->delete();
+        return redirect('vehicle');
     }
 
 }
