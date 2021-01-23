@@ -8,7 +8,6 @@ use App\Reservation;
 use App\Rules\ValidMobile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use phpDocumentor\Reflection\Types\Nullable;
 
 class DriverController extends Controller
 {
@@ -26,15 +25,12 @@ class DriverController extends Controller
                 ->orderBy('id', 'desc')
                 ->paginate(5);
 
-//            dd($vehicles);
-
         } else {
 
             $drivers = Driver::where('org_id', Auth::user()->org_id)
                 ->paginate(5);
         }
 
-//        $data= Driver::paginate(10);
         return view("driver.detail")->with('drivers', $drivers );
     }
 
@@ -45,7 +41,6 @@ class DriverController extends Controller
      */
     public function create()
     {
-//       dd("This is from creat driver");
        return view("driver.add");
     }
 

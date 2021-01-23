@@ -6,7 +6,6 @@ use App\Organization;
 use App\vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use function Sodium\add;
 
 class VehicleController extends Controller
 {
@@ -22,11 +21,8 @@ class VehicleController extends Controller
             $vehicles = Vehicle::where('org_id', session()->get('org_info')->id)
                 ->orderBy('id', 'desc')
                 ->paginate(5);
-
-//            dd($vehicles);
-
-        } else {
-
+        }
+        else {
             $vehicles = Vehicle::where('org_id', Auth::user()->org_id)
                 ->paginate(5);
         }
@@ -41,7 +37,6 @@ class VehicleController extends Controller
      */
     public function create()
     {
-//        dd("This is add vehicle form");
         return view("vehicle.add");
 
     }

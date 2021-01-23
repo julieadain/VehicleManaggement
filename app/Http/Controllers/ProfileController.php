@@ -107,7 +107,6 @@ class ProfileController extends Controller
             $organization = Organization::find(Auth::user()->org_id);
             $organization->logo = $filename;
             $organization->save();
-//            dd($organization->logo);
         } else {
             Session::flash('error', 'Given Password did not match !');
             return redirect()->back();
@@ -133,7 +132,7 @@ class ProfileController extends Controller
             'newPhone' => ['required', new ValidMobile()],
             'password' => 'required'
         ]);
-//    dd('aisuhfiua');
+
         $user = User::find(Auth::user()->id);
 
         if (Hash::check($request['password'], $user->password)) {
@@ -141,22 +140,20 @@ class ProfileController extends Controller
             if ($request['phone'] == $user->phone) {
                 $user->phone = $request['newPhone'];
                 $user->save();
-            } else {
+                } else {
                 Session::flash('errorPhone', 'Present phone number did not match !');
                 return redirect()->back()->with('request', $request);
+                }
             }
-//            dd($user->phone);
-
-        } else {
+        else {
             Session::flash('errorPass', 'Given Password did not match !');
             return redirect()->back();
-        }
+            }
         return redirect('profile');
     }
 
     public function storeEmail(Request $request)
     {
-//        dd('aisuhfiua');
         $this->validate($request, [
             'email' => 'required|email',
             'newEmail' => 'required|email|unique:users,email',
@@ -193,7 +190,6 @@ class ProfileController extends Controller
             'address' => 'required',
             'password' => 'required'
         ]);
-//    dd('aisuhfiua');
         $user = User::find(Auth::user()->id);
 
         if (Hash::check($request['password'], $user->password)) {
@@ -201,9 +197,8 @@ class ProfileController extends Controller
             $organization = Organization::find(Auth::user()->org_id);
             $organization->address = $request['address'];
             $organization->save();
-
-//            dd('aisuhfiua');
-        } else {
+        }
+        else {
             Session::flash('errorPass', 'Given Password did not match !');
             return redirect()->back();
         }
@@ -213,7 +208,6 @@ class ProfileController extends Controller
     public function changePassword()
     {
         return view("profile.change_password");
-
     }
 
     public function storePass(Request $request)

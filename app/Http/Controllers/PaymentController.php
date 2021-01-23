@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PackageControllerRequest;
 use App\Http\Requests\PackagedControllerRequest;
 use App\Organization;
 use App\Package;
 use App\Payment;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,10 +45,8 @@ class PaymentController extends Controller
      */
     public function create()
     {
-
         $packages = Package::all();
         return view("payment.adminPayment", compact('packages'));
-//        return view("payment.adminInvoice");
     }
 
     public function adminPaymentCreate()
@@ -73,8 +69,6 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-
-        return $request;
         return view("payment.adminInvoice");
     }
 
@@ -116,7 +110,6 @@ class PaymentController extends Controller
      * Remove the specified resource from storage.
      *
      * @param \App\Payment $payment
-     * @return \Illuminate\Http\Response
      */
     public function destroy(Payment $payment)
     {
@@ -131,8 +124,6 @@ class PaymentController extends Controller
         $organization = Organization::where('org_name', 'LIKE', '%' . $request->organization . '%')->first();
         $organization->package_id = $package->id;
         $organization->save();
-
-//       return $organization->package;
 
         return view("payment.adminInvoice", compact('organization'));
     }
@@ -192,7 +183,6 @@ class PaymentController extends Controller
 
     public function paymentRequest($id)
     {
-
         $organization = Organization::find($id);
 
         $payment = new Payment();
@@ -205,15 +195,12 @@ class PaymentController extends Controller
             $payment->status = '1';
         }
         $payment->save();
-//        return $payment ;
         return redirect(url('home'));
 
     }
 
     public function org_ajaxRequest()
     {
-//        return "Test";
-
         $data = Organization::with('package')
             ->where('org_name', 'LIKE', '%' . request('keyword') . '%')
             ->where('status', '1')

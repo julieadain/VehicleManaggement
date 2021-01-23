@@ -24,8 +24,6 @@ class ManagerController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -40,9 +38,6 @@ class ManagerController extends Controller
      */
     public function store(Request $request)
     {
-//        dd( $request->all());
-//        dd( Auth::user());
-
         request()->validate([
             'name' => 'required',
             'email' => ['required', 'email', 'unique:users'],
@@ -68,9 +63,7 @@ class ManagerController extends Controller
 
     /**
      * Display the specified resource.
-     *
      * @param \App\Manager $manager
-     * @return \Illuminate\Http\Response
      */
     public function show(Manager $manager)
     {
@@ -79,9 +72,7 @@ class ManagerController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
      * @param \App\Manager $manager
-     * @return \Illuminate\Http\Response
      */
     public function edit(Manager $manager)
     {
@@ -93,7 +84,6 @@ class ManagerController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Manager $manager
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Manager $manager)
     {
@@ -108,8 +98,6 @@ class ManagerController extends Controller
      */
     public function destroy(User $user, $id)
     {
-//        dd('Hey...it worked on the id '. $id);
-
         User::find($id)->delete();
         return redirect()->back();
     }

@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\client;
-use App\Organization;
-use App\Payment;
+use App\Client;
 use App\Reservation;
 use App\Rules\ValidMobile;
 use Illuminate\Http\Request;
@@ -14,8 +12,6 @@ class ClientController extends Controller
 {
     /*
      * Display a listing of the resource.
-
-     * @return \Illuminate\Http\Response
      */
     public function index()
 
@@ -27,27 +23,20 @@ class ClientController extends Controller
                 ->orderBy('id', 'desc')
                 ->paginate(5);
 
-//            dd($vehicles);
-
         } else {
 
             $clients = Client::where('org_id', Auth::user()->org_id)
                 ->paginate(5);
         }
 
-//        $organization = Organization::all();
-//        $data = Client::paginate(10);
         return view('client.detail')
             ->with('clients', $clients);
-//            ->with('organizations',$organization);
     }
 
     public function activeClient()
     {
 
         $activeClient = Client::where('status', '1')->paginate(4);
-
-//        dd($activeClient);
 
         return view('client.active-Client', compact('activeClient'));
     }
@@ -64,8 +53,6 @@ class ClientController extends Controller
 
     /*
      * Store a newly created resource in storage.
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -86,7 +73,7 @@ class ClientController extends Controller
 
 
         Client::create($data);
-        return redirect('client', compact('Request'));
+        return redirect('client');
     }
 
     /**
@@ -176,7 +163,7 @@ class ClientController extends Controller
             'end_meter_reading' => 'required',
             'total_payable' => 'required'
         ]);
-//dd($request->all());
+
         $data = $request->all();
         $data['status'] = 0;
 
@@ -189,7 +176,6 @@ class ClientController extends Controller
            $data['org_id'] = Auth::user()->org_id;
        }
 
-//       return $data;
         Reservation::create($data);
         return redirect("reservation");
 
@@ -204,28 +190,9 @@ class ClientController extends Controller
 
     public function clientHistory()
     {
-//        dd('olnfg');
         $reservations = Reservation::with('client')->paginate('10');
         return view('client.client-history', compact('reservations'));
 
     }
 
-    /*public function clientHistory(Client $client)
-    {
-
-
-         $data['client'] = Client::with('reservations')
-             ->where('id',$client->id)
-             ->first();
-       //return $data;
-        // $data['reservations'] = Reservation::with('payments')->where('id',2)->first();
-
-        return view('client.client-history', $data);
-
-        // $reservations = Reservation::with('payments')->where('status','2')->get();
-// return $reservations[1]->payments[0]->paid;
-//        dd($reservations);
-        // return view('client.client-history', compact('reservations'));
-
-    }*/
 }

@@ -5,14 +5,10 @@ namespace App\Http\Controllers;
 use App\Client;
 use App\Driver;
 use App\Organization;
-use App\Package;
 use App\Payment;
 use App\Reservation;
-use App\User;
 use App\Vehicle;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -101,7 +97,6 @@ class HomeController extends Controller
                 ->limit('8')
                 ->get();
 
-//            return $payments[2]->package ;
             return view('SuperDash', compact('months', 'data1', 'organizations', 'payments'));
         }
 
@@ -115,14 +110,10 @@ class HomeController extends Controller
     }
 
     public  function vehicle(Vehicle $vehicle){
-//            dd($vehicle->id);
+
           $data['reservations'] = Reservation::with('clients', 'vehicles')->where('vehicle_id', $vehicle->id)->where('status', '1')->paginate(1);
         $data['vehicle'] = $vehicle;
-
         $data['vehicleHistory']= Reservation::where('vehicle_id', $vehicle->id)->where('status','2')->paginate('1');
-
-        //return $data;
-
 
         return view('dashboard-vehicle-info', $data);
 
@@ -130,7 +121,6 @@ class HomeController extends Controller
 
     public function photoUpload(){
 
-        dd("apowiighoaiwsgoinogn");
     }
 
 }

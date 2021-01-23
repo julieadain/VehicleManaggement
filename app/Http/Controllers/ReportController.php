@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Expense;
-use App\Purpose;
 use App\Report;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -25,22 +24,16 @@ class ReportController extends Controller
             ->whereBetween('created_at', array(Carbon::now()->subMonth(6), Carbon::now()) )
             ->get();
 
-//        dd($exp);
-//        dd(Auth::user()->org_id);
-
         if (session('org_info')){
             $org_id = session()->get('org_info')->id;
         }else{
            $org_id = Auth::user()->org_id;
         }
-//        dd($org_id);
         $expenses = Expense::whereYear('created_at', date('Y'))
             ->where('org_id', $org_id)
             ->whereMonth('created_at', date('m'))
             ->orderBy('created_at', 'Desc')
             ->get();
-
-//        dd($expenses);
 
         $months = json_encode(['January', 'February', 'March', 'April', 'May', 'June', 'July']);
         $data1 = json_encode([65, 59, 80, 81, 56, 55, 40]);

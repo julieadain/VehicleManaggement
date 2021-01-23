@@ -4,32 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Expense;
 use App\Purpose;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Date;
-use Illuminate\Support\Facades\Session;
-
 
 class ExpenseController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Display a listing of the resource
      */
     public function index()
     {
 
-        /*   session::forget('exp');
-           Session::put('exp', '1');
-           return view("expense");*/
     }
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -58,7 +47,6 @@ class ExpenseController extends Controller
 
             $purpose->save();
         }
-//        dd($purpose->id);
         $expense = new Expense();
 
         $expense->amount = $request->amount;
@@ -122,8 +110,6 @@ class ExpenseController extends Controller
 
     public function ajaxRequest()
     {
-//        return "Test";
-
         $data = Purpose::where('title', 'LIKE', '%' . request('keyword') . '%')->get();
 
         return response()->json(['success' => $data]);

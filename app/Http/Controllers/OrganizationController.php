@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\organization;
+use App\Organization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -16,19 +16,15 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-//        dd(session('org_info'));
         $organizations = Organization::where("id","!=",Auth::user()->org_id)->where('status', '1')->paginate('8');
-        $requests = Organization::where('status', '0')->get();
+        $requests = Organization::where("status", "0")->get();
         $denials = Organization::where('status', '-1')->get();
-//        dd($denials);
-//        dd($organizations->users()->id);
+
         return view('organization.view', compact('organizations', 'requests', 'denials'));
     }
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -39,7 +35,6 @@ class OrganizationController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -50,25 +45,20 @@ class OrganizationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\organization $organization
+     * @param \App\Organization $organization
      * @return \Illuminate\Http\Response
      */
-    public function show(organization $organization)
+    public function show(Organization $organization)
     {
-//        dd("SINGLE VIEW OF ORGANIZATION");
-//        dd($organization->owner);
-//        dd($organization->id);
         return view("organization.detail", compact('organization'));
-
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\organization $organization
-     * @return \Illuminate\Http\Response
+     * @param \App\Organization $organization
      */
-    public function edit(organization $organization)
+    public function edit(Organization $organization)
     {
         //
     }
@@ -78,7 +68,6 @@ class OrganizationController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\organization $organization
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, organization $organization)
     {
@@ -88,21 +77,16 @@ class OrganizationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\organization $organization
-     * @return \Illuminate\Http\Response
+     * @param \App\Organization $organization
      */
-    public function destroy(organization $organization)
+    public function destroy(Organization $organization)
     {
         //
     }
 
     public function approve($id)
     {
-
-//        dd('Your org request has been approved & id is '. $id);
-
         $organization = Organization::find($id);
-//        dd($organization->status);
         $organization->status = '1';
         $organization->save();
 
@@ -111,10 +95,7 @@ class OrganizationController extends Controller
 
     public function deny($id)
     {
-
-//        dd('Your org request has been denied');
         $organization = Organization::find($id);
-//        dd($organization->status);
         $organization->status = '-1';
         $organization->save();
         return redirect('/organization');
@@ -122,10 +103,7 @@ class OrganizationController extends Controller
 
     public function pending($id)
     {
-
-//        dd('Your org request is pending');
         $organization = Organization::find($id);
-//        dd($organization->status);
         $organization->status = '0';
         $organization->save();
         return redirect('/organization');
@@ -137,7 +115,6 @@ class OrganizationController extends Controller
             $org = Organization::find($id);
             session::forget('org_info');
             Session::put('org_info', $org);
-//        dd( session('org_info'));
         } else {
             Session::forget('org_info');
         }
@@ -145,7 +122,6 @@ class OrganizationController extends Controller
 
     }
     public function unset(){
-//        dd("Unset button clicked");
         Session::forget("org_info");
        return redirect("/home");
     }

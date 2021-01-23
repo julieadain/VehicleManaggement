@@ -20,18 +20,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
-//        dd(test());
-//    Pending Reservations
-
         $reservationList = Reservation::where('status', '0')->get();
-
-
-//        dd($data->vehicles->id);
-
-//        $data['client_id'] = $clientId;
-//        $data['user_id'] = Auth::id();
-//        $data['org_id'] = Auth::user()->org_id;
-
 
         return view('client.reservation-list', compact('reservationList'));
     }
@@ -43,8 +32,6 @@ class ReservationController extends Controller
     public function create()
     {
 
-
-//        return view('reservation.add');
     }
 
     /*
@@ -67,16 +54,9 @@ class ReservationController extends Controller
             'total_payable' => 'required'
         ]);
 
-//        $data =  $request->all();
-//        $data['user_id'] = Auth::id();
-//        Reservation:: create($data);
-
-
         $data = $request->all();
         return $data;
         $data['status'] = 0;
-
-        dd($data);
 
         Reservation::create($data);
         return redirect('reservation');
@@ -90,9 +70,6 @@ class ReservationController extends Controller
      */
     public function show(Reservation $reservation)
     {
-//        return Driver::find(11)->reservations;
-
-//        Reservation::all();
         if (session('org_info')) {
 
 
@@ -120,11 +97,6 @@ class ReservationController extends Controller
         $reservation->status = '1';
         $reservation->save();
 
-
-//        $reservation->status='1';
-//        $reservation->sendSms();
-
-
         $client = Client::find($reservation->client_id);
         $client->status = '1';
         $client->save();
@@ -138,8 +110,6 @@ class ReservationController extends Controller
 
     public function vehicleAssign($id)
     {
-//        dd(session()->get('res_info')->id);
-
         $reservation = Reservation::find(session()->get('res_info')->id);
         $reservation->vehicle_id = $id;
         $reservation->save();
@@ -155,8 +125,6 @@ class ReservationController extends Controller
             $drivers = Driver::where('org_id', Auth::user()->org_id)->get();
 
         }
-
-
         return view("reservation.driver-assign", compact('reservation', 'drivers'));
 
     }
@@ -202,10 +170,6 @@ class ReservationController extends Controller
         $reservation->save();
         $reservation->update($request->all());
 
-//        $data =  $request->all();
-//        $data['user_id'] = Auth::id();
-//        Reservation:: create($data);
-//        return redirect('reservation');
         return view('reservation.vehicle-assign');
     }
 
@@ -228,12 +192,7 @@ class ReservationController extends Controller
         $reservation->save();
         $reservation->update($request->all());
 
-//        $data =  $request->all();
-//        $data['user_id'] = Auth::id();
-//        Reservation:: create($data);
         return redirect("reservation/$reservation->id");
-//        return view('reservation.vehicle-assign');
-
     }
 
 
@@ -256,7 +215,6 @@ class ReservationController extends Controller
      */
     public function runReservationDestroy(Reservation $reservation)
     {
-//        dd($reservation);
         $reservation->delete();
         return redirect('currentReservation');
     }
@@ -284,8 +242,6 @@ class ReservationController extends Controller
 
     public function completed(Reservation $reservation)
     {
-
-//        dd($reservation->id);
         $reservation->status = 2;
         $reservation->save();
         return redirect("history");
@@ -294,10 +250,7 @@ class ReservationController extends Controller
 
     public  function historyReservation(){
 
-//        dd('asche');
-
           $reservation = Reservation::where('status','2')->get();
-//        dd($reservation);
 
         return view('reservation.reservation-history')->with( 'reservations', $reservation);
     }
